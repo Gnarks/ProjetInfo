@@ -1,0 +1,86 @@
+package code.projetinfo;
+
+public class Level {
+    private Cases grid;
+    private ImageBlock[] blocks;
+    private ImageBlock[] placed;
+
+    public Level(Cases grid, ImageBlock[] blocs){
+        this.grid = grid;
+        this.blocks = blocs;
+        this.placed = new ImageBlock[blocs.length];
+    }
+    public void saveState(){}
+    public void loadState(){}
+
+    /**
+     * This method check the grid to see if the block can be placed at the desired
+     * coordinates.
+     * @param imageBlock
+     * The block to place
+     * @param x
+     * Horizontal coordinate of the top left of the block.
+     * @param y
+     * Vertical coordinate of the top left of the block.
+     * @return
+     * Return if the block can be placed or not.
+     */
+    public boolean isPlacable(ImageBlock imageBlock, int x, int y){
+        if (x + imageBlock.getCols() > grid.getCol() || y + imageBlock.getRows() > grid.getRow()){
+            return false;
+        }
+        for (int i = 0; i < imageBlock.getRows(); i++){
+            for (int j = 0; j < imageBlock.getCols(); j++){
+                if (grid.getState(x+j, y+i) == CaseState.FULL && imageBlock.getState(j, i) == CaseState.FULL){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+
+    /**
+     * This method "place" a bloc in the grid matrix.
+     * We just put the matrix bloc in a bigger matrix grid.
+     * @param imageBlock
+     * The matrix representing the bloc to place
+     * @param x
+     * The horizontal coordinate of the placement point of the bloc.
+     * @param y
+     * The vertical coordinate of the placement point of the bloc.
+     */
+    public void place(ImageBlock imageBlock, int x, int y){
+        if (isPlacable(imageBlock, x ,y)){
+            for (int i = 0; i < imageBlock.getRows(); i++){
+                for (int j = 0; j < imageBlock.getCols(); j++){
+                    grid.set(x+j, y+i, imageBlock.getState(j, i));
+                }
+            }
+            append(imageBlock);
+        }
+    }
+
+    public void show(){
+        this.grid.show();
+    }
+
+    /**
+     * Add a block in the placed bloc matrix.
+     * @param imageBlock
+     * The block to add in the placed bloc matrix.
+     */
+    private void append(ImageBlock imageBlock){
+        int i = 0;
+        while (placed[i] != null){
+            i++;
+        }
+        placed[i] = imageBlock;
+    }
+
+    public ImageBlock[] getBlocks() {
+        return blocks;
+    }
+
+    public Cases getGrid() {return grid;}
+}
