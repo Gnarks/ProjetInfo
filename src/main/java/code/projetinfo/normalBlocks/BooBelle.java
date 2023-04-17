@@ -15,13 +15,13 @@ public class BooBelle extends ImageBlock {
                         {CaseState.FULL,CaseState.FULL,CaseState.EMPTY},
                         {CaseState.FULL,CaseState.FULL,CaseState.FULL}}),
                 new Position(75,75),
-                new ImageView("code/projetinfo/Sprite_Ghosts/Sprite_GhostBigL3x3_Rotation0.png"),
+                new ImageView(String.valueOf(ImageBlock.class.getResource("Sprite_Ghosts/Sprite_GhostBigL3x3_Rotation0.png"))),
                 150,150);
     }
     public void rotateGraphic() {
         setRotateState(getRotateState()+1);
 
-        String generalUrl = "code.projetinfo/Sprite_Ghosts/Sprite_GhostBigL3x3_Rotation";
+        String generalUrl = "Sprite_Ghosts/Sprite_GhostBigL3x3_Rotation";
         super.rotateGraphicStep(0,0, generalUrl);
     }
 }

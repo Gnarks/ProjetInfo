@@ -14,13 +14,13 @@ public class Amogous extends ImageBlock {
                         {CaseState.FULL,CaseState.EMPTY},
                         {CaseState.FULL,CaseState.FULL}}),
                 new Position(25,75),
-                new ImageView("code/projetinfo/Sprite_Ghosts/Sprite_GhostL2x2_Rotation0.png"),
+                new ImageView(String.valueOf(ImageBlock.class.getResource("Sprite_Ghosts/Sprite_GhostL2x2_Rotation0.png"))),
                 100,100);
     }
     public void rotateGraphic() {
         setRotateState(getRotateState()+1);
 
-        String generalUrl = "code.projetinfo/Sprite_Ghosts/Sprite_GhostL2x2_Rotation";
+        String generalUrl = "Sprite_Ghosts/Sprite_GhostL2x2_Rotation";
         switch (getRotateState() % 4) {
             case 1 -> super.rotateGraphicStep(0, 50, generalUrl);
             case 2 -> super.rotateGraphicStep(-50, 0, generalUrl);

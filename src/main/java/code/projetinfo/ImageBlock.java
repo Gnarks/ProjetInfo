@@ -130,7 +130,8 @@ public abstract class ImageBlock{
       imageView.setLayoutX(imageView.getLayoutX() +moveX);
       imageView.setLayoutY(imageView.getLayoutY() +moveY);
       midPos = new Position(midPos.getX() -moveX, midPos.getY() - moveY);
-      imageView.setImage(new Image(String.format("%s%s.png",generalUrl,rotateState)));
+
+      imageView.setImage(new Image(String.valueOf(ImageBlock.class.getResource(String.format("%s%s.png",generalUrl,rotateState)))));
 
       imageView.setFitHeight((rotateState%2 == 0?height:width));
       imageView.setFitWidth((rotateState%2 == 0?width:height));

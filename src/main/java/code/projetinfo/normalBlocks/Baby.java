@@ -13,12 +13,12 @@ public class Baby extends ImageBlock {
                 new Cases(new CaseState[][] {
                         {CaseState.FULL}}),
                 new Position(25,25),
-                new ImageView("code/projetinfo/Sprite_Ghosts/Sprite_Ghost1x1_Rotation0.png"),
+                new ImageView(String.valueOf(ImageBlock.class.getResource("Sprite_Ghosts/Sprite_Ghost1x1_Rotation0.png"))),
                 50,50);
     }
     public void rotateGraphic() {
         setRotateState(getRotateState()+1);
-        String generalUrl = "code.projetinfo/Sprite_Ghosts/Sprite_Ghost1x1_Rotation";
+        String generalUrl = "Sprite_Ghosts/Sprite_Ghost1x1_Rotation";
         super.rotateGraphicStep(0,0, generalUrl);
     }
 }

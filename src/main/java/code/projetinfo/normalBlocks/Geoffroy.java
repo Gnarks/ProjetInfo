@@ -17,12 +17,12 @@ public class Geoffroy extends ImageBlock {
                         {CaseState.FULL,CaseState.FULL},
                         {CaseState.FULL,CaseState.FULL}}),
                 new Position(75,175),
-                new ImageView("code/projetinfo/Sprite_Ghosts/Sprite_Ghost2x6_Rotation0.png"),
+                new ImageView(String.valueOf(ImageBlock.class.getResource("Sprite_Ghosts/Sprite_Ghost2x6_Rotation0.png"))),
                 100,300);
     }
     public void rotateGraphic() {
         setRotateState(getRotateState()+1);
-        String generalUrl = "code.projetinfo/Sprite_Ghosts/Sprite_Ghost2x6_Rotation";
+        String generalUrl = "Sprite_Ghosts/Sprite_Ghost2x6_Rotation";
         switch (getRotateState() % 4) {
             case 1 -> super.rotateGraphicStep(-50, 100, generalUrl);
             case 2 -> super.rotateGraphicStep(100, -50, generalUrl);

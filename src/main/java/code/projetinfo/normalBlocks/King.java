@@ -16,13 +16,13 @@ public class King extends ImageBlock {
                         {CaseState.FULL,CaseState.FULL},
                         {CaseState.FULL,CaseState.FULL}}),
                 new Position(25,75),
-                new ImageView("code/projetinfo/Sprite_Ghosts/Sprite_Ghost2x4_Rotation0.png"),
+                new ImageView(String.valueOf(ImageBlock.class.getResource("Sprite_Ghosts/Sprite_Ghost2x4_Rotation0.png"))),
                 100,200);
     }
     public void rotateGraphic() {
         setRotateState(getRotateState()+1);
 
-        String generalUrl = "code.projetinfo/Sprite_Ghosts/Sprite_Ghost2x4_Rotation";
+        String generalUrl = "Sprite_Ghosts/Sprite_Ghost2x4_Rotation";
         switch (getRotateState() % 4) {
             case 1 -> super.rotateGraphicStep(-100, 50, generalUrl);
             case 2 -> super.rotateGraphicStep(50, -100, generalUrl);

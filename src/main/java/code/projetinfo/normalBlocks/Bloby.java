@@ -15,13 +15,13 @@ public class Bloby extends ImageBlock {
                         {CaseState.FULL,CaseState.FULL,CaseState.FULL},
                         {CaseState.FULL,CaseState.FULL,CaseState.FULL}}),
                 new Position(25,75),
-                new ImageView("code/projetinfo/Sprite_Ghosts/Sprite_Ghost2x2TopLeft_Rotation0.png"),
+                new ImageView(String.valueOf(ImageBlock.class.getResource("Sprite_Ghosts/Sprite_Ghost2x2TopLeft_Rotation0.png"))),
                 100,150);
     }
     public void rotateGraphic() {
         setRotateState(getRotateState()+1);
 
-        String generalUrl = "code.projetinfo/Sprite_Ghosts/Sprite_Ghost2x2TopLeft_Rotation";
+        String generalUrl = "Sprite_Ghosts/Sprite_Ghost2x2TopLeft_Rotation";
         switch (getRotateState() % 4) {
             case 1 -> super.rotateGraphicStep(-50, 50, generalUrl);
             case 2 -> super.rotateGraphicStep(0, -50, generalUrl);

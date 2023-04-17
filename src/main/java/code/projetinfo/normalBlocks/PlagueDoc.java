@@ -15,13 +15,13 @@ public class PlagueDoc extends ImageBlock {
                         {CaseState.FULL,CaseState.FULL,CaseState.EMPTY},
                         {CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY}}
                 ), new Position(75,75),
-                new ImageView("code/projetinfo/Sprite_Ghosts/Sprite_GhostS3x2_Rotation0.png"),
+                new ImageView(String.valueOf(ImageBlock.class.getResource("Sprite_Ghosts/Sprite_GhostS3x2_Rotation0.png"))),
                 150,100);
     }
     public void rotateGraphic() {
         setRotateState(getRotateState()+1);
 
-        String generalURL = "code.projetinfo/Sprite_Ghosts/Sprite_GhostS3x2_Rotation";
+        String generalURL = "Sprite_Ghosts/Sprite_GhostS3x2_Rotation";
         switch (getRotateState() % 4) {
             case 1 -> super.rotateGraphicStep(50, 0, generalURL);
             case 2 -> super.rotateGraphicStep(-50, 50, generalURL);

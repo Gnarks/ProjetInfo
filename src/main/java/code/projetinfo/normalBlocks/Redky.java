@@ -14,12 +14,12 @@ public class Redky extends ImageBlock {
                         {CaseState.FULL,CaseState.FULL},
                         {CaseState.FULL,CaseState.FULL }}
                 ), new Position(25,25),
-                new ImageView("code/projetinfo/Sprite_Ghosts/Sprite_Ghost2x2_Rotation0.png"),
+                new ImageView(String.valueOf(ImageBlock.class.getResource("Sprite_Ghosts/Sprite_Ghost2x2_Rotation0.png"))),
                 100,100);
     }
     public void rotateGraphic() {
         setRotateState(getRotateState()+1);
-        String generalURL = "code.projetinfo/Sprite_Ghosts/Sprite_Ghost2x2_Rotation";
+        String generalURL = "Sprite_Ghosts/Sprite_Ghost2x2_Rotation";
         switch (getRotateState() % 4) {
             case 1 -> super.rotateGraphicStep(-50, 0, generalURL);
             case 2 -> super.rotateGraphicStep(0, -50, generalURL);

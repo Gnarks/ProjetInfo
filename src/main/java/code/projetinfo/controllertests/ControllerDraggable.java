@@ -13,7 +13,6 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -22,6 +21,16 @@ public class ControllerDraggable implements Initializable {
     private final int tileSize = 50;
     @FXML
     private AnchorPane pane;
+
+    private final ImageBlock[] everybodyDance = new ImageBlock[]{
+            new Amogous(new Position(0,0)),new Baby(new Position(0,0)),new BigBob(new Position(0,0)),
+            new Bloby(new Position(0,0)),new Bob(new Position(0,0)),new BooBelle(new Position(0,0)),
+            new Geoffroy(new Position(0,0)),new GymBroo(new Position(0,0)),new King(new Position(0,0)),
+            new LilDeath(new Position(0,0)),new Napsta(new Position(0,0)),new Nessy(new Position(0,0)),
+            new Phantom(new Position(0,0)),new PlagueDoc(new Position(0,0)),new Redky(new Position(0,0)),
+            new Scooboodoo(new Position(0,0)),new Toowels(new Position(0,0)),new VicKing(new Position(0,0)),
+            new Wolfy(new Position(0,0))
+    };
 
     /**
      * @param location
@@ -36,10 +45,8 @@ public class ControllerDraggable implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        ImageBlock[] blocks = {
-                new Amogous(new Position(0,0)),new Amogous(new Position(0,0)),new Scooboodoo(new Position(0,0))
-                ,new Redky(new Position(0,0)),new Redky(new Position(0,0)),new Napsta(new Position(0,0)),
-                new Geoffroy(new Position(0,0)),new Baby(new Position(0,0)),new Napsta(new Position(0,0))};
+        ImageBlock[] blocks = new ImageBlock[]
+                {new Bob(new Position(0,0))};
 
         Level level = new Level(new Cases(new CaseState[][] {
                 {CaseState.SPECIAL,CaseState.EMPTY,CaseState.EMPTY,CaseState.SPECIAL,CaseState.SPECIAL,CaseState.EMPTY,CaseState.EMPTY,CaseState.SPECIAL},
@@ -49,7 +56,7 @@ public class ControllerDraggable implements Initializable {
                 {CaseState.SPECIAL,CaseState.FULL,CaseState.FULL,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.SPECIAL},
                 {CaseState.SPECIAL,CaseState.SPECIAL,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.SPECIAL,CaseState.SPECIAL},
                 {CaseState.SPECIAL,CaseState.SPECIAL,CaseState.SPECIAL,CaseState.EMPTY,CaseState.EMPTY,CaseState.SPECIAL,CaseState.SPECIAL,CaseState.SPECIAL}
-        }),blocks);
+        }),everybodyDance);
 
 
         Position gridPos = new Position(pane.getPrefWidth()/2 - (double) (level.getGrid().getRow()*tileSize)/2,

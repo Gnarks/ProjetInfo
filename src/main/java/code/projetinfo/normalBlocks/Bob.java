@@ -14,14 +14,14 @@ public class Bob extends ImageBlock {
                     {CaseState.FULL},
                     {CaseState.FULL}}),
                 new Position(25,75),
-                new ImageView("code/projetinfo/Sprite_Ghosts/Sprite_Ghost1x2_Rotation0.png"),
+            new ImageView(String.valueOf(ImageBlock.class.getResource("Sprite_Ghosts/Sprite_Ghost1x2_Rotation0.png"))),
                 50,100
                 );
     }
     public void rotateGraphic(){
         setRotateState(getRotateState()+1);
 
-        String generalUrl = "code.projetinfo/Sprite_Ghosts/Sprite_Ghost1x2_Rotation";
+        String generalUrl = "Sprite_Ghosts/Sprite_Ghost1x2_Rotation";
         switch (getRotateState() % 4) {
             case 1 -> super.rotateGraphicStep(0, 50, generalUrl);
             case 2 -> super.rotateGraphicStep(0, 0, generalUrl);

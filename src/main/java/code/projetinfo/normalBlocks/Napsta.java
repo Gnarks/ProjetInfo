@@ -15,13 +15,13 @@ public class Napsta extends ImageBlock {
                         {CaseState.EMPTY, CaseState.FULL, CaseState.EMPTY},
                         {CaseState.EMPTY, CaseState.FULL, CaseState.EMPTY}}
                 ), new Position(25, 75),
-                new ImageView("code/projetinfo/Sprite_Ghosts/Sprite_Ghost1x3_Rotation0.png")
-                , 50, 150);
+                new ImageView(String.valueOf(ImageBlock.class.getResource("Sprite_Ghosts/Sprite_Ghost1x3_Rotation0.png"))),
+                50, 150);
     }
     public void rotateGraphic() {
         setRotateState(getRotateState()+1);
 
-        String generalURL = "code.projetinfo/Sprite_Ghosts/Sprite_Ghost1x3_Rotation";
+        String generalURL = "Sprite_Ghosts/Sprite_Ghost1x3_Rotation";
         switch (getRotateState() % 4) {
             case 1 -> super.rotateGraphicStep(-50, 50, generalURL);
             case 2 -> super.rotateGraphicStep(50, -50, generalURL);

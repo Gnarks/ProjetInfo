@@ -15,12 +15,12 @@ public class Phantom extends ImageBlock {
                         {CaseState.EMPTY,CaseState.FULL,CaseState.FULL},
                         {CaseState.FULL,CaseState.FULL,CaseState.FULL}}
                 ), new Position(75,75),
-                new ImageView("code/projetinfo/Sprite_Ghosts/Sprite_GhostBigJ3x3_Rotation0.png"),
+                new ImageView(String.valueOf(ImageBlock.class.getResource("Sprite_Ghosts/Sprite_GhostBigJ3x3_Rotation0.png"))),
                 150,150);
     }
     public void rotateGraphic() {
         setRotateState(getRotateState()+1);
-        String generalURL = "code.projetinfo/Sprite_Ghosts/Sprite_GhostBigJ3x3_Rotation";
+        String generalURL = "Sprite_Ghosts/Sprite_GhostBigJ3x3_Rotation";
         super.rotateGraphicStep(0,0, generalURL);
     }
 }

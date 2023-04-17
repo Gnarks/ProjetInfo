@@ -18,12 +18,12 @@ public class Wolfy extends ImageBlock {
                         {CaseState.FULL,CaseState.FULL,CaseState.FULL}}
                 ),
                 new Position(75,125),
-                new ImageView("code/projetinfo/Sprite_Ghosts/Sprite_Ghost3x32TopRight_Rotation0.png"),
+                new ImageView(String.valueOf(ImageBlock.class.getResource("Sprite_Ghosts/Sprite_Ghost3x32TopRight_Rotation0.png"))),
                 150,200);
     }
     public void rotateGraphic() {
         setRotateState(getRotateState()+1);
-        String generalURL = "code.projetinfo/Sprite_Ghosts/Sprite_Ghost3x32TopRight_Rotation";
+        String generalURL = "Sprite_Ghosts/Sprite_Ghost3x32TopRight_Rotation";
         switch (getRotateState() % 4) {
             case 1 -> super.rotateGraphicStep(0, 50, generalURL);
             case 2 -> super.rotateGraphicStep(0, 0, generalURL);

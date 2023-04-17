@@ -16,12 +16,12 @@ public class Toowels extends ImageBlock {
                         {CaseState.FULL,CaseState.EMPTY},
                         {CaseState.FULL,CaseState.FULL}}),
                 new Position(25,125),
-                new ImageView("code/projetinfo/Sprite_Ghosts/Sprite_GhostL2x4_Rotation0.png"),
+                new ImageView(String.valueOf(ImageBlock.class.getResource("Sprite_Ghosts/Sprite_GhostL2x4_Rotation0.png"))),
                 100,200);
     }
     public void rotateGraphic() {
         setRotateState(getRotateState()+1);
-        String generalURL = "code.projetinfo/Sprite_Ghosts/Sprite_GhostL2x4_Rotation";
+        String generalURL = "Sprite_Ghosts/Sprite_GhostL2x4_Rotation";
         switch (getRotateState() % 4) {
             case 1 -> super.rotateGraphicStep(-50, 100, generalURL);
             case 2 -> super.rotateGraphicStep(0, -50, generalURL);
