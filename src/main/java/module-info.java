@@ -9,6 +9,7 @@ module code.projetinfo {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
+    requires junit;
 
     opens code.projetinfo to javafx.fxml;
     exports code.projetinfo;
