@@ -1,14 +1,16 @@
 package code.projetinfo;
 
+import java.util.ArrayList;
+
 public class Level {
     private Cases grid;
-    private ImageBlock[] blocks;
-    private ImageBlock[] placed;
+    final private ImageBlock[] blocks;
+    private ArrayList<ImageBlock> placed;
 
     public Level(Cases grid, ImageBlock[] blocs){
         this.grid = grid;
         this.blocks = blocs;
-        this.placed = new ImageBlock[blocs.length];
+        this.placed = new ArrayList<ImageBlock>();
     }
     public void saveState(){}
     public void loadState(){}
@@ -26,7 +28,7 @@ public class Level {
      * Return if the block can be placed or not.
      */
     public boolean isPlacable(ImageBlock imageBlock, int x, int y){
-        if(x>= grid.getCol()||y >= grid.getRow()){
+        if(x >= grid.getCol() || y >= grid.getRow()){
             return true;
         }
         if(x<0||y<0){
@@ -50,13 +52,7 @@ public class Level {
     }
 
     public boolean isPlaced(ImageBlock imageBlock) {
-        for (int i = 0; i < placed.length ; i++) {
-            if(placed[i]!= null){
-            if(placed[i].equals(imageBlock)){
-                return true;}
-            }
-        }
-        return false;
+        return placed.contains(imageBlock);
     }
 
 
@@ -72,13 +68,14 @@ public class Level {
      * The vertical coordinate of the placement point of the bloc.
      */
     public void place(ImageBlock imageBlock, int x, int y){
-        if (isPlacable(imageBlock, x ,y)&& x< grid.getCol()&& y< grid.getRow()&&x>=0&&y>=0){
+        if (isPlacable(imageBlock, x ,y) && x < grid.getCol( )&& y< grid.getRow() && x >= 0 && y >= 0){
             for (int i = 0; i < imageBlock.getRows(); i++){
                 for (int j = 0; j < imageBlock.getCols(); j++){
-                    grid.set(x+j, y+i, imageBlock.getState(j, i));
+                    if (imageBlock.getState(j,i) == CaseState.FULL)
+                        grid.set(x+j, y+i, imageBlock.getState(j, i));
                 }
             }
-            append(imageBlock);
+            placed.add(imageBlock);
         }
     }
 
@@ -87,37 +84,22 @@ public class Level {
         if (isPlaced(imageBlock)){
             for (int i = 0; i < imageBlock.getRows(); i++){
                 for (int j = 0; j < imageBlock.getCols(); j++){
-                    grid.set(x+j, y+i, CaseState.EMPTY);
+                    if (imageBlock.getState(j,i) == CaseState.FULL)// fixe partiellement le gymBroo issue
+                        grid.set(x+j, y+i, CaseState.EMPTY);
                 }
             }
-            unPlace(imageBlock);
+            placed.remove(imageBlock);
         }
     }
 
     public void show(){
-        this.grid.show();
-    }
-
-    /**
-     * Add a block in the placed bloc matrix.
-     * @param imageBlock
-     * The block to add in the placed bloc matrix.
-     */
-    private void append(ImageBlock imageBlock){
-        int i = 0;
-        while (placed[i] != null){
-            i++;
+        System.out.println("\n");
+        for (int i = 0; i < grid.getRow(); i++) {
+            for (int j = 0; j < grid.getCol(); j++) {
+                System.out.printf("%7s|", grid.getState(j,i));
+            }
+            System.out.println();
         }
-        placed[i] = imageBlock;
-    }
-
-
-    private void unPlace(ImageBlock imageBlock){
-        int i = 0;
-        while (!placed[i].equals(imageBlock)) {
-            i++;
-        }
-        placed[i]= null;
     }
 
     public ImageBlock[] getBlocks() {

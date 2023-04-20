@@ -129,6 +129,7 @@ public abstract class ImageBlock{
    protected void rotateGraphicStep(int moveX,int moveY, String generalUrl){
       imageView.setLayoutX(imageView.getLayoutX() +moveX);
       imageView.setLayoutY(imageView.getLayoutY() +moveY);
+
       midPos = new Position(midPos.getX() -moveX, midPos.getY() - moveY);
 
       imageView.setImage(new Image(String.valueOf(ImageBlock.class.getResource(String.format("%s%s.png",generalUrl,rotateState)))));

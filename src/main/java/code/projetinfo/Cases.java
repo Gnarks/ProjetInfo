@@ -39,18 +39,6 @@ public class Cases {
         this.cases = cases;
     }
 
-    /**
-     * prints the current Cases in the console.
-     */
-    public void show() {
-        for (CaseState[] s : this.cases) {
-            for (CaseState ms : s) {
-                System.out.print(ms + " ");
-            }
-            System.out.println("");
-        }
-    }
-
     /** sets the case at the x and y position to
      * the specified CaseState.
      *
