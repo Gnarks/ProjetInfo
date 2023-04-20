@@ -11,9 +11,9 @@ public class Napsta extends ImageBlock {
     public Napsta(Position spawnPos) {
         super(spawnPos,
                 new Cases(new CaseState[][]{
-                        {CaseState.EMPTY, CaseState.FULL, CaseState.EMPTY},
-                        {CaseState.EMPTY, CaseState.FULL, CaseState.EMPTY},
-                        {CaseState.EMPTY, CaseState.FULL, CaseState.EMPTY}}
+                        {CaseState.FULL},
+                        {CaseState.FULL},
+                        {CaseState.FULL}}
                 ), new Position(25, 75),
                 new ImageView(String.valueOf(ImageBlock.class.getResource("Sprite_Ghosts/Sprite_Ghost1x3_Rotation0.png"))),
                 50, 150);
