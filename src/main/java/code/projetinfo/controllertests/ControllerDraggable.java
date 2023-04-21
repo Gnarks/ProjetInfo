@@ -30,6 +30,8 @@ public class ControllerDraggable implements Initializable {
             new GymBroo(new Position(0, 0))
     };
 
+    public final ImageBlock[] bobynininet = new ImageBlock[]{new Bob(new Position(50, 10))};
+
     private final ImageBlock[] heart = new ImageBlock[]{new Amogous(new Position(50, 10)), new Amogous(new Position(50, 150)),
             new Scooboodoo(new Position(750, 150)), new Geoffroy(new Position(750, 150)), new Redky(new Position(1, 150)),
             new Redky(new Position(0, 10)), new Napsta(new Position(50, 150)), new Napsta(new Position(800, 150)),
@@ -63,8 +65,8 @@ public class ControllerDraggable implements Initializable {
         }), heart);
 
         LevelHandler levelHandler = new LevelHandler(level, pane);
-
         levelHandler.drawGrid();
         levelHandler.drawImageBlocks();
+        resetButton.setOnAction(event -> {levelHandler.reset();});
     }
 }

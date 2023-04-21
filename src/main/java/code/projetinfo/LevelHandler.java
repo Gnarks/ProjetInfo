@@ -58,7 +58,11 @@ public class LevelHandler {
 
         node.setOnMousePressed(event ->{
             if(event.getButton() == MouseButton.SECONDARY ){
+                if(level.isPlaced(imageBlock)){
+                    level.remove(imageBlock,(int) (node.getLayoutX()-gridPos.getX())/50, (int) (node.getLayoutY()- gridPos.getY())/50);}
+
                 rotateImageBlock(imageBlock);
+
             }
 
             if(event.getButton() == MouseButton.PRIMARY){
@@ -73,7 +77,8 @@ public class LevelHandler {
                 node.setLayoutX(posX);
                 node.setLayoutY(posY);
                 if(level.isPlaced(imageBlock)){
-                    level.remove(imageBlock,(int) (node.getLayoutX()-350)/50, (int) (node.getLayoutY()-100)/50);
+                    System.out.println((int) (node.getLayoutX()-350)/50);
+                    level.remove(imageBlock,(int) (node.getLayoutX()-gridPos.getX())/50, (int) (node.getLayoutY()- gridPos.getY())/50);
                 }
             }
         });
@@ -81,6 +86,7 @@ public class LevelHandler {
 
             double posX = mouseEvent.getSceneX() - imageBlock.getMidX();
             double posY = mouseEvent.getSceneY() - imageBlock.getMidY();
+            //si dans gridbounds => make gridDraggable
             if (inGridBound(new Position(posX,posY))){
                 posX = (int)((mouseEvent.getSceneX() - imageBlock.getMidX()+25)/50)*50;
                 posY = (int)((mouseEvent.getSceneY() - imageBlock.getMidY()+25)/50)*50;
@@ -90,35 +96,23 @@ public class LevelHandler {
         });
 
         node.setOnMouseReleased(event -> {
-        // si le block est dans la grille
-        if (inGridBound(new Position(event.getSceneX()-imageBlock.getMidX(),event.getSceneY()-imageBlock.getMidY()))
-            && event.getButton() == MouseButton.PRIMARY){
-            //si le block est placable
-            if (level.isPlacable(imageBlock,(int) (node.getLayoutX()- gridPos.getX())/50, (int) (node.getLayoutY()- gridPos.getY())/50)){
-                level.place(imageBlock, (int) (node.getLayoutX() - gridPos.getX()) / 50, (int) (node.getLayoutY() - gridPos.getY()) / 50);
+            if (!inGridBound(new Position(node.getLayoutX(),node.getLayoutY()))&& collideBetweenBlocks(imageBlock)){
+                goToSpawnPos(imageBlock);
             }
-            else{
-                //gotoSpawnPos
-                FadeTransition fT = new FadeTransition(Duration.millis(80),node);
-                fT.setByValue(1);
-                fT.setToValue(0);
-                fT.play();
-                fT.setOnFinished(finishedEvent -> {
-                    node.setLayoutX(imageBlock.getSpawnPos().getX());
-                    node.setLayoutY(imageBlock.getSpawnPos().getY());
-                    FadeTransition repopFT = new FadeTransition(Duration.millis(100),node);
-                    repopFT.setByValue(0);
-                    repopFT.setToValue(1);
-                    repopFT.play();
-                });
+            if(inGridBound(new Position(event.getSceneX(),event.getSceneY())) && !level.isPlacable(imageBlock,(int) (node.getLayoutX()- gridPos.getX())/50, (int) (node.getLayoutY()- gridPos.getY())/50))
+            {
+                goToSpawnPos(imageBlock);
             }
-
-        }
-        level.show();
+            if (inGridBound(new Position(event.getSceneX(),event.getSceneY())) && level.isPlacable(imageBlock,(int) (node.getLayoutX()- gridPos.getX())/50, (int) (node.getLayoutY()- gridPos.getY())/50))
+                level.place(imageBlock,(int) (node.getLayoutX()-gridPos.getX())/50, (int) (node.getLayoutY()- gridPos.getY())/50);
+            level.show();
+            System.out.println(collideBetweenBlocks(imageBlock));
         });
     }
 
+
     private void rotateImageBlock(ImageBlock imageBlock){
+
         // check if can rotate (if inbounds check the cases surrounding the block)
         //if can rotate =>
         FadeTransition fT = new FadeTransition(Duration.millis(80),imageBlock.getImageView());
@@ -132,11 +126,57 @@ public class LevelHandler {
             repopFT.setByValue(0);
             repopFT.setToValue(1);
             repopFT.play();
+        });}
+
+
+
+    private void goToSpawnPos(ImageBlock imageBlock)
+    {
+        Node node = imageBlock.getImageView();
+        FadeTransition fT = new FadeTransition(Duration.millis(80),node);
+        fT.setByValue(1);
+        fT.setToValue(0);
+        fT.play();
+        fT.setOnFinished(finishedEvent -> {
+            node.setLayoutX(imageBlock.getSpawnPos().getX());
+            node.setLayoutY(imageBlock.getSpawnPos().getY());
+            FadeTransition repopFT = new FadeTransition(Duration.millis(100),node);
+            repopFT.setByValue(0);
+            repopFT.setToValue(1);
+            repopFT.play();
         });
+    }
+
+    public void reset(){
+        for (ImageBlock imageBlock:
+                level.getBlocks()) {
+            if(level.isPlaced(imageBlock))
+                level.remove(imageBlock,(int) (imageBlock.getImageView().getLayoutX()-gridPos.getX())/50, (int) (imageBlock.getImageView().getLayoutY()- gridPos.getY())/50);
+            for (int i = (4 - imageBlock.getRotateState()); i>0 ; i--) {
+
+                imageBlock.rotateGraphic();
+                imageBlock.rotateCases();
+            }
+            goToSpawnPos(imageBlock);
+
+        }
+
     }
 
     public boolean inGridBound(Position position) {
         return position.getX() >= gridPos.getX()-tileSize && position.getX() <= gridPos.getX()+level.getGrid().getCol()*tileSize &&
                 position.getY() >= gridPos.getY()-tileSize && position.getY() <= gridPos.getY()+level.getGrid().getRow()*tileSize;
     }
+
+    public boolean collideBetweenBlocks(ImageBlock imageBlock){
+        Node node = imageBlock.getImageView();
+        for (ImageBlock blockIngame:
+                level.getBlocks()) {
+            if(blockIngame!=imageBlock &&node.getBoundsInParent().intersects(blockIngame.getImageView().getBoundsInParent())){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
