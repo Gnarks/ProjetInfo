@@ -73,7 +73,6 @@ public class LevelHandler {
                 node.setLayoutX(posX);
                 node.setLayoutY(posY);
                 if(level.isPlaced(imageBlock)){
-                    System.out.println((int) (node.getLayoutX()-350)/50);
                     level.remove(imageBlock,(int) (node.getLayoutX()-350)/50, (int) (node.getLayoutY()-100)/50);
                 }
             }
@@ -82,7 +81,6 @@ public class LevelHandler {
 
             double posX = mouseEvent.getSceneX() - imageBlock.getMidX();
             double posY = mouseEvent.getSceneY() - imageBlock.getMidY();
-            //si dans gridbounds => make gridDraggable
             if (inGridBound(new Position(posX,posY))){
                 posX = (int)((mouseEvent.getSceneX() - imageBlock.getMidX()+25)/50)*50;
                 posY = (int)((mouseEvent.getSceneY() - imageBlock.getMidY()+25)/50)*50;
@@ -92,8 +90,15 @@ public class LevelHandler {
         });
 
         node.setOnMouseReleased(event -> {
-            if(inGridBound(new Position(event.getSceneX(),event.getSceneY())) && !level.isPlacable(imageBlock,(int) (node.getLayoutX()- gridPos.getX())/50, (int) (node.getLayoutY()- gridPos.getY())/50))
-            {
+        // si le block est dans la grille
+        if (inGridBound(new Position(event.getSceneX()-imageBlock.getMidX(),event.getSceneY()-imageBlock.getMidY()))
+            && event.getButton() == MouseButton.PRIMARY){
+            //si le block est placable
+            if (level.isPlacable(imageBlock,(int) (node.getLayoutX()- gridPos.getX())/50, (int) (node.getLayoutY()- gridPos.getY())/50)){
+                level.place(imageBlock, (int) (node.getLayoutX() - gridPos.getX()) / 50, (int) (node.getLayoutY() - gridPos.getY()) / 50);
+            }
+            else{
+                //gotoSpawnPos
                 FadeTransition fT = new FadeTransition(Duration.millis(80),node);
                 fT.setByValue(1);
                 fT.setToValue(0);
@@ -107,9 +112,9 @@ public class LevelHandler {
                     repopFT.play();
                 });
             }
-            if (inGridBound(new Position(event.getSceneX(),event.getSceneY())) && level.isPlacable(imageBlock,(int) (node.getLayoutX()- gridPos.getX())/50, (int) (node.getLayoutY()- gridPos.getY())/50))
-                level.place(imageBlock,(int) (node.getLayoutX()-gridPos.getX())/50, (int) (node.getLayoutY()- gridPos.getY())/50);
-            level.show();
+
+        }
+        level.show();
         });
     }
 

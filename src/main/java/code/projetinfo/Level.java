@@ -28,22 +28,12 @@ public class Level {
      * Return if the block can be placed or not.
      */
     public boolean isPlacable(ImageBlock imageBlock, int x, int y){
-        if(x >= grid.getCol() || y >= grid.getRow()){
-            return true;
-        }
-        if(x<0||y<0){
-            if(x+imageBlock.getCols()>0 && y + imageBlock.getRows() >0){
-                return false;
-            }
-            return true;
-        }
-        if (x + imageBlock.getCols() > grid.getCol() || y + imageBlock.getRows() > grid.getRow()){
+        if (x<0 || y<0 ||x>=grid.getCol() || y>=grid.getRow()){
             return false;
         }
-
         for (int i = 0; i < imageBlock.getRows(); i++){
             for (int j = 0; j < imageBlock.getCols(); j++){
-                if ((grid.getState(x+j, y+i) == CaseState.FULL && imageBlock.getState(j, i) == CaseState.FULL)||(grid.getState(x+j, y+i) == CaseState.SPECIAL && imageBlock.getState(j, i) == CaseState.FULL)){
+                if (grid.getState(x+j, y+i) != CaseState.EMPTY && imageBlock.getState(j, i) == CaseState.FULL){
                     return false;
                 }
             }
@@ -68,15 +58,13 @@ public class Level {
      * The vertical coordinate of the placement point of the bloc.
      */
     public void place(ImageBlock imageBlock, int x, int y){
-        if (isPlacable(imageBlock, x ,y) && x < grid.getCol( )&& y< grid.getRow() && x >= 0 && y >= 0){
-            for (int i = 0; i < imageBlock.getRows(); i++){
-                for (int j = 0; j < imageBlock.getCols(); j++){
-                    if (imageBlock.getState(j,i) == CaseState.FULL)
-                        grid.set(x+j, y+i, imageBlock.getState(j, i));
-                }
+        for (int i = 0; i < imageBlock.getRows(); i++){
+            for (int j = 0; j < imageBlock.getCols(); j++){
+                if (imageBlock.getState(j,i) == CaseState.FULL)
+                    grid.set(x+j, y+i, imageBlock.getState(j, i));
             }
-            placed.add(imageBlock);
         }
+        placed.add(imageBlock);
     }
 
 
