@@ -96,15 +96,20 @@ public class LevelHandler {
         });
 
         node.setOnMouseReleased(event -> {
-            if (!inGridBound(new Position(node.getLayoutX(),node.getLayoutY()))&& collideBetweenBlocks(imageBlock)){
-                goToSpawnPos(imageBlock);
+            // si le block est dans la grille
+            if (inGridBound(new Position(event.getSceneX()-imageBlock.getMidX(),event.getSceneY()-imageBlock.getMidY()))
+                    && event.getButton() == MouseButton.PRIMARY){
+                //si le block est placable
+                if (level.isPlacable(imageBlock,(int) (node.getLayoutX()- gridPos.getX())/50, (int) (node.getLayoutY()- gridPos.getY())/50)){
+                    level.place(imageBlock, (int) (node.getLayoutX() - gridPos.getX()) / 50, (int) (node.getLayoutY() - gridPos.getY()) / 50);
+                }
+                else{
+                    //gotoSpawnPos
+                    goToSpawnPos(imageBlock);
+                    }
             }
-            if(inGridBound(new Position(event.getSceneX(),event.getSceneY())) && !level.isPlacable(imageBlock,(int) (node.getLayoutX()- gridPos.getX())/50, (int) (node.getLayoutY()- gridPos.getY())/50))
-            {
+            else if (collideBetweenBlocks(imageBlock))
                 goToSpawnPos(imageBlock);
-            }
-            if (inGridBound(new Position(event.getSceneX(),event.getSceneY())) && level.isPlacable(imageBlock,(int) (node.getLayoutX()- gridPos.getX())/50, (int) (node.getLayoutY()- gridPos.getY())/50))
-                level.place(imageBlock,(int) (node.getLayoutX()-gridPos.getX())/50, (int) (node.getLayoutY()- gridPos.getY())/50);
             level.show();
             System.out.println(collideBetweenBlocks(imageBlock));
         });
