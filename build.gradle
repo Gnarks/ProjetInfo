@@ -47,6 +47,7 @@ dependencies {
         exclude(group: 'org.openjfx')
     }
     implementation 'junit:junit:4.13.2'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.4'
 
 
 }

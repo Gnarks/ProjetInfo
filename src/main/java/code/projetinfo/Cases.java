@@ -1,5 +1,9 @@
 package code.projetinfo;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 /**
  * Class used to represent a 2D array of CaseState.
@@ -99,5 +103,14 @@ public class Cases {
      */
     public int getCol(){
         return this.cases[0].length;
+    }
+
+    public CaseState[][] getCases(){
+        return cases;
+    }
+
+    //Test for load func
+    public void setCases(CaseState[][] cs){
+        this.cases = cs;
     }
 }

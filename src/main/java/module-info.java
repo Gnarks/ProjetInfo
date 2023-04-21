@@ -10,6 +10,8 @@ module code.projetinfo {
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
     requires junit;
+    requires com.fasterxml.jackson.core;
+    requires com.fasterxml.jackson.databind;
 
     opens code.projetinfo to javafx.fxml;
     exports code.projetinfo;

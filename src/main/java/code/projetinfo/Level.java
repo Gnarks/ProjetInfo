@@ -1,18 +1,74 @@
 package code.projetinfo;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 public class Level {
     private Cases grid;
     private ImageBlock[] blocks;
     private ImageBlock[] placed;
-
-    public Level(Cases grid, ImageBlock[] blocs){
+    private String name;
+    //Uses for json handling move it later to a higher place in object hierarchy
+    private File f = new File("C:\\Users\\leomo\\Desktop\\jsontest\\ProjetInfo\\src\\main\\resources\\levels.json");
+    private ObjectMapper mapper = new ObjectMapper();
+    public Level(String name, Cases grid, ImageBlock[] blocs){
         this.grid = grid;
         this.blocks = blocs;
         this.placed = new ImageBlock[blocs.length];
+        this.name = name;
     }
-    public void saveState(){}
-    public void loadState(){}
 
+    public void saveState() throws IOException {
+        JsonNode jsonData = mapper.readTree(f);
+        ObjectNode levels = (ObjectNode) jsonData;
+
+        ObjectNode newNode = mapper.createObjectNode();
+        JsonNode gridNode = mapper.convertValue(this.grid.getCases(), JsonNode.class);
+        newNode.put("grid", gridNode);
+
+        ObjectNode blocklist = mapper.createObjectNode();
+        for (int i = 0; i < this.blocks.length; ++i){
+            ObjectNode block = mapper.createObjectNode();
+            block.put("type", blocks[i].getClass().toString());
+            block.put("rotatestate", blocks[i].getRotateState());
+
+            block.put("MidX", this.blocks[i].getMidX());
+            block.put("MidY", this.blocks[i].getMidY());
+            blocklist.put(String.valueOf(i), block);
+        }
+        newNode.put("blocklist", blocklist);
+        levels.put(name, newNode);
+        mapper.writeValue(f, levels);
+    }
+    public void loadState(String name) throws IOException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        //jsonData = root node
+        JsonNode jsonData = mapper.readTree(f);
+
+        //Handles the grid importing
+        JsonNode nodeFinder = jsonData.path(name).path("grid");
+        CaseState[][] testcases = mapper.treeToValue(nodeFinder, CaseState[][].class);
+        this.grid.setCases(testcases);
+
+        nodeFinder = jsonData.path(name).path("blocklist");
+        ImageBlock[] jsonBlocks = new ImageBlock[nodeFinder.size()];
+
+        int count = nodeFinder.size();
+        for (int i = 0; i < count; i++){
+            nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("type");
+            Class current = Class.forName(mapper.treeToValue(nodeFinder, String.class));
+            nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("position");
+            jsonBlocks[i] = (ImageBlock) current.getDeclaredConstructor(Position.class).newInstance(new Position(25, 5));
+        }
+        this.blocks = jsonBlocks;
+    }
+
+    public void initJSON() throws IOException {
+
+    }
     /**
      * This method check the grid to see if the block can be placed at the desired
      * coordinates.
@@ -83,4 +139,5 @@ public class Level {
     }
 
     public Cases getGrid() {return grid;}
+
 }

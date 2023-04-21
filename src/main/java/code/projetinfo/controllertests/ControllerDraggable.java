@@ -48,7 +48,7 @@ public class ControllerDraggable implements Initializable {
         ImageBlock[] blocks = new ImageBlock[]
                 {new Bob(new Position(0,0))};
 
-        Level level = new Level(new Cases(new CaseState[][] {
+        Level level = new Level("null",new Cases(new CaseState[][] {
                 {CaseState.SPECIAL,CaseState.EMPTY,CaseState.EMPTY,CaseState.SPECIAL,CaseState.SPECIAL,CaseState.EMPTY,CaseState.EMPTY,CaseState.SPECIAL},
                 {CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY},
                 {CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY},
