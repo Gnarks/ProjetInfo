@@ -4,8 +4,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="607.5" prefWidth="1080.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="code.projetinfo.controllertests.ControllerDraggable">
    <children>
-      <Button fx:id="resetButton" layoutX="467.0" layoutY="502.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="147.0" text="Reset" />
+      <ImageView fitHeight="540.0" fitWidth="960.0" layoutX="60.0" layoutY="34.0" preserveRatio="true" scaleX="1.125" scaleY="1.125">
+         <image>
+            <Image url="@/code/projetinfo/Sprites/BackLevel.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="BackToMenuButton" fitHeight="100.0" fitWidth="100.0" layoutX="0.0" layoutY="0.0" preserveRatio="true" scaleX="1.125" scaleY="1.125">
+         <image>
+            <Image url="@/code/projetinfo/Sprites/ButtonBackToMenu.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ResetButton" fitHeight="100.0" fitWidth="100.0" layoutX="490.0" layoutY="502.0" preserveRatio="true" scaleX="1.125" scaleY="1.125">
+         <image>
+            <Image url="@/code/projetinfo/Sprites/ButtonReset.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

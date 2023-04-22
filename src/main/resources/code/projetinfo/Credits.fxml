@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="607.5"
+      prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="code.projetinfo.controllertests.ControllerCredits">
+   <ImageView fitHeight="614.0" fitWidth="1080.0" layoutY="-6.0">
+      <image>
+         <Image url="@Sprites/Crédits.png"/>
+      </image>
+   </ImageView>
+   <Label fx:id="LeoDescription" layoutX="123.0" layoutY="386.0" prefHeight="141.0" prefWidth="196.0"/>
+   <Label fx:id="MaximeDescription" layoutX="761.0" layoutY="386.0" prefHeight="141.0" prefWidth="196.0"/>
+   <Label fx:id="WilliamDescription" layoutX="442.0" layoutY="386.0" prefHeight="141.0" prefWidth="196.0"/>
+   <ImageView fx:id="BackButton" fitHeight="59.0" fitWidth="81.0" layoutX="14.0" layoutY="271.0"
+              onMouseEntered="#onBackToCollectionEntered" onMouseExited="#onBackToCollectionExited">
+      <image>
+         <Image url="@Sprites/ButtonBack.png"/>
+      </image>
+   </ImageView>
+</Pane>

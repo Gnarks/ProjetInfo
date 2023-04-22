@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="607.5" prefWidth="1080.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.projetinfo.controllertests.ControllerMenu">
+   <children>
+      <ImageView fitHeight="540.0" fitWidth="960.0" layoutX="60.0" layoutY="34.0" preserveRatio="true" scaleX="1.125" scaleY="1.125">
+         <image>
+            <Image url="@/code/projetinfo/Sprites/MainMenu.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="PlayButtonImage" fitHeight="76.0" fitWidth="245.0" layoutX="430.0" layoutY="230.0" onMouseEntered="#onPlayEntered" onMouseExited="#onPlayExited" preserveRatio="true" scaleX="1.125" scaleY="1.125">
+         <image>
+            <Image url="@/code/projetinfo/Sprites/Buttonplay.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="CollectionButtonImage" fitHeight="76.0" fitWidth="238.0" layoutX="434.0" layoutY="304.0" onMouseEntered="#onCollectionEntered" onMouseExited="#onCollectionExited" preserveRatio="true" scaleX="1.125" scaleY="1.125">
+         <image>
+            <Image url="@/code/projetinfo/Sprites/ButtonCollection.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="SettingsButtonImage" fitHeight="60.0" fitWidth="238.0" layoutX="434.0" layoutY="380.0" onMouseEntered="#onSettingsEntered" onMouseExited="#onSettingsExited" preserveRatio="true" scaleX="1.125" scaleY="1.125">
+         <image>
+            <Image url="@/code/projetinfo/Sprites/ButtonSettings.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ExitButtonImage" fitHeight="66.0" fitWidth="200.0" layoutX="453.0" layoutY="486.0" onMouseEntered="#onExitEntered" onMouseExited="#onExitExited" preserveRatio="true" scaleX="1.125" scaleY="1.125">
+         <image>
+            <Image url="@/code/projetinfo/Sprites/EXIT.png" />
+         </image>
+      </ImageView>
+   </children>
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
+</AnchorPane>

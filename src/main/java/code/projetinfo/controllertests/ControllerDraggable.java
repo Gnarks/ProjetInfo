@@ -4,7 +4,7 @@ import code.projetinfo.*;
 import code.projetinfo.normalBlocks.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,7 +18,7 @@ public class ControllerDraggable implements Initializable {
     private AnchorPane pane;
 
     @FXML
-    private Button resetButton;
+    private ImageView ResetButton;
 
     private final ImageBlock[] everybodyDance = new ImageBlock[]{
             new Amogous(new Position(400, 150)), new Baby(new Position(0, 0)), new Bloby(new Position(0, 0)),
@@ -30,12 +30,22 @@ public class ControllerDraggable implements Initializable {
             new GymBroo(new Position(0, 0))
     };
 
+    private final Cases heartGrid = new Cases(new CaseState[][]{
+        {CaseState.SPECIAL, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL, CaseState.SPECIAL, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL},
+        {CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY},
+        {CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY},
+        {CaseState.EMPTY, CaseState.FULL, CaseState.FULL, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY},
+        {CaseState.SPECIAL, CaseState.FULL, CaseState.FULL, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL},
+        {CaseState.SPECIAL, CaseState.SPECIAL, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL, CaseState.SPECIAL},
+        {CaseState.SPECIAL, CaseState.SPECIAL, CaseState.SPECIAL, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL, CaseState.SPECIAL, CaseState.SPECIAL}});
+
+
     public final ImageBlock[] bobynininet = new ImageBlock[]{new Bob(new Position(50, 10))};
 
-    private final ImageBlock[] heart = new ImageBlock[]{new Amogous(new Position(50, 10)), new Amogous(new Position(50, 150)),
-            new Scooboodoo(new Position(750, 150)), new Geoffroy(new Position(750, 150)), new Redky(new Position(1, 150)),
-            new Redky(new Position(0, 10)), new Napsta(new Position(50, 150)), new Napsta(new Position(800, 150)),
-            new Baby(new Position(1000, 150)),};
+    private final ImageBlock[] heart = new ImageBlock[]{new Amogous(new Position(150, 100)), new Amogous(new Position(850, 100)),
+            new Scooboodoo(new Position(50, 200)), new Geoffroy(new Position(800, 200)), new Redky(new Position(950, 430)),
+            new Redky(new Position(50, 450)), new Napsta(new Position(150, 300)), new Napsta(new Position(960, 120)),
+            new Baby(new Position(975, 300)),};
 
 
     /**
@@ -54,19 +64,21 @@ public class ControllerDraggable implements Initializable {
         // instance de Level qui sera injectée dans LevelHandler pour gérer tout le lien entre front et back.
 
 
-        Level level = new Level(new Cases(new CaseState[][]{
-                {CaseState.SPECIAL, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL, CaseState.SPECIAL, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL},
-                {CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY},
-                {CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY},
-                {CaseState.EMPTY, CaseState.FULL, CaseState.FULL, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY},
-                {CaseState.SPECIAL, CaseState.FULL, CaseState.FULL, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL},
-                {CaseState.SPECIAL, CaseState.SPECIAL, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL, CaseState.SPECIAL},
-                {CaseState.SPECIAL, CaseState.SPECIAL, CaseState.SPECIAL, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL, CaseState.SPECIAL, CaseState.SPECIAL}
-        }), heart);
+        Level level = new Level(heartGrid, heart);
+
+
 
         LevelHandler levelHandler = new LevelHandler(level, pane);
+        ImageView backGrid = new ImageView("code/projetinfo/Sprites/BackGridLevel.png");
+        backGrid.setLayoutX(levelHandler.getGridPos().getX()-50);
+        backGrid.setLayoutY(levelHandler.getGridPos().getY()-50);
+        backGrid.setFitWidth((level.getGrid().getCol()+2)*50);
+        backGrid.setFitHeight((level.getGrid().getRow()+2)*50);
+
+        pane.getChildren().add(backGrid);
+
         levelHandler.drawGrid();
         levelHandler.drawImageBlocks();
-        resetButton.setOnAction(event -> {levelHandler.reset();});
+        ResetButton.setOnMouseClicked(event -> levelHandler.reset());
     }
 }

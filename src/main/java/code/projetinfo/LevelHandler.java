@@ -27,6 +27,11 @@ public class LevelHandler {
         gridPos = new Position(gridPos.getX() - gridPos.getX()%50, gridPos.getY() - gridPos.getY()%50);
     }
 
+    public Position getGridPos() {
+        return gridPos;
+    }
+
+
     public void drawGrid(){
         for (int i = 0; i < level.getGrid().getCol(); i++) {
             for (int j = 0; j < level.getGrid().getRow(); j++) {
