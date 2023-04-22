@@ -3,9 +3,15 @@ package code.projetinfo.controllertests;
 import code.projetinfo.*;
 import code.projetinfo.normalBlocks.*;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -16,6 +22,9 @@ public class ControllerDraggable implements Initializable {
     private final int tileSize = 50;
     @FXML
     private AnchorPane pane;
+
+    @FXML
+    private ImageView BackToMenuButton;
 
     @FXML
     private ImageView ResetButton;
@@ -80,5 +89,18 @@ public class ControllerDraggable implements Initializable {
         levelHandler.drawGrid();
         levelHandler.drawImageBlocks();
         ResetButton.setOnMouseClicked(event -> levelHandler.reset());
+        BackToMenuButton.setOnMouseClicked(event ->{
+            FXMLLoader fxmlLoader = new FXMLLoader(AppDraggable.class.getResource("MainMenu.fxml"));
+            Stage stage;
+            Scene scene;
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            try {
+                scene = new Scene(fxmlLoader.load(), 1080, 607.5);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.setScene(scene);
+            stage.show();
+        });
     }
 }
