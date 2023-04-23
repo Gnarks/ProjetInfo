@@ -39,6 +39,22 @@ public class ControllerDraggable implements Initializable {
             new GymBroo(new Position(0, 0))
     };
 
+    private final Cases gridLevel30 = new Cases(new CaseState[][]{
+            {CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.SPECIAL},
+            {CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.SPECIAL,CaseState.EMPTY},
+            {CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.SPECIAL,CaseState.EMPTY,CaseState.EMPTY},
+            {CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.SPECIAL,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY},
+            {CaseState.EMPTY,CaseState.EMPTY,CaseState.SPECIAL,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY},
+            {CaseState.EMPTY,CaseState.SPECIAL,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY},
+            {CaseState.SPECIAL,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY}});
+
+    public final ImageBlock[] blockLevel30 = new ImageBlock[]{
+            new Toowels(new Position(25, 100)),new BooBelle(new Position(150, 75)),new Baby(new Position(25, 325)),
+            new Bloby(new Position(150, 250)),new Amogous(new Position(75, 450)),new Scooboodoo(new Position(775, 100)),
+            new Nessy(new Position(900, 75)),new Redky(new Position(775, 225)),new LilDeath(new Position(900, 250)),
+            new Baby(new Position(775, 350)),new PlagueDoc(new Position(900, 425))};
+
+
     private final Cases heartGrid = new Cases(new CaseState[][]{
         {CaseState.SPECIAL, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL, CaseState.SPECIAL, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL},
         {CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY},
@@ -73,7 +89,8 @@ public class ControllerDraggable implements Initializable {
         // instance de Level qui sera injectée dans LevelHandler pour gérer tout le lien entre front et back.
 
 
-        Level level = new Level(heartGrid, heart);
+        //Level level = new Level(heartGrid, heart);
+        Level level = new Level(gridLevel30, blockLevel30);
 
 
 
