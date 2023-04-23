@@ -88,7 +88,11 @@ public class ControllerDraggable implements Initializable {
 
         levelHandler.drawGrid();
         levelHandler.drawImageBlocks();
-        ResetButton.setOnMouseClicked(event -> levelHandler.reset());
+        ResetButton.setOnMouseClicked(event -> {
+            levelHandler.reset();
+        });
+
+
         BackToMenuButton.setOnMouseClicked(event ->{
             FXMLLoader fxmlLoader = new FXMLLoader(AppDraggable.class.getResource("MainMenu.fxml"));
             Stage stage;

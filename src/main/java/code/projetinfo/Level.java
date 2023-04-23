@@ -28,7 +28,7 @@ public class Level {
      * Return if the block can be placed or not.
      */
     public boolean isPlacable(ImageBlock imageBlock, int x, int y){
-        if (x<0 || y<0 ||x>=grid.getCol() || y>=grid.getRow()){
+        if (x<0 || y<0 ||x>=grid.getCol() || y>=grid.getRow() || x + imageBlock.getCols()>grid.getCol() || y + imageBlock.getRows()>grid.getCol()){
             return false;
         }
         for (int i = 0; i < imageBlock.getRows(); i++){

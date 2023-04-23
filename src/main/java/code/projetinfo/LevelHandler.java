@@ -1,11 +1,14 @@
 package code.projetinfo;
 
 import javafx.animation.FadeTransition;
+import javafx.animation.TranslateTransition;
 import javafx.scene.Node;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.transform.Transform;
 import javafx.util.Duration;
 
 public class LevelHandler {
@@ -102,8 +105,7 @@ public class LevelHandler {
 
         node.setOnMouseReleased(event -> {
             // si le block est dans la grille
-            if (inGridBound(new Position(event.getSceneX()-imageBlock.getMidX(),event.getSceneY()-imageBlock.getMidY()))
-                    && event.getButton() == MouseButton.PRIMARY){
+            if (inGridBound(new Position(event.getSceneX()-imageBlock.getMidX(),event.getSceneY()-imageBlock.getMidY()))){
                 //si le block est placable
                 if (level.isPlacable(imageBlock,(int) (node.getLayoutX()- gridPos.getX())/50, (int) (node.getLayoutY()- gridPos.getY())/50)){
                     level.place(imageBlock, (int) (node.getLayoutX() - gridPos.getX()) / 50, (int) (node.getLayoutY() - gridPos.getY()) / 50);
@@ -158,19 +160,29 @@ public class LevelHandler {
     }
 
     public void reset(){
-        for (ImageBlock imageBlock:
-                level.getBlocks()) {
-            if(level.isPlaced(imageBlock))
-                level.remove(imageBlock,(int) (imageBlock.getImageView().getLayoutX()-gridPos.getX())/50, (int) (imageBlock.getImageView().getLayoutY()- gridPos.getY())/50);
-            for (int i = (4 - imageBlock.getRotateState()); i>0 ; i--) {
+        Rectangle transi = new Rectangle(1080,607.5,Paint.valueOf("#6666fc"));
+        transi.setLayoutX(1080);
+        pane.getChildren().add(transi);
 
+        TranslateTransition tT = new TranslateTransition(Duration.millis(1000),transi);
+        tT.setToX(-1080);
+        tT.play();
+        tT.setOnFinished(finishedEvent ->{
+        for (ImageBlock imageBlock :
+                level.getBlocks()) {
+            if (level.isPlaced(imageBlock))
+                level.remove(imageBlock, (int) (imageBlock.getImageView().getLayoutX() - gridPos.getX()) / 50, (int) (imageBlock.getImageView().getLayoutY() - gridPos.getY()) / 50);
+            for (int i = (4 - imageBlock.getRotateState()); i > 0; i--) {
                 imageBlock.rotateGraphic();
                 imageBlock.rotateCases();
             }
             goToSpawnPos(imageBlock);
-
         }
-
+            TranslateTransition comeBacktT = new TranslateTransition(Duration.millis(1000),transi);
+            comeBacktT.setToX(1080);
+            comeBacktT.play();
+            comeBacktT.setOnFinished(event -> {pane.getChildren().remove(transi);});
+        });
     }
 
     public boolean inGridBound(Position position) {
