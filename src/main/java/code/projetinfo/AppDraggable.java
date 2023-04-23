@@ -11,9 +11,10 @@ public class AppDraggable extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(AppDraggable.class.getResource("DraggableTest.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 607.5);
+        Scene scene = new Scene(fxmlLoader.load(), 1600, 900);
         stage.setTitle("Ghost Arranged by Yourself, GAY");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 

@@ -72,7 +72,6 @@ public class Level {
         for (int i = 0; i < imageBlock.getRows(); i++){
             for (int j = 0; j < imageBlock.getCols(); j++){
                 if (imageBlock.getState(j,i) == CaseState.FULL)// fixe partiellement le gymBroo issue
-
                     grid.set(x+j, y+i, CaseState.EMPTY);
             }
         }

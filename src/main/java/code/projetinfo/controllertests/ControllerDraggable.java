@@ -49,10 +49,10 @@ public class ControllerDraggable implements Initializable {
             {CaseState.SPECIAL,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY}});
 
     public final ImageBlock[] blockLevel30 = new ImageBlock[]{
-            new Toowels(new Position(25, 100)),new BooBelle(new Position(150, 75)),new Baby(new Position(25, 325)),
-            new Bloby(new Position(150, 250)),new Amogous(new Position(75, 450)),new Scooboodoo(new Position(775, 100)),
-            new Nessy(new Position(900, 75)),new Redky(new Position(775, 225)),new LilDeath(new Position(900, 250)),
-            new Baby(new Position(775, 350)),new PlagueDoc(new Position(900, 425))};
+            new Toowels(new Position(125, 100)),new BooBelle(new Position(250, 75)),new Baby(new Position(125, 325)),
+            new Bloby(new Position(250, 250)),new Amogous(new Position(175, 450)),new Scooboodoo(new Position(1175, 100)),
+            new Nessy(new Position(1300, 75)),new Redky(new Position(1175, 225)),new LilDeath(new Position(1300, 250)),
+            new Baby(new Position(1175, 350)),new PlagueDoc(new Position(1300, 425))};
 
 
     private final Cases heartGrid = new Cases(new CaseState[][]{
@@ -116,11 +116,12 @@ public class ControllerDraggable implements Initializable {
             Scene scene;
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             try {
-                scene = new Scene(fxmlLoader.load(), 1080, 607.5);
+                scene = new Scene(fxmlLoader.load(), 1600, 900);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
             stage.setScene(scene);
+            stage.setResizable(false);
             stage.show();
         });
     }

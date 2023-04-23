@@ -53,7 +53,7 @@ public class ControllerMenu {
             FXMLLoader fxmlLoader = new FXMLLoader(AppDraggable.class.getResource("Collection.fxml"));
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             try {
-                scene = new Scene(fxmlLoader.load(), 1080, 607.5);
+                scene = new Scene(fxmlLoader.load(), 1600, 900);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -78,11 +78,12 @@ public class ControllerMenu {
             FXMLLoader fxmlLoader = new FXMLLoader(AppDraggable.class.getResource("DraggableTest.fxml"));
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             try {
-                scene = new Scene(fxmlLoader.load(), 1080, 607.5);
+                scene = new Scene(fxmlLoader.load(), 1600, 900);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
             stage.setScene(scene);
+            stage.setResizable(false);
             stage.show();
         });
     }
@@ -101,4 +102,6 @@ public class ControllerMenu {
         Image imageLight = new Image("code/projetinfo/Sprites/ButtonSettings.png");
         SettingsButtonImage.setImage(imageLight);
     }
+
+
 }

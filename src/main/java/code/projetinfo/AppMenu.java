@@ -9,9 +9,10 @@ public class AppMenu extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource("MainMenu.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 607.5);
+        Scene scene = new Scene(fxmlLoader.load(), 1600, 900);
         primaryStage.setTitle("Ghost Arranged by Yourself, GAY");
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

@@ -3,12 +3,10 @@ package code.projetinfo;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.scene.Node;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.transform.Transform;
 import javafx.util.Duration;
 
 public class LevelHandler {
@@ -160,12 +158,12 @@ public class LevelHandler {
     }
 
     public void reset(){
-        Rectangle transi = new Rectangle(1080,607.5,Paint.valueOf("#6666fc"));
-        transi.setLayoutX(1080);
+        Rectangle transi = new Rectangle(1600,900,Paint.valueOf("#6666fc"));
+        transi.setLayoutX(1600);
         pane.getChildren().add(transi);
 
         TranslateTransition tT = new TranslateTransition(Duration.millis(1000),transi);
-        tT.setToX(-1080);
+        tT.setToX(-1600);
         tT.play();
         tT.setOnFinished(finishedEvent ->{
         for (ImageBlock imageBlock :
@@ -179,7 +177,7 @@ public class LevelHandler {
             goToSpawnPos(imageBlock);
         }
             TranslateTransition comeBacktT = new TranslateTransition(Duration.millis(1000),transi);
-            comeBacktT.setToX(1080);
+            comeBacktT.setToX(1600);
             comeBacktT.play();
             comeBacktT.setOnFinished(event -> {pane.getChildren().remove(transi);});
         });
