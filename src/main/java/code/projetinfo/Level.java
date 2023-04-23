@@ -71,7 +71,7 @@ public class Level {
     public void remove(ImageBlock imageBlock,int x,int y){
         for (int i = 0; i < imageBlock.getRows(); i++){
             for (int j = 0; j < imageBlock.getCols(); j++){
-                if (imageBlock.getState(j,i) == CaseState.FULL)// fixe partiellement le gymBroo issue
+                if (imageBlock.getState(j,i) == CaseState.FULL)
 
                     grid.set(x+j, y+i, CaseState.EMPTY);
             }
