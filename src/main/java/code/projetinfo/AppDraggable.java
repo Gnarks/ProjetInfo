@@ -1,5 +1,7 @@
 package code.projetinfo;
 
+import code.projetinfo.normalBlocks.Amogous;
+import code.projetinfo.normalBlocks.Baby;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

@@ -37,5 +37,13 @@ public class Position {
     public double getY() {
         return y;
     }
+
+    public void setX(double newX){
+        this.x = newX;
+    }
+
+    public void setY(double newY){
+        this.y = newY;
+    }
 }
 

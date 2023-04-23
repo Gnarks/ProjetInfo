@@ -129,7 +129,6 @@ public abstract class ImageBlock{
    protected void rotateGraphicStep(int moveX,int moveY, String generalUrl){
       imageView.setLayoutX(imageView.getLayoutX() +moveX);
       imageView.setLayoutY(imageView.getLayoutY() +moveY);
-
       midPos = new Position(midPos.getX() -moveX, midPos.getY() - moveY);
 
       imageView.setImage(new Image(String.valueOf(ImageBlock.class.getResource(String.format("%s%s.png",generalUrl,rotateState)))));
@@ -137,4 +136,33 @@ public abstract class ImageBlock{
       imageView.setFitHeight((rotateState%2 == 0?height:width));
       imageView.setFitWidth((rotateState%2 == 0?width:height));
    }
+
+   public Position getMidPos() {
+      return midPos;
+   }
+
+   public Position[] dispatchPos(ImageBlock[] blockslist){
+      double screenheight = 607.5;
+      Position currentpos = new Position(10, 10);
+      Position[] result = new Position[blockslist.length];
+
+      for (int i = 0; i < blockslist.length/2; i++){
+         result[i] = currentpos;
+         if (blockslist[i].getMidY() + currentpos.getY() > screenheight){
+            currentpos.setX(currentpos.getX() + 300);
+            currentpos.setY(10);
+         }
+      }
+
+      currentpos = new Position(1000, 10);
+      for (int i = blockslist.length/2; i < blockslist.length; i++){
+         result[i] = currentpos;
+         if (blockslist[i].getMidY() + currentpos.getY() > screenheight){
+            currentpos.setX(currentpos.getX() + -300);
+            currentpos.setY(10);
+         }
+      }
+      return result;
+   }
+
 }
