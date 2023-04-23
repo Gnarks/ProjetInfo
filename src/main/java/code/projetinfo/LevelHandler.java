@@ -11,11 +11,11 @@ import javafx.util.Duration;
 
 public class LevelHandler {
 
-    private Level level;
+    private final Level level;
 
-    private AnchorPane pane;
+    private final AnchorPane pane;
 
-    private int tileSize = 50;
+    private final int  tileSize = 50;
 
     private Position gridPos;
 
@@ -42,7 +42,6 @@ public class LevelHandler {
             }
         }
     }
-
 
 
     public void drawImageBlocks(){
@@ -75,9 +74,7 @@ public class LevelHandler {
                 moveBlock(imageBlock,event);
             }
         });
-        node.setOnMouseDragged(mouseEvent->{
-            moveBlock(imageBlock,mouseEvent);
-        });
+        node.setOnMouseDragged(mouseEvent-> moveBlock(imageBlock,mouseEvent));
 
         node.setOnMouseReleased(event -> {
             if (inGridBounds(new Position(event.getSceneX(),event.getSceneY()))
@@ -99,7 +96,7 @@ public class LevelHandler {
 
     private void rotateImageBlock(ImageBlock imageBlock){
 
-        // check if can rotate (if inbounds check the cases surrounding the block)
+        // todo check if can rotate (if inbounds check the cases surrounding the block)
         //if can rotate =>
         FadeTransition fT = new FadeTransition(Duration.millis(80),imageBlock.getImageView());
         fT.setByValue(1);
@@ -108,10 +105,10 @@ public class LevelHandler {
         fT.setOnFinished(finishedEvent -> {
             imageBlock.rotateGraphic();
             imageBlock.rotateCases();
-            FadeTransition repopFT = new FadeTransition(Duration.millis(80),imageBlock.getImageView());
-            repopFT.setByValue(0);
-            repopFT.setToValue(1);
-            repopFT.play();
+            FadeTransition rePopFT = new FadeTransition(Duration.millis(80),imageBlock.getImageView());
+            rePopFT.setByValue(0);
+            rePopFT.setToValue(1);
+            rePopFT.play();
         });}
 
 
@@ -126,10 +123,10 @@ public class LevelHandler {
         fT.setOnFinished(finishedEvent -> {
             node.setLayoutX(imageBlock.getSpawnPos().getX());
             node.setLayoutY(imageBlock.getSpawnPos().getY());
-            FadeTransition repopFT = new FadeTransition(Duration.millis(100),node);
-            repopFT.setByValue(0);
-            repopFT.setToValue(1);
-            repopFT.play();
+            FadeTransition rePopFT = new FadeTransition(Duration.millis(100),node);
+            rePopFT.setByValue(0);
+            rePopFT.setToValue(1);
+            rePopFT.play();
         });
     }
 
@@ -154,9 +151,9 @@ public class LevelHandler {
 
     private boolean collideBetweenBlocks(ImageBlock imageBlock){
         Node node = imageBlock.getImageView();
-        for (ImageBlock blockIngame:
+        for (ImageBlock InGameBlock:
                 level.getBlocks()) {
-            if(blockIngame!=imageBlock &&node.getBoundsInParent().intersects(blockIngame.getImageView().getBoundsInParent())){
+            if(InGameBlock!=imageBlock &&node.getBoundsInParent().intersects(InGameBlock.getImageView().getBoundsInParent())){
                 return true;
             }
         }
@@ -166,7 +163,7 @@ public class LevelHandler {
     private void moveBlock(ImageBlock imageBlock, MouseEvent mouseEvent){
         double posX = mouseEvent.getSceneX() - imageBlock.getMidX();
         double posY = mouseEvent.getSceneY() - imageBlock.getMidY();
-        //if  inGridbounds => make gridDraggable
+        //if  inGridBounds => make gridDraggable
         if (inGridBounds(new Position(mouseEvent.getSceneX(),mouseEvent.getSceneY()))){
             posX = (int)((mouseEvent.getSceneX() - imageBlock.getMidX()+25)/50)*50;
             posY = (int)((mouseEvent.getSceneY() - imageBlock.getMidY()+25)/50)*50;
