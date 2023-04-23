@@ -28,12 +28,13 @@ public class Level {
      * Return if the block can be placed or not.
      */
     public boolean isPlacable(ImageBlock imageBlock, int x, int y){
-        if (x<0 || y<0 ||x>=grid.getCol() || y>=grid.getRow()){
+        if (x<0 || y<0){
             return false;
         }
         for (int i = 0; i < imageBlock.getRows(); i++){
             for (int j = 0; j < imageBlock.getCols(); j++){
-                if (grid.getState(x+j, y+i) != CaseState.EMPTY && imageBlock.getState(j, i) == CaseState.FULL){
+                if (x+j >= grid.getCol() || y+i >= grid.getRow() ||
+                        grid.getState(x+j, y+i) != CaseState.EMPTY && imageBlock.getState(j, i) == CaseState.FULL){
                     return false;
                 }
             }
