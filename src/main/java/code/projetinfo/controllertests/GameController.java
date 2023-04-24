@@ -9,11 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerDraggable implements Initializable {
-    /**
-     * Controller of all the menu's buttons(assigned to DraggableTest.fxml)
-     */
-    private final int tileSize = 50;
+public class GameController implements Initializable {
     @FXML
     private AnchorPane pane;
 
@@ -48,7 +44,7 @@ public class ControllerDraggable implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
 
-        //changer AppDraggable en AppGame
+        //changer AppGame en AppGame
         // faire en sorte qu'après les choix de l'utilisateur (front) on prenne une certaine
         // instance de Level qui sera injectée dans LevelHandler pour gérer tout le lien entre front et back.
 
@@ -66,6 +62,6 @@ public class ControllerDraggable implements Initializable {
         LevelHandler levelHandler = new LevelHandler(level, pane);
         levelHandler.drawGrid();
         levelHandler.drawImageBlocks();
-        resetButton.setOnAction(event -> {levelHandler.reset();});
+        resetButton.setOnAction(event -> levelHandler.reset());
     }
 }
