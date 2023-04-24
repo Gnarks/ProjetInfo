@@ -3,6 +3,7 @@ package code.projetinfo;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.scene.Node;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
@@ -34,6 +35,13 @@ public class LevelHandler {
 
 
     public void drawGrid(){
+        ImageView backGrid = new ImageView("code/projetinfo/Sprites/BackGridLevel.png");
+        backGrid.setLayoutX(gridPos.getX()-50);
+        backGrid.setLayoutY(gridPos.getY()-50);
+        backGrid.setFitWidth((level.getGrid().getCol()+2)*50);
+        backGrid.setFitHeight((level.getGrid().getRow()+2)*50);
+
+        pane.getChildren().add(backGrid);
         for (int i = 0; i < level.getGrid().getCol(); i++) {
             for (int j = 0; j < level.getGrid().getRow(); j++) {
                 Rectangle rectangle = new Rectangle(i*tileSize+gridPos.getX(),j*tileSize+gridPos.getY(),tileSize,tileSize);
@@ -199,4 +207,57 @@ public class LevelHandler {
         return false;
     }
 
-}
+    public void dispatchBlocks() {
+        Position spawnPos = new Position(gridPos.getX()-200, gridPos.getY());
+        double overPane = 0;
+        for (int i = 0; i < level.getBlocks().length / 2; i++) {
+            if (i == 0) {
+                level.getBlocks()[i].setSpawnPos(spawnPos);
+                spawnPos = new Position(gridPos.getX()-400, gridPos.getY()-100);
+            }
+            else {
+                if(spawnPos.getY()+level.getBlocks()[i].getRows()*50>pane.getPrefHeight()-50){
+                    if(overPane == 0) {
+                        level.getBlocks()[i].setSpawnPos(new Position(gridPos.getX() - 550, gridPos.getY()-100));
+                         overPane = level.getBlocks()[i].getRows()*50 + 50 + gridPos.getY();
+                    }
+                    else{
+                        level.getBlocks()[i].setSpawnPos(new Position(gridPos.getX() - 550,overPane));
+                        overPane = level.getBlocks()[i].getRows()*50 + 50 + gridPos.getY();
+                    }
+                }
+                else {
+                    level.getBlocks()[i].setSpawnPos(spawnPos);
+                    spawnPos = new Position(level.getBlocks()[i - 1].getSpawnPos().getX(), 50 + level.getBlocks()[i - 1].getSpawnPos().getY() + level.getBlocks()[i - 1].getRows() * 50);
+                }
+               }
+
+        }
+        overPane = 0;
+        spawnPos = new Position(300 + gridPos.getX()+level.getGrid().getCol()*50, gridPos.getY());
+        for (int i = level.getBlocks().length / 2; i < level.getBlocks().length; i++) {
+            if (i == level.getBlocks().length / 2) {
+                level.getBlocks()[i].setSpawnPos(spawnPos);
+                spawnPos = new Position(100 + gridPos.getX()+level.getGrid().getCol()*50, gridPos.getY()-100);
+            }
+            else {
+                if(spawnPos.getY()+level.getBlocks()[i].getRows()*50>pane.getPrefHeight()-50){
+                    if(overPane == 0) {
+                        level.getBlocks()[i].setSpawnPos(new Position(gridPos.getX() + level.getGrid().getCol()*50 + 500, gridPos.getY()-100));
+                        overPane = level.getBlocks()[i].getSpawnPos().getY() + 50 + level.getBlocks()[i].getRows()*50;
+                    }
+                    else{
+                        level.getBlocks()[i].setSpawnPos(new Position(gridPos.getX() + level.getGrid().getCol()*50 + 500,overPane));
+                        overPane = level.getBlocks()[i].getSpawnPos().getY() + 50 + level.getBlocks()[i].getRows()*50;
+
+                    }
+                }
+
+                else {
+                        level.getBlocks()[i].setSpawnPos(spawnPos);
+                        spawnPos = new Position(level.getBlocks()[i - 1].getSpawnPos().getX(), 50 + level.getBlocks()[i - 1].getSpawnPos().getY() + level.getBlocks()[i - 1].getRows() * 50);
+                    }
+                }
+            }
+        }
+    }

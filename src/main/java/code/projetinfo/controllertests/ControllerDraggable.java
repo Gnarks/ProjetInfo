@@ -89,20 +89,17 @@ public class ControllerDraggable implements Initializable {
         // instance de Level qui sera injectée dans LevelHandler pour gérer tout le lien entre front et back.
 
 
+
+
         //Level level = new Level(heartGrid, heart);
-        Level level = new Level(gridLevel30, blockLevel30);
+        Level level = new Level(gridLevel30, everybodyDance);
 
 
 
         LevelHandler levelHandler = new LevelHandler(level, pane);
-        ImageView backGrid = new ImageView("code/projetinfo/Sprites/BackGridLevel.png");
-        backGrid.setLayoutX(levelHandler.getGridPos().getX()-50);
-        backGrid.setLayoutY(levelHandler.getGridPos().getY()-50);
-        backGrid.setFitWidth((level.getGrid().getCol()+2)*50);
-        backGrid.setFitHeight((level.getGrid().getRow()+2)*50);
 
-        pane.getChildren().add(backGrid);
 
+        levelHandler.dispatchBlocks();
         levelHandler.drawGrid();
         levelHandler.drawImageBlocks();
         ResetButton.setOnMouseClicked(event -> {
