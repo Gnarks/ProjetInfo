@@ -3,30 +3,28 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-
-import java.io.DataOutput;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Level {
     private Cases grid;
-    final private ImageBlock[] blocks;
+    private ImageBlock[] blocks;
     private ArrayList<ImageBlock> placed;
     private String name;
     //Uses for json handling move it later to a higher place in object hierarchy
-    private File f = new File(System.getProperty("user.dir")+"\\src\\main\\resources\\levels.json");
-    private ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+    private final File f = new File(System.getProperty("user.dir")+"\\src\\main\\resources\\levels.json");
+    private final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
     public Level(String name, Cases grid, ImageBlock[] blocs){
         this.grid = grid;
         this.blocks = blocs;
-        this.placed = new ArrayList<ImageBlock>();
+        this.placed = new ArrayList<>();
         this.name = name;
+    }
+
+    public Level(String name) throws IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        loadState(name);
     }
 
     public void saveState() throws IOException {
@@ -75,10 +73,6 @@ public class Level {
         }
         this.blocks = jsonBlocks;
     }
-
-    public void initJSON() throws IOException {
-
-    }
     /**
      * This method check the grid to see if the block can be placed at the desired
      * coordinates.
@@ -126,6 +120,9 @@ public class Level {
         placed.add(imageBlock);
     }
 
+    public boolean isPlaced(ImageBlock imageBlock){
+        return placed.contains(imageBlock);
+    }
 
     public void remove(ImageBlock imageBlock,int x,int y){
         for (int i = 0; i < imageBlock.getRows(); i++){

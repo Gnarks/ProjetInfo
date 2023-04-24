@@ -34,7 +34,7 @@ public abstract class ImageBlock{
     * @param imageView the imageView of the block.
     * @see Cases
     *
-   */
+    */
    public ImageBlock(Position spawnPos, Cases cases, Position midPos, ImageView imageView,int width,int height){
       this.spawnPos = spawnPos;
       this.cases = cases;
@@ -51,20 +51,24 @@ public abstract class ImageBlock{
     * - In the internal Grid
     * - NOT Graphically on the screen
     */
-   public void rotateCases(){
+   protected void rotateCasesTo(int newRotateState){
       Cases newcases = new Cases(this.cases.getRow(), this.cases.getCol(), CaseState.EMPTY);
-      for (int i = 0; i < this.cases.getCol(); i++){
-         for (int j = 0; j < this.cases.getRow(); j++){
-            newcases.set(j, i, cases.getState(i, this.cases.getRow()-j-1));
+
+      for (int k = (newRotateState - rotateState +4)%4; k>0 ; k--) {
+         for (int i = 0; i < this.cases.getCol(); i++){
+            for (int j = 0; j < this.cases.getRow(); j++){
+               newcases.set(j, i, cases.getState(i, this.cases.getRow()-j-1));
+            }
          }
+         this.cases = newcases;
+         newcases = new Cases(this.cases.getRow(), this.cases.getCol(), CaseState.EMPTY);
       }
-      this.cases = newcases;
    }
    /**
     * @return the spawnPosition of the block
     */
    public Position getSpawnPos(){
-      return spawnPos;
+      return new Position(spawnPos.getX(), spawnPos.getY());
    }
 
    /**
@@ -86,14 +90,10 @@ public abstract class ImageBlock{
     * set the rotateState modulo 4.
     * @param rotateState the rotate state.
     */
-   public void setRotateState(int rotateState) {
+   protected void setRotateState(int rotateState) {
       this.rotateState = rotateState%4;
    }
 
-   /**
-    * rotate the block graphically.
-    */
-   public abstract void rotateGraphic();
    /**
     * @return the number of rows of the block.
     */
@@ -117,23 +117,41 @@ public abstract class ImageBlock{
    /**
     * @return the imageView of the block.
     */
-   public ImageView getImageView() {
+   public ImageView getImageView() {//todo changer ce getter et établir de setter pour les layoutX et Y
       return imageView;
    }
-   /** function called to make a single graphical rotation of 90 degrees to the right.
+
+   /** function called to make the block rotate to the specified rotateState graphically.
     * it depends on the normalBlock that calls the function.
-    * @param moveX delta X
-    * @param moveY delta Y
+    * @param changes the array of changes of each rotateState compared to the initial rotateState
+    * @param newRotateState the wanted rotateState
     * @param generalUrl the url of the image without the rotateState and the ".png"
     */
-   protected void rotateGraphicStep(int moveX,int moveY, String generalUrl){
-      imageView.setLayoutX(imageView.getLayoutX() +moveX);
-      imageView.setLayoutY(imageView.getLayoutY() +moveY);
-      midPos = new Position(midPos.getX() -moveX, midPos.getY() - moveY);
+   protected void rotateGraphicallyTo(Position[] changes, int newRotateState, String generalUrl){
+      double x = - changes[rotateState].getX() + changes[newRotateState%4].getX();
+      double y = - changes[rotateState].getY() + changes[newRotateState%4].getY();
 
-      imageView.setImage(new Image(String.valueOf(ImageBlock.class.getResource(String.format("%s%s.png",generalUrl,rotateState)))));
+      imageView.setLayoutX(imageView.getLayoutX() +x);
+      imageView.setLayoutY(imageView.getLayoutY() +y);
 
-      imageView.setFitHeight((rotateState%2 == 0?height:width));
-      imageView.setFitWidth((rotateState%2 == 0?width:height));
+      midPos = new Position(midPos.getX() - x, midPos.getY()-y);
+
+      imageView.setImage(new Image(String.valueOf(ImageBlock.class.getResource(String.format("%s%s.png",generalUrl,newRotateState%4)))));
+
+      imageView.setFitHeight((newRotateState%2 == 0?height:width));
+      imageView.setFitWidth((newRotateState%2 == 0?width:height));
    }
+
+   /** rotates the block to the specified rotateState in Frontend AND Backend.
+    * a single rotateState change corresponds to a 90-degree turn to the right.
+    * @param newRotateState the wanted rotateState
+    */
+
+   public abstract void rotateTo(int newRotateState);
+
+   /**
+    * rotates the block to the next rotateState in Frontend AND Backend.
+    * a single rotateState change corresponds to a 90-degree turn to the right.
+    */
+   public abstract void rotate();
 }

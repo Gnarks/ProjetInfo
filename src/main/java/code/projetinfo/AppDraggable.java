@@ -1,7 +1,6 @@
 package code.projetinfo;
 
-import code.projetinfo.normalBlocks.Amogous;
-import code.projetinfo.normalBlocks.Bob;
+import code.projetinfo.normalBlocks.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -25,8 +24,21 @@ public class AppDraggable extends Application {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         //launch();
-        Level test = new Level("t", new Cases(2,2, CaseState.EMPTY), new ImageBlock[25]);
-        test.loadState("test");
-        test.show();
+
+        /*Level level = new Level("heart",new Cases(new CaseState[][]{
+                {CaseState.SPECIAL, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL, CaseState.SPECIAL, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL},
+                {CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY},
+                {CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY},
+                {CaseState.EMPTY, CaseState.FULL, CaseState.FULL, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY},
+                {CaseState.SPECIAL, CaseState.FULL, CaseState.FULL, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL},
+                {CaseState.SPECIAL, CaseState.SPECIAL, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL, CaseState.SPECIAL},
+                {CaseState.SPECIAL, CaseState.SPECIAL, CaseState.SPECIAL, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL, CaseState.SPECIAL, CaseState.SPECIAL}
+        }), new ImageBlock[]{new Amogous(new Position(50, 10)), new Amogous(new Position(50, 150)),
+                new Scooboodoo(new Position(750, 150)), new Geoffroy(new Position(750, 150)), new Redky(new Position(1, 150)),
+                new Redky(new Position(0, 10)), new Napsta(new Position(50, 150)), new Napsta(new Position(800, 150)),
+                new Baby(new Position(1000, 150)),});
+
+        level.loadState("heart");
+        level.show();*/
     }
 }
