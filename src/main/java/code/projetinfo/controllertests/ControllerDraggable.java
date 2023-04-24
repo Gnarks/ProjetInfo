@@ -24,10 +24,9 @@ public class ControllerDraggable implements Initializable {
             new Amogous(new Position(400, 150)), new Baby(new Position(0, 0)), new Bloby(new Position(0, 0)),
             new BigBob(new Position(0, 0)), new Scooboodoo(new Position(0, 0)), new Geoffroy(new Position(0, 0)),
             new Napsta(new Position(0, 0)), new BooBelle(new Position(150, 100)), new Bob(new Position(0, 0)),
-            new Redky(new Position(0, 0)), new Scooboodoo(new Position(0, 0)), new VicKing(new Position(0, 0)),
-            new Toowels(new Position(0, 0)), new Wolfy(new Position(0, 0)), new Phantom(new Position(0, 0)),
-            new LilDeath(new Position(0, 0)), new King(new Position(0, 0)), new PlagueDoc(new Position(0, 0)),
-            new GymBroo(new Position(0, 0))
+            new Redky(new Position(0, 0)), new VicKing(new Position(0, 0)), new Toowels(new Position(0, 0)),
+            new Wolfy(new Position(0, 0)), new Phantom(new Position(0, 0)), new LilDeath(new Position(0, 0)),
+            new King(new Position(0, 0)), new PlagueDoc(new Position(0, 0)), new GymBroo(new Position(0, 0))
     };
 
     public final ImageBlock[] bobynininet = new ImageBlock[]{new Bob(new Position(50, 10))};
