@@ -9,5 +9,64 @@
         "MidY" : 75.0
       }
     }
+  },
+  "heart" : {
+    "grid" : [ [ "SPECIAL", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "SPECIAL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "FULL", "FULL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "SPECIAL", "FULL", "FULL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL" ], [ "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL" ], [ "SPECIAL", "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL", "SPECIAL" ] ],
+    "blocklist" : {
+      "0" : {
+        "type" : "class code.projetinfo.normalBlocks.Amogous",
+        "rotatestate" : 0,
+        "MidX" : 25.0,
+        "MidY" : 75.0
+      },
+      "1" : {
+        "type" : "class code.projetinfo.normalBlocks.Amogous",
+        "rotatestate" : 0,
+        "MidX" : 25.0,
+        "MidY" : 75.0
+      },
+      "2" : {
+        "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
+        "rotatestate" : 0,
+        "MidX" : 75.0,
+        "MidY" : 75.0
+      },
+      "3" : {
+        "type" : "class code.projetinfo.normalBlocks.Geoffroy",
+        "rotatestate" : 0,
+        "MidX" : 75.0,
+        "MidY" : 175.0
+      },
+      "4" : {
+        "type" : "class code.projetinfo.normalBlocks.Redky",
+        "rotatestate" : 0,
+        "MidX" : 25.0,
+        "MidY" : 25.0
+      },
+      "5" : {
+        "type" : "class code.projetinfo.normalBlocks.Redky",
+        "rotatestate" : 0,
+        "MidX" : 25.0,
+        "MidY" : 25.0
+      },
+      "6" : {
+        "type" : "class code.projetinfo.normalBlocks.Napsta",
+        "rotatestate" : 0,
+        "MidX" : 25.0,
+        "MidY" : 75.0
+      },
+      "7" : {
+        "type" : "class code.projetinfo.normalBlocks.Napsta",
+        "rotatestate" : 0,
+        "MidX" : 25.0,
+        "MidY" : 75.0
+      },
+      "8" : {
+        "type" : "class code.projetinfo.normalBlocks.Baby",
+        "rotatestate" : 0,
+        "MidX" : 25.0,
+        "MidY" : 25.0
+      }
+    }
   }
 }

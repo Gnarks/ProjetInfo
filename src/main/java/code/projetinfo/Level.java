@@ -56,7 +56,7 @@ public class Level {
         //Handles the grid importing
         JsonNode nodeFinder = jsonData.path(name).path("grid");
         CaseState[][] testcases = mapper.treeToValue(nodeFinder, CaseState[][].class);
-        this.grid.setCases(testcases);
+        this.grid = new Cases(testcases);
 
         nodeFinder = jsonData.path(name).path("blocklist");
         ImageBlock[] jsonBlocks = new ImageBlock[nodeFinder.size()];

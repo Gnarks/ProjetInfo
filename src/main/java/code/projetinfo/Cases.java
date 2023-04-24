@@ -96,9 +96,4 @@ public class Cases {
     public CaseState[][] getCases(){
         return cases;
     }
-
-    //Test for load func
-    public void setCases(CaseState[][] cs){
-        this.cases = cs;
-    }
 }
