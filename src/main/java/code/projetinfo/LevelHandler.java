@@ -103,8 +103,7 @@ public class LevelHandler {
         fT.setToValue(0);
         fT.play();
         fT.setOnFinished(finishedEvent -> {
-            imageBlock.rotateGraphic();
-            imageBlock.rotateCases();
+            imageBlock.rotate();
             FadeTransition rePopFT = new FadeTransition(Duration.millis(80),imageBlock.getImageView());
             rePopFT.setByValue(0);
             rePopFT.setToValue(1);
@@ -134,12 +133,9 @@ public class LevelHandler {
         for (ImageBlock imageBlock:
                 level.getBlocks()) {
             if(level.isPlaced(imageBlock))
-                level.remove(imageBlock,(int) (imageBlock.getImageView().getLayoutX()-gridPos.getX())/50, (int) (imageBlock.getImageView().getLayoutY()- gridPos.getY())/50);
-            for (int i = (4 - imageBlock.getRotateState()); i>0 ; i--) {
-
-                imageBlock.rotateGraphic();
-                imageBlock.rotateCases();
-            }
+                level.remove(imageBlock,(int) (imageBlock.getImageView().getLayoutX()-gridPos.getX())/50,
+                        (int) (imageBlock.getImageView().getLayoutY()- gridPos.getY())/50);
+            imageBlock.rotateTo(0);
             goToSpawnPos(imageBlock);
         }
     }
