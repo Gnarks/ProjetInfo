@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
@@ -22,10 +23,10 @@ public class AppDraggable extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         //launch();
-        ImageBlock[] b = {new Amogous(new Position(25,25))};
-        Level test = new Level("test", new Cases(3,3, CaseState.EMPTY), b);
-        test.saveState();
+        Level test = new Level("t", new Cases(2,2, CaseState.EMPTY), new ImageBlock[25]);
+        test.loadState("test");
+        test.show();
     }
 }

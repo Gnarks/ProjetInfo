@@ -1,3 +1,13 @@
 {
-
+  "test" : {
+    "grid" : [ [ "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY" ] ],
+    "blocklist" : {
+      "0" : {
+        "type" : "class code.projetinfo.normalBlocks.Amogous",
+        "rotatestate" : 0,
+        "MidX" : 25.0,
+        "MidY" : 75.0
+      }
+    }
+  }
 }

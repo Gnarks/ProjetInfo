@@ -65,7 +65,10 @@ public class Level {
         int count = nodeFinder.size();
         for (int i = 0; i < count; i++){
             nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("type");
-            Class current = Class.forName(mapper.treeToValue(nodeFinder, String.class));
+            //remove the class prefix to prevent a bug
+            String classString = mapper.treeToValue(nodeFinder, String.class);
+            classString = classString.substring(6, classString.length());
+            Class current = Class.forName(classString);
             nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("position");
             jsonBlocks[i] = (ImageBlock) current.getDeclaredConstructor(Position.class).newInstance(new Position(25, 5));
         }
