@@ -13,7 +13,6 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -49,8 +48,7 @@ public class ControllerDraggable implements Initializable {
         ImageBlock[] blocks = new ImageBlock[]
                 {new Bob(new Position(0,0))};
 
-        Level level = null;
-        level = new Level("null",new Cases(new CaseState[][] {
+        Level level = new Level(new Cases(new CaseState[][] {
                 {CaseState.SPECIAL,CaseState.EMPTY,CaseState.EMPTY,CaseState.SPECIAL,CaseState.SPECIAL,CaseState.EMPTY,CaseState.EMPTY,CaseState.SPECIAL},
                 {CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY},
                 {CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY},

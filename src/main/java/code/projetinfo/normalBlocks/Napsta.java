@@ -11,22 +11,40 @@ public class Napsta extends ImageBlock {
     public Napsta(Position spawnPos) {
         super(spawnPos,
                 new Cases(new CaseState[][]{
-                        {CaseState.EMPTY, CaseState.FULL, CaseState.EMPTY},
-                        {CaseState.EMPTY, CaseState.FULL, CaseState.EMPTY},
-                        {CaseState.EMPTY, CaseState.FULL, CaseState.EMPTY}}
+                        {CaseState.FULL},
+                        {CaseState.FULL},
+                        {CaseState.FULL}}
                 ), new Position(25, 75),
                 new ImageView(String.valueOf(ImageBlock.class.getResource("Sprite_Ghosts/Sprite_Ghost1x3_Rotation0.png"))),
                 50, 150);
     }
-    public void rotateGraphic() {
-        setRotateState(getRotateState()+1);
 
-        String generalURL = "Sprite_Ghosts/Sprite_Ghost1x3_Rotation";
-        switch (getRotateState() % 4) {
-            case 1 -> super.rotateGraphicStep(-50, 50, generalURL);
-            case 2 -> super.rotateGraphicStep(50, -50, generalURL);
-            case 3 -> super.rotateGraphicStep(-50, 50, generalURL);
-            case 0 -> super.rotateGraphicStep(50, -50, generalURL);
-        }
+    /**
+     * rotates the block to the specified rotateState in Frontend AND Backend.
+     * a single rotateState change corresponds to a 90-degree turn to the right.
+     *
+     * @param newRotateState the wanted rotateState
+     */
+    @Override
+    public void rotateTo(int newRotateState) {
+        if (newRotateState<0 || newRotateState >3)
+            throw new IllegalArgumentException("rotateState must be between 0 and 3 included");
+
+        super.rotateCasesTo(newRotateState);
+
+        String generalUrl = "Sprite_Ghosts/Sprite_Ghost1x3_Rotation";
+        Position[] changes = new Position[]{ new Position(0,0),new Position(-50,50),
+                new Position(0,0),new Position(-50,50)};
+        super.rotateGraphicallyTo(changes,newRotateState,generalUrl);
+
+        super.setRotateState(newRotateState);
+    }
+    /**
+     * rotates the block to the next rotateState in Frontend AND Backend.
+     * a single rotateState change corresponds to a 90-degree turn to the right.
+     */
+    @Override
+    public void rotate() {
+        rotateTo((getRotateState()+1)%4);
     }
 }

@@ -12,11 +12,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class Level {
     private Cases grid;
-    private ImageBlock[] blocks;
-    private ImageBlock[] placed;
+    final private ImageBlock[] blocks;
+    private ArrayList<ImageBlock> placed;
     private String name;
     //Uses for json handling move it later to a higher place in object hierarchy
     private File f = new File(System.getProperty("user.dir")+"\\src\\main\\resources\\levels.json");
@@ -24,7 +25,7 @@ public class Level {
     public Level(String name, Cases grid, ImageBlock[] blocs){
         this.grid = grid;
         this.blocks = blocs;
-        this.placed = new ImageBlock[blocs.length];
+        this.placed = new ArrayList<ImageBlock>();
         this.name = name;
     }
 
@@ -116,31 +117,36 @@ public class Level {
      * The vertical coordinate of the placement point of the bloc.
      */
     public void place(ImageBlock imageBlock, int x, int y){
-        if (isPlacable(imageBlock, x ,y)){
-            for (int i = 0; i < imageBlock.getRows(); i++){
-                for (int j = 0; j < imageBlock.getCols(); j++){
+        for (int i = 0; i < imageBlock.getRows(); i++){
+            for (int j = 0; j < imageBlock.getCols(); j++){
+                if (imageBlock.getState(j,i) == CaseState.FULL)
                     grid.set(x+j, y+i, imageBlock.getState(j, i));
-                }
             }
-            append(imageBlock);
         }
+        placed.add(imageBlock);
+    }
+
+
+    public void remove(ImageBlock imageBlock,int x,int y){
+        for (int i = 0; i < imageBlock.getRows(); i++){
+            for (int j = 0; j < imageBlock.getCols(); j++){
+                if (imageBlock.getState(j,i) == CaseState.FULL)
+
+                    grid.set(x+j, y+i, CaseState.EMPTY);
+            }
+        }
+        placed.remove(imageBlock);
+
     }
 
     public void show(){
-        this.grid.show();
-    }
-
-    /**
-     * Add a block in the placed bloc matrix.
-     * @param imageBlock
-     * The block to add in the placed bloc matrix.
-     */
-    private void append(ImageBlock imageBlock){
-        int i = 0;
-        while (placed[i] != null){
-            i++;
+        System.out.println("\n");
+        for (int i = 0; i < grid.getRow(); i++) {
+            for (int j = 0; j < grid.getCol(); j++) {
+                System.out.printf("%7s|", grid.getState(j,i));
+            }
+            System.out.println();
         }
-        placed[i] = imageBlock;
     }
 
     public ImageBlock[] getBlocks() {
@@ -148,5 +154,4 @@ public class Level {
     }
 
     public Cases getGrid() {return grid;}
-
 }

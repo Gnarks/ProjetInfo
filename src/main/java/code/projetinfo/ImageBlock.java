@@ -136,9 +136,4 @@ public abstract class ImageBlock{
       imageView.setFitHeight((rotateState%2 == 0?height:width));
       imageView.setFitWidth((rotateState%2 == 0?width:height));
    }
-
-   public Position getMidPos() {
-      return midPos;
-   }
-
 }
