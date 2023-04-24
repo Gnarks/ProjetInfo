@@ -23,7 +23,7 @@ public abstract class ImageBlock{
    private final ImageView imageView;
    private final int width;
    private final int height;
-
+   private boolean isplaced = false;
 
 
    /** The main constructor of blocks
@@ -154,4 +154,12 @@ public abstract class ImageBlock{
     * a single rotateState change corresponds to a 90-degree turn to the right.
     */
    public abstract void rotate();
+
+   public void setIsplaced(boolean state){
+      this.isplaced = state;
+   }
+
+   public boolean getplacedState(){
+      return this.isplaced;
+   }
 }

@@ -59,7 +59,7 @@ public class LevelHandler {
         node.setOnMousePressed(event ->{
             if(event.getButton() == MouseButton.SECONDARY ){
                 //todo check if can rotate
-                if(level.isPlaced(imageBlock)){
+                if(imageBlock.getplacedState()){
                     level.remove(imageBlock,(int) (node.getLayoutX()-gridPos.getX())/50, (int) (node.getLayoutY()- gridPos.getY())/50);}
 
                 rotateImageBlock(imageBlock);
@@ -67,7 +67,7 @@ public class LevelHandler {
 
             if(event.getButton() == MouseButton.PRIMARY){
                 node.toFront();
-                if(level.isPlaced(imageBlock)){
+                if(imageBlock.getplacedState()){
                     level.remove(imageBlock,(int) (node.getLayoutX()-gridPos.getX())/50, (int) (node.getLayoutY()- gridPos.getY())/50);
                 }
 
@@ -132,12 +132,14 @@ public class LevelHandler {
     public void reset(){
         for (ImageBlock imageBlock:
                 level.getBlocks()) {
-            if(level.isPlaced(imageBlock))
+            if(imageBlock.getplacedState())
                 level.remove(imageBlock,(int) (imageBlock.getImageView().getLayoutX()-gridPos.getX())/50,
                         (int) (imageBlock.getImageView().getLayoutY()- gridPos.getY())/50);
             imageBlock.rotateTo(0);
             goToSpawnPos(imageBlock);
+            imageBlock.setIsplaced(false);
         }
+        this.level.setPlaced(0);
     }
 
     private boolean inGridBounds(Position position) {

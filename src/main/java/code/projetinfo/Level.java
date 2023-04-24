@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Level {
     private Cases grid;
     private ImageBlock[] blocks;
-    private ArrayList<ImageBlock> placed;
+    private int placed = 0;
     private String name;
     //Uses for json handling move it later to a higher place in object hierarchy
     private final File f = new File(System.getProperty("user.dir")+"\\src\\main\\resources\\levels.json");
@@ -19,7 +19,6 @@ public class Level {
     public Level(String name, Cases grid, ImageBlock[] blocs){
         this.grid = grid;
         this.blocks = blocs;
-        this.placed = new ArrayList<>();
         this.name = name;
     }
 
@@ -43,9 +42,13 @@ public class Level {
 
             block.put("MidX", this.blocks[i].getMidX());
             block.put("MidY", this.blocks[i].getMidY());
+            block.put("isplaced", this.blocks[i].getplacedState());
             blocklist.put(String.valueOf(i), block);
         }
+
+
         newNode.put("blocklist", blocklist);
+        newNode.put("placed", this.placed);
         levels.put(name, newNode);
         mapper.writeValue(f, levels);
     }
@@ -68,10 +71,28 @@ public class Level {
             String classString = mapper.treeToValue(nodeFinder, String.class);
             classString = classString.substring(6, classString.length());
             Class current = Class.forName(classString);
-            nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("position");
-            jsonBlocks[i] = (ImageBlock) current.getDeclaredConstructor(Position.class).newInstance(new Position(25, 5));
+
+            //get the position of each saved blocks
+            nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("MidX");
+            double midX = mapper.treeToValue(nodeFinder, double.class);
+
+            nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("MidY");
+            double midY = mapper.treeToValue(nodeFinder, double.class);
+
+            nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("isplaced");
+            boolean placedstate = mapper.treeToValue(nodeFinder, boolean.class);
+
+            //Construct a Block with the imported block attributes and set if he is placed or not
+            jsonBlocks[i] = (ImageBlock) current.getDeclaredConstructor(Position.class).newInstance(new Position(midX, midY));
+            jsonBlocks[i].setIsplaced(placedstate);
         }
         this.blocks = jsonBlocks;
+
+        //Handles the placed blocks count from file
+        nodeFinder = jsonData.path(name).path("placed");
+        this.placed = mapper.treeToValue(nodeFinder, int.class);
+
+
     }
     /**
      * This method check the grid to see if the block can be placed at the desired
@@ -117,11 +138,8 @@ public class Level {
                     grid.set(x+j, y+i, imageBlock.getState(j, i));
             }
         }
-        placed.add(imageBlock);
-    }
-
-    public boolean isPlaced(ImageBlock imageBlock){
-        return placed.contains(imageBlock);
+        this.placed++;
+        imageBlock.setIsplaced(true);
     }
 
     public void remove(ImageBlock imageBlock,int x,int y){
@@ -132,8 +150,8 @@ public class Level {
                     grid.set(x+j, y+i, CaseState.EMPTY);
             }
         }
-        placed.remove(imageBlock);
-
+        this.placed--;
+        imageBlock.setIsplaced(false);
     }
 
     public void show(){
@@ -144,6 +162,11 @@ public class Level {
             }
             System.out.println();
         }
+        System.out.println(this.placed);
+        ImageBlock[] test = this.getBlocks();
+        for (int i = 0; i < test.length; i++){
+            System.out.println(test[i].getplacedState());
+        }
     }
 
     public ImageBlock[] getBlocks() {
@@ -151,4 +174,7 @@ public class Level {
     }
 
     public Cases getGrid() {return grid;}
+    public void setPlaced(int n){
+        this.placed = n;
+    }
 }

@@ -64,7 +64,7 @@ public class GameController implements Initializable {
 
         Level level = null;
         try {
-            level = new Level("heart");
+            level = new Level("test");
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
