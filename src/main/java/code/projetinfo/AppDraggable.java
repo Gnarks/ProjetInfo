@@ -8,6 +8,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Paths;
 
 public class AppDraggable extends Application {
     @Override
@@ -20,6 +23,9 @@ public class AppDraggable extends Application {
     }
 
     public static void main(String[] args) throws IOException {
-        launch();
+        //launch();
+        ImageBlock[] b = {new Amogous(new Position(25,25))};
+        Level test = new Level("test", new Cases(3,3, CaseState.EMPTY), b);
+        test.saveState();
     }
 }

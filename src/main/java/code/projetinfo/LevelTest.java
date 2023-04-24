@@ -4,6 +4,8 @@ import code.projetinfo.normalBlocks.Amogous;
 import code.projetinfo.normalBlocks.Bob;
 import org.junit.Test;
 
+import java.net.URISyntaxException;
+
 import static org.junit.Assert.*;
 
 public class LevelTest {
@@ -11,6 +13,10 @@ public class LevelTest {
     ImageBlock[] testBlockList = {new Amogous(testPos), new Bob(testPos)};
     ImageBlock[] testPlaced;
     Level testLevel = new Level("test", new Cases(3,3, CaseState.EMPTY), testBlockList);
+
+    public LevelTest() throws URISyntaxException {
+    }
+
     @Test
     public void saveState() {
     }

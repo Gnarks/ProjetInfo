@@ -4,9 +4,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import java.io.DataOutput;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Paths;
 
 public class Level {
     private Cases grid;
@@ -14,7 +19,7 @@ public class Level {
     private ImageBlock[] placed;
     private String name;
     //Uses for json handling move it later to a higher place in object hierarchy
-    private File f = new File("C:\\Users\\leomo\\Desktop\\jsontest\\ProjetInfo\\src\\main\\resources\\levels.json");
+    private File f = new File(System.getProperty("user.dir")+"\\src\\main\\resources\\levels.json");
     private ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
     public Level(String name, Cases grid, ImageBlock[] blocs){
         this.grid = grid;
@@ -45,7 +50,7 @@ public class Level {
         levels.put(name, newNode);
         mapper.writeValue(f, levels);
     }
-    public void loadState(String name) throws IOException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public void loadState(String name) throws IOException, NoSuchMethodException, ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
         //jsonData = root node
         JsonNode jsonData = mapper.readTree(f);
 
