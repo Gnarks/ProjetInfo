@@ -1,5 +1,7 @@
 package code.projetinfo;
 
+import code.projetinfo.normalBlocks.Amogous;
+import code.projetinfo.normalBlocks.Bob;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,7 +19,7 @@ public class AppDraggable extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         launch();
     }
 }

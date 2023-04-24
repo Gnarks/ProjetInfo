@@ -1,6 +1,7 @@
 package code.projetinfo;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.io.File;
@@ -14,7 +15,7 @@ public class Level {
     private String name;
     //Uses for json handling move it later to a higher place in object hierarchy
     private File f = new File("C:\\Users\\leomo\\Desktop\\jsontest\\ProjetInfo\\src\\main\\resources\\levels.json");
-    private ObjectMapper mapper = new ObjectMapper();
+    private ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
     public Level(String name, Cases grid, ImageBlock[] blocs){
         this.grid = grid;
         this.blocks = blocs;
