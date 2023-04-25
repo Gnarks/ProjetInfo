@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.projetinfo.controllertests.ControllerCollection">
+   <ImageView fitHeight="900.0" fitWidth="1600.0">
+      <image>
+         <Image url="@Sprites/Collection.png" />
+      </image>
+   </ImageView>
+   <Label fx:id="GhostDescription" alignment="CENTER" layoutX="641.0" layoutY="561.0" prefHeight="192.0" prefWidth="316.0" scaleX="1.125" scaleY="1.125" textAlignment="CENTER" wrapText="true">
+      <font>
+         <Font name="System Bold Italic" size="22.0" />
+      </font>
+   </Label>
+   <Label fx:id="GhostName" layoutX="664.0" layoutY="477.0" prefHeight="69.0" prefWidth="272.0" scaleX="1.125" scaleY="1.125" textAlignment="CENTER" underline="true" wrapText="true">
+      <font>
+         <Font name="System Bold" size="32.0" />
+      </font>
+   </Label>
+   <ImageView fx:id="GhostImage" fitHeight="338.0" fitWidth="337.0" layoutX="628.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true" scaleX="1.125" scaleY="1.125" />
+   <ImageView fx:id="ButtonBack" fitHeight="78.0" fitWidth="102.0" layoutX="20.0" layoutY="411.0" onMouseEntered="#onButtonBackEntered" onMouseExited="#onButtonBackExited" scaleX="1.125" scaleY="1.125">
+      <image>
+         <Image url="@Sprites/ButtonBack.png" />
+      </image>
+   </ImageView>
+   <ImageView fx:id="ButtonNext" fitHeight="68.0" fitWidth="93.0" layoutX="1487.0" layoutY="421.0" onMouseEntered="#onButtonNextEntered" onMouseExited="#onButtonNextExited" scaleX="1.125" scaleY="1.125">
+      <image>
+         <Image url="@Sprites/ButtonNext.png" />
+      </image>
+   </ImageView>
+
+   <Button layoutX="76.0" layoutY="84.0" mnemonicParsing="false" onAction="#BabyPressed" opacity="0.0" prefHeight="117.0" prefWidth="132.0" scaleX="1.125" scaleY="1.125" text="Button" />
+   <Button layoutX="240.0" layoutY="82.0" mnemonicParsing="false" onAction="#RedkyPressed" opacity="0.0" prefHeight="123.0" prefWidth="131.0" scaleX="1.125" scaleY="1.125" text="Button" />
+   <Button layoutX="406.0" layoutY="80.0" mnemonicParsing="false" onAction="#VicKingPressed" opacity="0.0" prefHeight="125.0" prefWidth="130.0" scaleX="1.125" scaleY="1.125" text="Button" />
+   <Button layoutX="157.0" layoutY="231.0" mnemonicParsing="false" onAction="#BlobyPressed" opacity="0.0" prefHeight="132.0" prefWidth="134.0" scaleX="1.125" scaleY="1.125" text="Button" />
+   <Button layoutX="320.0" layoutY="242.0" mnemonicParsing="false" onAction="#NessyPressed" opacity="0.0" prefHeight="118.0" prefWidth="130.0" scaleX="1.125" scaleY="1.125" text="Button" />
+   <Button layoutX="77.0" layoutY="538.0" mnemonicParsing="false" onAction="#LilDeathPressed" opacity="0.0" prefHeight="132.0" prefWidth="131.0" scaleX="1.125" scaleY="1.125" text="Button" />
+   <Button layoutX="242.0" layoutY="544.0" mnemonicParsing="false" onAction="#ToowelsPressed" opacity="0.0" prefHeight="120.0" prefWidth="127.0" scaleX="1.125" scaleY="1.125" text="Button" />
+   <Button layoutX="406.0" layoutY="542.0" mnemonicParsing="false" onAction="#BooBellePressed" opacity="0.0" prefHeight="124.0" prefWidth="135.0" scaleX="1.125" scaleY="1.125" text="Button" />
+   <Button layoutX="164.0" layoutY="699.0" mnemonicParsing="false" onAction="#ScooboodooPressed" opacity="0.0" prefHeight="132.0" prefWidth="135.0" scaleX="1.125" scaleY="1.125" text="Button" />
+   <Button layoutX="331.0" layoutY="690.0" mnemonicParsing="false" onAction="#AmogousPressed" opacity="0.0" prefHeight="132.0" prefWidth="134.0" scaleX="1.125" scaleY="1.125" text="Button" />
+   <Button layoutX="1055.0" layoutY="78.0" mnemonicParsing="false" onAction="#BobPressed" opacity="0.0" prefHeight="132.0" prefWidth="135.0" scaleX="1.125" scaleY="1.125" text="Button" />
+   <Button layoutX="1220.0" layoutY="82.0" mnemonicParsing="false" onAction="#BigBobPressed" opacity="0.0" prefHeight="119.0" prefWidth="134.0" scaleX="1.125" scaleY="1.125" text="Button" />
+   <Button layoutX="1386.0" layoutY="80.0" mnemonicParsing="false" onAction="#NapstaPressed" opacity="0.0" prefHeight="132.0" prefWidth="133.0" scaleX="1.125" scaleY="1.125" text="Button" />
+   <Button layoutX="1138.0" layoutY="231.0" mnemonicParsing="false" onAction="#KingPressed" opacity="0.0" prefHeight="132.0" prefWidth="131.0" scaleX="1.125" scaleY="1.125" text="Button" />
+   <Button layoutX="1302.0" layoutY="231.0" mnemonicParsing="false" onAction="#GeoffreyPressed" opacity="0.0" prefHeight="132.0" prefWidth="133.0" scaleX="1.125" scaleY="1.125" text="Button" />
+   <Button layoutX="1143.0" layoutY="535.0" mnemonicParsing="false" onAction="#BigBrooPressed" opacity="0.0" prefHeight="132.0" prefWidth="132.0" scaleX="1.125" scaleY="1.125" text="Button" />
+   <Button layoutX="1314.0" layoutY="540.0" mnemonicParsing="false" onAction="#PhantomPressed" opacity="0.0" prefHeight="123.0" prefWidth="128.0" scaleX="1.125" scaleY="1.125" text="Button" />
+   <Button layoutX="1140.0" layoutY="690.0" mnemonicParsing="false" onAction="#WolfyPressed" opacity="0.0" prefHeight="132.0" prefWidth="131.0" scaleX="1.125" scaleY="1.125" text="Button" />
+   <Button layoutX="1315.0" layoutY="690.0" mnemonicParsing="false" onAction="#PlagueDocPressed" opacity="0.0" prefHeight="132.0" prefWidth="126.0" scaleX="1.125" scaleY="1.125" text="Button" />
+</Pane>

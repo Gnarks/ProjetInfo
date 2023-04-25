@@ -16,7 +16,7 @@ public abstract class ImageBlock{
     * midPos : Position of the middle of the middle block.
     * rotateState : integer in [0,3] that represents the rotation state.
     */
-   private final Position spawnPos;
+   private Position spawnPos;
    private Cases cases;
    private Position midPos;
    private int rotateState;
@@ -70,6 +70,10 @@ public abstract class ImageBlock{
     */
    public Position getSpawnPos(){
       return new Position(spawnPos.getX(), spawnPos.getY());
+   }
+
+   public void setSpawnPos(Position newSpawnPos){
+      this.spawnPos = newSpawnPos;
    }
 
    /**

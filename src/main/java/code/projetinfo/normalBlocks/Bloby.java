@@ -11,9 +11,9 @@ public class Bloby extends ImageBlock {
     public Bloby(Position spawnPos){
         super(spawnPos,
                 new Cases(new CaseState[][] {
-                        {CaseState.FULL,CaseState.EMPTY,CaseState.EMPTY},
-                        {CaseState.FULL,CaseState.FULL,CaseState.FULL},
-                        {CaseState.FULL,CaseState.FULL,CaseState.FULL}}),
+                        {CaseState.FULL,CaseState.EMPTY},
+                        {CaseState.FULL,CaseState.FULL},
+                        {CaseState.FULL,CaseState.FULL}}),
                 new Position(25,75),
                 new ImageView(String.valueOf(ImageBlock.class.getResource("Sprite_Ghosts/Sprite_Ghost2x2TopLeft_Rotation0.png"))),
                 100,150);

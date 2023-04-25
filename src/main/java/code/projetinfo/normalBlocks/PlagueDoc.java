@@ -12,8 +12,7 @@ public class PlagueDoc extends ImageBlock {
         super(spawnPos,
                 new Cases(new CaseState[][] {
                         {CaseState.EMPTY,CaseState.FULL,CaseState.FULL},
-                        {CaseState.FULL,CaseState.FULL,CaseState.EMPTY},
-                        {CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY}}
+                        {CaseState.FULL,CaseState.FULL,CaseState.EMPTY}}
                 ), new Position(75,75),
                 new ImageView(String.valueOf(ImageBlock.class.getResource("Sprite_Ghosts/Sprite_GhostS3x2_Rotation0.png"))),
                 150,100);

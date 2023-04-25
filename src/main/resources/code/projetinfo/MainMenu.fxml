@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.projetinfo.controllertests.ControllerMenu">
+   <children>
+      <ImageView fitHeight="900.0" fitWidth="1600.0" preserveRatio="true">
+         <image>
+            <Image url="@/code/projetinfo/Sprites/MainMenu.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="PlayButtonImage" fitHeight="135.11" fitWidth="435.55" layoutX="600.25" layoutY="338.0" onMouseEntered="#onPlayEntered" onMouseExited="#onPlayExited" preserveRatio="true">
+         <image>
+            <Image url="@/code/projetinfo/Sprites/Buttonplay.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="CollectionButtonImage" fitHeight="135.11" fitWidth="423.11" layoutX="600.445" layoutY="465.0" onMouseEntered="#onCollectionEntered" onMouseExited="#onCollectionExited" preserveRatio="true">
+         <image>
+            <Image url="@/code/projetinfo/Sprites/ButtonCollection.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="SettingsButtonImage" fitHeight="106.66" fitWidth="423.11" layoutX="600.445" layoutY="585.0" onMouseEntered="#onSettingsEntered" onMouseExited="#onSettingsExited" preserveRatio="true">
+         <image>
+            <Image url="@/code/projetinfo/Sprites/ButtonSettings.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ExitButtonImage" fitHeight="117.33" fitWidth="355.55" layoutX="632.225" layoutY="753.0" onMouseEntered="#onExitEntered" onMouseExited="#onExitExited" preserveRatio="true">
+         <image>
+            <Image url="@/code/projetinfo/Sprites/EXIT.png" />
+         </image>
+      </ImageView>
+   </children>
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
+</AnchorPane>
