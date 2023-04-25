@@ -1,6 +1,6 @@
 package code.projetinfo.controllertests;
 
-import code.projetinfo.AppDraggable;
+import code.projetinfo.AppGame;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -31,7 +31,7 @@ public class ControllerCredits {
         BackButton.setOnMouseClicked(event ->{
             Scene scene;
             Stage stage;
-            FXMLLoader fxmlLoader = new FXMLLoader(AppDraggable.class.getResource("Collection.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("Collection.fxml"));
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             try {
                 scene = new Scene(fxmlLoader.load(), 1600, 900);

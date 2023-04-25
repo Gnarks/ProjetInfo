@@ -1,6 +1,6 @@
 package code.projetinfo.controllertests;
 
-import code.projetinfo.AppDraggable;
+import code.projetinfo.AppGame;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -32,7 +32,7 @@ public class ControllerCollection {
         ButtonBack.setImage(new Image("code/projetinfo/Sprites/ButtonBackLight.png"));
 
         ButtonBack.setOnMouseClicked(event ->{
-            FXMLLoader fxmlLoader = new FXMLLoader(AppDraggable.class.getResource("MainMenu.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("MainMenu.fxml"));
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             try {
                 scene = new Scene(fxmlLoader.load(), 1600, 900);
@@ -52,7 +52,7 @@ public class ControllerCollection {
     protected void onButtonNextEntered(){
         ButtonNext.setImage(new Image("code/projetinfo/Sprites/ButtonNextLight.png"));
         ButtonNext.setOnMouseClicked(event ->{
-            FXMLLoader fxmlLoader = new FXMLLoader(AppDraggable.class.getResource("Credits.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("Credits.fxml"));
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             try {
                 scene = new Scene(fxmlLoader.load(), 1600, 900);

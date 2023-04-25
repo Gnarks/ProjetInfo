@@ -1,7 +1,7 @@
 package code.projetinfo.controllertests;
 
 
-import code.projetinfo.AppDraggable;
+import code.projetinfo.AppGame;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,7 +50,7 @@ public class ControllerMenu {
         CollectionButtonImage.setOnMouseClicked(event ->{
             Scene scene;
             Stage stage;
-            FXMLLoader fxmlLoader = new FXMLLoader(AppDraggable.class.getResource("Collection.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("Collection.fxml"));
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             try {
                 scene = new Scene(fxmlLoader.load(), 1600, 900);
@@ -75,7 +75,7 @@ public class ControllerMenu {
         PlayButtonImage.setOnMouseClicked(event ->{
             Scene scene;
             Stage stage;
-            FXMLLoader fxmlLoader = new FXMLLoader(AppDraggable.class.getResource("DraggableTest.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("Game.fxml"));
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             try {
                 scene = new Scene(fxmlLoader.load(), 1600, 900);

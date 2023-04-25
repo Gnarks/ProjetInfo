@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import code.projetinfo.normalBlocks.*;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 

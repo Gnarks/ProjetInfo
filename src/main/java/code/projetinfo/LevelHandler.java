@@ -196,7 +196,7 @@ public class LevelHandler {
         imageBlock.getImageView().setLayoutX(posX);
         imageBlock.getImageView().setLayoutY(posY);
     }
-}
+
     public void dispatchBlocks() {
         Position spawnPos = new Position(gridPos.getX()-200, gridPos.getY());
         double overPane = 0;
@@ -209,12 +209,11 @@ public class LevelHandler {
                 if(spawnPos.getY()+level.getBlocks()[i].getRows()*50>pane.getPrefHeight()-50){
                     if(overPane == 0) {
                         level.getBlocks()[i].setSpawnPos(new Position(gridPos.getX() - 550, gridPos.getY()-100));
-                         overPane = level.getBlocks()[i].getRows()*50 + 50 + gridPos.getY();
                     }
                     else{
                         level.getBlocks()[i].setSpawnPos(new Position(gridPos.getX() - 550,overPane));
-                        overPane = level.getBlocks()[i].getRows()*50 + 50 + gridPos.getY();
                     }
+                    overPane = level.getBlocks()[i].getRows()*50 + 50 + gridPos.getY();
                 }
                 else {
                     level.getBlocks()[i].setSpawnPos(spawnPos);
@@ -234,13 +233,12 @@ public class LevelHandler {
                 if(spawnPos.getY()+level.getBlocks()[i].getRows()*50>pane.getPrefHeight()-50){
                     if(overPane == 0) {
                         level.getBlocks()[i].setSpawnPos(new Position(gridPos.getX() + level.getGrid().getCol()*50 + 500, gridPos.getY()-100));
-                        overPane = level.getBlocks()[i].getSpawnPos().getY() + 50 + level.getBlocks()[i].getRows()*50;
                     }
                     else{
                         level.getBlocks()[i].setSpawnPos(new Position(gridPos.getX() + level.getGrid().getCol()*50 + 500,overPane));
-                        overPane = level.getBlocks()[i].getSpawnPos().getY() + 50 + level.getBlocks()[i].getRows()*50;
 
                     }
+                    overPane = level.getBlocks()[i].getSpawnPos().getY() + 50 + level.getBlocks()[i].getRows()*50;
                 }
 
                 else {
