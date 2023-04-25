@@ -1,7 +1,9 @@
 package code.projetinfo;
 
 import javafx.animation.FadeTransition;
+import javafx.animation.TranslateTransition;
 import javafx.scene.Node;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -28,7 +30,19 @@ public class LevelHandler {
         gridPos = new Position(gridPos.getX() - gridPos.getX()%50, gridPos.getY() - gridPos.getY()%50);
     }
 
+    public Position getGridPos() {
+        return gridPos;
+    }
+
+
     public void drawGrid(){
+        ImageView backGrid = new ImageView("code/projetinfo/Sprites/BackGridLevel.png");
+        backGrid.setLayoutX(gridPos.getX()-50);
+        backGrid.setLayoutY(gridPos.getY()-50);
+        backGrid.setFitWidth((level.getGrid().getCol()+2)*50);
+        backGrid.setFitHeight((level.getGrid().getRow()+2)*50);
+
+        pane.getChildren().add(backGrid);
         for (int i = 0; i < level.getGrid().getCol(); i++) {
             for (int j = 0; j < level.getGrid().getRow(); j++) {
                 Rectangle rectangle = new Rectangle(i*tileSize+gridPos.getX(),j*tileSize+gridPos.getY(),tileSize,tileSize);
@@ -59,7 +73,7 @@ public class LevelHandler {
         node.setOnMousePressed(event ->{
             if(event.getButton() == MouseButton.SECONDARY ){
                 //todo check if can rotate
-                if(imageBlock.getplacedState()){
+                if(imageBlock.getPlacedState()){
                     level.remove(imageBlock,(int) (node.getLayoutX()-gridPos.getX())/50, (int) (node.getLayoutY()- gridPos.getY())/50);}
 
                 rotateImageBlock(imageBlock);
@@ -67,7 +81,7 @@ public class LevelHandler {
 
             if(event.getButton() == MouseButton.PRIMARY){
                 node.toFront();
-                if(imageBlock.getplacedState()){
+                if(imageBlock.getPlacedState()){
                     level.remove(imageBlock,(int) (node.getLayoutX()-gridPos.getX())/50, (int) (node.getLayoutY()- gridPos.getY())/50);
                 }
 
@@ -130,16 +144,29 @@ public class LevelHandler {
     }
 
     public void reset(){
-        for (ImageBlock imageBlock:
+        Rectangle transi = new Rectangle(1600,900,Paint.valueOf("#6666fc"));
+        transi.setLayoutX(1600);
+        pane.getChildren().add(transi);
+
+        TranslateTransition tT = new TranslateTransition(Duration.millis(1000),transi);
+        tT.setToX(-1600);
+        tT.play();
+        tT.setOnFinished(finishedEvent ->{
+        for (ImageBlock imageBlock :
                 level.getBlocks()) {
-            if(imageBlock.getplacedState())
+            if(imageBlock.getPlacedState())
                 level.remove(imageBlock,(int) (imageBlock.getImageView().getLayoutX()-gridPos.getX())/50,
                         (int) (imageBlock.getImageView().getLayoutY()- gridPos.getY())/50);
             imageBlock.rotateTo(0);
             goToSpawnPos(imageBlock);
-            imageBlock.setIsplaced(false);
+            imageBlock.setPlaced(false);
         }
         this.level.setPlaced(0);
+            TranslateTransition comeBacktT = new TranslateTransition(Duration.millis(1000),transi);
+            comeBacktT.setToX(1600);
+            comeBacktT.play();
+            comeBacktT.setOnFinished(event -> {pane.getChildren().remove(transi);});
+        });
     }
 
     private boolean inGridBounds(Position position) {
@@ -169,4 +196,56 @@ public class LevelHandler {
         imageBlock.getImageView().setLayoutX(posX);
         imageBlock.getImageView().setLayoutY(posY);
     }
-}
+
+    public void dispatchBlocks() {
+        Position spawnPos = new Position(gridPos.getX()-200, gridPos.getY());
+        double overPane = 0;
+        for (int i = 0; i < level.getBlocks().length / 2; i++) {
+            if (i == 0) {
+                level.getBlocks()[i].setSpawnPos(spawnPos);
+                spawnPos = new Position(gridPos.getX()-400, gridPos.getY()-100);
+            }
+            else {
+                if(spawnPos.getY()+level.getBlocks()[i].getRows()*50>pane.getPrefHeight()-50){
+                    if(overPane == 0) {
+                        level.getBlocks()[i].setSpawnPos(new Position(gridPos.getX() - 550, gridPos.getY()-100));
+                    }
+                    else{
+                        level.getBlocks()[i].setSpawnPos(new Position(gridPos.getX() - 550,overPane));
+                    }
+                    overPane = level.getBlocks()[i].getRows()*50 + 50 + gridPos.getY();
+                }
+                else {
+                    level.getBlocks()[i].setSpawnPos(spawnPos);
+                    spawnPos = new Position(level.getBlocks()[i - 1].getSpawnPos().getX(), 50 + level.getBlocks()[i - 1].getSpawnPos().getY() + level.getBlocks()[i - 1].getRows() * 50);
+                }
+               }
+
+        }
+        overPane = 0;
+        spawnPos = new Position(300 + gridPos.getX()+level.getGrid().getCol()*50, gridPos.getY());
+        for (int i = level.getBlocks().length / 2; i < level.getBlocks().length; i++) {
+            if (i == level.getBlocks().length / 2) {
+                level.getBlocks()[i].setSpawnPos(spawnPos);
+                spawnPos = new Position(100 + gridPos.getX()+level.getGrid().getCol()*50, gridPos.getY()-100);
+            }
+            else {
+                if(spawnPos.getY()+level.getBlocks()[i].getRows()*50>pane.getPrefHeight()-50){
+                    if(overPane == 0) {
+                        level.getBlocks()[i].setSpawnPos(new Position(gridPos.getX() + level.getGrid().getCol()*50 + 500, gridPos.getY()-100));
+                    }
+                    else{
+                        level.getBlocks()[i].setSpawnPos(new Position(gridPos.getX() + level.getGrid().getCol()*50 + 500,overPane));
+
+                    }
+                    overPane = level.getBlocks()[i].getSpawnPos().getY() + 50 + level.getBlocks()[i].getRows()*50;
+                }
+
+                else {
+                        level.getBlocks()[i].setSpawnPos(spawnPos);
+                        spawnPos = new Position(level.getBlocks()[i - 1].getSpawnPos().getX(), 50 + level.getBlocks()[i - 1].getSpawnPos().getY() + level.getBlocks()[i - 1].getRows() * 50);
+                    }
+                }
+            }
+        }
+    }

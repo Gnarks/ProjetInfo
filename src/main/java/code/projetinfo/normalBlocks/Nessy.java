@@ -11,9 +11,9 @@ public class Nessy extends ImageBlock {
     public Nessy(Position spawnPos){
         super(spawnPos,
                 new Cases(new CaseState[][]
-                        {{CaseState.EMPTY,CaseState.EMPTY,CaseState.FULL},
-                        {CaseState.FULL,CaseState.FULL,CaseState.FULL},
-                        {CaseState.FULL,CaseState.FULL,CaseState.FULL}}
+                        {{CaseState.EMPTY,CaseState.FULL},
+                        {CaseState.FULL,CaseState.FULL},
+                        {CaseState.FULL,CaseState.FULL}}
                 ), new Position(75,75),
                 new ImageView(String.valueOf(ImageBlock.class.getResource("Sprite_Ghosts/Sprite_Ghost2x2TopRight_Rotation0.png"))),
                 100, 150);

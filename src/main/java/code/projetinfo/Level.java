@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 
 public class Level {
     private Cases grid;
@@ -42,7 +41,7 @@ public class Level {
 
             block.put("MidX", this.blocks[i].getMidX());
             block.put("MidY", this.blocks[i].getMidY());
-            block.put("isplaced", this.blocks[i].getplacedState());
+            block.put("isplaced", this.blocks[i].getPlacedState());
             blocklist.put(String.valueOf(i), block);
         }
 
@@ -84,15 +83,9 @@ public class Level {
 
             //Construct a Block with the imported block attributes and set if he is placed or not
             jsonBlocks[i] = (ImageBlock) current.getDeclaredConstructor(Position.class).newInstance(new Position(midX, midY));
-            jsonBlocks[i].setIsplaced(placedstate);
+            jsonBlocks[i].setPlaced(placedstate);
         }
         this.blocks = jsonBlocks;
-
-        //Handles the placed blocks count from file
-        nodeFinder = jsonData.path(name).path("placed");
-        this.placed = mapper.treeToValue(nodeFinder, int.class);
-
-
     }
     /**
      * This method check the grid to see if the block can be placed at the desired
@@ -106,13 +99,14 @@ public class Level {
      * @return
      * Return if the block can be placed or not.
      */
-    public boolean isPlacable(ImageBlock imageBlock, int x, int y){
-        if (x + imageBlock.getCols() > grid.getCol() || y + imageBlock.getRows() > grid.getRow()){
+    public boolean isPlacable(ImageBlock imageBlock, int x, int y) {
+        if (x < 0 || y < 0) {
             return false;
         }
-        for (int i = 0; i < imageBlock.getRows(); i++){
-            for (int j = 0; j < imageBlock.getCols(); j++){
-                if (grid.getState(x+j, y+i) == CaseState.FULL && imageBlock.getState(j, i) == CaseState.FULL){
+        for (int i = 0; i < imageBlock.getRows(); i++) {
+            for (int j = 0; j < imageBlock.getCols(); j++) {
+                if (x + j >= grid.getCol() || y + i >= grid.getRow() ||
+                        grid.getState(x + j, y + i) != CaseState.EMPTY && imageBlock.getState(j, i) == CaseState.FULL) {
                     return false;
                 }
             }
@@ -139,19 +133,18 @@ public class Level {
             }
         }
         this.placed++;
-        imageBlock.setIsplaced(true);
+        imageBlock.setPlaced(true);
     }
 
     public void remove(ImageBlock imageBlock,int x,int y){
         for (int i = 0; i < imageBlock.getRows(); i++){
             for (int j = 0; j < imageBlock.getCols(); j++){
                 if (imageBlock.getState(j,i) == CaseState.FULL)
-
                     grid.set(x+j, y+i, CaseState.EMPTY);
             }
         }
         this.placed--;
-        imageBlock.setIsplaced(false);
+        imageBlock.setPlaced(false);
     }
 
     public void show(){
@@ -165,7 +158,7 @@ public class Level {
         System.out.println(this.placed);
         ImageBlock[] test = this.getBlocks();
         for (int i = 0; i < test.length; i++){
-            System.out.println(test[i].getplacedState());
+            System.out.println(test[i].getPlacedState());
         }
     }
 
