@@ -23,7 +23,7 @@ public abstract class ImageBlock{
    private final ImageView imageView;
    private final int width;
    private final int height;
-   private boolean isplaced = false;
+   private boolean isPlaced;
 
 
    /** The main constructor of blocks
@@ -45,6 +45,7 @@ public abstract class ImageBlock{
       this.height = height;
       imageView.setFitWidth(width);
       imageView.setFitHeight(height);
+      this.isPlaced = false;
    }
    /**
     * This method rotate the selected block:
@@ -155,11 +156,11 @@ public abstract class ImageBlock{
     */
    public abstract void rotate();
 
-   public void setIsplaced(boolean state){
-      this.isplaced = state;
+   public void setPlaced(boolean state){
+      this.isPlaced = state;
    }
 
-   public boolean getplacedState(){
-      return this.isplaced;
+   public boolean getPlacedState(){
+      return this.isPlaced;
    }
 }

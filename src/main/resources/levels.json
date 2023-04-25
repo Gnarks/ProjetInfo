@@ -7,7 +7,7 @@
         "rotatestate" : 0,
         "MidX" : 25.0,
         "MidY" : 75.0,
-        "isplaced" : true
+        "isplaced" : false
       }
     },
     "placed" : 1
