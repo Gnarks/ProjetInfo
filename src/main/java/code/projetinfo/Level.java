@@ -155,11 +155,6 @@ public class Level {
             }
             System.out.println();
         }
-        System.out.println(this.placed);
-        ImageBlock[] test = this.getBlocks();
-        for (int i = 0; i < test.length; i++){
-            System.out.println(test[i].getPlacedState());
-        }
     }
 
     public ImageBlock[] getBlocks() {
