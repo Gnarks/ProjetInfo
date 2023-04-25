@@ -30,11 +30,6 @@ public class LevelHandler {
         gridPos = new Position(gridPos.getX() - gridPos.getX()%50, gridPos.getY() - gridPos.getY()%50);
     }
 
-    public Position getGridPos() {
-        return gridPos;
-    }
-
-
     public void drawGrid(){
         ImageView backGrid = new ImageView("code/projetinfo/Sprites/BackGridLevel.png");
         backGrid.setLayoutX(gridPos.getX()-50);
@@ -73,10 +68,7 @@ public class LevelHandler {
         node.setOnMousePressed(event ->{
             if(event.getButton() == MouseButton.SECONDARY ){
                 //todo check if can rotate
-                if(imageBlock.getPlacedState()){
-                    level.remove(imageBlock,(int) (node.getLayoutX()-gridPos.getX())/50, (int) (node.getLayoutY()- gridPos.getY())/50);}
-
-                rotateImageBlock(imageBlock);
+                tryRotate(imageBlock);
             }
 
             if(event.getButton() == MouseButton.PRIMARY){
@@ -91,39 +83,59 @@ public class LevelHandler {
         node.setOnMouseDragged(mouseEvent-> moveBlock(imageBlock,mouseEvent));
 
         node.setOnMouseReleased(event -> {
-            if (inGridBounds(new Position(event.getSceneX(),event.getSceneY()))
-                    && event.getButton() == MouseButton.PRIMARY){
-                if (level.isPlacable(imageBlock,(int) (node.getLayoutX()- gridPos.getX())/50, (int) (node.getLayoutY()- gridPos.getY())/50))
-                    level.place(imageBlock, (int) (node.getLayoutX() - gridPos.getX()) / 50, (int) (node.getLayoutY() - gridPos.getY()) / 50);
+            if (event.getButton() == MouseButton.PRIMARY) {
+                if (inGridBounds(new Position(event.getSceneX(), event.getSceneY()))) {
+                    if (level.isPlacable(imageBlock, (int) (node.getLayoutX() - gridPos.getX()) / 50, (int) (node.getLayoutY() - gridPos.getY()) / 50))
+                        level.place(imageBlock, (int) (node.getLayoutX() - gridPos.getX()) / 50, (int) (node.getLayoutY() - gridPos.getY()) / 50);
 
-                else
+                    else
+                        goToSpawnPos(imageBlock);
+                }
+                else if (collideBetweenBlocks(imageBlock))
                     goToSpawnPos(imageBlock);
             }
-            else if (collideBetweenBlocks(imageBlock))
-                goToSpawnPos(imageBlock);
-
             level.show();
-            //System.out.println(collideBetweenBlocks(imageBlock));
         });
     }
 
 
-    private void rotateImageBlock(ImageBlock imageBlock){
+    public int count = 0;
 
-        // todo check if can rotate (if inbounds check the cases surrounding the block)
-        //if can rotate =>
-        FadeTransition fT = new FadeTransition(Duration.millis(80),imageBlock.getImageView());
-        fT.setByValue(1);
-        fT.setToValue(0);
-        fT.play();
-        fT.setOnFinished(finishedEvent -> {
+    /** rotates the imageBlock if it can.
+     * if it can't, does an animation to show it can't.
+     *
+     * @param imageBlock the imageBlock trying to rotate.
+     */
+    private void tryRotate(ImageBlock imageBlock){
+        if (imageBlock.getPlacedState()) {
+            int posX = (int) (imageBlock.getImageView().getLayoutX() - gridPos.getX()) / 50;
+            int posY = (int) (imageBlock.getImageView().getLayoutY() - gridPos.getY()) / 50;
+            level.remove(imageBlock, posX, posY);
+
+            int initialRotateState = imageBlock.getRotateState();
+
             imageBlock.rotate();
-            FadeTransition rePopFT = new FadeTransition(Duration.millis(80),imageBlock.getImageView());
-            rePopFT.setByValue(0);
-            rePopFT.setToValue(1);
-            rePopFT.play();
-        });}
-
+            posX = (int) (imageBlock.getImageView().getLayoutX() - gridPos.getX()) / 50;
+            posY = (int) (imageBlock.getImageView().getLayoutY() - gridPos.getY()) / 50;
+            if (!level.isPlacable(imageBlock, posX, posY)) {
+                imageBlock.rotateTo(initialRotateState);
+                Node node = imageBlock.getImageView();
+                FadeTransition fT = new FadeTransition(Duration.millis(80),node);
+                fT.setByValue(1);
+                fT.setToValue(0);
+                fT.play();
+                fT.setOnFinished(finishedEvent -> {
+                    FadeTransition rePopFT = new FadeTransition(Duration.millis(100),node);
+                    rePopFT.setByValue(0);
+                    rePopFT.setToValue(1);
+                    rePopFT.play();
+                });
+            }
+            level.place(imageBlock,posX,posY);
+        }
+        else
+            imageBlock.rotateTo(count);
+    }
 
 
     private void goToSpawnPos(ImageBlock imageBlock)
@@ -165,7 +177,7 @@ public class LevelHandler {
             TranslateTransition comeBacktT = new TranslateTransition(Duration.millis(1000),transi);
             comeBacktT.setToX(1600);
             comeBacktT.play();
-            comeBacktT.setOnFinished(event -> {pane.getChildren().remove(transi);});
+            comeBacktT.setOnFinished(event -> pane.getChildren().remove(transi));
         });
     }
 
@@ -184,6 +196,7 @@ public class LevelHandler {
         }
         return false;
     }
+
 
     private void moveBlock(ImageBlock imageBlock, MouseEvent mouseEvent){
         double posX = mouseEvent.getSceneX() - imageBlock.getMidX();
