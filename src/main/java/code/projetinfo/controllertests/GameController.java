@@ -26,7 +26,7 @@ public class GameController implements Initializable {
     @FXML
     private ImageView ResetButton;
 
-    /*
+
     private final ImageBlock[] everybodyDance = new ImageBlock[]{
             new Amogous(new Position(400, 150)), new Baby(new Position(0, 0)), new Bloby(new Position(0, 0)),
             new BigBob(new Position(0, 0)), new Scooboodoo(new Position(0, 0)), new Geoffroy(new Position(0, 0)),
@@ -50,7 +50,7 @@ public class GameController implements Initializable {
             new Bloby(new Position(250, 250)),new Amogous(new Position(175, 450)),new Scooboodoo(new Position(1175, 100)),
             new Nessy(new Position(1300, 75)),new Redky(new Position(1175, 225)),new LilDeath(new Position(1300, 250)),
             new Baby(new Position(1175, 350)),new PlagueDoc(new Position(1300, 425))};
-    */
+
 
     private final Cases heartGrid = new Cases(new CaseState[][]{
         {CaseState.SPECIAL, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL, CaseState.SPECIAL, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL},
@@ -80,7 +80,7 @@ public class GameController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        Level level = new Level("eada",heartGrid,heart);
+        Level level = new Level("eada",gridLevel30,blockLevel30);
 
 
         LevelHandler levelHandler = new LevelHandler(level, pane);
