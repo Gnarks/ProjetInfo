@@ -38,12 +38,13 @@ public class Position {
         return y;
     }
 
-    public void setX(double newX){
-        this.x = newX;
+    public boolean equals(Position other){
+        return other.getX() == this.getX() && other.getY() == this.getY();
     }
 
-    public void setY(double newY){
-        this.y = newY;
+    public String toString(){
+        return String.format("(%s, %S)",x,y);
     }
+
 }
 

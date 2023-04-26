@@ -50,7 +50,7 @@ public class GameController implements Initializable {
             new Bloby(new Position(250, 250)),new Amogous(new Position(175, 450)),new Scooboodoo(new Position(1175, 100)),
             new Nessy(new Position(1300, 75)),new Redky(new Position(1175, 225)),new LilDeath(new Position(1300, 250)),
             new Baby(new Position(1175, 350)),new PlagueDoc(new Position(1300, 425))};
-
+    */
 
     private final Cases heartGrid = new Cases(new CaseState[][]{
         {CaseState.SPECIAL, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL, CaseState.SPECIAL, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL},
@@ -67,7 +67,7 @@ public class GameController implements Initializable {
     private final ImageBlock[] heart = new ImageBlock[]{new Amogous(new Position(150, 100)), new Amogous(new Position(850, 100)),
             new Scooboodoo(new Position(50, 200)), new Geoffroy(new Position(800, 200)), new Redky(new Position(950, 430)),
             new Redky(new Position(50, 450)), new Napsta(new Position(150, 300)), new Napsta(new Position(960, 120)),
-            new Baby(new Position(975, 300)),};*/
+            new Baby(new Position(975, 300)),};
 
 
     /**
@@ -80,23 +80,7 @@ public class GameController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
-        Level level = null;
-        try {
-            level = new Level("heart");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (NoSuchMethodException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (InvocationTargetException e) {
-            throw new RuntimeException(e);
-        } catch (InstantiationException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
+        Level level = new Level("eada",heartGrid,heart);
 
 
         LevelHandler levelHandler = new LevelHandler(level, pane);

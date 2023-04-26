@@ -13,7 +13,7 @@ public class Redky extends ImageBlock {
                 new Cases(new CaseState[][] {
                         {CaseState.FULL,CaseState.FULL},
                         {CaseState.FULL,CaseState.FULL }}
-                ), new Position(25,25),
+                ), new Position(25,75),
                 new ImageView(String.valueOf(ImageBlock.class.getResource("Sprite_Ghosts/Sprite_Ghost2x2_Rotation0.png"))),
                 100,100);
     }
@@ -32,8 +32,8 @@ public class Redky extends ImageBlock {
         super.rotateCasesTo(newRotateState);
 
         String generalUrl = "Sprite_Ghosts/Sprite_Ghost2x2_Rotation";
-        Position[] changes = new Position[]{ new Position(0,0),new Position(-50,0),
-                new Position(-50,-50),new Position(0,-50)};
+        Position[] changes = new Position[]{ new Position(0,0),new Position(0,50),
+                new Position(-50,50),new Position(-50,0)};
         super.rotateGraphicallyTo(changes,newRotateState,generalUrl);
 
         super.setRotateState(newRotateState);
