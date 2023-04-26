@@ -11,6 +11,8 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+import java.util.ArrayList;
+
 public class LevelHandler {
 
     private final Level level;
@@ -67,7 +69,6 @@ public class LevelHandler {
 
         node.setOnMousePressed(event ->{
             if(event.getButton() == MouseButton.SECONDARY ){
-                //todo check if can rotate
                 tryRotate(imageBlock);
             }
 
@@ -97,9 +98,6 @@ public class LevelHandler {
             level.show();
         });
     }
-
-
-    public int count = 0;
 
     /** rotates the imageBlock if it can.
      * if it can't, does an animation to show it can't.
@@ -134,7 +132,7 @@ public class LevelHandler {
             level.place(imageBlock,posX,posY);
         }
         else
-            imageBlock.rotateTo(count);
+            imageBlock.rotate();
     }
 
 
@@ -148,6 +146,11 @@ public class LevelHandler {
         fT.setOnFinished(finishedEvent -> {
             node.setLayoutX(imageBlock.getSpawnPos().getX());
             node.setLayoutY(imageBlock.getSpawnPos().getY());
+            for (ImageBlock collided:
+                 collide(imageBlock)) {
+                if (!collided.getSpawnPos().equals(new Position(collided.getImageView().getLayoutX(),collided.getImageView().getLayoutY())))
+                    goToSpawnPos(collided);
+            }
             FadeTransition rePopFT = new FadeTransition(Duration.millis(100),node);
             rePopFT.setByValue(0);
             rePopFT.setToValue(1);
@@ -187,14 +190,25 @@ public class LevelHandler {
     }
 
     private boolean collideBetweenBlocks(ImageBlock imageBlock){
+        return collide(imageBlock).size() !=0;
+    }
+
+    /**
+     *
+     * @param imageBlock
+     * @return la liste de blocks avec lequel le block passé en argument collisionne.
+     */
+    private ArrayList<ImageBlock> collide(ImageBlock imageBlock){
+        ArrayList<ImageBlock> colliding = new ArrayList<>();
         Node node = imageBlock.getImageView();
-        for (ImageBlock InGameBlock:
+
+        for (ImageBlock inGameBlock:
                 level.getBlocks()) {
-            if(InGameBlock!=imageBlock &&node.getBoundsInParent().intersects(InGameBlock.getImageView().getBoundsInParent())){
-                return true;
+            if(inGameBlock!=imageBlock &&node.getBoundsInParent().intersects(inGameBlock.getImageView().getBoundsInParent())){
+                colliding.add(inGameBlock);
             }
         }
-        return false;
+        return colliding;
     }
 
 
