@@ -27,7 +27,7 @@ public class ControllerCredits {
 
     @FXML
     protected void onBackToCollectionEntered(){
-        BackButton.setImage(new Image("code/projetinfo/Sprites/ButtonBackLight.png"));
+        BackButton.setImage(new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBackLight.png"))));
         BackButton.setOnMouseClicked(event ->{
             Scene scene;
             Stage stage;
@@ -46,7 +46,7 @@ public class ControllerCredits {
 
     @FXML
     protected void onBackToCollectionExited() {
-        BackButton.setImage(new Image("code/projetinfo/Sprites/ButtonBack.png"));
+        BackButton.setImage(new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBack.png"))));
     }
 
 

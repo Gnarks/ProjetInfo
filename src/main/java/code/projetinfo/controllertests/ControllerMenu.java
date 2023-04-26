@@ -27,7 +27,7 @@ public class ControllerMenu {
     @FXML
     protected void onExitEntered(){
         /**For all the on...Entered(): if the cursor comes over the button, the button become lighter*/
-        Image imageLight = new Image("code/projetinfo/Sprites/EXITPRESSED.png");
+        Image imageLight = new Image(String.valueOf(AppGame.class.getResource("Sprites/EXITPRESSED.png")));
         ExitButtonImage.setImage(imageLight);
 
         ExitButtonImage.setOnMouseClicked((event) -> {
@@ -39,12 +39,12 @@ public class ControllerMenu {
     @FXML
     protected void onExitExited(){
         /**For all the on...Exited(): if the cursor quit the button, the button retakes his origin sprite*/
-        Image imageDark = new Image("code/projetinfo/Sprites/EXIT.png");
+        Image imageDark = new Image(String.valueOf(AppGame.class.getResource("Sprites/EXIT.png")));
         ExitButtonImage.setImage(imageDark);
     }
     @FXML
     protected void onCollectionEntered(){
-        Image imageLight = new Image("code/projetinfo/Sprites/ButtonCollectionLight.png");
+        Image imageLight = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonCollectionLight.png")));
         CollectionButtonImage.setImage(imageLight);
 
         CollectionButtonImage.setOnMouseClicked(event ->{
