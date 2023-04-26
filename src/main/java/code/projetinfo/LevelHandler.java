@@ -115,6 +115,7 @@ public class LevelHandler {
             imageBlock.rotate();
             posX = (int) (imageBlock.getImageView().getLayoutX() - gridPos.getX()) / 50;
             posY = (int) (imageBlock.getImageView().getLayoutY() - gridPos.getY()) / 50;
+            System.out.println(level.isPlacable(imageBlock, posX, posY));
             if (!level.isPlacable(imageBlock, posX, posY)) {
                 imageBlock.rotateTo(initialRotateState);
                 Node node = imageBlock.getImageView();
@@ -129,6 +130,8 @@ public class LevelHandler {
                     rePopFT.play();
                 });
             }
+            posX = (int) (imageBlock.getImageView().getLayoutX() - gridPos.getX()) / 50;
+            posY = (int) (imageBlock.getImageView().getLayoutY() - gridPos.getY()) / 50;
             level.place(imageBlock,posX,posY);
         }
         else
