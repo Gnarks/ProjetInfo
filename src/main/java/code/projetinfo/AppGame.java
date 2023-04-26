@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-
+import code.projetinfo.normalBlocks.*;
 public class AppGame extends Application {
     @Override
     public void start(Stage stage) throws IOException {
