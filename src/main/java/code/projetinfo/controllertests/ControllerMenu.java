@@ -17,6 +17,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+
 import java.io.IOException;
 
 
@@ -76,12 +77,12 @@ public class ControllerMenu {
     }
     @FXML
     protected void onCollectionExited(){
-        Image imageLight = new Image("code/projetinfo/Sprites/ButtonCollection.png");
+        Image imageLight = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonCollection.png")));
         CollectionButtonImage.setImage(imageLight);
     }
     @FXML
     protected void onPlayEntered(){
-        Image imageLight = new Image("code/projetinfo/Sprites/ButtonPlayLight.png");
+        Image imageLight = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonPlayLight.png")));
         PlayButtonImage.setImage(imageLight);
 
         PlayButtonImage.setOnMouseClicked(event -> {
@@ -114,17 +115,17 @@ public class ControllerMenu {
     }
     @FXML
     protected void onPlayExited(){
-        Image imageLight = new Image("code/projetinfo/Sprites/Buttonplay.png");
+        Image imageLight = new Image(String.valueOf(AppGame.class.getResource("Sprites/Buttonplay.png")));
         PlayButtonImage.setImage(imageLight);
     }
     @FXML
     protected void onSettingsEntered(){
-        Image imageLight = new Image("code/projetinfo/Sprites/ButtonSettingsLight.png");
+        Image imageLight = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonSettingsLight.png")));
         SettingsButtonImage.setImage(imageLight);
     }
     @FXML
     protected void onSettingsExited(){
-        Image imageLight = new Image("code/projetinfo/Sprites/ButtonSettings.png");
+        Image imageLight = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonSettings.png")));
         SettingsButtonImage.setImage(imageLight);
     }
 

@@ -22,7 +22,7 @@ tasks.withType(JavaCompile) {
 
 application {
     mainModule = 'code.projetinfo'
-    mainClass = 'code.projetinfo.AppDraggable'
+    mainClass = 'code.projetinfo.AppMenu'
 }
 
 javafx {
