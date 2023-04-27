@@ -9,9 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -80,7 +78,7 @@ public class GameController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        Level level = new Level("eada",gridLevel30,blockLevel30);
+        Level level = new Level("eada",heartGrid,heart);
 
 
         LevelHandler levelHandler = new LevelHandler(level, pane);

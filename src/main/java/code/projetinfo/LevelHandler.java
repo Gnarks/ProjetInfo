@@ -33,7 +33,7 @@ public class LevelHandler {
     }
 
     public void drawGrid(){
-        ImageView backGrid = new ImageView("code/projetinfo/Sprites/BackGridLevel.png");
+        ImageView backGrid = new ImageView(String.valueOf(getClass().getResource("Sprites/BackGridLevel.png")));
         backGrid.setLayoutX(gridPos.getX()-50);
         backGrid.setLayoutY(gridPos.getY()-50);
         backGrid.setFitWidth((level.getGrid().getCol()+2)*50);
