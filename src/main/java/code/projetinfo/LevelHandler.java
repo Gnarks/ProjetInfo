@@ -161,11 +161,14 @@ public class LevelHandler {
     }
 
     public void reset(){
-        Rectangle transi = new Rectangle(1600,900,Paint.valueOf("#6666fc"));
-        transi.setLayoutX(1600);
-        pane.getChildren().add(transi);
+        ImageView resetImage = new ImageView(String.valueOf(AppGame.class.getResource("Sprites/ResetGhost.png")));
 
-        TranslateTransition tT = new TranslateTransition(Duration.millis(1000),transi);
+        resetImage.setFitHeight(900);
+        resetImage.setFitWidth(1600);
+        resetImage.setLayoutX(1600);
+        pane.getChildren().add(resetImage);
+
+        TranslateTransition tT = new TranslateTransition(Duration.millis(800),resetImage);
         tT.setToX(-1600);
         tT.play();
         tT.setOnFinished(finishedEvent ->{
@@ -179,10 +182,10 @@ public class LevelHandler {
             imageBlock.setPlaced(false);
         }
         this.level.setPlaced(0);
-            TranslateTransition comeBacktT = new TranslateTransition(Duration.millis(1000),transi);
+            TranslateTransition comeBacktT = new TranslateTransition(Duration.millis(800),resetImage);
             comeBacktT.setToX(1600);
             comeBacktT.play();
-            comeBacktT.setOnFinished(event -> pane.getChildren().remove(transi));
+            comeBacktT.setOnFinished(event -> pane.getChildren().remove(resetImage));
         });
     }
 

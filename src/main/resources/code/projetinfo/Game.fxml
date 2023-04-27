@@ -10,12 +10,12 @@
             <Image url="@Sprites/BackLevel.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="BackToMenuButton" fitHeight="150.0" fitWidth="150.0" preserveRatio="true" scaleX="1.125" scaleY="1.125">
+      <ImageView fx:id="BackToMenuButton" fitHeight="150.0" fitWidth="150.0" preserveRatio="true" onMouseEntered="#onBackEntered" onMouseExited="#onBackExited" scaleX="1.125" scaleY="1.125">
          <image>
             <Image url="@Sprites/ButtonBackToMenu.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="ResetButton" fitHeight="150.0" fitWidth="150.0" layoutX="700.0" layoutY="750.0" preserveRatio="true" scaleX="1.125" scaleY="1.125">
+      <ImageView fx:id="ResetButton" fitHeight="150.0" fitWidth="150.0" layoutX="700.0" layoutY="750.0" preserveRatio="true" onMouseEntered="#onResetEntered" onMouseExited="#onResetExited" scaleX="1.125" scaleY="1.125">
          <image>
             <Image url="@Sprites/ButtonReset.png" />
          </image>

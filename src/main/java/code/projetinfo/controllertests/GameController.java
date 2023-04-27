@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
@@ -34,9 +35,36 @@ public class GameController implements Initializable {
     private String levelName;
 
 
-    public void setLevelNamm(String levelName){
+    public void setLevelName(String levelName){
         this.levelName = levelName;
     }
+
+    @FXML
+    protected void onBackEntered(){
+        Image imageLight = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBackToMenulight.png")));
+        BackToMenuButton.setImage(imageLight);
+    }
+
+    @FXML
+    protected void onBackExited(){
+        Image imageDark = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBackToMenu.png")));
+        BackToMenuButton.setImage(imageDark);
+    }
+
+    @FXML
+    protected void onResetEntered(){
+        Image imageLight = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonResetLight.png")));
+        ResetButton.setImage(imageLight);
+
+    }
+
+    @FXML
+    protected void onResetExited(){
+        Image imageDark = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonReset.png")));
+        ResetButton.setImage(imageDark);
+    }
+
+
 
 
     /**
@@ -75,8 +103,10 @@ public class GameController implements Initializable {
             ResetButton.setOnMouseClicked(event -> {
                 levelHandler.reset();
             });
+
             BackToMenuButton.setOnMouseClicked(event ->{
-                FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("LevelSelector.fxml"));
+                if(levelName.charAt(5) == '1'){
+                FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("LevelSelector1to10.fxml"));
                 Stage stage;
                 Scene scene;
                 stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -87,10 +117,23 @@ public class GameController implements Initializable {
                 }
                 stage.setScene(scene);
                 stage.setResizable(false);
-                stage.show();
+                stage.show();}
+
+                else{
+                    FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("LevelSelector11to20.fxml"));
+                    Stage stage;
+                    Scene scene;
+                    stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    try {
+                        scene = new Scene(fxmlLoader.load(), 1600, 900);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    stage.setScene(scene);
+                    stage.setResizable(false);
+                    stage.show();}
+                });
             });
             System.out.println(levelName);
-
-        });
     }
 }

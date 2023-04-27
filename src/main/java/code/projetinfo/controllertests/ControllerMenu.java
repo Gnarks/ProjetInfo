@@ -79,7 +79,7 @@ public class ControllerMenu {
         PlayButtonImage.setImage(imageLight);
 
         PlayButtonImage.setOnMouseClicked(event ->{
-            FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("LevelSelector.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("LevelSelector1to10.fxml"));
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             try {
                 scene = new Scene(fxmlLoader.load(), 1600, 900);

@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerLevelSelector implements Initializable {
+public class ControllerLevelSelector1to10 implements Initializable {
     @FXML
     private Pane pane;
     @FXML
@@ -59,6 +59,19 @@ public class ControllerLevelSelector implements Initializable {
     public void onNextEntered(){
         ButtonNext.setImage(new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonNextLight.png"))));
 
+        ButtonNext.setOnMouseClicked(event ->{
+            FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("LevelSelector11to20.fxml"));
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            try {
+                scene = new Scene(fxmlLoader.load(), 1600, 900);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+        });
+
 
     }
 
@@ -88,7 +101,7 @@ public class ControllerLevelSelector implements Initializable {
                     throw new RuntimeException(e);
                 }
                 GameController gameController = fxmlLoader.getController();
-                gameController.setLevelNamm(levelName);
+                gameController.setLevelName(levelName);
 
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root, 1600, 900);
