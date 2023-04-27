@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.projetinfo.controllertests.ControllerLevelSelector">
+   <children>
+      <ImageView fitHeight="900.0" fitWidth="1600.0">
+         <image>
+            <Image url="@Sprites/BackLevel.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="Level11" layoutX="476.0" layoutY="156.0" mnemonicParsing="false" prefHeight="179.0" prefWidth="183.0" text="Level1" />
+      <Button fx:id="Level13" layoutX="917.0" layoutY="156.0" mnemonicParsing="false" prefHeight="179.0" prefWidth="183.0" text="Level3" />
+      <Button fx:id="Level12" layoutX="698.0" layoutY="156.0" mnemonicParsing="false" prefHeight="179.0" prefWidth="183.0" text="Level2" />
+      <Button fx:id="Level14" layoutX="384.0" layoutY="355.0" mnemonicParsing="false" prefHeight="179.0" prefWidth="183.0" text="Level4" />
+      <Button fx:id="Level16" layoutX="825.0" layoutY="355.0" mnemonicParsing="false" prefHeight="179.0" prefWidth="183.0" text="Level6" />
+      <Button fx:id="Level15" layoutX="606.0" layoutY="355.0" mnemonicParsing="false" prefHeight="179.0" prefWidth="183.0" text="Level5" />
+      <Button fx:id="Level17" layoutX="1034.0" layoutY="355.0" mnemonicParsing="false" prefHeight="179.0" prefWidth="183.0" text="Level7" />
+      <Button fx:id="Level18" layoutX="469.0" layoutY="558.0" mnemonicParsing="false" prefHeight="179.0" prefWidth="183.0" text="Level8" />
+      <Button fx:id="Level19" layoutX="698.0" layoutY="558.0" mnemonicParsing="false" prefHeight="179.0" prefWidth="183.0" text="Level9" />
+      <Button fx:id="Level20" layoutX="917.0" layoutY="558.0" mnemonicParsing="false" prefHeight="179.0" prefWidth="183.0" text="Level10" />
+      <ImageView fx:id="ButtonBack" fitHeight="79.0" fitWidth="105.0" layoutX="31.0" layoutY="411.0"  onMouseEntered="#onBackEntered" onMouseExited="#onBackExited" >
+         <image>
+            <Image url="@Sprites/ButtonBack.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ButtonNext" fitHeight="79.0" fitWidth="105.0" layoutX="1481.0" layoutY="411.0"  onMouseEntered="#onNextEntered" onMouseExited="#onNextExited" >
+         <image>
+            <Image url="@Sprites/ButtonNext.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>
