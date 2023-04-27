@@ -44,6 +44,7 @@ public abstract class ImageBlock{
       imageView.setFitWidth(width);
       imageView.setFitHeight(height);
       this.isPlaced = false;
+      this.setPosition(layoutPos);
    }
    /**
     * This method rotate the selected block:
