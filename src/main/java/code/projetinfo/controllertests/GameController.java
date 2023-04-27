@@ -1,7 +1,8 @@
 package code.projetinfo.controllertests;
 
 import code.projetinfo.*;
-import code.projetinfo.normalBlocks.*;
+import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,7 +13,12 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -26,48 +32,12 @@ public class GameController implements Initializable {
     @FXML
     private ImageView ResetButton;
 
-
-    private final ImageBlock[] everybodyDance = new ImageBlock[]{
-            new Amogous(new Position(400, 150)), new Baby(new Position(0, 0)), new Bloby(new Position(0, 0)),
-            new BigBob(new Position(0, 0)), new Scooboodoo(new Position(0, 0)), new Geoffroy(new Position(0, 0)),
-            new Napsta(new Position(0, 0)), new BooBelle(new Position(150, 100)), new Bob(new Position(0, 0)),
-            new Redky(new Position(0, 0)), new VicKing(new Position(0, 0)), new Toowels(new Position(0, 0)),
-            new Wolfy(new Position(0, 0)), new Phantom(new Position(0, 0)), new LilDeath(new Position(0, 0)),
-            new King(new Position(0, 0)), new PlagueDoc(new Position(0, 0)), new GymBroo(new Position(0, 0))
-    };
-
-    private final Cases gridLevel30 = new Cases(new CaseState[][]{
-            {CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.SPECIAL},
-            {CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.SPECIAL,CaseState.EMPTY},
-            {CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.SPECIAL,CaseState.EMPTY,CaseState.EMPTY},
-            {CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.SPECIAL,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY},
-            {CaseState.EMPTY,CaseState.EMPTY,CaseState.SPECIAL,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY},
-            {CaseState.EMPTY,CaseState.SPECIAL,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY},
-            {CaseState.SPECIAL,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY}});
-
-    public final ImageBlock[] blockLevel30 = new ImageBlock[]{
-            new Toowels(new Position(125, 100)),new BooBelle(new Position(250, 75)),new Baby(new Position(125, 325)),
-            new Bloby(new Position(250, 250)),new Amogous(new Position(175, 450)),new Scooboodoo(new Position(1175, 100)),
-            new Nessy(new Position(1300, 75)),new Redky(new Position(1175, 225)),new LilDeath(new Position(1300, 250)),
-            new Baby(new Position(1175, 350)),new PlagueDoc(new Position(1300, 425))};
+    private String levelName;
 
 
-    private final Cases heartGrid = new Cases(new CaseState[][]{
-        {CaseState.SPECIAL, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL, CaseState.SPECIAL, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL},
-        {CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY},
-        {CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY},
-        {CaseState.EMPTY, CaseState.FULL, CaseState.FULL, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY},
-        {CaseState.SPECIAL, CaseState.FULL, CaseState.FULL, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL},
-        {CaseState.SPECIAL, CaseState.SPECIAL, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL, CaseState.SPECIAL},
-        {CaseState.SPECIAL, CaseState.SPECIAL, CaseState.SPECIAL, CaseState.EMPTY, CaseState.EMPTY, CaseState.SPECIAL, CaseState.SPECIAL, CaseState.SPECIAL}});
-
-
-    public final ImageBlock[] bobynininet = new ImageBlock[]{new Bob(new Position(50, 10))};
-
-    private final ImageBlock[] heart = new ImageBlock[]{new Amogous(new Position(150, 100)), new Amogous(new Position(850, 100)),
-            new Scooboodoo(new Position(50, 200)), new Geoffroy(new Position(800, 200)), new Redky(new Position(950, 430)),
-            new Redky(new Position(50, 450)), new Napsta(new Position(150, 300)), new Napsta(new Position(960, 120)),
-            new Baby(new Position(975, 300)),};
+    public void setLevelNamm(String levelName){
+        this.levelName = levelName;
+    }
 
 
     /**
@@ -79,34 +49,61 @@ public class GameController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        Level level = new Level("eada",gridLevel30,blockLevel30);
-
-
-        LevelHandler levelHandler = new LevelHandler(level, pane);
-
-
-        levelHandler.dispatchBlocks();
-        levelHandler.drawGrid();
-        levelHandler.drawImageBlocks();
-        ResetButton.setOnMouseClicked(event -> {
-            levelHandler.reset();
-        });
-
-
-        BackToMenuButton.setOnMouseClicked(event ->{
-            FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("MainMenu.fxml"));
-            Stage stage;
-            Scene scene;
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Rectangle transi = new Rectangle(1600,900 , Paint.valueOf("222222"));
+        pane.getChildren().add(transi);
+        Platform.runLater(() ->{
+            Level level = null;
             try {
-                scene = new Scene(fxmlLoader.load(), 1600, 900);
+                level = new Level(levelName);
             } catch (IOException e) {
                 throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            } catch (InvocationTargetException e) {
+                throw new RuntimeException(e);
+            } catch (NoSuchMethodException e) {
+                throw new RuntimeException(e);
+            } catch (InstantiationException e) {
+                throw new RuntimeException(e);
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
             }
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.show();
+
+
+            LevelHandler levelHandler = new LevelHandler(level, pane);
+
+
+            levelHandler.dispatchBlocks();
+            levelHandler.drawGrid();
+            levelHandler.drawImageBlocks();
+            transi.toFront();
+            TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500),transi);
+            translateTransition.setToY(900);
+            translateTransition.play();
+            translateTransition.setOnFinished(event ->{pane.getChildren().remove(transi);});
+
+            ResetButton.setOnMouseClicked(event -> {
+                levelHandler.reset();
+            });
+            BackToMenuButton.setOnMouseClicked(event ->{
+                FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("MainMenu.fxml"));
+                Stage stage;
+                Scene scene;
+                stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                try {
+                    scene = new Scene(fxmlLoader.load(), 1600, 900);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+            });
+            System.out.println(levelName);
+
         });
+
+
+
     }
 }
