@@ -54,17 +54,8 @@ public class GameController implements Initializable {
             Level level = null;
             try {
                 level = new Level(levelName);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            } catch (ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            } catch (InvocationTargetException e) {
-                throw new RuntimeException(e);
-            } catch (NoSuchMethodException e) {
-                throw new RuntimeException(e);
-            } catch (InstantiationException e) {
-                throw new RuntimeException(e);
-            } catch (IllegalAccessException e) {
+            } catch (IOException | ClassNotFoundException | NoSuchMethodException | InvocationTargetException |
+                     InstantiationException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
 
@@ -79,7 +70,7 @@ public class GameController implements Initializable {
             TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500),transi);
             translateTransition.setToY(900);
             translateTransition.play();
-            translateTransition.setOnFinished(event ->{pane.getChildren().remove(transi);});
+            translateTransition.setOnFinished(event -> pane.getChildren().remove(transi));
 
             ResetButton.setOnMouseClicked(event -> {
                 levelHandler.reset();
@@ -101,8 +92,5 @@ public class GameController implements Initializable {
             System.out.println(levelName);
 
         });
-
-
-
     }
 }
