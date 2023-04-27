@@ -76,7 +76,7 @@ public class GameController implements Initializable {
                 levelHandler.reset();
             });
             BackToMenuButton.setOnMouseClicked(event ->{
-                FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("MainMenu.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("LevelSelector.fxml"));
                 Stage stage;
                 Scene scene;
                 stage = (Stage) ((Node)event.getSource()).getScene().getWindow();

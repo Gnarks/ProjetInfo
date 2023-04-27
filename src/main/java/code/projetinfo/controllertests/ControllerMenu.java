@@ -2,20 +2,16 @@ package code.projetinfo.controllertests;
 
 
 import code.projetinfo.AppGame;
-import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import javafx.util.Duration;
+
 
 
 import java.io.IOException;
@@ -31,9 +27,6 @@ public class ControllerMenu {
     private ImageView SettingsButtonImage;
     @FXML
     private ImageView CollectionButtonImage;
-
-    @FXML
-    private Pane pane;
 
     private Stage stage;
 
@@ -85,32 +78,16 @@ public class ControllerMenu {
         Image imageLight = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonPlayLight.png")));
         PlayButtonImage.setImage(imageLight);
 
-        PlayButtonImage.setOnMouseClicked(event -> {
-            Rectangle transi = new Rectangle(1600,900, Paint.valueOf("222222"));
-            transi.setLayoutY(900);
-            pane.getChildren().add(transi);
-            TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500),transi);
-            translateTransition.setToY(-900);
-            translateTransition.play();
-            translateTransition.setOnFinished(event1 -> {
-                FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("Game.fxml"));
-                Parent root;
-                try {
-                    root = fxmlLoader.load();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                GameController gameController = fxmlLoader.getController();
-                gameController.setLevelNamm("Level12");
-
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                scene = new Scene(root, 1600, 900);
-
-                stage.setScene(scene);
-                stage.setResizable(false);
-                stage.show();
-            });
-
+        PlayButtonImage.setOnMouseClicked(event ->{
+            FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("LevelSelector.fxml"));
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            try {
+                scene = new Scene(fxmlLoader.load(), 1600, 900);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.setScene(scene);
+            stage.show();
         });
     }
     @FXML
