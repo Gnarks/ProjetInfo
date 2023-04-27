@@ -7,8 +7,8 @@ import code.projetinfo.Position;
 import javafx.scene.image.ImageView;
 
 public class GymBroo extends ImageBlock {
-    public GymBroo(Position spawnPos){
-        super(spawnPos,
+    public GymBroo(Position layoutPos){
+        super(layoutPos,
                 new Cases(new CaseState[][] {
                         {CaseState.FULL,CaseState.FULL,CaseState.FULL},
                         {CaseState.FULL,CaseState.EMPTY,CaseState.FULL}}),

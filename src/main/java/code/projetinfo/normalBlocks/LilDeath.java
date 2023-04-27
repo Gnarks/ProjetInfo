@@ -8,8 +8,8 @@ import javafx.scene.image.ImageView;
 
 public class LilDeath extends ImageBlock {
 
-    public LilDeath(Position spawnPos){
-        super(spawnPos,
+    public LilDeath(Position layoutPos){
+        super(layoutPos,
                 new Cases(new CaseState[][] {
                         {CaseState.EMPTY,CaseState.FULL},
                         {CaseState.EMPTY,CaseState.FULL},

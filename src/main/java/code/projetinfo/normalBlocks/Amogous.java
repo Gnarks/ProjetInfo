@@ -8,8 +8,8 @@ import javafx.scene.image.ImageView;
 
 public class Amogous extends ImageBlock {
 
-    public Amogous(Position spawnPos){
-        super(spawnPos,
+    public Amogous(Position layoutPosition){
+        super(layoutPosition,
                 new Cases(new CaseState[][] {
                         {CaseState.FULL,CaseState.EMPTY},
                         {CaseState.FULL,CaseState.FULL}}),

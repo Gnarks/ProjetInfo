@@ -8,8 +8,8 @@ import javafx.scene.image.ImageView;
 
 public class Scooboodoo extends ImageBlock {
 
-    public Scooboodoo(Position spawnPos){
-        super(spawnPos,
+    public Scooboodoo(Position layoutPos){
+        super(layoutPos,
                 new Cases(new CaseState[][] {
                         {CaseState.EMPTY,CaseState.FULL},
                         {CaseState.FULL,CaseState.FULL }}),

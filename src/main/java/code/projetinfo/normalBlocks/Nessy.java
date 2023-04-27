@@ -8,8 +8,8 @@ import javafx.scene.image.ImageView;
 
 public class Nessy extends ImageBlock {
 
-    public Nessy(Position spawnPos){
-        super(spawnPos,
+    public Nessy(Position layoutPos){
+        super(layoutPos,
                 new Cases(new CaseState[][]
                         {{CaseState.EMPTY,CaseState.FULL},
                         {CaseState.FULL,CaseState.FULL},

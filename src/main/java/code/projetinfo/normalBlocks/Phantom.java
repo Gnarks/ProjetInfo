@@ -8,8 +8,8 @@ import javafx.scene.image.ImageView;
 
 public class Phantom extends ImageBlock {
 
-    public Phantom(Position spawnPos){
-        super(spawnPos,
+    public Phantom(Position layoutPos){
+        super(layoutPos,
                 new Cases(new CaseState[][] {
                         {CaseState.EMPTY,CaseState.FULL,CaseState.FULL},
                         {CaseState.EMPTY,CaseState.FULL,CaseState.FULL},

@@ -59,8 +59,8 @@ public class LevelHandler {
         for (ImageBlock imageBlock:
                 level.getBlocks()) {
             pane.getChildren().add(imageBlock.getImageView());
-            imageBlock.getImageView().setLayoutX(imageBlock.getSpawnPos().getX());
-            imageBlock.getImageView().setLayoutY(imageBlock.getSpawnPos().getY());
+            if (imageBlock.getLayoutX() == 0 && imageBlock.getLayoutY() == 0)
+                imageBlock.setPosition(imageBlock.getSpawnPos());
             makeDraggable(imageBlock);
         }
     }
