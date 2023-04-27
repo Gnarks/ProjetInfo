@@ -28,15 +28,13 @@ public abstract class ImageBlock{
 
    /** The main constructor of blocks
     *
-    * @param spawnPos the Position at which the block will spawn in the scene.
+    * @param layoutPos the position of the block on the scene.
     * @param cases the representation of the block with CaseStates.
     * @param midPos the Position of the middlePosition in the scene.
     * @param imageView the imageView of the block.
     * @see Cases
-    *
     */
-   public ImageBlock(Position spawnPos, Cases cases, Position midPos, ImageView imageView,int width,int height){
-      this.spawnPos = spawnPos;
+   public ImageBlock(Position layoutPos, Cases cases, Position midPos, ImageView imageView,int width,int height){
       this.cases = cases;
       this.midPos = midPos;
       this.rotateState = 0;
@@ -136,8 +134,7 @@ public abstract class ImageBlock{
       double x = - changes[rotateState].getX() + changes[newRotateState%4].getX();
       double y = - changes[rotateState].getY() + changes[newRotateState%4].getY();
 
-      imageView.setLayoutX(imageView.getLayoutX() +x);
-      imageView.setLayoutY(imageView.getLayoutY() +y);
+      this.setPosition(new Position(this.getLayoutX()+x,this.getLayoutY()+y));
 
       midPos = new Position(midPos.getX() - x, midPos.getY()-y);
 
@@ -166,5 +163,17 @@ public abstract class ImageBlock{
 
    public boolean getPlacedState(){
       return this.isPlaced;
+   }
+
+   public void setPosition(Position layoutPosition){
+      imageView.setLayoutX(layoutPosition.getX());
+      imageView.setLayoutY(layoutPosition.getY());
+   }
+   public double getLayoutX(){
+      return imageView.getLayoutX();
+   }
+
+   public double getLayoutY(){
+      return imageView.getLayoutY();
    }
 }

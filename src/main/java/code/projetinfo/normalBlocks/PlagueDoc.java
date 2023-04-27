@@ -8,8 +8,8 @@ import javafx.scene.image.ImageView;
 
 public class PlagueDoc extends ImageBlock {
 
-    public PlagueDoc(Position spawnPos){
-        super(spawnPos,
+    public PlagueDoc(Position layoutPos){
+        super(layoutPos,
                 new Cases(new CaseState[][] {
                         {CaseState.EMPTY,CaseState.FULL,CaseState.FULL},
                         {CaseState.FULL,CaseState.FULL,CaseState.EMPTY}}

@@ -8,8 +8,8 @@ import javafx.scene.image.ImageView;
 
 public class VicKing extends ImageBlock {
 
-    public VicKing(Position spawnPos){
-        super(spawnPos,
+    public VicKing(Position layoutPos){
+        super(layoutPos,
                 new Cases(new CaseState[][] {
                         {CaseState.FULL,CaseState.FULL,CaseState.FULL},
                         {CaseState.FULL,CaseState.FULL,CaseState.FULL},

@@ -8,8 +8,8 @@ import javafx.scene.image.ImageView;
 
 public class Baby extends ImageBlock {
 
-    public Baby(Position spawnPos){
-        super(spawnPos,
+    public Baby(Position layoutPos){
+        super(layoutPos,
                 new Cases(new CaseState[][] {
                         {CaseState.FULL}}),
                 new Position(25,25),

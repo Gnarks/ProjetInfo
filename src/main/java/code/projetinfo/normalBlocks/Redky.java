@@ -8,8 +8,8 @@ import javafx.scene.image.ImageView;
 
 public class Redky extends ImageBlock {
 
-    public Redky(Position spawnPos){
-        super(spawnPos,
+    public Redky(Position layoutPos){
+        super(layoutPos,
                 new Cases(new CaseState[][] {
                         {CaseState.FULL,CaseState.FULL},
                         {CaseState.FULL,CaseState.FULL }}

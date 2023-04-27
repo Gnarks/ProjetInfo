@@ -9,8 +9,8 @@ import javafx.scene.image.ImageView;
 
 public class Wolfy extends ImageBlock {
 
-    public Wolfy(Position spawnPos){
-        super(spawnPos,
+    public Wolfy(Position layoutPos){
+        super(layoutPos,
                 new Cases(new CaseState[][] {
                         {CaseState.EMPTY,CaseState.FULL,CaseState.FULL},
                         {CaseState.FULL,CaseState.FULL,CaseState.FULL},

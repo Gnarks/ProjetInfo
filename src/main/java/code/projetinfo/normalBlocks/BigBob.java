@@ -8,8 +8,8 @@ import javafx.scene.image.ImageView;
 
 public class BigBob extends ImageBlock {
 
-    public BigBob(Position spawnPos){
-        super(spawnPos,
+    public BigBob(Position layoutPos){
+        super(layoutPos,
                 new Cases(new CaseState[][] {
                         {CaseState.FULL,CaseState.FULL},
                         {CaseState.FULL,CaseState.FULL},

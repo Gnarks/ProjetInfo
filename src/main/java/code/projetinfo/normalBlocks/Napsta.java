@@ -8,8 +8,8 @@ import javafx.scene.image.ImageView;
 
 public class Napsta extends ImageBlock {
 
-    public Napsta(Position spawnPos) {
-        super(spawnPos,
+    public Napsta(Position layoutPos) {
+        super(layoutPos,
                 new Cases(new CaseState[][]{
                         {CaseState.FULL},
                         {CaseState.FULL},

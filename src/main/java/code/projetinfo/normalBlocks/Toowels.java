@@ -8,8 +8,8 @@ import javafx.scene.image.ImageView;
 
 public class Toowels extends ImageBlock {
 
-    public Toowels(Position spawnPos){
-        super(spawnPos,
+    public Toowels(Position layoutPos){
+        super(layoutPos,
                 new Cases(new CaseState[][] {
                         {CaseState.FULL,CaseState.EMPTY},
                         {CaseState.FULL,CaseState.EMPTY},

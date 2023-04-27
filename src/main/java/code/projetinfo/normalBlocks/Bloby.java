@@ -8,8 +8,8 @@ import javafx.scene.image.ImageView;
 
 public class Bloby extends ImageBlock {
 
-    public Bloby(Position spawnPos){
-        super(spawnPos,
+    public Bloby(Position layoutPos){
+        super(layoutPos,
                 new Cases(new CaseState[][] {
                         {CaseState.FULL,CaseState.EMPTY},
                         {CaseState.FULL,CaseState.FULL},

@@ -8,8 +8,8 @@ import javafx.scene.image.ImageView;
 
 public class King extends ImageBlock {
 
-    public King(Position spawnPos){
-        super(spawnPos,
+    public King(Position layoutPos){
+        super(layoutPos,
                 new Cases(new CaseState[][] {
                         {CaseState.FULL,CaseState.FULL},
                         {CaseState.FULL,CaseState.FULL},

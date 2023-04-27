@@ -7,8 +7,8 @@ import code.projetinfo.Position;
 import javafx.scene.image.ImageView;
 
 public class Geoffroy extends ImageBlock {
-    public Geoffroy(Position spawnPos){
-        super(spawnPos,
+    public Geoffroy(Position layoutPos){
+        super(layoutPos,
                 new Cases(new CaseState[][] {
                         {CaseState.FULL,CaseState.FULL},
                         {CaseState.FULL,CaseState.FULL},
