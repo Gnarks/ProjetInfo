@@ -75,7 +75,8 @@ public class LevelHandler {
             if(event.getButton() == MouseButton.PRIMARY){
                 node.toFront();
                 if(imageBlock.getPlacedState()){
-                    level.remove(imageBlock,(int) (node.getLayoutX()-gridPos.getX())/50, (int) (node.getLayoutY()- gridPos.getY())/50);
+                    level.remove(imageBlock,(int) (imageBlock.getLayoutX()-gridPos.getX())/50, 
+                            (int) (imageBlock.getLayoutY()- gridPos.getY())/50);
                 }
 
                 moveBlock(imageBlock,event);
@@ -86,8 +87,8 @@ public class LevelHandler {
         node.setOnMouseReleased(event -> {
             if (event.getButton() == MouseButton.PRIMARY) {
                 if (inGridBounds(new Position(event.getSceneX(), event.getSceneY()))) {
-                    if (level.isPlacable(imageBlock, (int) (node.getLayoutX() - gridPos.getX()) / 50, (int) (node.getLayoutY() - gridPos.getY()) / 50))
-                        level.place(imageBlock, (int) (node.getLayoutX() - gridPos.getX()) / 50, (int) (node.getLayoutY() - gridPos.getY()) / 50);
+                    if (level.isPlacable(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / 50, (int) (imageBlock.getLayoutY() - gridPos.getY()) / 50))
+                        level.place(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / 50, (int) (imageBlock.getLayoutY() - gridPos.getY()) / 50);
 
                     else
                         goToSpawnPos(imageBlock);
@@ -106,16 +107,15 @@ public class LevelHandler {
      */
     private void tryRotate(ImageBlock imageBlock){
         if (imageBlock.getPlacedState()) {
-            int posX = (int) (imageBlock.getImageView().getLayoutX() - gridPos.getX()) / 50;
-            int posY = (int) (imageBlock.getImageView().getLayoutY() - gridPos.getY()) / 50;
+            int posX = (int) (imageBlock.getLayoutX() - gridPos.getX()) / 50;
+            int posY = (int) (imageBlock.getLayoutY() - gridPos.getY()) / 50;
             level.remove(imageBlock, posX, posY);
 
             int initialRotateState = imageBlock.getRotateState();
 
             imageBlock.rotate();
-            posX = (int) (imageBlock.getImageView().getLayoutX() - gridPos.getX()) / 50;
-            posY = (int) (imageBlock.getImageView().getLayoutY() - gridPos.getY()) / 50;
-            System.out.println(level.isPlacable(imageBlock, posX, posY));
+            posX = (int) (imageBlock.getLayoutX() - gridPos.getX()) / 50;
+            posY = (int) (imageBlock.getLayoutY() - gridPos.getY()) / 50;
             if (!level.isPlacable(imageBlock, posX, posY)) {
                 imageBlock.rotateTo(initialRotateState);
                 Node node = imageBlock.getImageView();
@@ -130,8 +130,8 @@ public class LevelHandler {
                     rePopFT.play();
                 });
             }
-            posX = (int) (imageBlock.getImageView().getLayoutX() - gridPos.getX()) / 50;
-            posY = (int) (imageBlock.getImageView().getLayoutY() - gridPos.getY()) / 50;
+            posX = (int) (imageBlock.getLayoutX() - gridPos.getX()) / 50;
+            posY = (int) (imageBlock.getLayoutY() - gridPos.getY()) / 50;
             level.place(imageBlock,posX,posY);
         }
         else
@@ -147,11 +147,10 @@ public class LevelHandler {
         fT.setToValue(0);
         fT.play();
         fT.setOnFinished(finishedEvent -> {
-            node.setLayoutX(imageBlock.getSpawnPos().getX());
-            node.setLayoutY(imageBlock.getSpawnPos().getY());
+            imageBlock.setPosition(imageBlock.getSpawnPos());
             for (ImageBlock collided:
                  collide(imageBlock)) {
-                if (!collided.getSpawnPos().equals(new Position(collided.getImageView().getLayoutX(),collided.getImageView().getLayoutY())))
+                if (!collided.getSpawnPos().equals(new Position(collided.getLayoutX(),collided.getLayoutY())))
                     goToSpawnPos(collided);
             }
             FadeTransition rePopFT = new FadeTransition(Duration.millis(100),node);
@@ -173,8 +172,8 @@ public class LevelHandler {
         for (ImageBlock imageBlock :
                 level.getBlocks()) {
             if(imageBlock.getPlacedState())
-                level.remove(imageBlock,(int) (imageBlock.getImageView().getLayoutX()-gridPos.getX())/50,
-                        (int) (imageBlock.getImageView().getLayoutY()- gridPos.getY())/50);
+                level.remove(imageBlock,(int) (imageBlock.getLayoutX()-gridPos.getX())/50,
+                        (int) (imageBlock.getLayoutY()- gridPos.getY())/50);
             imageBlock.rotateTo(0);
             goToSpawnPos(imageBlock);
             imageBlock.setPlaced(false);
