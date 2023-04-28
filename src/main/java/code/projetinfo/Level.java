@@ -39,8 +39,15 @@ public class Level {
             block.put("type", blocks[i].getClass().toString());
             block.put("rotatestate", blocks[i].getRotateState());
 
-            block.put("MidX", this.blocks[i].getMidX());
-            block.put("MidY", this.blocks[i].getMidY());
+            //if the block is already placed save is position if not save (0,0) (useful for precondition in dispatchBlocks()
+            if (blocks[i].getPlacedState()){
+                block.put("LayoutX", this.blocks[i].getLayoutX());
+                block.put("LayoutY", this.blocks[i].getMidY());
+            }else{
+                block.put("LayoutX", 0.0);
+                block.put("LayoutY", 0.0);
+            }
+
             block.put("isplaced", this.blocks[i].getPlacedState());
             blocklist.put(String.valueOf(i), block);
         }
@@ -72,10 +79,10 @@ public class Level {
             Class current = Class.forName(classString);
 
             //get the position of each saved blocks
-            nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("MidX");
+            nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("LayoutX");
             double midX = mapper.treeToValue(nodeFinder, double.class);
 
-            nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("MidY");
+            nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("LayoutY");
             double midY = mapper.treeToValue(nodeFinder, double.class);
 
             nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("isplaced");

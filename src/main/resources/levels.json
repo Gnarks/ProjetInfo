@@ -1,16 +1,51 @@
 {
   "test" : {
-    "grid" : [ [ "FULL", "EMPTY", "EMPTY" ], [ "FULL", "FULL", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY" ] ],
+    "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "FULL", "FULL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ] ],
     "blocklist" : {
       "0" : {
+        "type" : "class code.projetinfo.normalBlocks.VicKing",
+        "rotatestate" : 0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
+        "isplaced" : false
+      },
+      "1" : {
+        "type" : "class code.projetinfo.normalBlocks.Redky",
+        "rotatestate" : 0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
+        "isplaced" : false
+      },
+      "2" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
+        "isplaced" : false
+      },
+      "3" : {
+        "type" : "class code.projetinfo.normalBlocks.Amogous",
+        "rotatestate" : 0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
+        "isplaced" : false
+      },
+      "4" : {
+        "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
+        "rotatestate" : 0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
+        "isplaced" : false
+      },
+      "5" : {
+        "type" : "class code.projetinfo.normalBlocks.Baby",
+        "rotatestate" : 0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       }
     },
-    "placed" : 1
+    "placed" : 0
   },
   "heart" : {
     "grid" : [ [ "SPECIAL", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "SPECIAL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "FULL", "FULL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "SPECIAL", "FULL", "FULL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL" ], [ "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL" ], [ "SPECIAL", "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL", "SPECIAL" ] ],
@@ -18,64 +53,64 @@
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Geoffroy",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 175.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Redky",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 25.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Redky",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 25.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "7" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "8" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 25.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       }
     },
@@ -87,43 +122,43 @@
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.VicKing",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Redky",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 25.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       }
     },
@@ -135,43 +170,43 @@
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.BigBob",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       }
     },
@@ -183,50 +218,50 @@
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Redky",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.BigBob",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       }
     },
@@ -238,64 +273,64 @@
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Geoffroy",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 175.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Redky",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Redky",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "7" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "8" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 25.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       }
     },
@@ -307,50 +342,50 @@
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.BigBob",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 25.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       }
     },
@@ -362,43 +397,43 @@
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Redky",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Phantom",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 25.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       }
     },
@@ -410,43 +445,43 @@
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.VicKing",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Phantom",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Phantom",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       }
     },
@@ -458,64 +493,64 @@
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Phantom",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "7" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "8" : {
         "type" : "class code.projetinfo.normalBlocks.Wolfy",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 125.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       }
     },
@@ -527,36 +562,36 @@
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Wolfy",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 125.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Phantom",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Phantom",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       }
     },
@@ -568,36 +603,36 @@
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Bloby",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Redky",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Phantom",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       }
     },
@@ -609,43 +644,43 @@
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Nessy",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Nessy",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Bloby",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       }
     },
@@ -657,50 +692,50 @@
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.LilDeath",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.LilDeath",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.BigBob",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       }
     },
@@ -712,43 +747,43 @@
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Nessy",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Bloby",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.LilDeath",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Toowels",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 125.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       }
     },
@@ -760,43 +795,43 @@
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.GymBroo",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 25.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.GymBroo",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 25.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Toowels",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 125.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Bloby",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 25.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 25.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       }
     },
@@ -808,57 +843,57 @@
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Bloby",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Nessy",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.LilDeath",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.BigBob",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.GymBroo",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 25.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.LilDeath",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "7" : {
         "type" : "class code.projetinfo.normalBlocks.Toowels",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 125.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       }
     },
@@ -870,43 +905,43 @@
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Geoffroy",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 175.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.PlagueDoc",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.PlagueDoc",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.GymBroo",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 25.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       }
     },
@@ -918,50 +953,50 @@
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Nessy",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.PlagueDoc",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Wolfy",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 125.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Phantom",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.Bloby",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       }
     },
@@ -973,50 +1008,50 @@
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.VicKing",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Nessy",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.GymBroo",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 25.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.BigBob",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Geoffroy",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 175.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Toowels",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 125.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       }
     },
@@ -1028,43 +1063,43 @@
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.King",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.PlagueDoc",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.LilDeath",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Toowels",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 125.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Toowels",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 125.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       }
     },
@@ -1076,78 +1111,78 @@
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Toowels",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 125.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 25.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Bloby",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.Nessy",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "7" : {
         "type" : "class code.projetinfo.normalBlocks.Redky",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "8" : {
         "type" : "class code.projetinfo.normalBlocks.LilDeath",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "9" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
         "rotatestate" : 0,
-        "MidX" : 25.0,
-        "MidY" : 25.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       },
       "10" : {
         "type" : "class code.projetinfo.normalBlocks.PlagueDoc",
         "rotatestate" : 0,
-        "MidX" : 75.0,
-        "MidY" : 75.0,
+        "LayoutX" : 0.0,
+        "LayoutY" : 0.0,
         "isplaced" : false
       }
     },
