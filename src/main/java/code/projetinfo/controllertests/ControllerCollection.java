@@ -89,7 +89,7 @@ public class ControllerCollection {
     protected void PlagueDocPressed(){
         setGhostImage(new Image(String.valueOf(AppGame.class.getResource("Sprite_Ghosts/Sprite_GhostS3x2_Rotation0.png"))),200,300,650,180);
         setGhostName("Plague Doc",725);
-        GhostDescription.setText("He fought the plague with courage but he lost...");
+        GhostDescription.setText("It was not as useful as a covid mask.");
     }
     @FXML
     protected void ScooboodooPressed(){
@@ -115,7 +115,7 @@ public class ControllerCollection {
     protected void BobPressed() {
         setGhostImage(new Image(String.valueOf(AppGame.class.getResource("Sprite_Ghosts/Sprite_Ghost1x2_Rotation0.png"))),250,125,732.5,180);
         setGhostName("Bob",780);
-        GhostDescription.setText("He is more scared of you than you of him.");
+        GhostDescription.setText("He is more scared of you than you are of him.");
     }
     @FXML
     protected void AmogousPressed(){
@@ -127,7 +127,7 @@ public class ControllerCollection {
     protected void BooBellePressed(){
         setGhostImage(new Image(String.valueOf(AppGame.class.getResource("Sprite_Ghosts/Sprite_GhostBigL3x3_Rotation0.png"))),250,250,675,180);
         setGhostName("BooBelle",745);
-        GhostDescription.setText("Was homeless during his life by choice cause he truly loves trashes");
+        GhostDescription.setText("Has always lived(and died) in a trash.");
 
     }
     @FXML
@@ -140,7 +140,7 @@ public class ControllerCollection {
     protected void LilDeathPressed(){
         setGhostImage(new Image(String.valueOf(AppGame.class.getResource("Sprite_Ghosts/Sprite_GhostJ2x3_Rotation0.png"))),240,160,720,180);
         setGhostName("Lil Death",745);
-        GhostDescription.setText("The son of the Death but he prefers puzzles than kill people.");
+        GhostDescription.setText("The son of the Death (did his father killed him ?).");
     }
     @FXML
     protected void VicKingPressed(){
@@ -157,13 +157,13 @@ public class ControllerCollection {
     protected void BabyPressed(){
         setGhostImage(new Image(String.valueOf(AppGame.class.getResource("Sprite_Ghosts/Sprite_Ghost1x1_Rotation0.png"))),250,250,675,180);
         setGhostName("Baby",775);
-        GhostDescription.setText("He is little, he is a baby. That's it");
+        GhostDescription.setText("It's a little is a baby");
     }
     @FXML
     protected void BlobyPressed(){
         setGhostImage(new Image(String.valueOf(AppGame.class.getResource("Sprite_Ghosts/Sprite_Ghost2x2TopLeft_Rotation0.png"))),240,160,720,180);
         setGhostName("Bloby",765);
-        GhostDescription.setText("Too cute to scare someone.");
+        GhostDescription.setText("Too cute to scare anyone.");
     }
     @FXML
     protected void NessyPressed(){
@@ -187,7 +187,7 @@ public class ControllerCollection {
     protected void BigBrooPressed(){
         setGhostImage(new Image(String.valueOf(AppGame.class.getResource("Sprite_Ghosts/Sprite_GhostC3x2_Rotation0.png"))),200,300,650,180);
         setGhostName("Big Broo",745);
-        GhostDescription.setText("Always at the gym but somehow skips every leg days.");
+        GhostDescription.setText("Always at the gym but somehow skips every leg day.");
     }
     @FXML
     protected void PhantomPressed(){
