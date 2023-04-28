@@ -121,7 +121,7 @@ public class ControllerCollection {
     protected void AmogousPressed(){
         setGhostImage(new Image(String.valueOf(AppGame.class.getResource("Sprite_Ghosts/Sprite_GhostL2x2_Rotation0.png"))),250,250,675,180);
         setGhostName("Amogous",745);
-        GhostDescription.setText("A crew member of the Skeld.\nCause of death: \nHas been ejected from the spaceship for being too lazy to do tasks.");
+        GhostDescription.setText("A crew member of the Skeld.\nCause of death: \nGot ejected from the spaceship for being too lazy to do tasks.");
     }
     @FXML
     protected void BooBellePressed(){
