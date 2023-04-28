@@ -118,17 +118,8 @@ public class LevelHandler {
             posY = (int) (imageBlock.getLayoutY() - gridPos.getY()) / 50;
             if (!level.isPlacable(imageBlock, posX, posY)) {
                 imageBlock.rotateTo(initialRotateState);
-                Node node = imageBlock.getImageView();
-                FadeTransition fT = new FadeTransition(Duration.millis(80),node);
-                fT.setByValue(1);
-                fT.setToValue(0);
-                fT.play();
-                fT.setOnFinished(finishedEvent -> {
-                    FadeTransition rePopFT = new FadeTransition(Duration.millis(100),node);
-                    rePopFT.setByValue(0);
-                    rePopFT.setToValue(1);
-                    rePopFT.play();
-                });
+                FadeTransition fT = blockDePop(imageBlock,80);
+                fT.setOnFinished(finishedEvent -> blockPop(imageBlock,100));
             }
             posX = (int) (imageBlock.getLayoutX() - gridPos.getX()) / 50;
             posY = (int) (imageBlock.getLayoutY() - gridPos.getY()) / 50;
@@ -138,14 +129,29 @@ public class LevelHandler {
             imageBlock.rotate();
     }
 
-
-    private void goToSpawnPos(ImageBlock imageBlock)
-    {
+    private FadeTransition blockDePop(ImageBlock imageBlock,int duration){
         Node node = imageBlock.getImageView();
-        FadeTransition fT = new FadeTransition(Duration.millis(80),node);
+        FadeTransition fT = new FadeTransition(Duration.millis(duration),node);
         fT.setByValue(1);
         fT.setToValue(0);
         fT.play();
+
+        return fT;
+    }
+
+    private FadeTransition blockPop(ImageBlock imageBlock, int duration){
+        Node node = imageBlock.getImageView();
+        FadeTransition rePopFT = new FadeTransition(Duration.millis(duration),node);
+        rePopFT.setByValue(0);
+        rePopFT.setToValue(1);
+        rePopFT.play();
+        return rePopFT;
+    }
+
+
+    private void goToSpawnPos(ImageBlock imageBlock)
+    {
+        FadeTransition fT = blockDePop(imageBlock,80);
         fT.setOnFinished(finishedEvent -> {
             imageBlock.setPosition(imageBlock.getSpawnPos());
             for (ImageBlock collided:
@@ -153,10 +159,7 @@ public class LevelHandler {
                 if (!collided.getSpawnPos().equals(new Position(collided.getLayoutX(),collided.getLayoutY())))
                     goToSpawnPos(collided);
             }
-            FadeTransition rePopFT = new FadeTransition(Duration.millis(100),node);
-            rePopFT.setByValue(0);
-            rePopFT.setToValue(1);
-            rePopFT.play();
+            blockPop(imageBlock,100);
         });
     }
 
