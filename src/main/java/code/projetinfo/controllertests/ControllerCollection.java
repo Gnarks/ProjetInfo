@@ -157,7 +157,7 @@ public class ControllerCollection {
     protected void BabyPressed(){
         setGhostImage(new Image(String.valueOf(AppGame.class.getResource("Sprite_Ghosts/Sprite_Ghost1x1_Rotation0.png"))),250,250,675,180);
         setGhostName("Baby",775);
-        GhostDescription.setText("It's a little is a baby");
+        GhostDescription.setText("It's a little baby");
     }
     @FXML
     protected void BlobyPressed(){
