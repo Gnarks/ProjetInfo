@@ -1,16 +1,23 @@
 package code.projetinfo;
 
+import code.projetinfo.controllertests.GameController;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
+import javafx.event.Event;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class LevelHandler {
@@ -22,6 +29,8 @@ public class LevelHandler {
     private final int  tileSize = 50;
 
     private Position gridPos;
+
+    private boolean victoryState = false;
 
 
     public LevelHandler(Level level, AnchorPane pane){
@@ -86,8 +95,10 @@ public class LevelHandler {
                     if (level.isPlacable(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / 50, (int) (imageBlock.getLayoutY() - gridPos.getY()) / 50)){
                         level.place(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / 50, (int) (imageBlock.getLayoutY() - gridPos.getY()) / 50);
                         if (level.getPlaced() == level.getBlocks().length){
-
+                            victoryAnimation();
+                            setVictoryState(true);
                         }
+                        System.out.println(victoryState);
                     }
                     else
                         goToSpawnPos(imageBlock);
@@ -99,33 +110,84 @@ public class LevelHandler {
         });
     }
 
+    public void reloadLevel(Event event){
+
+        Rectangle transition = new Rectangle(1600,900, Paint.valueOf("222222"));
+        transition.setLayoutY(900);
+        pane.getChildren().add(transition);
+        TranslateTransition resetTransition = new TranslateTransition(Duration.millis(500),transition);
+        resetTransition.setToY(-900);
+        resetTransition.play();
+        resetTransition.setOnFinished(event1 -> {
+            FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("Game.fxml"));
+            Parent root;
+            try {
+                root = fxmlLoader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            GameController gameController = fxmlLoader.getController();
+            gameController.setLevelName(level.getName());
+            System.out.println(level.getName());
+
+            Stage stage;
+            Scene scene;
+
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root, 1600, 900);
+
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();});}
+
+    public void setVictoryState(boolean victoryState) {
+        this.victoryState = victoryState;
+    }
+
+    public boolean getVictoryState(){
+        return this.victoryState;
+    }
+
+    private void victoryAnimation(){
+        Rectangle rectangle = new Rectangle(((level.getGrid().getCol()+2)*50),(level.getGrid().getRow()+2)*50);
+        rectangle.setOpacity(0);
+        rectangle.setLayoutX(gridPos.getX()-50);
+        rectangle.setLayoutY(gridPos.getY()-50);
+        pane.getChildren().add(rectangle);
+    }
+
     /** rotates the imageBlock if it can.
      * if it can't, does an animation to show it can't.
      *
      * @param imageBlock the imageBlock trying to rotate.
      */
     private void tryRotate(ImageBlock imageBlock){
-        if (imageBlock.getPlacedState()) {
-            int posX = (int) (imageBlock.getLayoutX() - gridPos.getX()) / 50;
-            int posY = (int) (imageBlock.getLayoutY() - gridPos.getY()) / 50;
-            level.remove(imageBlock, posX, posY);
+        FadeTransition dePop=blockDePop(imageBlock,100);
+        dePop.setOnFinished(event -> {
+            if (imageBlock.getPlacedState()) {
+                int posX = (int) (imageBlock.getLayoutX() - gridPos.getX()) / 50;
+                int posY = (int) (imageBlock.getLayoutY() - gridPos.getY()) / 50;
+                level.remove(imageBlock, posX, posY);
 
-            int initialRotateState = imageBlock.getRotateState();
+                int initialRotateState = imageBlock.getRotateState();
 
-            imageBlock.rotate();
-            posX = (int) (imageBlock.getLayoutX() - gridPos.getX()) / 50;
-            posY = (int) (imageBlock.getLayoutY() - gridPos.getY()) / 50;
-            if (!level.isPlacable(imageBlock, posX, posY)) {
-                imageBlock.rotateTo(initialRotateState);
-                FadeTransition fT = blockDePop(imageBlock,80);
-                fT.setOnFinished(finishedEvent -> blockPop(imageBlock,100));
+                imageBlock.rotate();
+                posX = (int) (imageBlock.getLayoutX() - gridPos.getX()) / 50;
+                posY = (int) (imageBlock.getLayoutY() - gridPos.getY()) / 50;
+                if (!level.isPlacable(imageBlock, posX, posY)) {
+                    imageBlock.rotateTo(initialRotateState);
+                }
+                posX = (int) (imageBlock.getLayoutX() - gridPos.getX()) / 50;
+                posY = (int) (imageBlock.getLayoutY() - gridPos.getY()) / 50;
+                level.place(imageBlock,posX,posY);
             }
-            posX = (int) (imageBlock.getLayoutX() - gridPos.getX()) / 50;
-            posY = (int) (imageBlock.getLayoutY() - gridPos.getY()) / 50;
-            level.place(imageBlock,posX,posY);
-        }
-        else
-            imageBlock.rotate();
+            else{
+                imageBlock.rotate();
+            }
+            FadeTransition rePop = blockPop(imageBlock,100);
+        });
+
+
     }
 
     private FadeTransition blockDePop(ImageBlock imageBlock,int duration){

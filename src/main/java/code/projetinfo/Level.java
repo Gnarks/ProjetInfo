@@ -22,6 +22,7 @@ public class Level {
     }
 
     public Level(String name) throws IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        this.name = name;
         loadState(name);
     }
 
@@ -175,5 +176,9 @@ public class Level {
 
     public int getPlaced(){
         return placed;
+    }
+
+    public String getName(){
+        return this.name;
     }
 }

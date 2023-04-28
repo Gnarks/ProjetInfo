@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -79,6 +80,8 @@ public class ControllerCollection {
     protected void setGhostName(String name,double posX){
         GhostName.setText(name);
         GhostName.setLayoutX(posX);
+        GhostDescription.setTextFill(Paint.valueOf("#d0d0ff"));
+        GhostName.setTextFill(Paint.valueOf("d0d0ff"));
     }
 
 

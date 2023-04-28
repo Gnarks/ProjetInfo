@@ -101,8 +101,11 @@ public class GameController implements Initializable {
             translateTransition.setOnFinished(event -> pane.getChildren().remove(transi));
 
             ResetButton.setOnMouseClicked(event -> {
-                levelHandler.reset();
-            });
+                if(!levelHandler.getVictoryState()){
+                levelHandler.reset();}
+                else{
+                    levelHandler.reloadLevel(event);
+            }});
 
             BackToMenuButton.setOnMouseClicked(event ->{
                 if(levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')){
