@@ -54,31 +54,27 @@ public class LevelHandler {
         }
     }
 
-
     public void drawImageBlocks(){
         for (ImageBlock imageBlock:
                 level.getBlocks()) {
             pane.getChildren().add(imageBlock.getImageView());
-            if (imageBlock.getLayoutX() == 0 && imageBlock.getLayoutY() == 0)
+            if (!imageBlock.getPlacedState())
                 imageBlock.setPosition(imageBlock.getSpawnPos());
             makeDraggable(imageBlock);
         }
     }
     private void makeDraggable(ImageBlock imageBlock){
         Node node = imageBlock.getImageView();
-
         node.setOnMousePressed(event ->{
             if(event.getButton() == MouseButton.SECONDARY ){
                 tryRotate(imageBlock);
             }
-
             if(event.getButton() == MouseButton.PRIMARY){
                 node.toFront();
                 if(imageBlock.getPlacedState()){
                     level.remove(imageBlock,(int) (imageBlock.getLayoutX()-gridPos.getX())/50, 
                             (int) (imageBlock.getLayoutY()- gridPos.getY())/50);
                 }
-
                 moveBlock(imageBlock,event);
             }
         });
@@ -87,9 +83,12 @@ public class LevelHandler {
         node.setOnMouseReleased(event -> {
             if (event.getButton() == MouseButton.PRIMARY) {
                 if (inGridBounds(new Position(event.getSceneX(), event.getSceneY()))) {
-                    if (level.isPlacable(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / 50, (int) (imageBlock.getLayoutY() - gridPos.getY()) / 50))
+                    if (level.isPlacable(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / 50, (int) (imageBlock.getLayoutY() - gridPos.getY()) / 50)){
                         level.place(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / 50, (int) (imageBlock.getLayoutY() - gridPos.getY()) / 50);
+                        if (level.getPlaced() == level.getBlocks().length){
 
+                        }
+                    }
                     else
                         goToSpawnPos(imageBlock);
                 }

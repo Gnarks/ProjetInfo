@@ -172,4 +172,8 @@ public class Level {
     public void setPlaced(int n){
         this.placed = n;
     }
+
+    public int getPlaced(){
+        return placed;
+    }
 }
