@@ -105,7 +105,7 @@ public class GameController implements Initializable {
             });
 
             BackToMenuButton.setOnMouseClicked(event ->{
-                if(levelName.charAt(5) == '1'){
+                if(levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')){
                 FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("LevelSelector1to10.fxml"));
                 Stage stage;
                 Scene scene;

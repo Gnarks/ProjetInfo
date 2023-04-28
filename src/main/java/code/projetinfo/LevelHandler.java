@@ -151,7 +151,7 @@ public class LevelHandler {
 
     private void goToSpawnPos(ImageBlock imageBlock)
     {
-        FadeTransition fT = blockDePop(imageBlock,80);
+        FadeTransition fT = blockDePop(imageBlock,100);
         fT.setOnFinished(finishedEvent -> {
             imageBlock.setPosition(imageBlock.getSpawnPos());
             for (ImageBlock collided:

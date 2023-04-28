@@ -12,16 +12,16 @@
             <Image url="@Sprites/LevelSelection1to10.png" />
          </image>
       </ImageView>
-      <Button fx:id="Level11" layoutX="476.0" layoutY="190.0" mnemonicParsing="false" prefHeight="154.0" prefWidth="189.0" opacity="0" text="Level1" />
-      <Button fx:id="Level13" layoutX="934.0" layoutY="190.0" mnemonicParsing="false" prefHeight="161.0" prefWidth="196.0" opacity="0" text="Level3" />
-      <Button fx:id="Level12" layoutX="705.0" layoutY="182.0" mnemonicParsing="false" prefHeight="161.0" prefWidth="196.0" opacity="0" text="Level2" />
-      <Button fx:id="Level14" layoutX="337.0" layoutY="393.0" mnemonicParsing="false" prefHeight="154.0" prefWidth="196.0" opacity="0" text="Level4" />
-      <Button fx:id="Level16" layoutX="826.0" layoutY="393.0" mnemonicParsing="false" prefHeight="161.0" prefWidth="196.0" opacity="0" text="Level6" />
-      <Button fx:id="Level15" layoutX="581.0" layoutY="393.0" mnemonicParsing="false" prefHeight="154.0" prefWidth="196.0" opacity="0" text="Level5" />
-      <Button fx:id="Level17" layoutX="1072.0" layoutY="393.0" mnemonicParsing="false" prefHeight="154.0" prefWidth="189.0" opacity="0" text="Level7" />
-      <Button fx:id="Level18" layoutX="476.0" layoutY="592.0" mnemonicParsing="false" prefHeight="154.0" prefWidth="196.0" opacity="0" text="Level8" />
-      <Button fx:id="Level19" layoutX="705.0" layoutY="592.0" mnemonicParsing="false" prefHeight="154.0" prefWidth="196.0" opacity="0" text="Level9" />
-      <Button fx:id="Level20" layoutX="931.0" layoutY="592.0" mnemonicParsing="false" prefHeight="154.0" prefWidth="196.0" opacity="0" text="Level10" />
+      <Button fx:id="Level01" layoutX="476.0" layoutY="190.0" mnemonicParsing="false" prefHeight="154.0" prefWidth="189.0" opacity="0"/>
+      <Button fx:id="Level03" layoutX="934.0" layoutY="190.0" mnemonicParsing="false" prefHeight="161.0" prefWidth="196.0" opacity="0"/>
+      <Button fx:id="Level02" layoutX="705.0" layoutY="182.0" mnemonicParsing="false" prefHeight="161.0" prefWidth="196.0" opacity="0"/>
+      <Button fx:id="Level04" layoutX="337.0" layoutY="393.0" mnemonicParsing="false" prefHeight="154.0" prefWidth="196.0" opacity="0"/>
+      <Button fx:id="Level06" layoutX="826.0" layoutY="393.0" mnemonicParsing="false" prefHeight="161.0" prefWidth="196.0" opacity="0"/>
+      <Button fx:id="Level05" layoutX="581.0" layoutY="393.0" mnemonicParsing="false" prefHeight="154.0" prefWidth="196.0" opacity="0"/>
+      <Button fx:id="Level07" layoutX="1072.0" layoutY="393.0" mnemonicParsing="false" prefHeight="154.0" prefWidth="189.0" opacity="0"/>
+      <Button fx:id="Level08" layoutX="476.0" layoutY="592.0" mnemonicParsing="false" prefHeight="154.0" prefWidth="196.0" opacity="0"/>
+      <Button fx:id="Level09" layoutX="705.0" layoutY="592.0" mnemonicParsing="false" prefHeight="154.0" prefWidth="196.0" opacity="0"/>
+      <Button fx:id="Level10" layoutX="931.0" layoutY="592.0" mnemonicParsing="false" prefHeight="154.0" prefWidth="196.0" opacity="0"/>
       <ImageView fx:id="ButtonBack" fitHeight="79.0" fitWidth="105.0" layoutX="31.0" layoutY="411.0" onMouseEntered="#onBackEntered" onMouseExited="#onBackExited">
          <image>
             <Image url="@Sprites/ButtonBack.png" />
