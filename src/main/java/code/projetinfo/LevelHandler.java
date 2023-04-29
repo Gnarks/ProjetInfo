@@ -295,6 +295,15 @@ public class LevelHandler {
             posX = (int)((mouseEvent.getSceneX() - imageBlock.getMidX()+25)/tileSize)*tileSize;
             posY = (int)((mouseEvent.getSceneY() - imageBlock.getMidY()+25)/tileSize)*tileSize;
         }
+        if (posX <0)
+            posX =0;
+        else if(posX+(imageBlock.getCols()*tileSize)> pane.getPrefWidth())
+            posX = pane.getPrefWidth() - imageBlock.getCols()*tileSize;
+        if (posY <0)
+            posY = 0;
+        else if(posY +(imageBlock.getRows()*tileSize)> pane.getPrefHeight())
+            posY = pane.getPrefHeight() - imageBlock.getRows()*tileSize;
+
         imageBlock.setPosition(new Position(posX,posY));
     }
 
