@@ -78,7 +78,7 @@ public class LevelHandler {
             if(event.getButton() == MouseButton.SECONDARY ){
                 tryRotate(imageBlock);
             }
-            if(event.getButton() == MouseButton.PRIMARY){
+            else if(event.getButton() == MouseButton.PRIMARY){
                 node.toFront();
                 if(imageBlock.getPlacedState()){
                     level.remove(imageBlock,(int) (imageBlock.getLayoutX()-gridPos.getX())/tileSize,
@@ -87,7 +87,10 @@ public class LevelHandler {
                 moveBlock(imageBlock,event);
             }
         });
-        node.setOnMouseDragged(mouseEvent-> moveBlock(imageBlock,mouseEvent));
+        node.setOnMouseDragged(mouseEvent-> {
+            if (mouseEvent.getButton() == MouseButton.PRIMARY)
+                moveBlock(imageBlock,mouseEvent);
+        });
 
         node.setOnMouseReleased(event -> {
             if (event.getButton() == MouseButton.PRIMARY) {
