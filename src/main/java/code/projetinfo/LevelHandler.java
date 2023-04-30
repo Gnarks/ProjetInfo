@@ -8,10 +8,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.effect.Blend;
+import javafx.scene.effect.BlendMode;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -73,13 +78,24 @@ public class LevelHandler {
         }
     }
     private void makeDraggable(ImageBlock imageBlock){
+        ColorAdjust c = new ColorAdjust(1,1,0.2,0);
+        DropShadow dropShadow = new DropShadow(100, Color.color(0,0,0));
+        Blend blend = new Blend(BlendMode.ADD,c,dropShadow);
+
+        Blend blendback = new Blend(BlendMode.ADD,dropShadow,c);
         Node node = imageBlock.getImageView();
+        node.setEffect(blend);
         node.setOnMousePressed(event ->{
+
+            node.setEffect(blendback);
+
+
             if(event.getButton() == MouseButton.SECONDARY ){
                 tryRotate(imageBlock);
             }
             if(event.getButton() == MouseButton.PRIMARY){
                 node.toFront();
+
                 if(imageBlock.getPlacedState()){
                     level.remove(imageBlock,(int) (imageBlock.getLayoutX()-gridPos.getX())/tileSize,
                             (int) (imageBlock.getLayoutY()- gridPos.getY())/tileSize);
@@ -90,6 +106,7 @@ public class LevelHandler {
         node.setOnMouseDragged(mouseEvent-> moveBlock(imageBlock,mouseEvent));
 
         node.setOnMouseReleased(event -> {
+            node.setEffect(null);
             if (event.getButton() == MouseButton.PRIMARY) {
                 if (inGridBounds(new Position(event.getSceneX(), event.getSceneY()))) {
                     if (level.isPlacable(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize, (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize)){
