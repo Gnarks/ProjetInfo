@@ -93,7 +93,7 @@ public class LevelHandler {
             if(event.getButton() == MouseButton.SECONDARY ){
                 tryRotate(imageBlock);
             }
-            if(event.getButton() == MouseButton.PRIMARY){
+            else if(event.getButton() == MouseButton.PRIMARY){
                 node.toFront();
 
                 if(imageBlock.getPlacedState()){
@@ -103,7 +103,10 @@ public class LevelHandler {
                 moveBlock(imageBlock,event);
             }
         });
-        node.setOnMouseDragged(mouseEvent-> moveBlock(imageBlock,mouseEvent));
+        node.setOnMouseDragged(mouseEvent-> {
+            if (mouseEvent.getButton() == MouseButton.PRIMARY)
+                moveBlock(imageBlock,mouseEvent);
+        });
 
         node.setOnMouseReleased(event -> {
             node.setEffect(null);
@@ -312,6 +315,15 @@ public class LevelHandler {
             posX = (int)((mouseEvent.getSceneX() - imageBlock.getMidX()+25)/tileSize)*tileSize;
             posY = (int)((mouseEvent.getSceneY() - imageBlock.getMidY()+25)/tileSize)*tileSize;
         }
+        if (posX <0)
+            posX =0;
+        else if(posX+(imageBlock.getCols()*tileSize)> pane.getPrefWidth())
+            posX = pane.getPrefWidth() - imageBlock.getCols()*tileSize;
+        if (posY <0)
+            posY = 0;
+        else if(posY +(imageBlock.getRows()*tileSize)> pane.getPrefHeight())
+            posY = pane.getPrefHeight() - imageBlock.getRows()*tileSize;
+
         imageBlock.setPosition(new Position(posX,posY));
     }
 
