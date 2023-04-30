@@ -32,7 +32,7 @@ public class ControllerLevelSelector1to10 implements Initializable {
 
     @FXML
     public void onBackEntered(){
-        ButtonBack.setImage(new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBackLight.png"))));
+        ButtonBack.setImage(new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBackToMenulight.png"))));
         ButtonBack.setOnMouseClicked(event ->{
             FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("MainMenu.fxml"));
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -50,7 +50,7 @@ public class ControllerLevelSelector1to10 implements Initializable {
 
     @FXML
     public void onBackExited(){
-        ButtonBack.setImage(new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBack.png"))));
+        ButtonBack.setImage(new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBackToMenu.png"))));
 
 
     }

@@ -12,6 +12,7 @@ import javafx.scene.effect.Blend;
 import javafx.scene.effect.BlendMode;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -79,15 +80,12 @@ public class LevelHandler {
     }
     private void makeDraggable(ImageBlock imageBlock){
         ColorAdjust c = new ColorAdjust(1,1,0.2,0);
-        DropShadow dropShadow = new DropShadow(100, Color.color(0,0,0));
+        DropShadow dropShadow = new DropShadow(50, Color.color(0.7,0.7,0.7));
         Blend blend = new Blend(BlendMode.ADD,c,dropShadow);
-
-        Blend blendback = new Blend(BlendMode.ADD,dropShadow,c);
         Node node = imageBlock.getImageView();
-        node.setEffect(blend);
         node.setOnMousePressed(event ->{
 
-            node.setEffect(blendback);
+            node.setEffect(blend);
 
 
             if(event.getButton() == MouseButton.SECONDARY ){
@@ -128,34 +126,6 @@ public class LevelHandler {
         });
     }
 
-    public void reloadLevel(Event event){
-
-        Rectangle transition = new Rectangle(1600,900, Paint.valueOf("222222"));
-        transition.setLayoutY(900);
-        pane.getChildren().add(transition);
-        TranslateTransition resetTransition = new TranslateTransition(Duration.millis(50),transition);
-        resetTransition.setToY(-900);
-        resetTransition.play();
-        resetTransition.setOnFinished(event1 -> {
-            FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("Game.fxml"));
-            Parent root;
-            try {
-                root = fxmlLoader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            GameController gameController = fxmlLoader.getController();
-            gameController.setLevelName(level.getName());
-            Stage stage;
-            Scene scene;
-
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root, 1600, 900);
-
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.show();});}
-
     public void setVictoryState(boolean victoryState) {
         this.victoryState = victoryState;
     }
@@ -170,6 +140,65 @@ public class LevelHandler {
         rectangle.setLayoutX(gridPos.getX()-tileSize);
         rectangle.setLayoutY(gridPos.getY()-tileSize);
         pane.getChildren().add(rectangle);
+        ImageView buttonNext = new ImageView(String.valueOf(AppGame.class.getResource("Sprites/ButtonNext.png")));
+        pane.getChildren().add(buttonNext);
+        buttonNext.setFitHeight(150);
+        buttonNext.setLayoutX(1200);
+        buttonNext.setLayoutY(730);
+        buttonNext.setOnMouseEntered(event ->buttonNext.setImage(new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonNextLight.png")))));
+        buttonNext.setOnMouseExited(event ->buttonNext.setImage(new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonNext.png")))));
+        buttonNext.setOnMouseClicked(event -> {
+            String levelName = nextLevel(level.getName());
+            System.out.println(levelName);
+            if (levelName == null){
+                    FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("LevelSelector11to20.fxml"));
+                    Stage stage;
+                    Scene scene;
+                    stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    try {
+                        scene = new Scene(fxmlLoader.load(), 1600, 900);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    stage.setScene(scene);
+                    stage.setResizable(false);
+                    stage.show();}
+
+            else{
+                loadLevel(levelName,event);
+            }
+
+        });
+    }
+
+    public String nextLevel(String levelName){
+        String nextLevel = "Level";
+        int units =  Character.getNumericValue(levelName.charAt(6));
+        System.out.println(units);
+        units +=1;
+        int dizaine = Character.getNumericValue(levelName.charAt(5))*10;
+        System.out.println(dizaine);
+
+        if(units == 10){
+            nextLevel += dizaine +10;
+            System.out.println(nextLevel);
+            return nextLevel;
+        }
+        if(dizaine == 0)
+        {
+            nextLevel += 0;
+            nextLevel += units;
+            System.out.println(nextLevel);
+            return nextLevel;
+        }
+
+        int num = dizaine + units;
+        if (num > 20){
+            return null;
+        }
+        nextLevel += num;
+
+        return nextLevel;
     }
 
     /** rotates the imageBlock if it can.
@@ -177,6 +206,7 @@ public class LevelHandler {
      *
      * @param imageBlock the imageBlock trying to rotate.
      */
+
     private void tryRotate(ImageBlock imageBlock){
         FadeTransition dePop=blockDePop(imageBlock,100);
         dePop.setOnFinished(event -> {
@@ -205,6 +235,34 @@ public class LevelHandler {
 
 
     }
+
+    public void loadLevel(String levelName,Event event){
+        Rectangle transi = new Rectangle(1600,900, Paint.valueOf("222222"));
+        transi.setLayoutY(900);
+        pane.getChildren().add(transi);
+        TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500),transi);
+        translateTransition.setToY(-900);
+        translateTransition.play();
+        translateTransition.setOnFinished(event1 -> {
+            FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("Game.fxml"));
+            Parent root;
+            try {
+                root = fxmlLoader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            GameController gameController = fxmlLoader.getController();
+            gameController.setLevelName(levelName);
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root, 1600, 900);
+
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+        });}
+
+
 
     private FadeTransition blockDePop(ImageBlock imageBlock,int duration){
         Node node = imageBlock.getImageView();

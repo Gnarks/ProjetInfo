@@ -104,7 +104,7 @@ public class GameController implements Initializable {
                 if(!levelHandler.getVictoryState()){
                 levelHandler.reset();}
                 else{
-                    levelHandler.reloadLevel(event);
+                    levelHandler.loadLevel(levelName,event);
             }});
 
             BackToMenuButton.setOnMouseClicked(event ->{
