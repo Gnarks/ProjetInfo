@@ -40,9 +40,8 @@ dependencies {
     }
     implementation('org.kordamp.ikonli:ikonli-javafx:12.3.1')
     implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
-    implementation('eu.hansolo:tilesfx:17.1.17') {
-        exclude(group: 'org.openjfx')
-    }
+    implementation('eu.hansolo:tilesfx:17.1.17')
+
     implementation('com.github.almasb:fxgl:17.2') {
         exclude(group: 'org.openjfx')
     }
@@ -53,7 +52,7 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform()
+    useJUnit()
 }
 
 jlink {
