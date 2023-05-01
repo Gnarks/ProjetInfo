@@ -9,7 +9,6 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 
@@ -99,6 +98,18 @@ public class ControllerMenu {
     protected void onSettingsEntered(){
         Image imageLight = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonSettingsLight.png")));
         SettingsButtonImage.setImage(imageLight);
+
+        SettingsButtonImage.setOnMouseClicked(event ->{
+            FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("Creator.fxml"));
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            try {
+                scene = new Scene(fxmlLoader.load(), 1600, 900);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage.setScene(scene);
+            stage.show();
+        });
     }
     @FXML
     protected void onSettingsExited(){
