@@ -1,12 +1,14 @@
 package code.projetinfo.controllertests;
 
 import code.projetinfo.AppGame;
+import code.projetinfo.CaseState;
 import code.projetinfo.LevelCreator;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -28,6 +30,26 @@ public class ControllerCreator implements Initializable {
     private ImageView ResetButton;
 
     @FXML
+    private ImageView DecreaseSize;
+
+    @FXML
+    private ImageView IncreaseSize;
+
+    @FXML
+    private ImageView SetUpGridLeft;
+
+    @FXML
+    private ImageView SetUpGridRight;
+
+    @FXML
+    private Label GridSize;
+
+    @FXML
+    private Label FullGridState;
+
+
+
+    @FXML
     protected void onBackEntered(){
         Image imageLight = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBackToMenulight.png")));
         BackToMenuButton.setImage(imageLight);
@@ -45,7 +67,6 @@ public class ControllerCreator implements Initializable {
             stage.setResizable(false);
             stage.show();
         });
-
     }
 
     @FXML
@@ -67,10 +88,145 @@ public class ControllerCreator implements Initializable {
         ResetButton.setImage(imageDark);
     }
 
+    @FXML
+    protected void onDecreaseEntered(){
+        Image imageLight = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBackLight.png")));
+        DecreaseSize.setImage(imageLight);
+
+    }
+
+    @FXML
+    protected void onDecreaseExited(){
+        Image imageDark = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBack.png")));
+        DecreaseSize.setImage(imageDark);
+    }
+
+
+    @FXML
+    protected void onIncreaseEntered(){
+        Image imageLight = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonNextLight.png")));
+        IncreaseSize.setImage(imageLight);
+
+    }
+
+    @FXML
+    protected void onIncreaseExited(){
+        Image imageDark = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonNext.png")));
+        IncreaseSize.setImage(imageDark);
+    }
+
+
+    @FXML
+    protected void onSetUpLeftEntered(){
+        Image imageLight = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBackLight.png")));
+        SetUpGridLeft.setImage(imageLight);
+
+    }
+
+    @FXML
+    protected void onSetUpLeftExited(){
+        Image imageDark = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBack.png")));
+        SetUpGridLeft.setImage(imageDark);
+    }
+
+
+
+
+    @FXML
+    protected void onSetUpRightEntered(){
+        Image imageLight = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonNextLight.png")));
+        SetUpGridRight.setImage(imageLight);
+
+    }
+
+    @FXML
+    protected void onSetUpRightExited(){
+        Image imageDark = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonNext.png")));
+        SetUpGridRight.setImage(imageDark);
+    }
+
+    private void sizeSetUp(LevelCreator levelCreator ,int size){
+
+        GridSize.setText(String.valueOf(size));
+        levelCreator.setCreatorGridSize(size);
+    }
+
+    private void gridStateSetUp(LevelCreator levelCreator, String stateName, CaseState state){
+        FullGridState.setText(stateName);
+        levelCreator.fillLevelState(state);
+    }
+
+
+
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        LevelCreator levelCreator = new LevelCreator(pane,8);
+        LevelCreator levelCreator = new LevelCreator(pane,9);
 
         levelCreator.drawGrid();
-    }
+
+        ResetButton.setOnMouseClicked(event -> levelCreator.reset(FullGridState));
+        DecreaseSize.setOnMouseClicked(event -> {
+            int size = Integer.parseInt(GridSize.getText())-1;
+            if (size>1){
+
+                if(size == 2){
+                    DecreaseSize.setOpacity(0);
+                }
+
+                else if (size == 8) {
+                    IncreaseSize.setOpacity(1);
+                }
+
+
+                sizeSetUp(levelCreator,size);
+                levelCreator.reset(FullGridState);
+            }});
+
+        IncreaseSize.setOnMouseClicked(event -> {
+            int size = Integer.parseInt(GridSize.getText())+1;
+            if(size<10){
+                if (size ==9){
+                    IncreaseSize.setOpacity(0);
+                }
+                else if(size == 3){
+                    DecreaseSize.setOpacity(1);
+                }
+
+                sizeSetUp(levelCreator,size);
+                levelCreator.reset(FullGridState);
+            }
+        });
+
+        SetUpGridLeft.setOnMouseClicked(event -> {
+            if(FullGridState.getText().equals("Empty")){
+                gridStateSetUp(levelCreator,"Full",CaseState.FULL);
+            }
+
+            else if(FullGridState.getText().equals("Full")){
+                gridStateSetUp(levelCreator,"Neutral",CaseState.EMPTY);
+            }
+
+            else if(FullGridState.getText().equals("Neutral")){
+                gridStateSetUp(levelCreator,"Empty",CaseState.SPECIAL);
+            }
+        });
+
+        SetUpGridRight.setOnMouseClicked(event -> {
+            if(FullGridState.getText().equals("Neutral")){
+                gridStateSetUp(levelCreator,"Full",CaseState.FULL);
+            }
+
+            else if(FullGridState.getText().equals("Empty")){
+                gridStateSetUp(levelCreator,"Neutral",CaseState.EMPTY);
+            }
+
+            else if(FullGridState.getText().equals("Full")){
+                gridStateSetUp(levelCreator,"Empty",CaseState.SPECIAL);
+            }
+
+
+    });}
 }

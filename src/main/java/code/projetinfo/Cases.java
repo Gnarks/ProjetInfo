@@ -106,4 +106,12 @@ public class Cases {
             System.out.println();
         }
     }
+
+    public void fill(CaseState state){
+        for (int i = 0; i < getRow(); i++) {
+            for (int j = 0; j < getCol(); j++) {
+                this.cases[i][j] = state;
+            }
+        }
+    }
 }
