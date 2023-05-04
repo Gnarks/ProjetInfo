@@ -34,9 +34,7 @@ public class Toowels extends ImageBlock {
         super.rotateCasesTo(newRotateState);
 
         String generalUrl = "Sprite_Ghosts/Sprite_GhostL2x4_Rotation";
-        Position[] changes = new Position[]{ new Position(0,0),new Position(-50,100),
-                new Position(-50,50),new Position(-100,50)};
-        super.rotateGraphicallyTo(changes,newRotateState,generalUrl);
+        super.rotateGraphicallyTo(newRotateState,generalUrl);
 
         super.setRotateState(newRotateState);
     }

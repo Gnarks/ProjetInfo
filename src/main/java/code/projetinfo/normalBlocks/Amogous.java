@@ -29,13 +29,10 @@ public class Amogous extends ImageBlock {
         if (newRotateState<0 || newRotateState >3)
             throw new IllegalArgumentException("rotateState must be between 0 and 3 included");
 
-
         super.rotateCasesTo(newRotateState);
 
         String generalUrl = "Sprite_Ghosts/Sprite_GhostL2x2_Rotation";
-        Position[] changes = new Position[]{ new Position(0,0),new Position(0,50),
-                new Position(-50,50),new Position(-50,0)};
-        super.rotateGraphicallyTo(changes,newRotateState,generalUrl);
+        super.rotateGraphicallyTo(newRotateState,generalUrl);
 
         super.setRotateState(newRotateState);
     }

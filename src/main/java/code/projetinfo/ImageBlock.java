@@ -25,6 +25,8 @@ public abstract class ImageBlock{
    private final int height;
    private boolean isPlaced;
 
+   private Position change;
+
 
    /** The main constructor of blocks
     *
@@ -54,15 +56,22 @@ public abstract class ImageBlock{
    protected void rotateCasesTo(int newRotateState){
       Cases newcases = new Cases(this.cases.getRow(), this.cases.getCol(), CaseState.EMPTY);
 
+      Position startingMidTile = new Position((midPos.getX()-25)/50,(midPos.getY()-25)/50);
+      Position newMidTilePos = new Position(startingMidTile.getX(),startingMidTile.getY());
+
       for (int k = (newRotateState - rotateState +4)%4; k>0 ; k--) {
-         for (int i = 0; i < this.cases.getCol(); i++){
-            for (int j = 0; j < this.cases.getRow(); j++){
-               newcases.set(j, i, cases.getState(i, this.cases.getRow()-j-1));
+         newMidTilePos = new Position(cases.getRow() - newMidTilePos.getY() -1, newMidTilePos.getX());
+         for (int i = 0; i < cases.getCol(); i++){
+            for (int j = 0; j < cases.getRow(); j++){
+               newcases.set(j, i, cases.getState(i, cases.getRow()-j-1));
             }
          }
          this.cases = newcases;
-         newcases = new Cases(this.cases.getRow(), this.cases.getCol(), CaseState.EMPTY);
+         newcases = new Cases(cases.getRow(), cases.getCol(), CaseState.EMPTY);
       }
+      this.midPos = new Position(newMidTilePos.getX()*50+25,newMidTilePos.getY()*50+25);
+      this.change = new Position((startingMidTile.getX() - newMidTilePos.getX())*50,
+              (startingMidTile.getY() - newMidTilePos.getY())*50);
    }
    /**
     * @return the spawnPosition of the block
@@ -127,17 +136,14 @@ public abstract class ImageBlock{
 
    /** function called to make the block rotate to the specified rotateState graphically.
     * it depends on the normalBlock that calls the function.
-    * @param changes the array of changes of each rotateState compared to the initial rotateState
-    * @param newRotateState the wanted rotateState
+    * has to be called after the rotateCasesTo method.
+    * * @param newRotateState the wanted rotateState
     * @param generalUrl the url of the image without the rotateState and the ".png"
     */
-   protected void rotateGraphicallyTo(Position[] changes, int newRotateState, String generalUrl){
-      double x = - changes[rotateState].getX() + changes[newRotateState%4].getX();
-      double y = - changes[rotateState].getY() + changes[newRotateState%4].getY();
+   protected void rotateGraphicallyTo( int newRotateState, String generalUrl){
 
-      this.setPosition(new Position(this.getLayoutX()+x,this.getLayoutY()+y));
+      this.setPosition(new Position(this.getLayoutX()+change.getX(),this.getLayoutY()+change.getY()));
 
-      midPos = new Position(midPos.getX() - x, midPos.getY()-y);
 
       imageView.setImage(new Image(String.valueOf(ImageBlock.class.getResource(String.format("%s%s.png",generalUrl,newRotateState%4)))));
 

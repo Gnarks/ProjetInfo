@@ -32,9 +32,7 @@ public class Scooboodoo extends ImageBlock {
         super.rotateCasesTo(newRotateState);
 
         String generalUrl = "Sprite_Ghosts/Sprite_GhostJ2x2_Rotation";
-        Position[] changes = new Position[]{ new Position(0,0),new Position(50,0),
-                new Position(50,50),new Position(0,50)};
-        super.rotateGraphicallyTo(changes,newRotateState,generalUrl);
+        super.rotateGraphicallyTo(newRotateState,generalUrl);
 
         super.setRotateState(newRotateState);
     }

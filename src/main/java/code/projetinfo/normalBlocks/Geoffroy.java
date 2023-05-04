@@ -35,9 +35,7 @@ public class Geoffroy extends ImageBlock {
         super.rotateCasesTo(newRotateState);
 
         String generalUrl = "Sprite_Ghosts/Sprite_Ghost2x6_Rotation";
-        Position[] changes = new Position[]{ new Position(0,0),new Position(-50,100),
-                new Position(50,50),new Position(-100,150)};
-        super.rotateGraphicallyTo(changes,newRotateState,generalUrl);
+        super.rotateGraphicallyTo(newRotateState,generalUrl);
 
         super.setRotateState(newRotateState);
     }

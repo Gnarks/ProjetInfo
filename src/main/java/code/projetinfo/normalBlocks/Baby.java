@@ -32,9 +32,7 @@ public class Baby extends ImageBlock {
         super.rotateCasesTo(newRotateState);
 
         String generalUrl = "Sprite_Ghosts/Sprite_Ghost1x1_Rotation";
-        Position[] changes = new Position[]{ new Position(0,0), new Position(0,0),new Position(0,0),
-                new Position(0,0),new Position(0,0)};
-        super.rotateGraphicallyTo(changes,newRotateState,generalUrl);
+        super.rotateGraphicallyTo(newRotateState,generalUrl);
 
         super.setRotateState(newRotateState);
     }
