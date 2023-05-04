@@ -903,7 +903,7 @@
     "grid" : [ [ "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL", "FULL" ], [ "SPECIAL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "SPECIAL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL" ], [ "FULL", "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL" ] ],
     "blocklist" : {
       "0" : {
-        "type" : "class code.projetinfo.normalBlocks.Geoffroy",
+        "type" : "class code.projetinfo.normalBlocks.GymBroo",
         "rotatestate" : 0,
         "LayoutX" : 0.0,
         "LayoutY" : 0.0,
@@ -938,7 +938,7 @@
         "isplaced" : false
       },
       "5" : {
-        "type" : "class code.projetinfo.normalBlocks.GymBroo",
+        "type" : "class code.projetinfo.normalBlocks.Geoffroy",
         "rotatestate" : 0,
         "LayoutX" : 0.0,
         "LayoutY" : 0.0,

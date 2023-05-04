@@ -357,7 +357,8 @@ public class LevelHandler {
 
         for (ImageBlock inGameBlock:
                 level.getBlocks()) {
-            if(inGameBlock!=imageBlock &&node.getBoundsInParent().intersects(inGameBlock.getImageView().getBoundsInParent())){
+            if(inGameBlock!=imageBlock &&node.getBoundsInParent().intersects(inGameBlock.getImageView().getBoundsInParent())
+                    && !inGameBlock.getPlacedState()){
                 colliding.add(inGameBlock);
             }
         }

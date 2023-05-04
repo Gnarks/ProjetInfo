@@ -79,7 +79,7 @@ public class GameController implements Initializable {
         Rectangle transi = new Rectangle(1600,900 , Paint.valueOf("222222"));
         pane.getChildren().add(transi);
         Platform.runLater(() ->{
-            Level level = null;
+            Level level;
             try {
                 level = new Level(levelName);
             } catch (IOException | ClassNotFoundException | NoSuchMethodException | InvocationTargetException |
@@ -137,6 +137,5 @@ public class GameController implements Initializable {
                     stage.show();}
                 });
             });
-            System.out.println(levelName);
     }
 }
