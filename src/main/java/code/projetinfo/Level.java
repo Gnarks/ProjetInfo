@@ -181,4 +181,41 @@ public class Level {
     public String getName(){
         return this.name;
     }
+
+
+    //This method is only usefull for unit tests
+    public boolean compareGrid(CaseState[][] externalGrid){
+        for (int i = 0; i < externalGrid.length; i++){
+            for (int j = 0; j < externalGrid[0].length; j++){
+                if (this.grid.getState(i, j) != externalGrid[j][i]){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public boolean compareLevels(Level externalLevel){
+        if (!name.equals(externalLevel.getName())){
+            return false;
+        }
+        if (!compareGrid(externalLevel.getGrid().getCases())){
+            return false;
+        }
+        if (blocks.length != externalLevel.getBlocks().length){
+            return false;
+        }
+        for (int i = 0; i < blocks.length; i++){
+            if ((   blocks[i].getClass() != externalLevel.getBlocks()[i].getClass())||
+                    blocks[i].getRotateState() != externalLevel.getBlocks()[i].getRotateState() ||
+                    blocks[i].getLayoutX() != externalLevel.getBlocks()[i].getLayoutX() ||
+                    blocks[i].getLayoutY() != externalLevel.getBlocks()[i].getLayoutY() ||
+                    blocks[i].getPlacedState() != externalLevel.getBlocks()[i].getPlacedState())
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 }
+
