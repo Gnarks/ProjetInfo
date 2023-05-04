@@ -1,9 +1,9 @@
 {
   "test" : {
-    "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "FULL", "FULL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ] ],
+    "grid" : [ [ "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY" ] ],
     "blocklist" : {
       "0" : {
-        "type" : "class code.projetinfo.normalBlocks.VicKing",
+        "type" : "class code.projetinfo.normalBlocks.Amogous",
         "rotatestate" : 0,
         "LayoutX" : 0.0,
         "LayoutY" : 0.0,
@@ -17,28 +17,7 @@
         "isplaced" : false
       },
       "2" : {
-        "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
-      },
-      "3" : {
-        "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
-      },
-      "4" : {
-        "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
-      },
-      "5" : {
-        "type" : "class code.projetinfo.normalBlocks.Baby",
+        "type" : "class code.projetinfo.normalBlocks.Bob",
         "rotatestate" : 0,
         "LayoutX" : 0.0,
         "LayoutY" : 0.0,

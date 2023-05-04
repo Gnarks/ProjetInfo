@@ -13,9 +13,6 @@ repositories {
     mavenCentral()
 }
 
-sourceCompatibility = '19'
-targetCompatibility = '19'
-
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
@@ -47,6 +44,7 @@ dependencies {
     }
     implementation 'junit:junit:4.13.2'
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.4'
+    implementation 'de.saxsys:jfx-testrunner:1.2'
 
 
 }
