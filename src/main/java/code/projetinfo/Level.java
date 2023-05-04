@@ -12,8 +12,8 @@ public class Level {
     private ImageBlock[] blocks;
     private int placed = 0;
     private String name;
-    //Uses for json handling move it later to a higher place in object hierarchy
-    private final File f = new File(System.getProperty("user.dir")+"\\src\\main\\resources\\levels.json");
+    private String pathname = System.getProperty("user.dir")+"<src<main<resources<levels.json";
+    private final File f = new File(pathname.replaceAll("<", "\\"+System.getProperty("file.separator")));
     private final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
     public Level(String name, Cases grid, ImageBlock[] blocs){
         this.grid = grid;
