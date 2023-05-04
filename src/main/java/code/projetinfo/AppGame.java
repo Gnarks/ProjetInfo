@@ -19,7 +19,6 @@ public class AppGame extends Application {
     }
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        //launch();
-        System.out.println(System.getProperty("file.separator"));
+        launch();
     }
 }

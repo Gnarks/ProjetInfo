@@ -184,22 +184,11 @@ public class Level {
 
 
     //This method is only usefull for unit tests
-    public boolean compareGrid(CaseState[][] externalGrid){
-        for (int i = 0; i < externalGrid.length; i++){
-            for (int j = 0; j < externalGrid[0].length; j++){
-                if (this.grid.getState(i, j) != externalGrid[j][i]){
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    public boolean compareLevels(Level externalLevel){
+    public boolean equals(Level externalLevel){
         if (!name.equals(externalLevel.getName())){
             return false;
         }
-        if (!compareGrid(externalLevel.getGrid().getCases())){
+        if (!grid.equals(externalLevel.getGrid().getCases())){
             return false;
         }
         if (blocks.length != externalLevel.getBlocks().length){
