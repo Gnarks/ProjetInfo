@@ -61,9 +61,13 @@ public class LevelHandler {
                 rectangle.setFill(Paint.valueOf("#6666fc"));
                 rectangle.setStroke(Paint.valueOf("#000000"));
                 switch (level.getGrid().getState(i,j)){
-                    case EMPTY -> pane.getChildren().add(rectangle);
-                    case FULL -> {rectangle.setFill(Paint.valueOf("#000000"));
-                        pane.getChildren().add(rectangle);}
+                    case EMPTY :
+                        pane.getChildren().add(rectangle);
+                        break;
+                    case FULL :
+                        rectangle.setFill(Paint.valueOf("#000000"));
+                        pane.getChildren().add(rectangle);
+                        break;
                 }
             }
         }
