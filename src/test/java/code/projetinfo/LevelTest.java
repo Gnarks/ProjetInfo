@@ -19,29 +19,29 @@ public class LevelTest {
     @Test
     public void compareLevels(){
         Level level1 = new Level("test", new Cases(3,3, CaseState.EMPTY), new ImageBlock[] {new Amogous(new Position(0,0)), new Redky(new Position(0,0)), new Bob(new Position(0,0))});
-        assertEquals("Error on compareLevels() test 1", testlevel.compareLevels(level1), true);
+        assertEquals("Error on compareLevels() test 1", testlevel.equals(level1), true);
 
         Level level2 = new Level("test", new Cases(3,3, CaseState.EMPTY), new ImageBlock[] {new Amogous(new Position(30,0)), new Redky(new Position(0,0)), new Bob(new Position(0,0))});
-        assertEquals("Error on compareLevels() test 2", testlevel.compareLevels(level2), false);
+        assertEquals("Error on compareLevels() test 2", testlevel.equals(level2), false);
 
         Level level3 = new Level("nottherightname", new Cases(3,3, CaseState.EMPTY), new ImageBlock[] {new Amogous(new Position(0,0)), new Redky(new Position(0,0)), new Bob(new Position(0,0))});
-        assertEquals("Error on compareLevels() test 3", testlevel.compareLevels(level3), false);
+        assertEquals("Error on compareLevels() test 3", testlevel.equals(level3), false);
     }
 
     @Test
     public void compareGrid(){
         Cases secGrid = new Cases(3,3, CaseState.EMPTY);
-        assertEquals("Error in compareGrid() test 1", testlevel.compareGrid(secGrid.getCases()), true);
+        assertEquals("Error in compareGrid() test 1", testlevel.getGrid().equals(secGrid.getCases()), true);
 
         secGrid.set(1,1,CaseState.FULL);
-        assertEquals("Error in compareGrid() test 2",testlevel.compareGrid(secGrid.getCases()), false);
+        assertEquals("Error in compareGrid() test 2",testlevel.getGrid().equals(secGrid.getCases()), false);
     }
 
     @Test
     public void saveAndLoad() throws IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         testlevel.saveState();
         Level importtest = new Level("test");
-        assertEquals(testlevel.compareLevels(importtest), true);
+        assertEquals(testlevel.equals(importtest), true);
     }
 
     @Test
@@ -68,7 +68,7 @@ public class LevelTest {
                                  };
 
         testlevel.place(testlevel.getBlocks()[0],0,0);
-        assertEquals("Error in placeandremove() test 1",testlevel.compareGrid(expected), true);
+        assertEquals("Error in placeandremove() test 1",testlevel.getGrid().equals(expected), true);
 
         expected = new CaseState[][]{
                 {CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY},
@@ -77,7 +77,7 @@ public class LevelTest {
         };
 
         testlevel.remove(testlevel.getBlocks()[0], 0, 0);
-        assertEquals("Error in placeandremove() test 2",testlevel.compareGrid(expected), true);
+        assertEquals("Error in placeandremove() test 2",testlevel.getGrid().equals(expected), true);
 
         expected = new CaseState[][]{
                 {CaseState.EMPTY, CaseState.FULL, CaseState.FULL},
@@ -87,7 +87,7 @@ public class LevelTest {
 
         testlevel.getBlocks()[0].rotateCasesTo(2);
         testlevel.place(testlevel.getBlocks()[0], 1, 0);
-        assertEquals("Error in placeandremove() test 3",testlevel.compareGrid(expected), true);
+        assertEquals("Error in placeandremove() test 3",testlevel.getGrid().equals(expected), true);
 
         expected = new CaseState[][]{
                 {CaseState.EMPTY, CaseState.FULL, CaseState.FULL},
@@ -96,7 +96,7 @@ public class LevelTest {
         };
         testlevel.getBlocks()[0].rotateCasesTo(2);
         testlevel.place(testlevel.getBlocks()[0], 1, 1);
-        assertEquals("Error in placeandremove() test 4",testlevel.compareGrid(expected), true);
+        assertEquals("Error in placeandremove() test 4",testlevel.getGrid().equals(expected), true);
 
         expected = new CaseState[][]{
                 {CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY},
@@ -106,6 +106,6 @@ public class LevelTest {
         testlevel.remove(testlevel.getBlocks()[0], 1, 1);
         testlevel.getBlocks()[0].rotateCasesTo(2);
         testlevel.remove(testlevel.getBlocks()[0], 1, 0);
-        assertEquals("Error in placeandremove() test 5",testlevel.compareGrid(expected), true);
+        assertEquals("Error in placeandremove() test 5",testlevel.getGrid().equals(expected), true);
     }
 }

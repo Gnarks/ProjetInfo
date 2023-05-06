@@ -12,8 +12,8 @@ public class Level {
     private ImageBlock[] blocks;
     private int placed = 0;
     private String name;
-    //Uses for json handling move it later to a higher place in object hierarchy
-    private final File f = new File(System.getProperty("user.dir")+"\\src\\main\\resources\\levels.json");
+    private String pathname = System.getProperty("user.dir")+"<src<main<resources<levels.json";
+    private final File f = new File(pathname.replaceAll("<", "\\"+System.getProperty("file.separator")));
     private final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
     public Level(String name, Cases grid, ImageBlock[] blocs){
         this.grid = grid;
@@ -32,7 +32,7 @@ public class Level {
 
         ObjectNode newNode = mapper.createObjectNode();
         JsonNode gridNode = mapper.convertValue(this.grid.getCases(), JsonNode.class);
-        newNode.put("grid", gridNode);
+        newNode.set("grid", gridNode);
 
         ObjectNode blocklist = mapper.createObjectNode();
         for (int i = 0; i < this.blocks.length; ++i){
@@ -50,13 +50,13 @@ public class Level {
             }
 
             block.put("isplaced", this.blocks[i].getPlacedState());
-            blocklist.put(String.valueOf(i), block);
+            blocklist.set(String.valueOf(i), block);
         }
 
 
-        newNode.put("blocklist", blocklist);
+        newNode.set("blocklist", blocklist);
         newNode.put("placed", this.placed);
-        levels.put(name, newNode);
+        levels.set(name, newNode);
         mapper.writeValue(f, levels);
     }
     public void loadState(String name) throws IOException, NoSuchMethodException, ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
@@ -76,8 +76,8 @@ public class Level {
             nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("type");
             //remove the class prefix to prevent a bug
             String classString = mapper.treeToValue(nodeFinder, String.class);
-            classString = classString.substring(6, classString.length());
-            Class current = Class.forName(classString);
+            classString = classString.substring(6);
+            Class<?> current = Class.forName(classString);
 
             //get the position of each saved blocks
             nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("LayoutX");
@@ -184,22 +184,11 @@ public class Level {
 
 
     //This method is only usefull for unit tests
-    public boolean compareGrid(CaseState[][] externalGrid){
-        for (int i = 0; i < externalGrid.length; i++){
-            for (int j = 0; j < externalGrid[0].length; j++){
-                if (this.grid.getState(i, j) != externalGrid[j][i]){
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    public boolean compareLevels(Level externalLevel){
+    public boolean equals(Level externalLevel){
         if (!name.equals(externalLevel.getName())){
             return false;
         }
-        if (!compareGrid(externalLevel.getGrid().getCases())){
+        if (!grid.equals(externalLevel.getGrid().getCases())){
             return false;
         }
         if (blocks.length != externalLevel.getBlocks().length){
