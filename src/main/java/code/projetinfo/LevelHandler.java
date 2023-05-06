@@ -248,6 +248,7 @@ public class LevelHandler {
             else{
                 imageBlock.rotate();
             }
+            blockPop(imageBlock,100);
         });
 
 
