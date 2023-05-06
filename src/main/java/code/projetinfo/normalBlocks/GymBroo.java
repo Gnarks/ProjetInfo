@@ -43,4 +43,9 @@ public class GymBroo extends ImageBlock {
     public void rotate() {
         rotateTo((getRotateState()+1)%4);
     }
+
+    @Override
+    public ImageBlock clone() {
+        return new GymBroo(new Position(0,0));
+    }
 }

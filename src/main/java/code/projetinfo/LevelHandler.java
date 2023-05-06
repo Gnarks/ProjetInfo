@@ -2,6 +2,7 @@ package code.projetinfo;
 
 import code.projetinfo.controllertests.GameController;
 import javafx.animation.FadeTransition;
+import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
@@ -89,15 +90,15 @@ public class LevelHandler {
         Node node = imageBlock.getImageView();
         node.setOnMousePressed(event ->{
 
-            node.setEffect(blend);
-
+            if(node.getOpacity()<1){return;}
 
             if(event.getButton() == MouseButton.SECONDARY ){
+                node.toFront();
                 tryRotate(imageBlock);
             }
             else if(event.getButton() == MouseButton.PRIMARY){
                 node.toFront();
-
+                node.setEffect(blend);
                 if(imageBlock.getPlacedState()){
                     level.remove(imageBlock,(int) (imageBlock.getLayoutX()-gridPos.getX())/tileSize,
                             (int) (imageBlock.getLayoutY()- gridPos.getY())/tileSize);
@@ -106,12 +107,17 @@ public class LevelHandler {
             }
         });
         node.setOnMouseDragged(mouseEvent-> {
+
+            if(node.getOpacity()<1){return;}
             if (mouseEvent.getButton() == MouseButton.PRIMARY)
                 moveBlock(imageBlock,mouseEvent);
         });
 
         node.setOnMouseReleased(event -> {
             node.setEffect(null);
+
+            if(node.getOpacity()<1){return;}
+
             if (event.getButton() == MouseButton.PRIMARY) {
                 if (inGridBounds(new Position(event.getSceneX(), event.getSceneY()))) {
                     if (level.isPlacable(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize, (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize)){
@@ -206,6 +212,17 @@ public class LevelHandler {
         return nextLevel;
     }
 
+    public void vibration(ImageBlock imageBlock){
+        imageBlock.getImageView().setOpacity(0.9);
+        RotateTransition rotateTransition = new RotateTransition(Duration.millis(50),imageBlock.getImageView());
+        rotateTransition.setCycleCount(2);
+        rotateTransition.setAutoReverse(true);
+        rotateTransition.setByAngle(5);
+        rotateTransition.play();
+        rotateTransition.setOnFinished(event -> imageBlock.getImageView().setOpacity(1));
+    }
+
+
     /** rotates the imageBlock if it can.
      * if it can't, does an animation to show it can't.
      *
@@ -235,7 +252,6 @@ public class LevelHandler {
             else{
                 imageBlock.rotate();
             }
-            blockPop(imageBlock,100);
         });
 
 
@@ -287,6 +303,12 @@ public class LevelHandler {
         rePopFT.play();
     }
 
+    public TranslateTransition translateAnimation(ImageBlock anim ,ImageBlock imageBlock){
+        TranslateTransition translateTransition = new TranslateTransition(Duration.millis(300),anim.getImageView());
+        translateTransition.setToX(imageBlock.getSpawnPos().getX()-imageBlock.getLayoutX());
+        translateTransition.setToY(imageBlock.getSpawnPos().getY()-imageBlock.getLayoutY());
+        return translateTransition;
+    }
 
     /**
      * makes the block go to his spawnPos.
@@ -294,14 +316,42 @@ public class LevelHandler {
      */
     private void goToSpawnPos(ImageBlock imageBlock)
     {
-        FadeTransition fT = blockDePop(imageBlock,100);
+        FadeTransition fT = blockDePop(imageBlock,200);
+
+        ImageBlock anim = imageBlock.clone();
+        anim.rotateTo(imageBlock.getRotateState());
+        anim.setPosition(new Position(imageBlock.getLayoutX(),imageBlock.getLayoutY()));
+
+        pane.getChildren().add(anim.getImageView());
+        anim.getImageView().setEffect( new ColorAdjust(0,0,-1,0));
+        anim.getImageView().setOpacity(0.75);
+        imageBlock.getImageView().toFront();
         fT.setOnFinished(finishedEvent -> {
+            TranslateTransition tT = translateAnimation(anim,imageBlock);
+            tT.play();
+            tT.setOnFinished(event ->{blockPop(imageBlock,200);
+                pane.getChildren().remove(anim.getImageView());});
+
             imageBlock.setPosition(imageBlock.getSpawnPos());
             for (ImageBlock collided:
-                 collide(imageBlock)) {
+                    collide(imageBlock)) {
                 if (!collided.getSpawnPos().equals(new Position(collided.getLayoutX(),collided.getLayoutY())))
                     goToSpawnPos(collided);
             }
+
+        });
+    }
+
+
+    /**
+     * makes the block go to his spawnPos.
+     * @param imageBlock the block going to his spawnPos.
+     */
+    private void goToSpawnPosReset(ImageBlock imageBlock)
+    {
+        FadeTransition fT = blockDePop(imageBlock,100);
+        fT.setOnFinished(finishedEvent -> {
+            imageBlock.setPosition(imageBlock.getSpawnPos());
             blockPop(imageBlock,100);
         });
     }
@@ -321,16 +371,16 @@ public class LevelHandler {
         tT.setToX(-1600);
         tT.play();
         tT.setOnFinished(finishedEvent ->{
-        for (ImageBlock imageBlock :
-                level.getBlocks()) {
-            if(imageBlock.getPlacedState())
-                level.remove(imageBlock,(int) (imageBlock.getLayoutX()-gridPos.getX())/tileSize,
-                        (int) (imageBlock.getLayoutY()- gridPos.getY())/tileSize);
-            imageBlock.rotateTo(0);
-            goToSpawnPos(imageBlock);
-            imageBlock.setPlaced(false);
-        }
-        this.level.setPlaced(0);
+            for (ImageBlock imageBlock :
+                    level.getBlocks()) {
+                if(imageBlock.getPlacedState())
+                    level.remove(imageBlock,(int) (imageBlock.getLayoutX()-gridPos.getX())/tileSize,
+                            (int) (imageBlock.getLayoutY()- gridPos.getY())/tileSize);
+                imageBlock.rotateTo(0);
+                goToSpawnPosReset(imageBlock);
+                imageBlock.setPlaced(false);
+            }
+            this.level.setPlaced(0);
             TranslateTransition comeBacktT = new TranslateTransition(Duration.millis(800),resetImage);
             comeBacktT.setToX(1600);
             comeBacktT.play();
