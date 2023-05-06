@@ -1,6 +1,6 @@
 package code.projetinfo.controllertests;
 
-import code.projetinfo.AppGame;
+import code.projetinfo.AppMenu;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -26,11 +26,11 @@ public class ControllerCredits {
 
     @FXML
     protected void onBackToCollectionEntered(){
-        BackButton.setImage(new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBackLight.png"))));
+        BackButton.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonBackLight.png"))));
         BackButton.setOnMouseClicked(event ->{
             Scene scene;
             Stage stage;
-            FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("Collection.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource("Collection.fxml"));
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             try {
                 scene = new Scene(fxmlLoader.load(), 1600, 900);
@@ -45,7 +45,7 @@ public class ControllerCredits {
 
     @FXML
     protected void onBackToCollectionExited() {
-        BackButton.setImage(new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBack.png"))));
+        BackButton.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonBack.png"))));
     }
 
 

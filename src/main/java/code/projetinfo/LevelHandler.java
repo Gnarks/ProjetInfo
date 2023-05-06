@@ -145,18 +145,18 @@ public class LevelHandler {
         rectangle.setLayoutX(gridPos.getX()-tileSize);
         rectangle.setLayoutY(gridPos.getY()-tileSize);
         pane.getChildren().add(rectangle);
-        ImageView buttonNext = new ImageView(String.valueOf(AppGame.class.getResource("Sprites/ButtonNext.png")));
+        ImageView buttonNext = new ImageView(String.valueOf(AppMenu.class.getResource("Sprites/ButtonNext.png")));
         pane.getChildren().add(buttonNext);
         buttonNext.setFitHeight(150);
         buttonNext.setLayoutX(1200);
         buttonNext.setLayoutY(730);
-        buttonNext.setOnMouseEntered(event ->buttonNext.setImage(new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonNextLight.png")))));
-        buttonNext.setOnMouseExited(event ->buttonNext.setImage(new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonNext.png")))));
+        buttonNext.setOnMouseEntered(event ->buttonNext.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonNextLight.png")))));
+        buttonNext.setOnMouseExited(event ->buttonNext.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonNext.png")))));
         buttonNext.setOnMouseClicked(event -> {
             String levelName = nextLevel(level.getName());
             System.out.println(levelName);
             if (levelName == null){
-                    FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("LevelSelector11to20.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource("LevelSelector11to20.fxml"));
                     Stage stage;
                     Scene scene;
                     stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -249,7 +249,7 @@ public class LevelHandler {
         translateTransition.setToY(-900);
         translateTransition.play();
         translateTransition.setOnFinished(event1 -> {
-            FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("Game.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource("Game.fxml"));
             Parent root;
             try {
                 root = fxmlLoader.load();
@@ -310,7 +310,7 @@ public class LevelHandler {
      * set all the blocks in the level to their spawnPos with an animation.
      */
     public void reset(){
-        ImageView resetImage = new ImageView(String.valueOf(AppGame.class.getResource("Sprites/ResetGhost.png")));
+        ImageView resetImage = new ImageView(String.valueOf(AppMenu.class.getResource("Sprites/ResetGhost.png")));
 
         resetImage.setFitHeight(900);
         resetImage.setFitWidth(1600);
