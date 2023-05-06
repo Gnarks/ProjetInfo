@@ -97,14 +97,15 @@ public class Cases {
         return cases;
     }
 
-    public boolean equals(CaseState[][] externalGrid){
-        for (int i = 0; i < externalGrid.length; i++){
-            for (int j = 0; j < externalGrid[0].length; j++){
-                if (getState(i, j) != externalGrid[j][i]){
+    public boolean equals(CaseState[][] externalGrid) {
+        for (int i = 0; i < externalGrid.length; i++) {
+            for (int j = 0; j < externalGrid[0].length; j++) {
+                if (getState(j, i) != externalGrid[i][j]) {
                     return false;
                 }
             }
         }
         return true;
     }
+
 }
