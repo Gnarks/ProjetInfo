@@ -49,7 +49,7 @@ public class LevelGenerator {
                     for (int x = 0; x < currentBlock.getCols(); x++){
                         //Calcule la distance et l'ajoute a la distance globale
                         if (currentBlock.getState(x, y) == CaseState.FULL){
-                            distance += Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
+                            distance += Math.sqrt(Math.pow(x-mSPos.getX(),2) + Math.pow(y- mSPos.getY(),2));
                         }
                     }
                 }

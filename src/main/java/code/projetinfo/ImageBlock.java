@@ -27,7 +27,17 @@ public abstract class ImageBlock{
 
    private Position change;
 
+   public class PositionalData{
+      private Position pos;
+      private int rotateState;
+      private double score;
 
+      public PositionalData(Position pos, int rotateState, double score){
+         this.pos = pos;
+         this.rotateState = rotateState;
+         this.score = score;
+      }
+   }
    /** The main constructor of blocks
     *
     * @param layoutPos the position of the block on the scene.
