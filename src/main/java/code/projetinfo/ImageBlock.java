@@ -183,4 +183,10 @@ public abstract class ImageBlock{
    public double getLayoutY(){
       return imageView.getLayoutY();
    }
+
+   public Position getChange() {
+      return change;
+   }
+
+   public abstract ImageBlock clone();
 }
