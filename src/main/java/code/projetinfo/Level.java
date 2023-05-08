@@ -41,13 +41,10 @@ public class Level {
             block.put("rotatestate", blocks[i].getRotateState());
 
             //if the block is already placed save is position if not save (0,0) (useful for precondition in dispatchBlocks()
-            if (blocks[i].getPlacedState()){
-                block.put("LayoutX", this.blocks[i].getLayoutX());
-                block.put("LayoutY", this.blocks[i].getMidY());
-            }else{
-                block.put("LayoutX", 0.0);
-                block.put("LayoutY", 0.0);
-            }
+
+            block.put("GridX", this.blocks[i].getGridPos().getX());
+            block.put("GridY", this.blocks[i].getGridPos().getY());
+
 
             block.put("isplaced", this.blocks[i].getPlacedState());
             blocklist.set(String.valueOf(i), block);
@@ -80,17 +77,18 @@ public class Level {
             Class<?> current = Class.forName(classString);
 
             //get the position of each saved blocks
-            nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("LayoutX");
-            double midX = mapper.treeToValue(nodeFinder, double.class);
+            nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("GridX");
+            int gridX = mapper.treeToValue(nodeFinder, int.class);
 
-            nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("LayoutY");
-            double midY = mapper.treeToValue(nodeFinder, double.class);
+            nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("GridY");
+            int gridY = mapper.treeToValue(nodeFinder, int.class);
 
             nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("isplaced");
             boolean placedstate = mapper.treeToValue(nodeFinder, boolean.class);
 
             //Construct a Block with the imported block attributes and set if he is placed or not
-            jsonBlocks[i] = (ImageBlock) current.getDeclaredConstructor(Position.class).newInstance(new Position(midX, midY));
+            jsonBlocks[i] = (ImageBlock) current.getDeclaredConstructor(Position.class).newInstance(new Position(0, 0));
+            jsonBlocks[i].getGridPos().setPos(gridX, gridY);
             jsonBlocks[i].setPlaced(placedstate);
         }
         this.blocks = jsonBlocks;
@@ -140,6 +138,7 @@ public class Level {
                     grid.set(x+j, y+i, imageBlock.getState(j, i));
             }
         }
+        imageBlock.getGridPos().setPos(x, y);
         this.placed++;
         imageBlock.setPlaced(true);
     }
@@ -151,6 +150,7 @@ public class Level {
                     grid.set(x+j, y+i, CaseState.EMPTY);
             }
         }
+        imageBlock.getGridPos().setPos(-1, -1);
         this.placed--;
         imageBlock.setPlaced(false);
     }
