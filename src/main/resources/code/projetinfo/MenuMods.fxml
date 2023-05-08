@@ -11,22 +11,25 @@
    <ImageView fitHeight="900.0" fitWidth="1600.0">
       <Image url="@Sprites/ModsMenu.png"/>
    </ImageView>
-   <ImageView layoutX="1139.0" layoutY="180.0">
+   <ImageView fx:id = "AskingSpeedrun" layoutX="1139.0" layoutY="180.0"  onMouseEntered="#onAskingSpeedrunEntered"  onMouseExited="#onAskingSpeedrunExited">
       <Image url="@Sprites/AskingButton.png"/>
    </ImageView>
-   <ImageView layoutX="1139.0" layoutY="385.0">
+   <ImageView fx:id ="ButtonBack" fitHeight="138.0" fitWidth="166.0" onMouseEntered="#onBackEntered"  onMouseExited="#onBackExited">
+      <Image url="@Sprites/ButtonBackToMenu.png" />
+   </ImageView>
+   <ImageView fx:id = "AskingDancing" layoutX="1139.0" layoutY="385.0"  onMouseEntered="#onAskingDancingEntered"  onMouseExited="#onAskingDancingExited">
       <Image url="@Sprites/AskingButton.png"/>
    </ImageView>
-   <ImageView layoutX="1139.0" layoutY="572.0">
+   <ImageView fx:id = "AskingMemory" layoutX="1139.0" layoutY="572.0"  onMouseEntered="#onAskingMemoryEntered"  onMouseExited="#onAskingMemoryExited">
       <Image url="@Sprites/AskingButton.png"/>
    </ImageView>
-   <ImageView fitHeight="138.0" fitWidth="445.0" layoutX="608.0" layoutY="551.0">
+   <ImageView fx:id ="MemoryButton" fitHeight="138.0" fitWidth="445.0" layoutX="608.0" layoutY="551.0"  onMouseEntered="#onMemoryEntered"  onMouseExited="#onMemoryExited">
       <Image url="@Sprites/MemoryButton.png"/>
    </ImageView>
-   <ImageView fitHeight="138.0" fitWidth="445.0" layoutX="608.0" layoutY="382.0">
+   <ImageView fx:id ="DancingButton" fitHeight="138.0" fitWidth="445.0" layoutX="608.0" layoutY="382.0"  onMouseEntered="#onDancingEntered"  onMouseExited="#onDancingExited">
       <Image url="@Sprites/DancingButton.png"/>
    </ImageView>
-   <ImageView fitHeight="138.0" fitWidth="445.0" layoutX="608.0" layoutY="215.0">
+   <ImageView fx:id ="SpeedrunButton" fitHeight="138.0" fitWidth="445.0" layoutX="608.0" layoutY="215.0"  onMouseEntered="#onSpeedrunEntered"  onMouseExited="#onSpeedrunExited">
       <Image url="@Sprites/SpeedrunButton.png"/>
    </ImageView>
 </Pane>

@@ -2,17 +2,12 @@ package code.projetinfo.controllertests;
 
 import code.projetinfo.AppGame;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Paint;
-import javafx.stage.Stage;
-import java.io.IOException;
 
-public class ControllerCollection {
+public class ControllerCollection extends ControllerParent {
 
     @FXML
     private ImageView GhostImage;
@@ -24,45 +19,18 @@ public class ControllerCollection {
     private Label GhostName;
     @FXML
     private Label GhostDescription;
-    private Stage stage;
-    private Scene scene;
 
     @FXML
     protected void onButtonBackEntered(){
-        ButtonBack.setImage(new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBackLight.png"))));
-
-        ButtonBack.setOnMouseClicked(event ->{
-            FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("MainMenu.fxml"));
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            try {
-                scene = new Scene(fxmlLoader.load(), 1600, 900);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.show();
-        });
+        onButtonEntered(ButtonBack,"Sprites/ButtonBackLight.png","MainMenu.fxml");
     }
     @FXML
     protected void onButtonBackExited(){
-        ButtonBack.setImage(new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBack.png"))));
+        buttonImageChanger(ButtonBack,"Sprites/ButtonBack.png");
     }
     @FXML
     protected void onButtonNextEntered(){
-        ButtonNext.setImage(new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonNextLight.png"))));
-        ButtonNext.setOnMouseClicked(event ->{
-            FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("Credits.fxml"));
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            try {
-                scene = new Scene(fxmlLoader.load(), 1600, 900);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.show();
-        });
+        onButtonEntered(ButtonNext,"Sprites/ButtonNextLight.png","Credits.fxml");
     }
     @FXML
     protected void onButtonNextExited(){
