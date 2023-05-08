@@ -227,4 +227,11 @@ public abstract class ImageBlock{
    public double getLayoutY(){
       return imageView.getLayoutY();
    }
+
+   //Accessor usefull in tests
+   public Cases getGrid(){
+      return cases;
+   }
+
+
 }
