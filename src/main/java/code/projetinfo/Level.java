@@ -156,13 +156,7 @@ public class Level {
     }
 
     public void show(){
-        System.out.println("\n");
-        for (int i = 0; i < grid.getRow(); i++) {
-            for (int j = 0; j < grid.getCol(); j++) {
-                System.out.printf("%7s|", grid.getState(j,i));
-            }
-            System.out.println();
-        }
+        grid.show();
     }
 
     public ImageBlock[] getBlocks() {

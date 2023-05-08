@@ -46,5 +46,10 @@ public class Position {
         return String.format("(%s, %S)",x,y);
     }
 
+
+    public Position clone(){
+        return new Position(x,y);//todo check to use it as much as possible.
+    }
+
 }
 

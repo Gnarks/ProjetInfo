@@ -67,7 +67,7 @@ public abstract class ImageBlock{
       Cases newcases = new Cases(this.cases.getRow(), this.cases.getCol(), CaseState.EMPTY);
 
       Position startingMidTile = new Position((midPos.getX()-25)/50,(midPos.getY()-25)/50);
-      Position newMidTilePos = new Position(startingMidTile.getX(),startingMidTile.getY());
+      Position newMidTilePos = startingMidTile.clone();
 
       for (int k = (newRotateState - rotateState +4)%4; k>0 ; k--) {
          newMidTilePos = new Position(cases.getRow() - newMidTilePos.getY() -1, newMidTilePos.getX());
