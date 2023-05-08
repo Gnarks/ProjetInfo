@@ -87,7 +87,7 @@ public abstract class ImageBlock{
     * @return the spawnPosition of the block
     */
    public Position getSpawnPos(){
-      return new Position(spawnPos.getX(), spawnPos.getY());
+      return spawnPos.clone();
    }
 
    public void setSpawnPos(Position newSpawnPos){
