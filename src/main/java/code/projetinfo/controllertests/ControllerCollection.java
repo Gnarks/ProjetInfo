@@ -80,8 +80,8 @@ public class ControllerCollection {
     protected void setGhostName(String name,double posX){
         GhostName.setText(name);
         GhostName.setLayoutX(posX);
-        GhostDescription.setTextFill(Paint.valueOf("#d0d0ff"));
         GhostName.setTextFill(Paint.valueOf("d0d0ff"));
+        GhostDescription.setTextFill(Paint.valueOf("#d0d0ff"));
     }
 
 

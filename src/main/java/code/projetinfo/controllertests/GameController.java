@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -43,6 +44,7 @@ public class GameController implements Initializable {
     protected void onBackEntered(){
         Image imageLight = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBackToMenulight.png")));
         BackToMenuButton.setImage(imageLight);
+
     }
 
     @FXML
@@ -107,26 +109,44 @@ public class GameController implements Initializable {
                     levelHandler.loadLevel(levelName,event);
             }});
 
-            BackToMenuButton.setOnMouseClicked(event ->{
-                if(levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')){
-                FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("LevelSelector1to10.fxml"));
-                Stage stage;
-                Scene scene;
-                stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-                try {
-                    scene = new Scene(fxmlLoader.load(), 1600, 900);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                stage.setScene(scene);
-                stage.setResizable(false);
-                stage.show();}
+            BackToMenuButton.setOnMouseClicked(event -> {
+                if(!levelHandler.getVictoryState()){
+                Rectangle rectangle = new Rectangle(1600, 900, Paint.valueOf("#000000"));
+                rectangle.setOpacity(0.2);
+                ImageView menuPause = new ImageView(new Image(String.valueOf(AppGame.class.getResource("Sprites/FondChoser.png"))));
+                menuPause.setPreserveRatio(true);
+                menuPause.setFitWidth(600);
+                menuPause.setLayoutY(150);
+                menuPause.setLayoutX(500);
+                Button save = new Button();
+                save.setText("Save");
+                save.setPrefWidth(300);
+                save.setPrefHeight(100);
+                save.setLayoutX(650);
+                save.setLayoutY(400);
 
-                else{
-                    FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("LevelSelector11to20.fxml"));
+                Button leave = new Button();
+                leave.setText("Leave");
+                leave.setPrefWidth(300);
+                leave.setPrefHeight(100);
+                leave.setLayoutX(650);
+                leave.setLayoutY(550);
+
+                Button resume = new Button();
+                resume.setText("Resume");
+                resume.setPrefWidth(300);
+                resume.setPrefHeight(100);
+                resume.setLayoutX(650);
+                resume.setLayoutY(250);
+
+                resume.setOnAction(resumeEvent -> pane.getChildren().remove(pane.getChildren().size()-5,pane.getChildren().size()));
+
+                leave.setOnAction(leaveEvent -> {
+                    if (levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')) {
+                    FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("LevelSelector1to10.fxml"));
                     Stage stage;
                     Scene scene;
-                    stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     try {
                         scene = new Scene(fxmlLoader.load(), 1600, 900);
                     } catch (IOException e) {
@@ -134,8 +154,93 @@ public class GameController implements Initializable {
                     }
                     stage.setScene(scene);
                     stage.setResizable(false);
-                    stage.show();}
+                    stage.show();
+                } else {
+                    FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("LevelSelector11to20.fxml"));
+                    Stage stage;
+                    Scene scene;
+                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    try {
+                        scene = new Scene(fxmlLoader.load(), 1600, 900);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    stage.setScene(scene);
+                    stage.setResizable(false);
+                    stage.show();
+                }
                 });
+                save.setOnAction(saveEvent -> {
+                    try {
+                        level.saveState();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    if (levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')) {
+                        FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("LevelSelector1to10.fxml"));
+                        Stage stage;
+                        Scene scene;
+                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        try {
+                            scene = new Scene(fxmlLoader.load(), 1600, 900);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                        stage.setScene(scene);
+                        stage.setResizable(false);
+                        stage.show();
+                    } else {
+                        FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("LevelSelector11to20.fxml"));
+                        Stage stage;
+                        Scene scene;
+                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        try {
+                            scene = new Scene(fxmlLoader.load(), 1600, 900);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                        stage.setScene(scene);
+                        stage.setResizable(false);
+                        stage.show();
+                    }
+                });
+                pane.getChildren().add(rectangle);
+                pane.getChildren().add(menuPause);
+                pane.getChildren().add(save);
+                pane.getChildren().add(leave);
+                pane.getChildren().add(resume);}
+
+                else{
+                    if (levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')) {
+                        FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("LevelSelector1to10.fxml"));
+                        Stage stage;
+                        Scene scene;
+                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        try {
+                            scene = new Scene(fxmlLoader.load(), 1600, 900);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                        stage.setScene(scene);
+                        stage.setResizable(false);
+                        stage.show();
+                    } else {
+                        FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("LevelSelector11to20.fxml"));
+                        Stage stage;
+                        Scene scene;
+                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        try {
+                            scene = new Scene(fxmlLoader.load(), 1600, 900);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                        stage.setScene(scene);
+                        stage.setResizable(false);
+                        stage.show();
+                }
+                }
+            });
             });
     }
 }

@@ -25,10 +25,10 @@ public class ControllerLevelSelector11to20 implements Initializable {
     @FXML
     private Pane pane;
     @FXML
-    private ImageView ButtonNext;
-
-    @FXML
     private ImageView ButtonBack;
+
+    private Stage stage;
+    private Scene scene;
 
     @FXML
     public void onBackEntered(){
@@ -54,9 +54,6 @@ public class ControllerLevelSelector11to20 implements Initializable {
 
 
     }
-
-    private Stage stage;
-    private Scene scene;
 
     public void LevelSelect(String levelName, Button button){
         button.setOnAction(event -> {
