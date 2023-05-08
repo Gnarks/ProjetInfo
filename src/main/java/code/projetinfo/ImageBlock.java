@@ -189,7 +189,21 @@ public abstract class ImageBlock{
    public Cases getGrid(){
       return cases;
    }
-   public Position getGridPos(){return gridPos;}
 
+   /**Setter for Gridpos
+    * @param x New value of X in GridPos.
+    * @param y New value of Y in GridPos.
+    */
+   public void setGridPos(int x, int y){
+      this.gridPos.setPos(x,y);
+   }
+
+   /**
+    * Getter for GridPos
+    * @return a new instance of position copying GridPos for security.
+    */
+   public Position getGridPos(){
+      return new Position(gridPos.getX(), gridPos.getY());
+   }
 
 }
