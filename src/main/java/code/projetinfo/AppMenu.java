@@ -5,6 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/** Starting App of the project.
+ *
+ */
 public class AppMenu extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
