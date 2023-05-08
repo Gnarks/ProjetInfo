@@ -26,13 +26,23 @@ public class Level {
         loadState(name);
     }
 
-    public void saveState() throws IOException {
+    public void saveState(String... Name) throws IOException {
         JsonNode jsonData = mapper.readTree(f);
         ObjectNode levels = (ObjectNode) jsonData;
 
         ObjectNode newNode = mapper.createObjectNode();
-        JsonNode gridNode = mapper.convertValue(this.grid.getCases(), JsonNode.class);
+        JsonNode gridNode;
+
+        //Si pas de nom alors le niveau est nouveau
+        if (Name.length == 0) {
+            gridNode = mapper.convertValue(this.grid.getCases(), JsonNode.class);
+        }else{
+            JsonNode nodeFinder = jsonData.path(Name[0]).path("grid");
+            CaseState[][] testcases = mapper.treeToValue(nodeFinder, CaseState[][].class);
+            gridNode = mapper.convertValue(testcases, JsonNode.class);
+        }
         newNode.set("grid", gridNode);
+
 
         ObjectNode blocklist = mapper.createObjectNode();
         for (int i = 0; i < this.blocks.length; ++i){
