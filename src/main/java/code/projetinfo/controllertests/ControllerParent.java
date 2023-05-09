@@ -4,15 +4,18 @@ import code.projetinfo.AppGame;
 import javafx.animation.TranslateTransition;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -20,13 +23,13 @@ import java.io.IOException;
 
 public class ControllerParent {
 
-    protected void onButtonEntered(ImageView button, String spriteLight, String nextStage){
-        button.setImage(new Image(String.valueOf(AppGame.class.getResource(spriteLight))));
+    protected void onButtonEntered(ImageView button, String sprite, String nextStage){
+        button.setImage(new Image(String.valueOf(AppGame.class.getResource(sprite))));
         button.setOnMouseClicked(event -> loadScene(nextStage,event));
     }
 
-    protected void buttonImageChanger(ImageView button, String spriteDark){
-        button.setImage(new Image(String.valueOf(AppGame.class.getResource(spriteDark))));
+    protected void buttonImageChanger(ImageView button, String sprite){
+        button.setImage(new Image(String.valueOf(AppGame.class.getResource(sprite))));
     }
 
     protected void LevelSelect(Pane pane, String levelName, Button button){
@@ -83,6 +86,38 @@ public class ControllerParent {
        imageView.setLayoutX(layoutX);
        imageView.setLayoutY(layoutY);
        return imageView;
+    }
+
+    protected void askingInformation(Pane pane,ImageView askingButton,String text){
+        askingButton.setOnMouseClicked(event ->{
+            Rectangle rectangle = new Rectangle(1600,900, Paint.valueOf("#000000"));
+            rectangle.setOpacity(0.2);
+            ImageView fondInt = new ImageView(new Image(String.valueOf(AppGame.class.getResource("Sprites/BackGridLevel.png"))));
+            fondInt.setFitWidth(800);
+            fondInt.setFitHeight(400);
+            fondInt.setLayoutX(400);
+            fondInt.setLayoutY(250);
+            ImageView backButton = new ImageView(new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBack.png"))));
+            backButton.setPreserveRatio(true);
+            backButton.setLayoutX(700);
+            backButton.setLayoutY(600);
+            backButton.setFitHeight(100);
+            backButton.setOnMouseEntered(event1 -> buttonImageChanger(backButton,"Sprites/ButtonBackLight.png"));
+            backButton.setOnMouseExited(event1 -> buttonImageChanger(backButton,"Sprites/ButtonBack.png"));
+            backButton.setOnMouseClicked(event1 -> pane.getChildren().remove(pane.getChildren().size()-4,pane.getChildren().size()));
+            Label label = new Label(text);
+            Font font = new Font("System Bold Italic",50);
+            label.setFont(font);
+            label.setTextFill(Paint.valueOf("#ffffff"));
+            label.setUnderline(true);
+            label.setAlignment(Pos.CENTER);
+            label.setWrapText(true);
+            label.setPrefWidth(600);
+            label.setPrefHeight(250);
+            label.setLayoutX(500);
+            label.setLayoutY(300);
+            pane.getChildren().addAll(rectangle,fondInt,label,backButton);
+        });
     }
 
 }

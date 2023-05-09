@@ -158,7 +158,7 @@ public class LevelHandler {
         ImageView blocky = addVictoryGhost("Sprites/Blocky.png",200,150);
         ImageView ghost1 = addVictoryGhost("Sprites/Magky.png",200,500);
         ImageView ghost2 = addVictoryGhost("Sprites/Clode.png",1175,200);
-        ImageView ghost3 = addVictoryGhost("Sprites/Bluky.png",1100,500);
+        ImageView ghost3 = addVictoryGhost("Sprites/Bluky.png",1100,515);
         ghostDancing(blocky,ghost1,ghost2,ghost3);
         buttonNext.setFitHeight(150);
         buttonNext.setLayoutX(1200);
@@ -229,8 +229,6 @@ public class LevelHandler {
         rotateTransition.setCycleCount(Animation.INDEFINITE);
         rotateTransition.setAutoReverse(true);
         rotateTransition.play();
-
-
 
         TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500),ghost3);
         translateTransition.setToX(150);

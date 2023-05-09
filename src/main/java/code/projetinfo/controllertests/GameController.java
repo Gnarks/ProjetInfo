@@ -69,6 +69,7 @@ public class GameController extends ControllerParent implements Initializable {
         Rectangle transi = new Rectangle(1600,900 , Paint.valueOf("222222"));
         pane.getChildren().add(transi);
 
+
         Platform.runLater(() ->{
             Level level;
             try {
@@ -104,10 +105,12 @@ public class GameController extends ControllerParent implements Initializable {
                 ImageView leave = createImageView("Sprites/LeaveButton.png",400,600,525);
                 ImageView resume = createImageView("Sprites/ResumeButton.png", 400,600,225);
 
+                resume.setOnMouseEntered(resumeEvent -> buttonImageChanger(resume,"Sprites/ResumeButtonLight.png"));
+                resume.setOnMouseExited(resumeEvent -> buttonImageChanger(resume,"Sprites/ResumeButton.png"));
                 resume.setOnMouseClicked(resumeEvent -> pane.getChildren().remove(pane.getChildren().size()-5,pane.getChildren().size()));
-                resume.setOnMouseEntered(resumeEvent2 -> buttonImageChanger(resume,"Sprites/ResumeButtonLight.png"));
-                resume.setOnMouseExited(resumeEvent3 -> buttonImageChanger(resume,"Sprites/ResumeButton.png"));
 
+                leave.setOnMouseEntered(leaveEvent -> buttonImageChanger(leave,"Sprites/LeaveButtonLight.png"));
+                leave.setOnMouseExited(leaveEvent -> buttonImageChanger(leave,"Sprites/LeaveButton.png"));
                 leave.setOnMouseClicked(leaveEvent -> {
                     if (levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')) {
                         loadScene("LevelSelector1to10.fxml",event);
@@ -116,9 +119,8 @@ public class GameController extends ControllerParent implements Initializable {
                 }
                 });
 
-                leave.setOnMouseEntered(leaveEvent2 -> buttonImageChanger(leave,"Sprites/LeaveButtonLight.png"));
-                leave.setOnMouseExited(leaveEvent3 -> buttonImageChanger(leave,"Sprites/LeaveButton.png"));
-
+                save.setOnMouseEntered(saveEvent -> buttonImageChanger(save,"Sprites/SaveButtonLight.png"));
+                save.setOnMouseExited(saveEvent -> buttonImageChanger(save,"Sprites/SaveButton.png"));
                 save.setOnMouseClicked(saveEvent -> {
                     try {
                         level.saveState();
@@ -133,14 +135,8 @@ public class GameController extends ControllerParent implements Initializable {
                     }
                 });
 
-                save.setOnMouseEntered(leaveEvent2 -> buttonImageChanger(save,"Sprites/SaveButtonLight.png"));
-                save.setOnMouseExited(leaveEvent3 -> buttonImageChanger(save,"Sprites/SaveButton.png"));
-
-                pane.getChildren().add(rectangle);
-                pane.getChildren().add(menuPause);
-                pane.getChildren().add(save);
-                pane.getChildren().add(leave);
-                pane.getChildren().add(resume);}
+                pane.getChildren().addAll(rectangle,menuPause,save,leave,resume);
+                }
 
                 else{
                     if (levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')) {

@@ -2,8 +2,11 @@ package code.projetinfo.controllertests;
 
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
-
+import javafx.scene.layout.Pane;
 public class ControllerMenuMods extends ControllerParent{
+
+    @FXML
+    private Pane pane;
 
     @FXML
     private ImageView AskingSpeedrun;
@@ -22,13 +25,13 @@ public class ControllerMenuMods extends ControllerParent{
     @FXML
     protected void onAskingSpeedrunEntered(){
         buttonImageChanger(AskingSpeedrun,"Sprites/AskingButtonLight.png");
+        askingInformation(pane,AskingSpeedrun,"Finish as much level as possible in the defined time!");
     }
 
     @FXML
     protected void onAskingDancingEntered(){
         buttonImageChanger(AskingDancing,"Sprites/AskingButtonLight.png");
     }
-
     @FXML
     protected void onAskingMemoryEntered(){
         buttonImageChanger(AskingMemory,"Sprites/AskingButtonLight.png");
@@ -37,12 +40,10 @@ public class ControllerMenuMods extends ControllerParent{
     protected void onAskingSpeedrunExited(){
         buttonImageChanger(AskingSpeedrun,"Sprites/AskingButton.png");
     }
-
     @FXML
     protected void onAskingDancingExited(){
         buttonImageChanger(AskingDancing,"Sprites/AskingButton.png");
     }
-
     @FXML
     protected void onAskingMemoryExited(){
         buttonImageChanger(AskingMemory,"Sprites/AskingButton.png");
@@ -55,7 +56,6 @@ public class ControllerMenuMods extends ControllerParent{
     protected void onSpeedrunEntered(){
         buttonImageChanger(SpeedrunButton,"Sprites/SpeedrunButtonLight.png");
     }
-
     @FXML
     protected void onDancingEntered(){
         buttonImageChanger(DancingButton,"Sprites/DancingButtonLight.png");
@@ -72,12 +72,10 @@ public class ControllerMenuMods extends ControllerParent{
     protected void onSpeedrunExited(){
         buttonImageChanger(SpeedrunButton,"Sprites/SpeedrunButton.png");
     }
-
     @FXML
     protected void onDancingExited(){
         buttonImageChanger(DancingButton,"Sprites/DancingButton.png");
     }
-
     @FXML
     protected void onMemoryExited(){buttonImageChanger(MemoryButton,"Sprites/MemoryButton.png");}
 
