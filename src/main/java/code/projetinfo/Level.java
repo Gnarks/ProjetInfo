@@ -29,20 +29,20 @@ public class Level {
     /**
      * Save all the data of a Level instance in the levels.json file.
      * This method can save a new Level not already in the file and also modify one already in the file.
-     * @param Name Optional argument useful to know if the level already exist (to not erase the existing level data grid).
+     * @param name Optional argument useful to know if the level already exist (to not erase the existing level data grid).
      * @throws IOException
      */
-    public void saveState(String... Name) throws IOException {
+    public void saveState(String name) throws IOException {
         JsonNode jsonData = mapper.readTree(f);
         ObjectNode levels = (ObjectNode) jsonData;
 
         ObjectNode newNode = mapper.createObjectNode();
         JsonNode gridNode;
 
-        if (Name.length == 0) {
+        if (name.length() == 0) {
             gridNode = mapper.convertValue(this.grid.getCases(), JsonNode.class);
         }else{
-            JsonNode nodeFinder = jsonData.path(Name[0]).path("grid");
+            JsonNode nodeFinder = jsonData.path(name).path("grid");
             CaseState[][] testcases = mapper.treeToValue(nodeFinder, CaseState[][].class);
             gridNode = mapper.convertValue(testcases, JsonNode.class);
         }
@@ -71,8 +71,13 @@ public class Level {
 
         newNode.set("blocklist", blocklist);
         newNode.put("placed", this.placed);
-        levels.set(name, newNode);
+        levels.set(this.name, newNode);
         mapper.writeValue(f, levels);
+    }
+
+
+    public void saveState() throws IOException {
+        saveState("");
     }
 
     /**
