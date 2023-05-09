@@ -98,7 +98,7 @@ public class Level {
 
             //Construct a Block with the imported block attributes and set if he is placed or not
             jsonBlocks[i] = (ImageBlock) current.getDeclaredConstructor(Position.class).newInstance(new Position(0, 0));
-            jsonBlocks[i].setGridPos(gridX, gridY);
+            jsonBlocks[i].getGridPos().setPos(gridX, gridY);
             jsonBlocks[i].setPlaced(placedstate);
         }
         this.blocks = jsonBlocks;
