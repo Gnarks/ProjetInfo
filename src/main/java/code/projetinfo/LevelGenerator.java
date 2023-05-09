@@ -83,7 +83,7 @@ public class LevelGenerator {
 
 
         // the array of block used in the generation of the level.
-        ArrayList<ImageBlock> BlocksUsed = new ArrayList<ImageBlock>();
+        ArrayList<ImageBlock> blocksUsed = new ArrayList<ImageBlock>();
 
         //loop trying to place the minimum asked number of block. todo patch la boucle
         for (int i = 0; i < leastToPlace; i++) {
@@ -142,10 +142,10 @@ public class LevelGenerator {
                 //set up the new MS pos
                 MSPos = getNewMSPos(bestPossiblePlacement.position.clone());
                 System.out.printf("choose the : %s position\n",MSPos);
+                blocksUsed.add(currentBlock);
             }
         }
-        return new Level("randomLevel",grid,BlocksUsed.toArray(new ImageBlock[0]));
-
+        return new Level("randomLevel",grid,blocksUsed.toArray(new ImageBlock[0]));
     }
 
     private void placeBestBlock(ImageBlock imageBlock, Position position, int rotateState){

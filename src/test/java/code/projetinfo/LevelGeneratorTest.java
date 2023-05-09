@@ -19,7 +19,7 @@ public class LevelGeneratorTest {
 
         LevelGenerator levelGenerator = new LevelGenerator(new ImageBlock[]{
                 new Redky(new Position(2,2))},
-                3,3,true);
+                6,3,true);
 
         try {
             levelGenerator.generate();
