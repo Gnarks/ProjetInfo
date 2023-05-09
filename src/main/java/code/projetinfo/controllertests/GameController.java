@@ -41,26 +41,26 @@ public class GameController implements Initializable {
 
     @FXML
     protected void onBackEntered(){
-        Image imageLight = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBackToMenulight.png")));
+        Image imageLight = new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonBackToMenulight.png")));
         BackToMenuButton.setImage(imageLight);
     }
 
     @FXML
     protected void onBackExited(){
-        Image imageDark = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBackToMenu.png")));
+        Image imageDark = new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonBackToMenu.png")));
         BackToMenuButton.setImage(imageDark);
     }
 
     @FXML
     protected void onResetEntered(){
-        Image imageLight = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonResetLight.png")));
+        Image imageLight = new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonResetLight.png")));
         ResetButton.setImage(imageLight);
 
     }
 
     @FXML
     protected void onResetExited(){
-        Image imageDark = new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonReset.png")));
+        Image imageDark = new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonReset.png")));
         ResetButton.setImage(imageDark);
     }
 
@@ -109,7 +109,7 @@ public class GameController implements Initializable {
 
             BackToMenuButton.setOnMouseClicked(event ->{
                 if(levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')){
-                FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("LevelSelector1to10.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource("LevelSelector1to10.fxml"));
                 Stage stage;
                 Scene scene;
                 stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -123,7 +123,7 @@ public class GameController implements Initializable {
                 stage.show();}
 
                 else{
-                    FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("LevelSelector11to20.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource("LevelSelector11to20.fxml"));
                     Stage stage;
                     Scene scene;
                     stage = (Stage) ((Node)event.getSource()).getScene().getWindow();

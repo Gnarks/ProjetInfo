@@ -1,6 +1,6 @@
 package code.projetinfo.controllertests;
 
-import code.projetinfo.AppGame;
+import code.projetinfo.AppMenu;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,16 +25,13 @@ public class ControllerLevelSelector11to20 implements Initializable {
     @FXML
     private Pane pane;
     @FXML
-    private ImageView ButtonNext;
-
-    @FXML
     private ImageView ButtonBack;
 
     @FXML
     public void onBackEntered(){
-        ButtonBack.setImage(new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBackLight.png"))));
+        ButtonBack.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonBackLight.png"))));
         ButtonBack.setOnMouseClicked(event ->{
-            FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("LevelSelector1to10.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource("LevelSelector1to10.fxml"));
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             try {
                 scene = new Scene(fxmlLoader.load(), 1600, 900);
@@ -50,7 +47,7 @@ public class ControllerLevelSelector11to20 implements Initializable {
 
     @FXML
     public void onBackExited(){
-        ButtonBack.setImage(new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBack.png"))));
+        ButtonBack.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonBack.png"))));
 
 
     }
@@ -68,7 +65,7 @@ public class ControllerLevelSelector11to20 implements Initializable {
             translateTransition.setToY(-900);
             translateTransition.play();
             translateTransition.setOnFinished(event1 -> {
-                FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("Game.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource("Game.fxml"));
                 Parent root;
                 try {
                     root = fxmlLoader.load();
