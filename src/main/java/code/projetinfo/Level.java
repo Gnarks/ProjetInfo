@@ -52,8 +52,8 @@ public class Level {
 
             //if the block is already placed save is position if not save (0,0) (useful for precondition in dispatchBlocks()
 
-            block.put("GridX", (int)this.blocks[i].getGridPos().getX());
-            block.put("GridY", (int)this.blocks[i].getGridPos().getY());
+            block.put("GridX", this.blocks[i].getGridPos().getX());
+            block.put("GridY", this.blocks[i].getGridPos().getY());
 
 
             block.put("isplaced", this.blocks[i].getPlacedState());
