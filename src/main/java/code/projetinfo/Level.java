@@ -26,6 +26,12 @@ public class Level {
         loadState(name);
     }
 
+    /**
+     * Save all the data of a Level instance in the levels.json file.
+     * This method can save a new Level not already in the file and also modify one already in the file.
+     * @param Name Optional argument useful to know if the level already exist (to not erase the existing level data grid).
+     * @throws IOException
+     */
     public void saveState(String... Name) throws IOException {
         JsonNode jsonData = mapper.readTree(f);
         ObjectNode levels = (ObjectNode) jsonData;
@@ -33,7 +39,6 @@ public class Level {
         ObjectNode newNode = mapper.createObjectNode();
         JsonNode gridNode;
 
-        //Si pas de nom alors le niveau est nouveau
         if (Name.length == 0) {
             gridNode = mapper.convertValue(this.grid.getCases(), JsonNode.class);
         }else{
@@ -69,6 +74,17 @@ public class Level {
         levels.set(name, newNode);
         mapper.writeValue(f, levels);
     }
+
+    /**
+     * Replace all the data of the calling Level instance by the data stored in the name field of levels.json
+     * @param name The name of the level to load from levels.json
+     * @throws IOException
+     * @throws NoSuchMethodException
+     * @throws ClassNotFoundException
+     * @throws InvocationTargetException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     */
     public void loadState(String name) throws IOException, NoSuchMethodException, ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
         //jsonData = root node
         JsonNode jsonData = mapper.readTree(f);
@@ -154,6 +170,13 @@ public class Level {
         imageBlock.setPlaced(true);
     }
 
+    /**
+     * Remove a block from a selected cell in the inner matrix.
+     * It basically just runs through the bloc matrix and set the matching index to Empty.
+     * @param imageBlock The block to remove.
+     * @param x coordinate of the upper left corner of the block to remove
+     * @param y coordinate of the upper left corner of the block to remove
+     */
     public void remove(ImageBlock imageBlock,int x,int y){
         for (int i = 0; i < imageBlock.getRows(); i++){
             for (int j = 0; j < imageBlock.getCols(); j++){
@@ -194,6 +217,12 @@ public class Level {
 
 
     //This method is only usefull for unit tests
+
+    /**
+     * Equals method for Level class.
+     * @param externalLevel The level instance to compare with the calling instance of Level.
+     * @return If all the data of this and externalLevel are equal.
+     */
     public boolean equals(Level externalLevel){
         if (!name.equals(externalLevel.getName())){
             return false;
