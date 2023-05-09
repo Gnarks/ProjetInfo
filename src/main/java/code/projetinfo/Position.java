@@ -45,9 +45,6 @@ public class Position {
     public String toString(){
         return String.format("(%s, %S)",x,y);
     }
-    public void setPos(int x, int y){
-        this.x = x;
-        this.y = y;
-    }
+
 }
 

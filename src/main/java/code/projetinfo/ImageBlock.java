@@ -1,6 +1,5 @@
 package code.projetinfo;
 
-import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -27,7 +26,7 @@ public abstract class ImageBlock{
    private boolean isPlaced;
 
    private Position change;
-   private Position gridPos = new Position(-1,-1);
+
 
    /** The main constructor of blocks
     *
@@ -189,7 +188,6 @@ public abstract class ImageBlock{
    public Cases getGrid(){
       return cases;
    }
-   public Position getGridPos(){return gridPos;}
 
 
 }
