@@ -1,6 +1,8 @@
 package code.projetinfo;
 
 import code.projetinfo.normalBlocks.Amogous;
+import code.projetinfo.normalBlocks.Bloby;
+import code.projetinfo.normalBlocks.Redky;
 import de.saxsys.javafx.test.JfxRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,8 +17,9 @@ public class LevelGeneratorTest {
     @Test
     public void TryCreate() {
 
-        LevelGenerator levelGenerator = new LevelGenerator(new ImageBlock[]{new Amogous(new Position(2,2))},
-                1,1,true);
+        LevelGenerator levelGenerator = new LevelGenerator(new ImageBlock[]{
+                new Redky(new Position(2,2))},
+                3,3,true);
 
         try {
             levelGenerator.generate();
