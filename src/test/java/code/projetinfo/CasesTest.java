@@ -17,7 +17,7 @@ public class CasesTest {
     @Test
     public void remove() {
         Cases c = new Cases(3,3, CaseState.FULL);
-        c.remove(1,1);
+        c.set(1,1, CaseState.EMPTY);
 
         CaseState[][] expected = new CaseState[][] {{CaseState.FULL, CaseState.FULL, CaseState.FULL}, {CaseState.FULL, CaseState.EMPTY, CaseState.FULL}, {CaseState.FULL,CaseState.FULL,CaseState.FULL}};
         assertTrue("Error in remove test", c.equals(expected));

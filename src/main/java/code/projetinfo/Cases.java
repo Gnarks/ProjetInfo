@@ -96,9 +96,14 @@ public class Cases {
      *                  <code>false</code> otherwise.
      */
     public boolean equals(CaseState[][] externalCases){
+        if (externalCases.length == 0 && cases.length == 0)
+            return true;
+
+        if (externalCases.length != cases.length || externalCases[0].length != cases[0].length)
+            return false;
         for (int i = 0; i < externalCases.length; i++){
             for (int j = 0; j < externalCases[0].length; j++){
-                if (getState(i, j) != externalCases[j][i]){
+                if (getState(j, i) != externalCases[i][j]){
                     return false;
                 }
             }
