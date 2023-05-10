@@ -158,7 +158,7 @@ public class LevelHandler {
         ImageView blocky = addVictoryGhost("Sprites/Blocky.png",200,150);
         ImageView ghost1 = addVictoryGhost("Sprites/Magky.png",200,500);
         ImageView ghost2 = addVictoryGhost("Sprites/Clode.png",1175,200);
-        ImageView ghost3 = addVictoryGhost("Sprites/Bluky.png",1100,515);
+        ImageView ghost3 = addVictoryGhost("Sprites/Bluky.png",1100,470);
         ghostDancing(blocky,ghost1,ghost2,ghost3);
         buttonNext.setFitHeight(150);
         buttonNext.setLayoutX(1200);

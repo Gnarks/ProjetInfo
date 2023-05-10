@@ -108,14 +108,14 @@ public class ControllerParent {
             Label label = new Label(text);
             Font font = new Font("System Bold Italic",50);
             label.setFont(font);
-            label.setTextFill(Paint.valueOf("#ffffff"));
+            label.setTextFill(Paint.valueOf("#000000"));
             label.setUnderline(true);
             label.setAlignment(Pos.CENTER);
             label.setWrapText(true);
-            label.setPrefWidth(600);
-            label.setPrefHeight(250);
-            label.setLayoutX(500);
-            label.setLayoutY(300);
+            label.setPrefWidth(700);
+            label.setPrefHeight(350);
+            label.setLayoutX(450);
+            label.setLayoutY(250);
             pane.getChildren().addAll(rectangle,fondInt,label,backButton);
         });
     }

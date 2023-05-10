@@ -44,26 +44,37 @@
    <ImageView fitHeight="110.0" fitWidth="111.0" layoutX="392.0" layoutY="622.0">
       <Image url="@Sprites/Mouse_Left_Key_Dark.png"/>
    </ImageView>
-   <Label layoutX="619.0" layoutY="366.0" prefHeight="99.0" prefWidth="362.0" text="CONTROLS" textFill="#a3edff"
+   <Label layoutX="619.0" layoutY="366.0" prefHeight="99.0" prefWidth="362.0" text="CONTROLS" textFill="#ffffff"
           underline="true">
       <font>
          <Font name="System Bold Italic" size="67.0"/>
       </font>
    </Label>
-   <Label layoutX="243.0" layoutY="487.0" prefHeight="99.0" prefWidth="410.0" text="Drag &amp; Drop" textFill="#a3edff"
+   <Label layoutX="243.0" layoutY="487.0" prefHeight="99.0" prefWidth="410.0" text="Drag &amp; Drop"
           underline="true">
       <font>
          <Font name="System Bold Italic" size="67.0"/>
       </font>
    </Label>
-   <Label layoutX="1010.0" layoutY="487.0" prefHeight="99.0" prefWidth="285.0" text="Rotation" textFill="#a3edff"
+   <Label layoutX="1010.0" layoutY="487.0" prefHeight="99.0" prefWidth="285.0" text="Rotation"
           underline="true">
       <font>
          <Font name="System Bold Italic" size="67.0"/>
       </font>
    </Label>
-   <Label layoutX="559.0" layoutY="62.0" prefHeight="99.0" prefWidth="483.0" text="Sound Settings" textFill="#a3edff"
+   <Label layoutX="559.0" layoutY="62.0" prefHeight="99.0" prefWidth="483.0" text="Sound Settings"
           underline="true">
+      <font>
+         <Font name="System Bold Italic" size="67.0"/>
+      </font>
+   </Label>
+
+   <Label fx:id="volume" layoutX="890.0" layoutY="175.0" prefHeight="125.0" prefWidth="100.0" text="5">
+      <font>
+         <Font name="System Bold Italic" size="72.0"/>
+      </font>
+   </Label>
+   <Label layoutX="503.0" layoutY="190.0" prefHeight="99.0" prefWidth="255.0" text="Volume">
       <font>
          <Font name="System Bold Italic" size="67.0"/>
       </font>
@@ -76,14 +87,4 @@
               onMouseExited="#onIncreaseExited">
       <Image url="@Sprites/ButtonNext.png"/>
    </ImageView>
-   <Label fx:id="volume" layoutX="870.0" layoutY="175.0" prefHeight="125.0" prefWidth="100.0" text="5">
-      <font>
-         <Font name="System Bold Italic" size="72.0"/>
-      </font>
-   </Label>
-   <Label layoutX="503.0" layoutY="190.0" prefHeight="99.0" prefWidth="255.0" text="Volume">
-      <font>
-         <Font name="System Bold Italic" size="67.0"/>
-      </font>
-   </Label>
 </Pane>

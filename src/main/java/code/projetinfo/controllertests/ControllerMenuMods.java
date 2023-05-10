@@ -25,16 +25,18 @@ public class ControllerMenuMods extends ControllerParent{
     @FXML
     protected void onAskingSpeedrunEntered(){
         buttonImageChanger(AskingSpeedrun,"Sprites/AskingButtonLight.png");
-        askingInformation(pane,AskingSpeedrun,"Finish as much level as possible in the defined time!");
+        askingInformation(pane,AskingSpeedrun,"Complete as much level as possible in the defined time!");
     }
 
     @FXML
     protected void onAskingDancingEntered(){
         buttonImageChanger(AskingDancing,"Sprites/AskingButtonLight.png");
+        askingInformation(pane,AskingDancing,"Try too complete the levels while the ghosts are moving on the music's rhythm ");
     }
     @FXML
     protected void onAskingMemoryEntered(){
         buttonImageChanger(AskingMemory,"Sprites/AskingButtonLight.png");
+        askingInformation(pane,AskingMemory,"The ghosts are shy and disappear after being placed, try to remember where they are");
     }
     @FXML
     protected void onAskingSpeedrunExited(){
