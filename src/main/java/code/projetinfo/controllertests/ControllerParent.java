@@ -1,6 +1,6 @@
 package code.projetinfo.controllertests;
 
-import code.projetinfo.AppGame;
+import code.projetinfo.AppMenu;
 import javafx.animation.TranslateTransition;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
@@ -24,12 +24,12 @@ import java.io.IOException;
 public class ControllerParent {
 
     protected void onButtonEntered(ImageView button, String sprite, String nextStage){
-        button.setImage(new Image(String.valueOf(AppGame.class.getResource(sprite))));
+        button.setImage(new Image(String.valueOf(AppMenu.class.getResource(sprite))));
         button.setOnMouseClicked(event -> loadScene(nextStage,event));
     }
 
     protected void buttonImageChanger(ImageView button, String sprite){
-        button.setImage(new Image(String.valueOf(AppGame.class.getResource(sprite))));
+        button.setImage(new Image(String.valueOf(AppMenu.class.getResource(sprite))));
     }
 
     protected void LevelSelect(Pane pane, String levelName, Button button){
@@ -41,7 +41,7 @@ public class ControllerParent {
             translateTransition.setToY(-900);
             translateTransition.play();
             translateTransition.setOnFinished(event1 -> {
-                FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource("Game.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource("Game.fxml"));
                 Parent root;
                 try {
                     root = fxmlLoader.load();
@@ -64,7 +64,7 @@ public class ControllerParent {
         });
     }
     protected void loadScene(String nextScene, Event event){
-            FXMLLoader fxmlLoader = new FXMLLoader(AppGame.class.getResource(nextScene));
+            FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource(nextScene));
             Parent root;
             try {
                 root = fxmlLoader.load();
@@ -80,7 +80,7 @@ public class ControllerParent {
     }
 
     protected ImageView createImageView(String image,double width,double layoutX,double layoutY){
-        ImageView imageView = new ImageView(new Image(String.valueOf(AppGame.class.getResource(image))));
+        ImageView imageView = new ImageView(new Image(String.valueOf(AppMenu.class.getResource(image))));
        imageView.setPreserveRatio(true);
        imageView.setFitWidth(width);
        imageView.setLayoutX(layoutX);
@@ -92,12 +92,12 @@ public class ControllerParent {
         askingButton.setOnMouseClicked(event ->{
             Rectangle rectangle = new Rectangle(1600,900, Paint.valueOf("#000000"));
             rectangle.setOpacity(0.2);
-            ImageView fondInt = new ImageView(new Image(String.valueOf(AppGame.class.getResource("Sprites/BackGridLevel.png"))));
+            ImageView fondInt = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/BackGridLevel.png"))));
             fondInt.setFitWidth(800);
             fondInt.setFitHeight(400);
             fondInt.setLayoutX(400);
             fondInt.setLayoutY(250);
-            ImageView backButton = new ImageView(new Image(String.valueOf(AppGame.class.getResource("Sprites/ButtonBack.png"))));
+            ImageView backButton = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonBack.png"))));
             backButton.setPreserveRatio(true);
             backButton.setLayoutX(700);
             backButton.setLayoutY(600);

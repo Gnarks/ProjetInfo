@@ -1,11 +1,18 @@
 package code.projetinfo.controllertests;
 
+import code.projetinfo.AppGame;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class ControllerMenu extends ControllerParent{
+public class ControllerMenu extends ControllerParent implements Initializable {
     /**Controller of all the menu's buttons(assigned to MENUSTEST.fxml)*/
     @FXML
     private ImageView PlayButtonImage;
@@ -15,6 +22,12 @@ public class ControllerMenu extends ControllerParent{
     private ImageView SettingsButtonImage;
     @FXML
     private ImageView CollectionButtonImage;
+
+    private Media media =new Media(String.valueOf(AppGame.class.getResource("Theme.mp3")));
+    private MediaPlayer mediaPlayer = new MediaPlayer(media);
+
+
+    public MediaPlayer getMediaPlayer(){return mediaPlayer;}
 
 
     @FXML
@@ -44,10 +57,18 @@ public class ControllerMenu extends ControllerParent{
     }
     @FXML
     protected void onSettingsEntered() {
-        buttonImageChanger(SettingsButtonImage,"Sprites/ButtonSettingsLight.png");
+        buttonImageChanger(SettingsButtonImage, "Sprites/ButtonSettingsLight.png");
+        SettingsButtonImage.setOnMouseClicked(event ->{
+            loadScene("SettingsMenu.fxml",event);});
     }
     @FXML
     protected void onSettingsExited() {
         buttonImageChanger(SettingsButtonImage, "Sprites/ButtonSettings.png");
+    }
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        ControllerSettings.setMusic();
     }
 }
