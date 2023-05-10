@@ -174,48 +174,49 @@ public class LevelGenerator {
     }
 
     /**
-     *
-     * @param placedPos the position where the bestBlock was placed (better complexity then the old MSPos).
-     * @return the closest EMPTY case's position around the placedPos.
+     * @return the closest EMPTY case's position to the origin of the grid.
      */
-    private Position getNewMSPos(Position placedPos){
+    private Position getNewMSPos(){
 
         int offset= 1;
         // using an array because we want to take a random position between the positions with the same best score.
         ArrayList<Position> bestPositions = new ArrayList<Position>();
+        boolean continuing;
 
         while (bestPositions.size() ==0){
-            for (int x = -offset; x < offset; x++) {
-                for (int y = -offset; y < offset; y++) {
+            for (int x = -offset; x <= offset; x++) {
+                for (int y = -offset; y <= offset; y++) {
                     //check if we didn't already visit the tile. todo pas correct
-                    if(x != -offset && x!= offset-1 && y!= offset-1 && y!= -offset)
+                    Position trying = new Position(x,y);
+                    if(x != -offset && x!= offset && y!= offset && y!= -offset)
                         continue;
                     // checks if the case is in the grid then checks if the tile of the grid is EMPTY.
-                    if (placedPos.getX()+ x  >= 0 && placedPos.getY()+y  >= 0 &&
-                            placedPos.getX() + y <= grid.getCol() && y + placedPos.getY() <= grid.getRow()
-                            && grid.getState((int) placedPos.getX()+x, (int)placedPos.getY()+y) == CaseState.EMPTY){
-
-                        bestPositions.add(new Position((int) placedPos.getX()+x, (int)placedPos.getY()+y));
+                    if (x  >= 0 && y  >= 0 &&
+                            y < grid.getCol() && y  < grid.getRow()
+                            && grid.getState(x, y) == CaseState.EMPTY){
+                        bestPositions.add(new Position( x, y));
                     }
                 }
             }
             // re loop if after looking around the placedPosition no bestPositions where found.
             offset+=1;
-            placedPos = new Position(placedPos.getX() -1, placedPos.getY() -1);
         }
 
         Random rnd = new Random();
 
         // sort the list so that the best position are at the beginning.
         bestPositions.sort(Position::compareTo);
+
         //get the bestScore
         double bestScore = bestPositions.get(0).getX() + bestPositions.get(0).getY();
 
         int sameScoreCount=0;
 
         for (Position position:bestPositions) {
-            if (position.getY()+position.getX() <= bestScore)
+            if (position.getY()+position.getX() <= bestScore){
+                System.out.println(position);
                 sameScoreCount++;
+            }
             else
                 break;
         }
