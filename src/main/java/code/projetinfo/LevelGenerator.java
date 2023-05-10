@@ -180,28 +180,27 @@ public class LevelGenerator {
      */
     private Position getNewMSPos(Position placedPos){
 
-        placedPos = new Position(placedPos.getX() -1, placedPos.getY() -1);
-
-        int offset= 0;
+        int offset= 1;
         // using an array because we want to take a random position between the positions with the same best score.
         ArrayList<Position> bestPositions = new ArrayList<Position>();
 
         while (bestPositions.size() ==0){
-            for (int x = 0; x < 3+offset; x++) {
-                for (int y = 0; y < 3+offset; y++) {
-                    // checks if the case is in the grid an if so: checks if the tile of the grid is EMPTY.
-
+            for (int x = -offset; x < offset; x++) {
+                for (int y = -offset; y < offset; y++) {
+                    //check if we didn't already visit the tile. todo pas correct
+                    if(x != -offset && x!= offset-1 && y!= offset-1 && y!= -offset)
+                        continue;
+                    // checks if the case is in the grid then checks if the tile of the grid is EMPTY.
                     if (placedPos.getX()+ x  >= 0 && placedPos.getY()+y  >= 0 &&
                             placedPos.getX() + y <= grid.getCol() && y + placedPos.getY() <= grid.getRow()
                             && grid.getState((int) placedPos.getX()+x, (int)placedPos.getY()+y) == CaseState.EMPTY){
 
                         bestPositions.add(new Position((int) placedPos.getX()+x, (int)placedPos.getY()+y));
-
                     }
                 }
             }
             // re loop if after looking around the placedPosition no bestPositions where found.
-            offset+=2;
+            offset+=1;
             placedPos = new Position(placedPos.getX() -1, placedPos.getY() -1);
         }
 
