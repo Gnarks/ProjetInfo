@@ -28,6 +28,7 @@ public class Level {
 
     /**
      * Save all the data of a Level instance in the levels.json file.
+     * Call directly this method if the level you want to save already exist else call saveState() with no parameters.
      * This method can save a new Level not already in the file and also modify one already in the file.
      * @param name Optional argument useful to know if the level already exist (to not erase the existing level data grid).
      * @throws IOException
@@ -75,7 +76,11 @@ public class Level {
         mapper.writeValue(f, levels);
     }
 
-
+    /**
+     * saveState() method overloading which call saveState with a empty string parameter.
+     * It's used to create a new level which doesn't already exist in the JSON.
+     * @throws IOException
+     */
     public void saveState() throws IOException {
         saveState("");
     }
