@@ -140,7 +140,7 @@ public class LevelGenerator {
                 // places the bestBlock on the grid
                 placeBestBlock(currentBlock,bestPossiblePlacement.position, bestPossiblePlacement.rotateState);
                 //set up the new MS pos
-                MSPos = getNewMSPos(bestPossiblePlacement.position.clone());
+                MSPos = getNewMSPos();
                 System.out.printf("choose the : %s position\n",MSPos);
                 blocksUsed.add(currentBlock);
             }
