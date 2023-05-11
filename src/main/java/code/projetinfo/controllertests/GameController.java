@@ -29,7 +29,6 @@ public class GameController extends ControllerParent implements Initializable {
 
     private String levelName;
 
-
     public void setLevelName(String levelName){
         this.levelName = levelName;
     }
@@ -95,57 +94,7 @@ public class GameController extends ControllerParent implements Initializable {
                 else{
                     levelHandler.loadLevel(levelName,event);
             }});
-
-            BackToMenuButton.setOnMouseClicked(event -> {
-                if(!levelHandler.getVictoryState()){
-                Rectangle rectangle = new Rectangle(1600, 900, Paint.valueOf("#000000"));
-                rectangle.setOpacity(0.3);
-                ImageView menuPause = createImageView("Sprites/FondChoser.png",600,500,150);
-                ImageView save = createImageView("Sprites/SaveButton.png",400,600,375);
-                ImageView leave = createImageView("Sprites/LeaveButton.png",400,600,525);
-                ImageView resume = createImageView("Sprites/ResumeButton.png", 400,600,225);
-
-                resume.setOnMouseEntered(resumeEvent -> buttonImageChanger(resume,"Sprites/ResumeButtonLight.png"));
-                resume.setOnMouseExited(resumeEvent -> buttonImageChanger(resume,"Sprites/ResumeButton.png"));
-                resume.setOnMouseClicked(resumeEvent -> pane.getChildren().remove(pane.getChildren().size()-5,pane.getChildren().size()));
-
-                leave.setOnMouseEntered(leaveEvent -> buttonImageChanger(leave,"Sprites/LeaveButtonLight.png"));
-                leave.setOnMouseExited(leaveEvent -> buttonImageChanger(leave,"Sprites/LeaveButton.png"));
-                leave.setOnMouseClicked(leaveEvent -> {
-                    if (levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')) {
-                        loadScene("LevelSelector1to10.fxml",event);
-                } else {
-                        loadScene("LevelSelector11to20.fxml",event);
-                }
-                });
-
-                save.setOnMouseEntered(saveEvent -> buttonImageChanger(save,"Sprites/SaveButtonLight.png"));
-                save.setOnMouseExited(saveEvent -> buttonImageChanger(save,"Sprites/SaveButton.png"));
-                save.setOnMouseClicked(saveEvent -> {
-                    try {
-                        level.saveState();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-
-                    if (levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')) {
-                        loadScene("LevelSelector1to10.fxml",event);
-                    } else {
-                        loadScene("LevelSelector11to20.fxml",event);
-                    }
-                });
-
-                pane.getChildren().addAll(rectangle,menuPause,save,leave,resume);
-                }
-
-                else{
-                    if (levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')) {
-                        loadScene("LevelSelector1to10.fxml",event);
-                    } else {
-                        loadScene("LevelSelector11to20.fxml",event);
-                    }
-                }
-            });
+            BackToMenuButton.setOnMouseClicked(event -> pauseMenu(pane,levelHandler,level,levelName,event));
         });
     }
 }

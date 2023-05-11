@@ -34,7 +34,7 @@ public class ControllerMenuPlay extends ControllerParent{
     }
     @FXML
     public void onRandomEntered(){
-        onButtonEntered(RandomButton,"Sprites/RandomButtonLight.png","LevelSelector1to10.fxml");
+        onButtonEntered(RandomButton,"Sprites/RandomButtonLight.png","RLGMenu.fxml");
     }
     @FXML
     public void onRandomExited(){

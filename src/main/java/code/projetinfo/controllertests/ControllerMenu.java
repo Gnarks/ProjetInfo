@@ -26,10 +26,6 @@ public class ControllerMenu extends ControllerParent implements Initializable {
     private Media media =new Media(String.valueOf(AppGame.class.getResource("Theme.mp3")));
     private MediaPlayer mediaPlayer = new MediaPlayer(media);
 
-
-    public MediaPlayer getMediaPlayer(){return mediaPlayer;}
-
-
     @FXML
     protected void onExitEntered(){
         buttonImageChanger(ExitButtonImage,"Sprites/EXITPRESSED.png");
@@ -58,8 +54,7 @@ public class ControllerMenu extends ControllerParent implements Initializable {
     @FXML
     protected void onSettingsEntered() {
         buttonImageChanger(SettingsButtonImage, "Sprites/ButtonSettingsLight.png");
-        SettingsButtonImage.setOnMouseClicked(event ->{
-            loadScene("SettingsMenu.fxml",event);});
+        SettingsButtonImage.setOnMouseClicked(event ->loadScene("SettingsMenu.fxml",event));
     }
     @FXML
     protected void onSettingsExited() {

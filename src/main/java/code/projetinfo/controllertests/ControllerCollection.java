@@ -169,9 +169,4 @@ public class ControllerCollection extends ControllerParent {
         setGhostName("Wolfy",765);
         GhostDescription.setText("Hunter who literally put himself in the shoes of his prey\nCause of death: \nHis camouflage didn't really work.");
     }
-
-
-
-
-
 }

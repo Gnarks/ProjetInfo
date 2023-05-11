@@ -71,7 +71,7 @@ public class ControllerSettings extends ControllerParent implements Initializabl
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if(mediaPlayer.getVolume()==0||(volume.getText()).equals("0") ){
+        if(mediaPlayer.getVolume()==0){
             volume.setText("0");
             decreaseSound.setOpacity(0);
         }
