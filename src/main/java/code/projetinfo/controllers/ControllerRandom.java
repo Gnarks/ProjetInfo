@@ -47,44 +47,44 @@ public class ControllerRandom extends ControllerParent implements Initializable 
 
     @FXML
     protected void onBackExited(){
-        buttonImageChanger(ButtonBack,"Sprites/ButtonBackToMenu.png");
+        imageChanger(ButtonBack,"Sprites/ButtonBackToMenu.png");
     }
 
     @FXML
     protected void onMinIncEntered(){
-        buttonImageChanger(minimumIncrease,"Sprites/ButtonNextLight.png");
+        imageChanger(minimumIncrease,"Sprites/ButtonNextLight.png");
     }
 
     @FXML
-    protected void onMinIncExited(){ buttonImageChanger(minimumIncrease,"Sprites/ButtonNext.png");
+    protected void onMinIncExited(){ imageChanger(minimumIncrease,"Sprites/ButtonNext.png");
     }
     @FXML
     protected void onMinDecEntered(){
-        buttonImageChanger(minimumDecrease,"Sprites/ButtonBackLight.png");
+        imageChanger(minimumDecrease,"Sprites/ButtonBackLight.png");
     }
     @FXML
     protected void onMinDecExited(){
-        buttonImageChanger(minimumDecrease,"Sprites/ButtonBack.png");
+        imageChanger(minimumDecrease,"Sprites/ButtonBack.png");
     }
     @FXML
     protected void onMaxIncEntered(){
-        buttonImageChanger(maximumIncrease,"Sprites/ButtonNextLight.png");
+        imageChanger(maximumIncrease,"Sprites/ButtonNextLight.png");
     }
     @FXML
     protected void onMaxIncExited(){
 
-        buttonImageChanger(maximumIncrease,"Sprites/ButtonNext.png");
+        imageChanger(maximumIncrease,"Sprites/ButtonNext.png");
     }
 
 
     @FXML
     protected void onMaxDecEntered(){
-        buttonImageChanger(maximumDecrease,"Sprites/ButtonBackLight.png");
+        imageChanger(maximumDecrease,"Sprites/ButtonBackLight.png");
     }
 
     @FXML
     protected void onMaxDecExited(){
-        buttonImageChanger(maximumDecrease,"Sprites/ButtonBack.png");
+        imageChanger(maximumDecrease,"Sprites/ButtonBack.png");
     }
 
 

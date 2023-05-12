@@ -24,7 +24,7 @@ public class ControllerLevelSelector1to10 extends ControllerParent implements In
 
     @FXML
     public void onBackExited(){
-        buttonImageChanger(ButtonBack,"Sprites/ButtonBackToMenu.png");
+        imageChanger(ButtonBack,"Sprites/ButtonBackToMenu.png");
     }
 
     @FXML
@@ -34,7 +34,7 @@ public class ControllerLevelSelector1to10 extends ControllerParent implements In
 
     @FXML
     public void onNextExited(){
-        buttonImageChanger(ButtonNext,"Sprites/ButtonNext.png");
+        imageChanger(ButtonNext,"Sprites/ButtonNext.png");
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -24,7 +24,7 @@ public class ControllerCredits extends ControllerParent {
 
     @FXML
     protected void onBackToCollectionExited() {
-        buttonImageChanger(BackButton,"Sprites/ButtonBack.png");
+        imageChanger(BackButton,"Sprites/ButtonBack.png");
     }
 
 

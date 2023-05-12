@@ -39,34 +39,34 @@ public class ControllerOptions extends ControllerParent implements Initializable
     }
     @FXML
     protected void onDecreaseEntered(){
-        buttonImageChanger(decreaseSound,"Sprites/ButtonBackLight.png");
+        imageChanger(decreaseSound,"Sprites/ButtonBackLight.png");
 
     }
 
     @FXML
     protected void onIncreaseEntered(){
-        buttonImageChanger(increaseSound,"Sprites/ButtonNextLight.png");
+        imageChanger(increaseSound,"Sprites/ButtonNextLight.png");
 
     }
 
     @FXML
     protected void onBackEntered(){
-        buttonImageChanger(ButtonBack, "Sprites/ButtonBackToMenulight.png");
+        imageChanger(ButtonBack, "Sprites/ButtonBackToMenulight.png");
         ButtonBack.setOnMouseClicked(event -> loadScene("MainMenu.fxml",event));
     }
     @FXML
     protected void onBackExited(){
-        buttonImageChanger(ButtonBack,"Sprites/ButtonBackToMenu.png");
+        imageChanger(ButtonBack,"Sprites/ButtonBackToMenu.png");
     }
 
     @FXML
     protected void onDecreaseExited(){
-        buttonImageChanger(decreaseSound,"Sprites/ButtonBack.png");
+        imageChanger(decreaseSound,"Sprites/ButtonBack.png");
     }
 
     @FXML
     protected void onIncreaseExited(){
-        buttonImageChanger(increaseSound,"Sprites/ButtonNext.png");}
+        imageChanger(increaseSound,"Sprites/ButtonNext.png");}
 
 
     @Override

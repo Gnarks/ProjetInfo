@@ -22,7 +22,7 @@ public class ControllerLevelSelector11to20 extends ControllerParent implements I
 
     @FXML
     public void onBackExited(){
-        buttonImageChanger(ButtonBack,"Sprites/ButtonBack.png");
+        imageChanger(ButtonBack,"Sprites/ButtonBack.png");
     }
 
     @Override

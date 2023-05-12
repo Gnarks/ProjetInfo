@@ -26,7 +26,7 @@ public class ControllerCollection extends ControllerParent {
     }
     @FXML
     protected void onButtonBackExited(){
-        buttonImageChanger(ButtonBack,"Sprites/ButtonBack.png");
+        imageChanger(ButtonBack,"Sprites/ButtonBack.png");
     }
     @FXML
     protected void onButtonNextEntered(){

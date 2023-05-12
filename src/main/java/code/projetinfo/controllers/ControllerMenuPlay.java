@@ -22,7 +22,7 @@ public class ControllerMenuPlay extends ControllerParent{
     }
     @FXML
     public void onBackExited(){
-        buttonImageChanger(ButtonBack,"Sprites/ButtonBackToMenu.png");
+        imageChanger(ButtonBack,"Sprites/ButtonBackToMenu.png");
     }
     @FXML
     public void onLevelsEntered(){
@@ -30,7 +30,7 @@ public class ControllerMenuPlay extends ControllerParent{
     }
     @FXML
     public void onLevelsExited(){
-        buttonImageChanger(LevelsButton,"Sprites/LevelsButton.png");
+        imageChanger(LevelsButton,"Sprites/LevelsButton.png");
     }
     @FXML
     public void onRandomEntered(){
@@ -38,7 +38,7 @@ public class ControllerMenuPlay extends ControllerParent{
     }
     @FXML
     public void onRandomExited(){
-        buttonImageChanger(RandomButton,"Sprites/RandomButton.png");
+        imageChanger(RandomButton,"Sprites/RandomButton.png");
     }
 
     @FXML
@@ -47,7 +47,7 @@ public class ControllerMenuPlay extends ControllerParent{
     }
     @FXML
     public void onModsExited(){
-        buttonImageChanger(ModsButton,"Sprites/modsButton.png");
+        imageChanger(ModsButton,"Sprites/modsButton.png");
     }
 
 }
