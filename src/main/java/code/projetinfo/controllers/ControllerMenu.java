@@ -1,12 +1,9 @@
-package code.projetinfo.controllertests;
+package code.projetinfo.controllers;
 
-import code.projetinfo.AppGame;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,21 +16,18 @@ public class ControllerMenu extends ControllerParent implements Initializable {
     @FXML
     private ImageView ExitButtonImage;
     @FXML
-    private ImageView SettingsButtonImage;
+    private ImageView OptionsButtonImage;
     @FXML
     private ImageView CollectionButtonImage;
 
-    private Media media =new Media(String.valueOf(AppGame.class.getResource("Theme.mp3")));
-    private MediaPlayer mediaPlayer = new MediaPlayer(media);
-
     @FXML
     protected void onExitEntered(){
-        buttonImageChanger(ExitButtonImage,"Sprites/EXITPRESSED.png");
+        imageChanger(ExitButtonImage,"Sprites/EXITPRESSED.png");
         ExitButtonImage.setOnMouseClicked(event -> Platform.exit());
     }
     @FXML
     protected void onExitExited(){
-        buttonImageChanger(ExitButtonImage,"Sprites/EXIT.png");
+        imageChanger(ExitButtonImage,"Sprites/EXIT.png");
     }
     @FXML
     protected void onCollectionEntered() {
@@ -41,7 +35,7 @@ public class ControllerMenu extends ControllerParent implements Initializable {
     }
     @FXML
     protected void onCollectionExited(){
-        buttonImageChanger(CollectionButtonImage,"Sprites/ButtonCollection.png");
+        imageChanger(CollectionButtonImage,"Sprites/ButtonCollection.png");
     }
     @FXML
     protected void onPlayEntered(){
@@ -49,21 +43,21 @@ public class ControllerMenu extends ControllerParent implements Initializable {
     }
     @FXML
     protected void onPlayExited(){
-        buttonImageChanger(PlayButtonImage,"Sprites/Buttonplay.png");
+        imageChanger(PlayButtonImage,"Sprites/Buttonplay.png");
     }
     @FXML
-    protected void onSettingsEntered() {
-        buttonImageChanger(SettingsButtonImage, "Sprites/ButtonSettingsLight.png");
-        SettingsButtonImage.setOnMouseClicked(event ->loadScene("SettingsMenu.fxml",event));
+    protected void onOptionsEntered() {
+        imageChanger(OptionsButtonImage, "Sprites/ButtonOptionsLight.png");
+        OptionsButtonImage.setOnMouseClicked(event ->loadScene("OptionsMenu.fxml",event));
     }
     @FXML
-    protected void onSettingsExited() {
-        buttonImageChanger(SettingsButtonImage, "Sprites/ButtonSettings.png");
+    protected void onOptionsExited() {
+        imageChanger(OptionsButtonImage, "Sprites/ButtonOptions.png");
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ControllerSettings.setMusic();
+        ControllerOptions.setMusic();
     }
 }

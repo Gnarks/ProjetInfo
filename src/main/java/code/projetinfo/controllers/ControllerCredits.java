@@ -1,4 +1,4 @@
-package code.projetinfo.controllertests;
+package code.projetinfo.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -24,7 +24,7 @@ public class ControllerCredits extends ControllerParent {
 
     @FXML
     protected void onBackToCollectionExited() {
-        buttonImageChanger(BackButton,"Sprites/ButtonBack.png");
+        imageChanger(BackButton,"Sprites/ButtonBack.png");
     }
 
 

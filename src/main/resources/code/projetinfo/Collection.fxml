@@ -7,11 +7,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.projetinfo.controllertests.ControllerCollection">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.projetinfo.controllers.ControllerCollection">
    <ImageView fitHeight="900.0" fitWidth="1600.0">
-      <image>
-         <Image url="@Sprites/Collection.png" />
-      </image>
+      <Image url="@Sprites/Collection.png"/>
    </ImageView>
    <Label fx:id="GhostDescription" alignment="CENTER" layoutX="641.0" layoutY="561.0" prefHeight="192.0" prefWidth="316.0" scaleX="1.125" scaleY="1.125" textAlignment="CENTER" wrapText="true">
       <font>

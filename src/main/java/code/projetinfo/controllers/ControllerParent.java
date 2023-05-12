@@ -1,4 +1,4 @@
-package code.projetinfo.controllertests;
+package code.projetinfo.controllers;
 
 import code.projetinfo.AppMenu;
 import code.projetinfo.Level;
@@ -22,19 +22,39 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 
 public class ControllerParent {
-
-    protected void onButtonEntered(ImageView button, String sprite, String nextStage){
+    /**
+     *
+     *
+     * @param button imageview which serves as a button
+     * @param sprite lighter sprite to set on the button
+     * @param nextScene scene to load after clicking on the button
+     */
+    protected void onButtonEntered(ImageView button, String sprite, String nextScene){
         button.setImage(new Image(String.valueOf(AppMenu.class.getResource(sprite))));
-        button.setOnMouseClicked(event -> loadScene(nextStage,event));
+        button.setOnMouseClicked(event -> loadScene(nextScene,event));
     }
 
-    protected void buttonImageChanger(ImageView button, String sprite){
-        button.setImage(new Image(String.valueOf(AppMenu.class.getResource(sprite))));
+    /**
+     *
+     * @param imageView set another image on an imageview
+     * @param sprite sprite to set on the imageview
+     */
+    protected void imageChanger(ImageView imageView, String sprite){
+        imageView.setImage(new Image(String.valueOf(AppMenu.class.getResource(sprite))));
     }
 
-
+    /**
+     *
+     * @param pane scene's pane
+     * @param levelHandler levelHandler of the level which is played
+     * @param level level which is played
+     * @param levelName levelName of the level
+     * @param event mouseEvent when the player click on the pause button
+     */
     protected void pauseMenu(Pane pane, LevelHandler levelHandler, Level level,String levelName,Event event){
 
             if(!levelHandler.getVictoryState()){
@@ -45,12 +65,12 @@ public class ControllerParent {
                 ImageView leave = createImageView("Sprites/LeaveButton.png",400,600,525);
                 ImageView resume = createImageView("Sprites/ResumeButton.png", 400,600,225);
 
-                resume.setOnMouseEntered(resumeEvent -> buttonImageChanger(resume,"Sprites/ResumeButtonLight.png"));
-                resume.setOnMouseExited(resumeEvent -> buttonImageChanger(resume,"Sprites/ResumeButton.png"));
+                resume.setOnMouseEntered(resumeEvent -> imageChanger(resume,"Sprites/ResumeButtonLight.png"));
+                resume.setOnMouseExited(resumeEvent -> imageChanger(resume,"Sprites/ResumeButton.png"));
                 resume.setOnMouseClicked(resumeEvent -> pane.getChildren().remove(pane.getChildren().size()-5,pane.getChildren().size()));
 
-                leave.setOnMouseEntered(leaveEvent -> buttonImageChanger(leave,"Sprites/LeaveButtonLight.png"));
-                leave.setOnMouseExited(leaveEvent -> buttonImageChanger(leave,"Sprites/LeaveButton.png"));
+                leave.setOnMouseEntered(leaveEvent -> imageChanger(leave,"Sprites/LeaveButtonLight.png"));
+                leave.setOnMouseExited(leaveEvent -> imageChanger(leave,"Sprites/LeaveButton.png"));
                 leave.setOnMouseClicked(leaveEvent -> {
                     if (levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')) {
                         loadScene("LevelSelector1to10.fxml",event);
@@ -59,8 +79,8 @@ public class ControllerParent {
                     }
                 });
 
-                save.setOnMouseEntered(saveEvent -> buttonImageChanger(save,"Sprites/SaveButtonLight.png"));
-                save.setOnMouseExited(saveEvent -> buttonImageChanger(save,"Sprites/SaveButton.png"));
+                save.setOnMouseEntered(saveEvent -> imageChanger(save,"Sprites/SaveButtonLight.png"));
+                save.setOnMouseExited(saveEvent -> imageChanger(save,"Sprites/SaveButton.png"));
                 save.setOnMouseClicked(saveEvent -> {
                     try {
                         level.saveState();
@@ -87,6 +107,12 @@ public class ControllerParent {
             }
     }
 
+    /**
+     *
+     * @param pane
+     * @param levelName
+     * @param button button
+     */
     protected void LevelSelect(Pane pane, String levelName, Button button){
         button.setOnAction(event -> {
             Rectangle transi = new Rectangle(1600,900, Paint.valueOf("222222"));
@@ -118,6 +144,12 @@ public class ControllerParent {
             });
         });
     }
+
+    /**
+     *
+     * @param nextScene
+     * @param event
+     */
     protected void loadScene(String nextScene, Event event){
             FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource(nextScene));
             Parent root;
@@ -134,6 +166,14 @@ public class ControllerParent {
             stage.show();
     }
 
+    /**
+     *
+     * @param image
+     * @param width
+     * @param layoutX
+     * @param layoutY
+     * @return
+     */
     protected ImageView createImageView(String image,double width,double layoutX,double layoutY){
         ImageView imageView = new ImageView(new Image(String.valueOf(AppMenu.class.getResource(image))));
        imageView.setPreserveRatio(true);
@@ -143,6 +183,12 @@ public class ControllerParent {
        return imageView;
     }
 
+    /**
+     *
+     * @param pane
+     * @param askingButton
+     * @param text
+     */
     protected void askingInformation(Pane pane,ImageView askingButton,String text){
         askingButton.setOnMouseClicked(event ->{
             Rectangle rectangle = new Rectangle(1600,900, Paint.valueOf("#000000"));
@@ -157,8 +203,8 @@ public class ControllerParent {
             backButton.setLayoutX(700);
             backButton.setLayoutY(600);
             backButton.setFitHeight(100);
-            backButton.setOnMouseEntered(event1 -> buttonImageChanger(backButton,"Sprites/ButtonBackLight.png"));
-            backButton.setOnMouseExited(event1 -> buttonImageChanger(backButton,"Sprites/ButtonBack.png"));
+            backButton.setOnMouseEntered(event1 -> imageChanger(backButton,"Sprites/ButtonBackLight.png"));
+            backButton.setOnMouseExited(event1 -> imageChanger(backButton,"Sprites/ButtonBack.png"));
             backButton.setOnMouseClicked(event1 -> pane.getChildren().remove(pane.getChildren().size()-4,pane.getChildren().size()));
             Label label = new Label(text);
             Font font = new Font("System Bold Italic",50);
@@ -173,6 +219,38 @@ public class ControllerParent {
             label.setLayoutY(250);
             pane.getChildren().addAll(rectangle,fondInt,label,backButton);
         });
+    }
+
+    /**
+     *
+     * @param pane
+     * @param button
+     * @param onlySame
+     */
+    protected void selectBlock(Pane pane, Button button,boolean onlySame){
+        if(onlySame){
+            ArrayList<Rectangle> rectangles = new ArrayList<>();
+            for (int i = 0; i < pane.getChildren().size(); i++) {
+                System.out.println(i);
+                    if(pane.getChildren().get(i).getClass()== Rectangle.class){
+                        rectangles.add((Rectangle) pane.getChildren().get(i));
+                    }
+            }
+            for (int i = 0; i < rectangles.toArray().length ; i++) {
+
+                pane.getChildren().remove(rectangles.get(i));
+
+            }
+        }
+        Rectangle rectangle = new Rectangle(button.getLayoutX(),button.getLayoutY(),button.getWidth(),button.getHeight());
+        rectangle.setOpacity(0.2);
+        rectangle.setFill(Paint.valueOf("#00ff00"));
+        pane.getChildren().add(rectangle);
+        rectangle.setOnMouseClicked(event -> {pane.getChildren().remove(rectangle);
+
+            System.out.println(pane.getChildren().size());});
+
+        System.out.println(pane.getChildren().size());
     }
 
 }

@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0"
       prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="code.projetinfo.controllertests.ControllerSettings">
+      fx:controller="code.projetinfo.controllers.ControllerOptions">
    <ImageView fitHeight="900.0" fitWidth="1600.0">
       <Image url="@Sprites/BackLevel.png"/>
    </ImageView>

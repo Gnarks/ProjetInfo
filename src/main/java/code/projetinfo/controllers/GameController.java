@@ -1,4 +1,4 @@
-package code.projetinfo.controllertests;
+package code.projetinfo.controllers;
 
 import code.projetinfo.*;
 import javafx.animation.TranslateTransition;
@@ -35,22 +35,22 @@ public class GameController extends ControllerParent implements Initializable {
 
     @FXML
     protected void onBackEntered(){
-        buttonImageChanger(BackToMenuButton,"Sprites/ButtonBackToMenulight.png");
+        imageChanger(BackToMenuButton,"Sprites/ButtonBackToMenulight.png");
     }
 
     @FXML
     protected void onBackExited(){
-        buttonImageChanger(BackToMenuButton,"Sprites/ButtonBackToMenu.png");
+        imageChanger(BackToMenuButton,"Sprites/ButtonBackToMenu.png");
     }
 
     @FXML
     protected void onResetEntered(){
-        buttonImageChanger(ResetButton,"Sprites/ButtonResetLight.png");
+        imageChanger(ResetButton,"Sprites/ButtonResetLight.png");
     }
 
     @FXML
     protected void onResetExited(){
-        buttonImageChanger(ResetButton,"Sprites/ButtonReset.png");
+        imageChanger(ResetButton,"Sprites/ButtonReset.png");
     }
 
 
