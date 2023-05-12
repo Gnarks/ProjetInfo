@@ -233,5 +233,5 @@ public abstract class ImageBlock{
       return cases;
    }
 
-
+   public abstract ImageBlock clone();
 }
