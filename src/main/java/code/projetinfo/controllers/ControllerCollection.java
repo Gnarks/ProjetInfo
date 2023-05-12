@@ -1,4 +1,4 @@
-package code.projetinfo.controllertests;
+package code.projetinfo.controllers;
 
 import code.projetinfo.AppGame;
 import javafx.fxml.FXML;

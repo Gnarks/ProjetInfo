@@ -1,4 +1,4 @@
-package code.projetinfo.controllertests;
+package code.projetinfo.controllers;
 
 import code.projetinfo.AppGame;
 import javafx.fxml.FXML;
@@ -11,7 +11,7 @@ import javafx.scene.media.MediaPlayer;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerSettings extends ControllerParent implements Initializable {
+public class ControllerOptions extends ControllerParent implements Initializable {
     @FXML
     private ImageView decreaseSound;
 

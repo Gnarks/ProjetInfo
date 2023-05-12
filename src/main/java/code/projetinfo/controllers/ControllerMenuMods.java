@@ -1,4 +1,4 @@
-package code.projetinfo.controllertests;
+package code.projetinfo.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;

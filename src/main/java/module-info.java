@@ -16,6 +16,6 @@ module code.projetinfo {
 
     opens code.projetinfo to javafx.fxml;
     exports code.projetinfo;
-    opens code.projetinfo.controllertests to javafx.fxml;
-    exports code.projetinfo.controllertests;
+    opens code.projetinfo.controllers to javafx.fxml;
+    exports code.projetinfo.controllers;
 }

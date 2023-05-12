@@ -1,6 +1,6 @@
 package code.projetinfo;
 
-import code.projetinfo.controllertests.GameController;
+import code.projetinfo.controllers.GameController;
 import javafx.animation.*;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;

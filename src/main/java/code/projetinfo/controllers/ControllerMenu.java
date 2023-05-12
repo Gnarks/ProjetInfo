@@ -1,4 +1,4 @@
-package code.projetinfo.controllertests;
+package code.projetinfo.controllers;
 
 import code.projetinfo.AppGame;
 import javafx.application.Platform;
@@ -19,12 +19,9 @@ public class ControllerMenu extends ControllerParent implements Initializable {
     @FXML
     private ImageView ExitButtonImage;
     @FXML
-    private ImageView SettingsButtonImage;
+    private ImageView OptionsButtonImage;
     @FXML
     private ImageView CollectionButtonImage;
-
-    private Media media =new Media(String.valueOf(AppGame.class.getResource("Theme.mp3")));
-    private MediaPlayer mediaPlayer = new MediaPlayer(media);
 
     @FXML
     protected void onExitEntered(){
@@ -52,18 +49,18 @@ public class ControllerMenu extends ControllerParent implements Initializable {
         buttonImageChanger(PlayButtonImage,"Sprites/Buttonplay.png");
     }
     @FXML
-    protected void onSettingsEntered() {
-        buttonImageChanger(SettingsButtonImage, "Sprites/ButtonSettingsLight.png");
-        SettingsButtonImage.setOnMouseClicked(event ->loadScene("SettingsMenu.fxml",event));
+    protected void onOptionsEntered() {
+        buttonImageChanger(OptionsButtonImage, "Sprites/ButtonOptionsLight.png");
+        OptionsButtonImage.setOnMouseClicked(event ->loadScene("OptionsMenu.fxml",event));
     }
     @FXML
-    protected void onSettingsExited() {
-        buttonImageChanger(SettingsButtonImage, "Sprites/ButtonSettings.png");
+    protected void onOptionsExited() {
+        buttonImageChanger(OptionsButtonImage, "Sprites/ButtonOptions.png");
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ControllerSettings.setMusic();
+        ControllerOptions.setMusic();
     }
 }
