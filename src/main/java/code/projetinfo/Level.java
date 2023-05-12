@@ -12,7 +12,7 @@ public class Level {
     private ImageBlock[] blocks;
     private int placed = 0;
     private final String name;
-    private final String pathname = System.getProperty("user.dir")+"<src<main<resources<levels.json";
+    private final String pathname = System.getProperty("user.dir")+"<src<main<resources<code<projetinfo<levels.json";
     private final File f = new File(pathname.replaceAll("<", "\\"+System.getProperty("file.separator")));
     private final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
     public Level(String name, Cases grid, ImageBlock[] blocs){
@@ -41,6 +41,7 @@ public class Level {
         JsonNode gridNode;
 
         if (name.length() == 0) {
+            System.out.println("mabite");
             gridNode = mapper.convertValue(this.grid.getCases(), JsonNode.class);
         }else{
             JsonNode nodeFinder = jsonData.path(name).path("grid");

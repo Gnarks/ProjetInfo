@@ -78,6 +78,7 @@ public class GameController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         Rectangle transi = new Rectangle(1600,900 , Paint.valueOf("222222"));
         pane.getChildren().add(transi);
+
         Platform.runLater(() ->{
             Level level;
             try {
@@ -108,6 +109,11 @@ public class GameController implements Initializable {
             }});
 
             BackToMenuButton.setOnMouseClicked(event ->{
+                try{
+                    level.saveState(levelName);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 if(levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')){
                 FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource("LevelSelector1to10.fxml"));
                 Stage stage;
