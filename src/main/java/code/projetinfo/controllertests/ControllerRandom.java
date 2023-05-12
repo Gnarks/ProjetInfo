@@ -2,16 +2,21 @@ package code.projetinfo.controllertests;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ControllerRandom extends ControllerParent implements Initializable {
-
+    @FXML
+    private Pane pane;
     @FXML
     private ImageView ButtonBack;
     @FXML
@@ -31,6 +36,10 @@ public class ControllerRandom extends ControllerParent implements Initializable 
     @FXML
     private Circle FullRandom;
 
+    private boolean onlySameState = false;
+
+    private boolean fullRandomState = true;
+
     @FXML
     protected void onBackEntered(){
         onButtonEntered(ButtonBack,"Sprites/ButtonBackToMenulight.png","MenuPlay.fxml");
@@ -47,8 +56,7 @@ public class ControllerRandom extends ControllerParent implements Initializable 
     }
 
     @FXML
-    protected void onMinIncExited(){
-        buttonImageChanger(minimumIncrease,"Sprites/ButtonNext.png");
+    protected void onMinIncExited(){ buttonImageChanger(minimumIncrease,"Sprites/ButtonNext.png");
     }
     @FXML
     protected void onMinDecEntered(){
@@ -82,24 +90,71 @@ public class ControllerRandom extends ControllerParent implements Initializable 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.out.println(pane.getChildren().size());
+        for (int i = 0; i < pane.getChildren().size(); i++) {
+            if(pane.getChildren().get(i).getClass() == Button.class){
+                int finalI = i;
+                pane.getChildren().get(i).setOnMouseClicked(event->{
+                    selectBlock(pane,(Button)pane.getChildren().get(finalI),onlySameState);
+                    this.fullRandomState = false;
+
+                    FullRandom.setFill(Paint.valueOf("#ff0000"));
+                });}
+        }
+
         OnlySame.setOnMouseClicked(event -> {
             if(OnlySame.getFill().equals(Paint.valueOf("#ff0000"))){
                 OnlySame.setFill(Paint.valueOf("#00ff00"));
                 FullRandom.setFill(Paint.valueOf("#ff0000"));
+                this.onlySameState = true;
+                this.fullRandomState = false;
+                ArrayList<Rectangle> rectangles = new ArrayList<>();
+                for (int i = 0; i < pane.getChildren().size()-1; i++) {
+                    System.out.println(i);
+                    if(pane.getChildren().get(i).getClass()== Rectangle.class){
+                        rectangles.add((Rectangle) pane.getChildren().get(i));
+                    }
+                }
+                for (int i = 0; i < rectangles.toArray().length ; i++) {
+
+                    pane.getChildren().remove(rectangles.get(i));
+
+                }
             }
             else if(OnlySame.getFill().equals(Paint.valueOf("#00ff00"))){
                 OnlySame.setFill(Paint.valueOf("#ff0000"));
+                this.onlySameState = false;
             }
         });
+
+
         FullRandom.setOnMouseClicked(event -> {
             if(FullRandom.getFill().equals(Paint.valueOf("#ff0000"))){
                 FullRandom.setFill(Paint.valueOf("#00ff00"));
                 OnlySame.setFill(Paint.valueOf("#ff0000"));
+                this.onlySameState = false;
+                this.fullRandomState = true;
+                ArrayList<Rectangle> rectangles = new ArrayList<>();
+                for (int i = 0; i < pane.getChildren().size(); i++) {
+                    System.out.println(i);
+                    if(pane.getChildren().get(i).getClass()== Rectangle.class){
+                        rectangles.add((Rectangle) pane.getChildren().get(i));
+                    }
+                }
+                for (int i = 0; i < rectangles.toArray().length ; i++) {
+
+                    pane.getChildren().remove(rectangles.get(i));
+
+                }
+
             }
             else if(FullRandom.getFill().equals(Paint.valueOf("#00ff00"))){
                 FullRandom.setFill(Paint.valueOf("#ff0000"));
+                fullRandomState = false;
             }
         });
+
+
 
 
 
