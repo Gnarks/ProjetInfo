@@ -194,7 +194,7 @@ public class LevelHandler {
     }
 
     public ImageView addVictoryGhost(String sprite,int layoutX,int layoutY){
-        ImageView ghost = new ImageView(String.valueOf(AppGame.class.getResource(sprite)));
+        ImageView ghost = new ImageView(String.valueOf(AppMenu.class.getResource(sprite)));
         pane.getChildren().add(ghost);
         ghost.setPreserveRatio(true);
         ghost.setFitWidth(200);

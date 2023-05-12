@@ -1,6 +1,6 @@
 package code.projetinfo.controllers;
 
-import code.projetinfo.AppGame;
+import code.projetinfo.AppMenu;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -24,7 +24,7 @@ public class ControllerOptions extends ControllerParent implements Initializable
     @FXML
     private Label volume;
 
-    private static final Media media = new Media(String.valueOf(AppGame.class.getResource("Theme.mp3")));
+    private static final Media media = new Media(String.valueOf(AppMenu.class.getResource("Theme.mp3")));
 
     private static MediaPlayer mediaPlayer;
 
