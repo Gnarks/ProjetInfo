@@ -141,7 +141,6 @@ public class LevelGenerator {
                 placeBestBlock(currentBlock,bestPossiblePlacement.position, bestPossiblePlacement.rotateState);
                 //set up the new MS pos
                 MSPos = getNewMSPos();
-                System.out.printf("choose the : %s position\n",MSPos);
                 blocksUsed.add(currentBlock);
             }
         }
@@ -184,15 +183,14 @@ public class LevelGenerator {
         boolean continuing;
 
         while (bestPositions.size() ==0){
-            for (int x = -offset; x <= offset; x++) {
-                for (int y = -offset; y <= offset; y++) {
+            for (int x = 0; x <= offset; x++) {
+                for (int y =0; y <= offset; y++) {
                     //check if we didn't already visit the tile. todo pas correct
                     Position trying = new Position(x,y);
-                    if(x != -offset && x!= offset && y!= offset && y!= -offset)
+                    if(x!= offset && y!= offset)
                         continue;
                     // checks if the case is in the grid then checks if the tile of the grid is EMPTY.
-                    if (x  >= 0 && y  >= 0 &&
-                            y < grid.getCol() && y  < grid.getRow()
+                    if (y < grid.getCol() && y  < grid.getRow()
                             && grid.getState(x, y) == CaseState.EMPTY){
                         bestPositions.add(new Position( x, y));
                     }
