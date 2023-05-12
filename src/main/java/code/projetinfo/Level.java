@@ -56,14 +56,8 @@ public class Level {
             block.put("type", blocks[i].getClass().toString());
             block.put("rotatestate", blocks[i].getRotateState());
 
-            //if the block is already placed save is position if not save (0,0) (useful for precondition in dispatchBlocks()
-            if (blocks[i].getPlacedState()){
-                block.put("LayoutX", this.blocks[i].getLayoutX());
-                block.put("LayoutY", this.blocks[i].getMidY());
-            }else{
-                block.put("LayoutX", 0.0);
-                block.put("LayoutY", 0.0);
-            }
+            block.put("LayoutX", this.blocks[i].getLayoutX());
+            block.put("LayoutY", this.blocks[i].getLayoutY());
 
             block.put("isplaced", this.blocks[i].getPlacedState());
             blocklist.set(String.valueOf(i), block);
