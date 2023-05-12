@@ -83,7 +83,7 @@ public class ControllerParent {
                 save.setOnMouseExited(saveEvent -> imageChanger(save,"Sprites/SaveButton.png"));
                 save.setOnMouseClicked(saveEvent -> {
                     try {
-                        level.saveState(levelName);
+                        level.saveState();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

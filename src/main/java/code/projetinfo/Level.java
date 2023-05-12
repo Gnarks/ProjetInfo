@@ -10,6 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 public class Level {
     private Cases grid;
     private ImageBlock[] blocks;
+    private boolean isNew = true;
     private int placed = 0;
     private final String name;
     private final String pathname = System.getProperty("user.dir")+"<src<main<resources<code<projetinfo<levels.json";
@@ -23,6 +24,7 @@ public class Level {
 
     public Level(String name) throws IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         this.name = name;
+        this.isNew = false;
         loadState(name);
     }
 
@@ -30,18 +32,16 @@ public class Level {
      * Save all the data of a Level instance in the levels.json file.
      * Call directly this method if the level you want to save already exist else call saveState() with no parameters.
      * This method can save a new Level not already in the file and also modify one already in the file.
-     * @param name Optional argument useful to know if the level already exist (to not erase the existing level data grid).
      * @throws IOException
      */
-    public void saveState(String name) throws IOException {
+    public void saveState() throws IOException {
         JsonNode jsonData = mapper.readTree(f);
         ObjectNode levels = (ObjectNode) jsonData;
 
         ObjectNode newNode = mapper.createObjectNode();
         JsonNode gridNode;
 
-        if (name.length() == 0) {
-            System.out.println("mabite");
+        if (isNew) {
             gridNode = mapper.convertValue(this.grid.getCases(), JsonNode.class);
         }else{
             JsonNode nodeFinder = jsonData.path(name).path("grid");
@@ -69,15 +69,6 @@ public class Level {
         newNode.put("placed", this.placed);
         levels.set(this.name, newNode);
         mapper.writeValue(f, levels);
-    }
-
-    /**
-     * saveState() method overloading which call saveState with a empty string parameter.
-     * It's used to create a new level which doesn't already exist in the JSON.
-     * @throws IOException
-     */
-    public void saveState() throws IOException {
-        saveState("");
     }
 
     /**
