@@ -110,4 +110,17 @@ public class Cases {
         }
         return true;
     }
+
+    /**
+     * Prints the 2D array in the console.
+     */
+    public void show(){
+        System.out.println("\n");
+        for (int i = 0; i < getRow(); i++) {
+            for (int j = 0; j < getCol(); j++) {
+                System.out.printf("%7s|", getState(j,i));
+            }
+            System.out.println();
+        }
+    }
 }

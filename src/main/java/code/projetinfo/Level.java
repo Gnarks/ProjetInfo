@@ -11,8 +11,8 @@ public class Level {
     private Cases grid;
     private ImageBlock[] blocks;
     private int placed = 0;
-    private String name;
-    private String pathname = System.getProperty("user.dir")+"<src<main<resources<code<projetinfo<levels.json";
+    private final String name;
+    private final String pathname = System.getProperty("user.dir")+"<src<main<resources<levels.json";
     private final File f = new File(pathname.replaceAll("<", "\\"+System.getProperty("file.separator")));
     private final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
     public Level(String name, Cases grid, ImageBlock[] blocs){
@@ -193,13 +193,7 @@ public class Level {
     }
 
     public void show(){
-        System.out.println("\n");
-        for (int i = 0; i < grid.getRow(); i++) {
-            for (int j = 0; j < grid.getCol(); j++) {
-                System.out.printf("%7s|", grid.getState(j,i));
-            }
-            System.out.println();
-        }
+        grid.show();
     }
 
     public ImageBlock[] getBlocks() {
