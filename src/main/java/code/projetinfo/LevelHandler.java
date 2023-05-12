@@ -1,14 +1,14 @@
 package code.projetinfo;
 
 import code.projetinfo.controllertests.GameController;
-import javafx.animation.FadeTransition;
-import javafx.animation.RotateTransition;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.effect.Blend;
 import javafx.scene.effect.BlendMode;
 import javafx.scene.effect.ColorAdjust;
@@ -21,11 +21,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class LevelHandler {
 
@@ -132,7 +135,6 @@ public class LevelHandler {
                 }
                 else if (collideBetweenBlocks(imageBlock))
                     goToSpawnPos(imageBlock);
-                level.show();
             }
         });
     }
@@ -153,6 +155,15 @@ public class LevelHandler {
         pane.getChildren().add(rectangle);
         ImageView buttonNext = new ImageView(String.valueOf(AppMenu.class.getResource("Sprites/ButtonNext.png")));
         pane.getChildren().add(buttonNext);
+        addVictoryText("VICTORY",635,100);
+        addVictoryText("NEXT LEVEL",1135,650);
+        addVictoryText("RESTART",630,650);
+        addVictoryText("BACK TO MENUS",160,25);
+        ImageView blocky = addVictoryGhost("Sprites/Blocky.png",200,150);
+        ImageView ghost1 = addVictoryGhost("Sprites/Magky.png",200,500);
+        ImageView ghost2 = addVictoryGhost("Sprites/Clode.png",1175,200);
+        ImageView ghost3 = addVictoryGhost("Sprites/Bluky.png",1100,470);
+        ghostDancing(blocky,ghost1,ghost2,ghost3);
         buttonNext.setFitHeight(150);
         buttonNext.setLayoutX(1200);
         buttonNext.setLayoutY(730);
@@ -180,6 +191,60 @@ public class LevelHandler {
             }
 
         });
+    }
+
+    public ImageView addVictoryGhost(String sprite,int layoutX,int layoutY){
+        ImageView ghost = new ImageView(String.valueOf(AppGame.class.getResource(sprite)));
+        pane.getChildren().add(ghost);
+        ghost.setPreserveRatio(true);
+        ghost.setFitWidth(200);
+        ghost.setLayoutX(layoutX);
+        ghost.setLayoutY(layoutY);
+
+        return ghost;
+    }
+
+    public void addVictoryText(String text,int layoutX, int layoutY){
+        Label label = new Label(text);
+        pane.getChildren().add(label);
+        label.setTextFill(Paint.valueOf("#ffffff"));
+        label.setLayoutX(layoutX);
+        label.setLayoutY(layoutY);
+        label.setPrefWidth(300);
+        label.setWrapText(true);
+        label.setUnderline(true);
+        label.setAlignment(Pos.TOP_CENTER);
+        Font font = new Font("System Bold Italic",50);
+        label.setFont(font);
+    }
+
+    public void ghostDancing(ImageView blocky,ImageView ghost1,ImageView ghost2,ImageView ghost3){
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                ghost1.setScaleX(ghost1.getScaleX()*(-1));
+            }
+        };
+        Timer timer = new Timer();
+        timer.schedule(task,0,250);
+
+        RotateTransition rotateTransition = new RotateTransition(Duration.millis(1000),ghost2);
+        rotateTransition.setByAngle(720);
+        rotateTransition.setCycleCount(Animation.INDEFINITE);
+        rotateTransition.setAutoReverse(true);
+        rotateTransition.play();
+
+        TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500),ghost3);
+        translateTransition.setToX(150);
+        translateTransition.setCycleCount(Animation.INDEFINITE);
+        translateTransition.setAutoReverse(true);
+        translateTransition.play();
+
+        TranslateTransition blockyTransition = new TranslateTransition(Duration.millis(1000),blocky);
+        blockyTransition.setToY(25);
+        blockyTransition.setCycleCount(Animation.INDEFINITE);
+        blockyTransition.setAutoReverse(true);
+        blockyTransition.play();
     }
 
     public String nextLevel(String levelName){
@@ -213,7 +278,6 @@ public class LevelHandler {
     }
 
     public void vibration(ImageBlock imageBlock){
-        imageBlock.getImageView().setOpacity(0.9);
         RotateTransition rotateTransition = new RotateTransition(Duration.millis(50),imageBlock.getImageView());
         rotateTransition.setCycleCount(2);
         rotateTransition.setAutoReverse(true);
@@ -242,8 +306,10 @@ public class LevelHandler {
                 imageBlock.rotate();
                 posX = (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize;
                 posY = (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize;
+                blockPop(imageBlock,100);
                 if (!level.isPlacable(imageBlock, posX, posY)) {
                     imageBlock.rotateTo(initialRotateState);
+                    vibration(imageBlock);
                 }
                 posX = (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize;
                 posY = (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize;
@@ -251,8 +317,9 @@ public class LevelHandler {
             }
             else{
                 imageBlock.rotate();
+
+                blockPop(imageBlock,100);
             }
-            blockPop(imageBlock,100);
         });
 
 

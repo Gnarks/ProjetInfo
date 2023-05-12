@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0"
+      prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="code.projetinfo.controllertests.ControllerSettings">
+   <ImageView fitHeight="900.0" fitWidth="1600.0">
+      <Image url="@Sprites/BackLevel.png"/>
+   </ImageView>
+   <ImageView fitHeight="347.0" fitWidth="662.0" layoutX="821.0" layoutY="465.0">
+      <Image url="@Sprites/BackGridLevel.png"/>
+   </ImageView>
+   <ImageView fitHeight="305.0" fitWidth="662.0" layoutX="448.0" layoutY="52.0">
+      <Image url="@Sprites/BackGridLevel.png"/>
+   </ImageView>
+   <ImageView fx:id="ButtonBack" fitHeight="138.0" fitWidth="166.0" onMouseEntered="#onBackEntered"
+              onMouseExited="#onBackExited">
+      <Image url="@Sprites/ButtonBackToMenu.png"/>
+   </ImageView>
+   <ImageView fitHeight="347.0" fitWidth="662.0" layoutX="117.0" layoutY="465.0">
+      <Image url="@Sprites/BackGridLevel.png"/>
+   </ImageView>
+   <ImageView layoutX="1102.0" layoutY="622.0">
+      <Image url="@Sprites/Mouse_Right_Key_Dark.png"/>
+   </ImageView>
+   <ImageView fitHeight="172.0" fitWidth="172.0" layoutX="503.0" layoutY="587.0">
+      <Image url="@Sprites/BlockDragged.png"/>
+   </ImageView>
+   <ImageView fitHeight="172.0" fitWidth="172.0" layoutX="924.0" layoutY="586.0">
+      <Image url="@Sprites/BlockNotRotated.png"/>
+   </ImageView>
+   <ImageView fitHeight="172.0" fitWidth="172.0" layoutX="1207.0" layoutY="586.0">
+      <Image url="@Sprites/BlockRotated.png"/>
+   </ImageView>
+   <ImageView fitHeight="172.0" fitWidth="172.0" layoutX="220.0" layoutY="586.0">
+      <Image url="@Sprites/BlockUndragged.png"/>
+   </ImageView>
+   <ImageView fitHeight="110.0" fitWidth="111.0" layoutX="392.0" layoutY="622.0">
+      <Image url="@Sprites/Mouse_Left_Key_Dark.png"/>
+   </ImageView>
+   <Label layoutX="619.0" layoutY="366.0" prefHeight="99.0" prefWidth="362.0" text="CONTROLS" textFill="#ffffff"
+          underline="true">
+      <font>
+         <Font name="System Bold Italic" size="67.0"/>
+      </font>
+   </Label>
+   <Label layoutX="243.0" layoutY="487.0" prefHeight="99.0" prefWidth="410.0" text="Drag &amp; Drop"
+          underline="true">
+      <font>
+         <Font name="System Bold Italic" size="67.0"/>
+      </font>
+   </Label>
+   <Label layoutX="1010.0" layoutY="487.0" prefHeight="99.0" prefWidth="285.0" text="Rotation"
+          underline="true">
+      <font>
+         <Font name="System Bold Italic" size="67.0"/>
+      </font>
+   </Label>
+   <Label layoutX="559.0" layoutY="62.0" prefHeight="99.0" prefWidth="483.0" text="Sound Settings"
+          underline="true">
+      <font>
+         <Font name="System Bold Italic" size="67.0"/>
+      </font>
+   </Label>
+
+   <Label fx:id="volume" layoutX="890.0" layoutY="175.0" prefHeight="125.0" prefWidth="100.0" text="5">
+      <font>
+         <Font name="System Bold Italic" size="72.0"/>
+      </font>
+   </Label>
+   <Label layoutX="503.0" layoutY="190.0" prefHeight="99.0" prefWidth="255.0" text="Volume">
+      <font>
+         <Font name="System Bold Italic" size="67.0"/>
+      </font>
+   </Label>
+   <ImageView fx:id="decreaseSound" fitHeight="78.0" fitWidth="111.0" layoutX="759.0" layoutY="200.0" onMouseEntered="#onDecreaseEntered"
+              onMouseExited="#onDecreaseExited">
+      <Image url="@Sprites/ButtonBack.png"/>
+   </ImageView>
+   <ImageView fx:id="increaseSound" fitHeight="78.0" fitWidth="111.0" layoutX="953.0" layoutY="200.0" onMouseEntered="#onIncreaseEntered"
+              onMouseExited="#onIncreaseExited">
+      <Image url="@Sprites/ButtonNext.png"/>
+   </ImageView>
+</Pane>

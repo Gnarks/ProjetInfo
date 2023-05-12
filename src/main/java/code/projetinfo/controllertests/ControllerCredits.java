@@ -1,17 +1,10 @@
 package code.projetinfo.controllertests;
 
-import code.projetinfo.AppMenu;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
-import java.io.IOException;
 
-public class ControllerCredits {
+public class ControllerCredits extends ControllerParent {
     @FXML
     private ImageView BackButton;
 
@@ -26,26 +19,12 @@ public class ControllerCredits {
 
     @FXML
     protected void onBackToCollectionEntered(){
-        BackButton.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonBackLight.png"))));
-        BackButton.setOnMouseClicked(event ->{
-            Scene scene;
-            Stage stage;
-            FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource("Collection.fxml"));
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            try {
-                scene = new Scene(fxmlLoader.load(), 1600, 900);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.show();
-        });
+        onButtonEntered(BackButton,"Sprites/ButtonBackLight.png","Collection.fxml");
     }
 
     @FXML
     protected void onBackToCollectionExited() {
-        BackButton.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonBack.png"))));
+        buttonImageChanger(BackButton,"Sprites/ButtonBack.png");
     }
 
 

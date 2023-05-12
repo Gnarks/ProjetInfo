@@ -1,23 +1,18 @@
 package code.projetinfo.controllertests;
 
-
-
-import code.projetinfo.AppMenu;
+import code.projetinfo.AppGame;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
+import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-
-import java.io.IOException;
-
-
-public class ControllerMenu {
+public class ControllerMenu extends ControllerParent implements Initializable {
     /**Controller of all the menu's buttons(assigned to MENUSTEST.fxml)*/
     @FXML
     private ImageView PlayButtonImage;
@@ -28,83 +23,47 @@ public class ControllerMenu {
     @FXML
     private ImageView CollectionButtonImage;
 
-    private Stage stage;
-
-    private Scene scene;
+    private Media media =new Media(String.valueOf(AppGame.class.getResource("Theme.mp3")));
+    private MediaPlayer mediaPlayer = new MediaPlayer(media);
 
     @FXML
     protected void onExitEntered(){
-        /**For all the on...Entered(): if the cursor comes over the button, the button become lighter*/
-        Image imageLight = new Image(String.valueOf(AppMenu.class.getResource("Sprites/EXITPRESSED.png")));
-        ExitButtonImage.setImage(imageLight);
-
-        ExitButtonImage.setOnMouseClicked((event) -> {
-            /**Close the game*/
-            Platform.exit();
-        });
+        buttonImageChanger(ExitButtonImage,"Sprites/EXITPRESSED.png");
+        ExitButtonImage.setOnMouseClicked(event -> Platform.exit());
     }
-
     @FXML
     protected void onExitExited(){
-        /**For all the on...Exited(): if the cursor quit the button, the button retakes his origin sprite*/
-        Image imageDark = new Image(String.valueOf(AppMenu.class.getResource("Sprites/EXIT.png")));
-        ExitButtonImage.setImage(imageDark);
+        buttonImageChanger(ExitButtonImage,"Sprites/EXIT.png");
     }
     @FXML
-    protected void onCollectionEntered(){
-        Image imageLight = new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonCollectionLight.png")));
-        CollectionButtonImage.setImage(imageLight);
-
-        CollectionButtonImage.setOnMouseClicked(event ->{
-            FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource("Collection.fxml"));
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            try {
-                scene = new Scene(fxmlLoader.load(), 1600, 900);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            stage.setScene(scene);
-            stage.show();
-        });
-
+    protected void onCollectionEntered() {
+        onButtonEntered(CollectionButtonImage,"Sprites/ButtonCollectionLight.png","Collection.fxml");
     }
     @FXML
     protected void onCollectionExited(){
-        Image imageLight = new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonCollection.png")));
-        CollectionButtonImage.setImage(imageLight);
+        buttonImageChanger(CollectionButtonImage,"Sprites/ButtonCollection.png");
     }
     @FXML
     protected void onPlayEntered(){
-        Image imageLight = new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonPlayLight.png")));
-        PlayButtonImage.setImage(imageLight);
-
-        PlayButtonImage.setOnMouseClicked(event ->{
-            FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource("LevelSelector1to10.fxml"));
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            try {
-                scene = new Scene(fxmlLoader.load(), 1600, 900);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            stage.setScene(scene);
-            stage.show();
-        });
+        onButtonEntered(PlayButtonImage,"Sprites/ButtonPlayLight.png","MenuPlay.fxml");
     }
     @FXML
     protected void onPlayExited(){
-        Image imageLight = new Image(String.valueOf(AppMenu.class.getResource("Sprites/Buttonplay.png")));
-        PlayButtonImage.setImage(imageLight);
+        buttonImageChanger(PlayButtonImage,"Sprites/Buttonplay.png");
     }
     @FXML
-    protected void onSettingsEntered(){
-        Image imageLight = new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonSettingsLight.png")));
-        SettingsButtonImage.setImage(imageLight);
+    protected void onSettingsEntered() {
+        buttonImageChanger(SettingsButtonImage, "Sprites/ButtonSettingsLight.png");
+        SettingsButtonImage.setOnMouseClicked(event ->loadScene("SettingsMenu.fxml",event));
     }
     @FXML
-    protected void onSettingsExited(){
-        Image imageLight = new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonSettings.png")));
-        SettingsButtonImage.setImage(imageLight);
+    protected void onSettingsExited() {
+        buttonImageChanger(SettingsButtonImage, "Sprites/ButtonSettings.png");
     }
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        ControllerSettings.setMusic();
+    }
 }

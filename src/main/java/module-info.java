@@ -12,6 +12,7 @@ module code.projetinfo {
     requires junit;
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.databind;
+    requires javafx.media;
 
     opens code.projetinfo to javafx.fxml;
     exports code.projetinfo;

@@ -23,7 +23,7 @@
       <Button fx:id="Level18" layoutX="476.0" layoutY="592.0" mnemonicParsing="false" prefHeight="154.0" prefWidth="196.0" opacity="0"/>
       <Button fx:id="Level19" layoutX="705.0" layoutY="592.0" mnemonicParsing="false" prefHeight="154.0" prefWidth="196.0" opacity="0"/>
       <Button fx:id="Level20" layoutX="931.0" layoutY="592.0" mnemonicParsing="false" prefHeight="154.0" prefWidth="196.0" opacity="0"/>
-      <ImageView fx:id="ButtonBack" fitHeight="79.0" fitWidth="105.0" layoutX="31.0" layoutY="411.0" onMouseEntered="#onBackEntered" onMouseExited="#onBackExited">
+      <ImageView fx:id="ButtonBack"  fitHeight="138.0" fitWidth="166.0" layoutX="31.0" layoutY="411.0" onMouseEntered="#onBackEntered" onMouseExited="#onBackExited">
          <image>
             <Image url="@Sprites/ButtonBack.png" />
          </image>
