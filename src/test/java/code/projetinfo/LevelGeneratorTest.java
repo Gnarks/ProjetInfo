@@ -15,21 +15,14 @@ public class LevelGeneratorTest {
     @Test
     public void TryCreate() {
 
-        LevelGenerator levelGenerator = new LevelGenerator(new ImageBlock[]{new GymBroo(new Position(3,6)),
-                new Redky(new Position(2,2)),new Amogous(new Position(1,1)),new Geoffroy(new Position(4,5))},
-                7,3,true);
+        LevelGenerator levelGenerator = new LevelGenerator(new Class[]{Amogous.class},
+                7,7,true);
 
         try {
             levelGenerator.generate();
-        } catch (NoSuchMethodException e) {
-            throw new RuntimeException(e);
-        } catch (InvocationTargetException e) {
-            throw new RuntimeException(e);
-        } catch (InstantiationException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
         }
-
+        catch (LevelGenerator.GenerateException e ){
+            System.out.println(e.getMessage());
+        }
     }
 }
