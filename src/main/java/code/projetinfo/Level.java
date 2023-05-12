@@ -108,12 +108,16 @@ public class Level {
             nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("LayoutY");
             double midY = mapper.treeToValue(nodeFinder, double.class);
 
+            nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("rotatestate");
+            int rotateState = mapper.treeToValue(nodeFinder, int.class);
+
             nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("isplaced");
             boolean placedstate = mapper.treeToValue(nodeFinder, boolean.class);
 
             //Construct a Block with the imported block attributes and set if he is placed or not
             jsonBlocks[i] = (ImageBlock) current.getDeclaredConstructor(Position.class).newInstance(new Position(midX, midY));
             jsonBlocks[i].setPlaced(placedstate);
+            jsonBlocks[i].rotateTo(rotateState);
         }
         this.blocks = jsonBlocks;
     }
