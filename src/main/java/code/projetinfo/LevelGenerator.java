@@ -2,13 +2,20 @@ package code.projetinfo;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * Class used to generate a random Level with certain parameters.
+ */
 public class LevelGenerator {
 
     /**
      * GenerateException will be thrown if there is an issue in the generate method
      *  with the specified issue in the message.
+     *  Exemple of message :
+     *  - not enough blocks selected to place only different blocks.
+     *  - couldn't place the least amount of blocks.
      */
     public static class GenerateException extends Exception {
         public GenerateException(String errorMessage) {
@@ -17,10 +24,10 @@ public class LevelGenerator {
     }
 
 
-    /** Local class used to represent a possible position to place the block
+    /** Intern class used to represent a possible position to place a block
      *  for a certain rotateState with a certain score.
      */
-    class PossiblePlacementData {
+    static class PossiblePlacementData {
         /**
          * The position to place the Block to.
          */
@@ -44,23 +51,24 @@ public class LevelGenerator {
             this.rotateState = rotateState;
             this.score = score;
         }
-
-        @Override
-        public String toString() {
-            return String.format("Position : %s\nRotateState:%s\nScore:%s",position,rotateState,score);
-        }
     }
 
-    private Class<?>[] imageBlockClasses;
-    private int leastToPlace;
-    private int maxToPlace;
+    private final Class<?>[] imageBlockClasses;
+    private final int leastToPlace;
+    private final int maxToPlace;
 
     private Cases grid;
 
     boolean alwaysDifferent;
 
 
-
+    /** Constructor of the LevelGenerator Class.
+     *
+     * @param imageBlocksClasses an array of ImageBlock classes.
+     * @param leastToPlace the least amount of blocks wanted to be placed.
+     * @param maxToPlace the maximum amount of blocks wanted to be placed.
+     * @param alwaysDifferent boolean specifying if the block placed must be always different.
+     */
     public LevelGenerator(Class<ImageBlock>[] imageBlocksClasses, int leastToPlace,int maxToPlace,boolean alwaysDifferent){
 
         this.imageBlockClasses =imageBlocksClasses;
@@ -69,32 +77,38 @@ public class LevelGenerator {
         this.alwaysDifferent = alwaysDifferent;
     }
 
-    /** Generate and returns the generated Level with the Constructor parameters.
+    /**
      *
-     * @return The generated Level.
+     * @return the Generated Level.
+     * @throws GenerateException if an exception occurs in the generation of the Level.
      */
     public Level generate() throws GenerateException {
 
+        if (leastToPlace > imageBlockClasses.length && alwaysDifferent){
+            throw new GenerateException("not enough blocks selected to place only different blocks");
+        }
+
         // the Most Significant Position is initialized at (0,0).
         Position MSPos = new Position(0,0);
-
         Random rnd = new Random();
-
-        // initialize a grid on which the block will be placed.
+        // initialize a grid on which the block will be placed as a 8x8 grid simply because it's big enough.
         grid = new Cases(8,8, CaseState.EMPTY);
 
 
+        // the list of block we're currently trying to place.
+        ArrayList<Class<?>> tryingToPlace = new ArrayList<>(Arrays.asList(imageBlockClasses));
+
         // the array of block used in the generation of the level.
-        ArrayList<ImageBlock> blocksUsed = new ArrayList<ImageBlock>();
+        ArrayList<ImageBlock> blocksUsed = new ArrayList<>();
 
         //loop trying to place the maximum asked number of block.
-        for (int i = 0; i < maxToPlace; i++) {
+        while (blocksUsed.size() < maxToPlace && tryingToPlace.size() >0){
             int randomInt = rnd.nextInt(imageBlockClasses.length);
             //arrayList to store all the PossiblePlacements for a single block.
-            ArrayList<PossiblePlacementData> possiblePlacements = new ArrayList<PossiblePlacementData>();
+            ArrayList<PossiblePlacementData> possiblePlacements = new ArrayList<>();
 
             // chooses a random ImageBlock in the imageBlockClasses list.
-            ImageBlock currentBlock = null;
+            ImageBlock currentBlock;
             try {
                 currentBlock = (ImageBlock) imageBlockClasses[randomInt].getDeclaredConstructor(Position.class).newInstance(new Position(0,0));
             } catch (InstantiationException | NoSuchMethodException | IllegalAccessException |
@@ -106,70 +120,65 @@ public class LevelGenerator {
 
                 currentBlock.rotateTo(rotateState);
 
-                double score = 0;
-
-                Position positionToPlace = MSPos.clone();
-                score = calculateScore(currentBlock,new Position(0,0));
-
-                if (isPlacable(currentBlock,positionToPlace, rotateState) && currentBlock.getState(0,0) == CaseState.FULL)
-                    possiblePlacements.add(new PossiblePlacementData(positionToPlace,rotateState,score));
+                //if the block doesn't have to be moved:
+                if (isPlacable(currentBlock,MSPos, rotateState) && currentBlock.getState(0,0) == CaseState.FULL){
+                    double score = calculateScore(currentBlock,new Position(0,0));
+                    possiblePlacements.add(new PossiblePlacementData(MSPos, rotateState, score));
+                }
                 else {
-                    int xDelta = 0;
-                    while (positionToPlace.getX() + xDelta >=0 &&grid.getState((int)(positionToPlace.getX() + xDelta),
-                            (int)(positionToPlace.getY())) == CaseState.EMPTY){
-                        xDelta--;
-                    }
-                    if (isPlacable(currentBlock,new Position(positionToPlace.getX()+xDelta,positionToPlace.getY()), rotateState)
-                        && xDelta !=0){
-                        score = calculateScore(currentBlock, new Position(xDelta,0));
-                        possiblePlacements.add(new PossiblePlacementData(
-                                new Position(positionToPlace.getX()+xDelta, positionToPlace.getY())
-                                ,rotateState,score));
-                    }
-
-                    int yDelta = 0;
-                    while (positionToPlace.getY() +yDelta >=0 && grid.getState((int)(positionToPlace.getX()),
-                            (int)(positionToPlace.getY() -yDelta)) == CaseState.EMPTY){
-                        yDelta--;
-                    }
-                    if (isPlacable(currentBlock,new Position(positionToPlace.getX(),positionToPlace.getY()+yDelta), rotateState)){
-                        score = calculateScore(currentBlock,new Position(0,yDelta));
-                        possiblePlacements.add(new PossiblePlacementData(
-                                new Position(positionToPlace.getX(), positionToPlace.getY()+yDelta)
-                                ,rotateState,score));
-                    }
+                    possiblePlacements.addAll(getMovedPossiblePlacements(currentBlock,MSPos,rotateState));
                 }
             }
-            PossiblePlacementData bestPossiblePlacement = null;
-            if (possiblePlacements.size() >0){
+            //remove the block from the tryingToPlace list if the program couldn't find any possiblePlacement
+            // or if the user only want different blocks.
+            if (possiblePlacements.size() == 0 || alwaysDifferent) {
+                tryingToPlace.remove(currentBlock.getClass());
+            }
+            //if we can place the block.
+            if (possiblePlacements.size() >0) {
+                // we want to place the moved Blocks in priority by making a list of them.
+                ArrayList<PossiblePlacementData> movedBlocksPlacements = new ArrayList<>();
+
                 // set up the first as the best
-                bestPossiblePlacement = possiblePlacements.get(0);
+                PossiblePlacementData bestPossibleScorePlacement = possiblePlacements.get(0);
 
                 for (PossiblePlacementData possiblePlacement: possiblePlacements) {
-                    // prints the different possiblePlacements
-                    System.out.println(possiblePlacement);
-                    System.out.println("---------------");
-
-                    for (int j = 1; j < possiblePlacements.size(); j++) {
-                        if (bestPossiblePlacement.score > possiblePlacement.score){
-                            //todo check en fct si le block s'est déplacé le privilégier
-                            bestPossiblePlacement = possiblePlacement; // select the best by the score
-                        }
+                    if (bestPossibleScorePlacement.score >= possiblePlacement.score){
+                        bestPossibleScorePlacement = possiblePlacement; // select the best by the score
+                    }
+                    if (!(possiblePlacement.position.equals(MSPos))){
+                        movedBlocksPlacements.add(possiblePlacement); // select the best by the fact that the block moved
                     }
                 }
-            }
-            if (bestPossiblePlacement != null){
-                // places the bestBlock on the grid.
-                placeBestBlock(currentBlock,bestPossiblePlacement.position, bestPossiblePlacement.rotateState);
-                //set up the new MS pos
+
+                if (movedBlocksPlacements.size() >0){
+                    randomInt = rnd.nextInt(movedBlocksPlacements.size());
+                    placeBlock(currentBlock,movedBlocksPlacements.get(randomInt).position,
+                            movedBlocksPlacements.get(randomInt).rotateState);
+                }
+                else {
+                    placeBlock(currentBlock,bestPossibleScorePlacement.position, bestPossibleScorePlacement.rotateState);
+                }
+                MSPos = getNewMSPos(MSPos);
                 blocksUsed.add(currentBlock);
             }
-            MSPos = getNewMSPos(MSPos);
         }
-        return new Level("randomLevel",grid,blocksUsed.toArray(new ImageBlock[0]));
+
+        if (blocksUsed.size() < leastToPlace){
+            throw new GenerateException("couldn't place the least amount of blocks.");
+        }
+
+        return new Level("randomLevel",prepareGrid(grid),blocksUsed.toArray(new ImageBlock[0]));
     }
 
-    private void placeBestBlock(ImageBlock imageBlock, Position position, int rotateState){
+
+    /** places the block in the grid.
+     *
+     * @param imageBlock the ImageBlock wanted to be placed.
+     * @param position the position to place the ImageBlock to
+     * @param rotateState the rotateState of the ImageBlock
+     */
+    private void placeBlock(ImageBlock imageBlock, Position position, int rotateState){
         imageBlock.rotateTo(rotateState);
         for (int i = 0; i < imageBlock.getRows(); i++){
             for (int j = 0; j < imageBlock.getCols(); j++){
@@ -177,9 +186,15 @@ public class LevelGenerator {
                     grid.set((int)position.getX()+j, (int)position.getY()+i, imageBlock.getState(j, i));
             }
         }
-        grid.show();
     }
 
+    /**
+     *
+     * @param imageBlock the ImageBlock wanted to be placed.
+     * @param position the position try to place the ImageBlock to.
+     * @param rotateState the rotateState of the ImageBlock
+     * @return if the ImageBlock is can be placed or not.
+     */
     private boolean isPlacable(ImageBlock imageBlock,Position position, int rotateState) {
         imageBlock.rotateTo(rotateState);
         for (int i = 0; i < imageBlock.getRows(); i++) {
@@ -196,14 +211,14 @@ public class LevelGenerator {
     }
 
     /**
+     * @param oldMsPos the old most significant position.
      * @return the closest EMPTY case's position to the origin of the grid that isn't the old MsPos.
      */
-    private Position getNewMSPos(Position oldMsPo){
+    private Position getNewMSPos(Position oldMsPos){
 
         int offset= 1;
         // using an array because we want to take a random position between the positions with the same best score.
-        ArrayList<Position> bestPositions = new ArrayList<Position>();
-        boolean continuing;
+        ArrayList<Position> bestPositions = new ArrayList<>();
 
         while (bestPositions.size() ==0){
             for (int x = 0; x <= offset; x++) {
@@ -213,7 +228,7 @@ public class LevelGenerator {
                     // checks if the case is in the grid then checks if the tile of the grid is EMPTY.
                     if (y < grid.getCol() && y  < grid.getRow()
                             && grid.getState(x, y) == CaseState.EMPTY
-                            && !(new Position(x,y).equals(oldMsPo))){
+                            && !(new Position(x,y).equals(oldMsPos))){
                         bestPositions.add(new Position( x, y));
                     }
                 }
@@ -234,7 +249,6 @@ public class LevelGenerator {
 
         for (Position position:bestPositions) {
             if (position.getY()+position.getX() <= bestScore){
-                System.out.println(position);
                 sameScoreCount++;
             }
             else
@@ -243,12 +257,18 @@ public class LevelGenerator {
         return bestPositions.get(rnd.nextInt(sameScoreCount));
     }
 
-    /**
-     * calculates the score of the currentBlock at the offset position.
-     * @param currentBlock
-     * @param offset
-     * @return
-     */
+    /** Calculates the addition of all the direct distance between the Most Significant Position (MSPos) and every
+      * full case of the block.
+      * the direct distance D between the MSPos and a full case is calculated by :
+      * D = sqrt((X+Xoffset)²+(Y+Yoffset)²)
+      * X : the distance between the MSPos and the full case in the X axis.
+      * Y : the distance between the MSPos and the full case in the Y axis.
+     *
+     * @param currentBlock the ImageBlock to calculate the score of.
+     * @param offset the offset to add to the calcul.
+     * @return the score of the ImageBlockBlock.
+      */
+
     private double calculateScore(ImageBlock currentBlock,Position offset){
         double score = 0;
         for (int y = 0; y < currentBlock.getRows(); y++){
@@ -260,5 +280,87 @@ public class LevelGenerator {
             }
         }
         return score;
+    }
+
+    /** Method to calculate and returns the PlacementDatas when the block can be moved.
+     *
+     * @param currentBlock the currentBlock.
+     * @param positionToPlace the initial positionToPlace.
+     * @param rotateState the rotateState.
+     * @return an ArrayList of PossiblePlacementData where the blocks have moved.
+     * (the Position of the PossiblePlacementData might not be equal to the initial PositionToPlace)
+     */
+    private ArrayList<PossiblePlacementData> getMovedPossiblePlacements(ImageBlock currentBlock,Position positionToPlace,int rotateState){
+
+        ArrayList<PossiblePlacementData> returnPossiblePlacements = new ArrayList<>();
+
+        int xDelta = 0;
+        while (positionToPlace.getX() + xDelta >=0 &&grid.getState((int)(positionToPlace.getX() + xDelta),
+                (int)(positionToPlace.getY())) == CaseState.EMPTY){
+            xDelta--;
+        }
+        if (isPlacable(currentBlock,new Position(positionToPlace.getX()+xDelta,positionToPlace.getY()), rotateState)
+                && xDelta !=0){
+            double score = calculateScore(currentBlock, new Position(xDelta,0));
+            returnPossiblePlacements.add(new PossiblePlacementData(
+                    new Position(positionToPlace.getX() + xDelta, positionToPlace.getY())
+                    , rotateState, score));
+        }
+        int yDelta = 0;
+        while (positionToPlace.getY() + yDelta >=0 && grid.getState((int)(positionToPlace.getX()),
+                (int)(positionToPlace.getY() +yDelta)) == CaseState.EMPTY){
+            yDelta--;
+        }
+        if (isPlacable(currentBlock,new Position(positionToPlace.getX(),positionToPlace.getY()+yDelta), rotateState)){
+            double score = calculateScore(currentBlock,new Position(0,yDelta));
+            returnPossiblePlacements.add(new PossiblePlacementData(
+                    new Position(positionToPlace.getX(), positionToPlace.getY() + yDelta)
+                    , rotateState, score));
+        }
+        return returnPossiblePlacements;
+    }
+
+
+    /** Prepares the intern grid by turning all the EMPTY to SPECIAL and all the FULL to EMPTY
+     *  also adds some random FULL in the grid.
+     *
+     * @param grid the not prepared grid.
+     * @return the prepared grid.
+     */
+    private Cases prepareGrid(Cases grid) {
+        int rowsBorder=0;
+        int colsBorder=0;
+        for (int i = 0; i < grid.getCol(); i++) {
+            for (int j = 0; j < grid.getRow(); j++) {
+                if (grid.getState(i,j) == CaseState.FULL){
+                    if (i> colsBorder){
+                        colsBorder = i;
+                    }
+                    if (j > rowsBorder)
+                        rowsBorder = j;
+                }
+            }
+        }
+        Cases preparedGrid = new Cases(colsBorder+1,rowsBorder+1);
+        for (int i = 0; i < colsBorder+1; i++) {
+            for (int j = 0; j < rowsBorder+1; j++) {
+                switch (grid.getState(i, j)) {
+                    case EMPTY:
+                        preparedGrid.set(i, j, CaseState.SPECIAL);
+                        break;
+                    case FULL:
+                        preparedGrid.set(i, j, CaseState.EMPTY);
+                }
+
+            }
+        }
+        for (int i = 0; i < 5; i++) {
+            Random rnd = new Random();
+            int x = rnd.nextInt(preparedGrid.getCol());
+            int y = rnd.nextInt(preparedGrid.getRow());
+            if (preparedGrid.getState(x,y) == CaseState.SPECIAL)
+                preparedGrid.set(x,y,CaseState.FULL);
+        }
+        return preparedGrid;
     }
 }
