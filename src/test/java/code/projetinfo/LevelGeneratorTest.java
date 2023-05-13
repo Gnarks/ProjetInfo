@@ -5,21 +5,19 @@ import de.saxsys.javafx.test.JfxRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.lang.reflect.InvocationTargetException;
-
 import static org.junit.Assert.*;
 
 @RunWith(JfxRunner.class)
 public class LevelGeneratorTest {
 
     @Test
-    public void TryCreate() {
+    public void TryGenerate() {
 
         LevelGenerator levelGenerator = new LevelGenerator(new Class[]{Amogous.class},
-                7,7,true);
+                1,1,false);
 
         try {
-            levelGenerator.generate();
+           levelGenerator.generate();
         }
         catch (LevelGenerator.GenerateException e ){
             System.out.println(e.getMessage());

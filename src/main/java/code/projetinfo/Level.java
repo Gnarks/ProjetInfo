@@ -10,7 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 public class Level {
     private Cases grid;
     private ImageBlock[] blocks;
-    private boolean isNew = true;
+    private boolean isNew;
     private int placed = 0;
     private final String name;
     private final String pathname = System.getProperty("user.dir")+"<src<main<resources<code<projetinfo<levels.json";
@@ -20,6 +20,7 @@ public class Level {
         this.grid = grid;
         this.blocks = blocs;
         this.name = name;
+        this.isNew = true;
     }
 
     public Level(String name) throws IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
