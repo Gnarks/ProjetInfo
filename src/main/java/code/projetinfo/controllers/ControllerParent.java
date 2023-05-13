@@ -22,7 +22,6 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 
 public class ControllerParent {
@@ -225,32 +224,16 @@ public class ControllerParent {
      *
      * @param pane
      * @param button
-     * @param onlySame
+     * @param fullRandomState
      */
-    protected void selectBlock(Pane pane, Button button,boolean onlySame){
-        if(onlySame){
-            ArrayList<Rectangle> rectangles = new ArrayList<>();
-            for (int i = 0; i < pane.getChildren().size(); i++) {
-                System.out.println(i);
-                    if(pane.getChildren().get(i).getClass()== Rectangle.class){
-                        rectangles.add((Rectangle) pane.getChildren().get(i));
-                    }
-            }
-            for (int i = 0; i < rectangles.toArray().length ; i++) {
-
-                pane.getChildren().remove(rectangles.get(i));
-
-            }
-        }
+    protected void selectBlock(Pane pane, Button button,boolean fullRandomState){
         Rectangle rectangle = new Rectangle(button.getLayoutX(),button.getLayoutY(),button.getWidth(),button.getHeight());
         rectangle.setOpacity(0.2);
         rectangle.setFill(Paint.valueOf("#00ff00"));
         pane.getChildren().add(rectangle);
         rectangle.setOnMouseClicked(event -> {pane.getChildren().remove(rectangle);
+        });
 
-            System.out.println(pane.getChildren().size());});
-
-        System.out.println(pane.getChildren().size());
     }
 
 }

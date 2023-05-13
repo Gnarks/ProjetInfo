@@ -14,7 +14,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ControllerRandom extends ControllerParent implements Initializable {
+public class ControllerRandomMenu extends ControllerParent implements Initializable {
     @FXML
     private Pane pane;
     @FXML
@@ -32,11 +32,11 @@ public class ControllerRandom extends ControllerParent implements Initializable 
     @FXML
     private ImageView minimumDecrease;
     @FXML
-    private Circle OnlySame;
+    private Circle AlwaysDifferent;
     @FXML
     private Circle FullRandom;
 
-    private boolean onlySameState = false;
+    private boolean alwaysDifferentState = false;
 
     private boolean fullRandomState = true;
 
@@ -90,40 +90,27 @@ public class ControllerRandom extends ControllerParent implements Initializable 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println(pane.getChildren().size());
         for (int i = 0; i < pane.getChildren().size(); i++) {
             if(pane.getChildren().get(i).getClass() == Button.class){
                 int finalI = i;
                 pane.getChildren().get(i).setOnMouseClicked(event->{
-                    selectBlock(pane,(Button)pane.getChildren().get(finalI),onlySameState);
+                    selectBlock(pane,(Button)pane.getChildren().get(finalI),alwaysDifferentState);
                     this.fullRandomState = false;
-
                     FullRandom.setFill(Paint.valueOf("#ff0000"));
                 });}
         }
 
-        OnlySame.setOnMouseClicked(event -> {
-            if(OnlySame.getFill().equals(Paint.valueOf("#ff0000"))){
-                OnlySame.setFill(Paint.valueOf("#00ff00"));
+        AlwaysDifferent.setOnMouseClicked(event -> {
+            if(AlwaysDifferent.getFill().equals(Paint.valueOf("#ff0000"))){
+                AlwaysDifferent.setFill(Paint.valueOf("#00ff00"));
                 FullRandom.setFill(Paint.valueOf("#ff0000"));
-                this.onlySameState = true;
+                this.alwaysDifferentState = true;
                 this.fullRandomState = false;
-                ArrayList<Rectangle> rectangles = new ArrayList<>();
-                for (int i = 0; i < pane.getChildren().size()-1; i++) {
-                    System.out.println(i);
-                    if(pane.getChildren().get(i).getClass()== Rectangle.class){
-                        rectangles.add((Rectangle) pane.getChildren().get(i));
-                    }
-                }
-                for (int i = 0; i < rectangles.toArray().length ; i++) {
 
-                    pane.getChildren().remove(rectangles.get(i));
-
-                }
             }
-            else if(OnlySame.getFill().equals(Paint.valueOf("#00ff00"))){
-                OnlySame.setFill(Paint.valueOf("#ff0000"));
-                this.onlySameState = false;
+            else if(AlwaysDifferent.getFill().equals(Paint.valueOf("#00ff00"))){
+                AlwaysDifferent.setFill(Paint.valueOf("#ff0000"));
+                this.alwaysDifferentState = false;
             }
         });
 
@@ -131,8 +118,8 @@ public class ControllerRandom extends ControllerParent implements Initializable 
         FullRandom.setOnMouseClicked(event -> {
             if(FullRandom.getFill().equals(Paint.valueOf("#ff0000"))){
                 FullRandom.setFill(Paint.valueOf("#00ff00"));
-                OnlySame.setFill(Paint.valueOf("#ff0000"));
-                this.onlySameState = false;
+                AlwaysDifferent.setFill(Paint.valueOf("#ff0000"));
+                this.alwaysDifferentState = false;
                 this.fullRandomState = true;
                 ArrayList<Rectangle> rectangles = new ArrayList<>();
                 for (int i = 0; i < pane.getChildren().size(); i++) {

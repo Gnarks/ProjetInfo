@@ -53,19 +53,19 @@
    <Label layoutX="243.0" layoutY="487.0" prefHeight="99.0" prefWidth="410.0" text="Drag &amp; Drop"
           underline="true">
       <font>
-         <Font name="System Bold Italic" size="67.0"/>
+         <Font name="System Bold Italic" size="35.0"/>
       </font>
    </Label>
    <Label layoutX="1010.0" layoutY="487.0" prefHeight="99.0" prefWidth="285.0" text="Rotation"
           underline="true">
       <font>
-         <Font name="System Bold Italic" size="67.0"/>
+         <Font name="System Bold Italic" size="37.0"/>
       </font>
    </Label>
    <Label layoutX="559.0" layoutY="62.0" prefHeight="99.0" prefWidth="483.0" text="Sound Settings"
           underline="true">
       <font>
-         <Font name="System Bold Italic" size="67.0"/>
+         <Font name="System Bold Italic" size="35.0"/>
       </font>
    </Label>
 
@@ -76,7 +76,7 @@
    </Label>
    <Label layoutX="503.0" layoutY="190.0" prefHeight="99.0" prefWidth="255.0" text="Volume">
       <font>
-         <Font name="System Bold Italic" size="67.0"/>
+         <Font name="System Bold Italic" size="35.0"/>
       </font>
    </Label>
    <ImageView fx:id="decreaseSound" fitHeight="78.0" fitWidth="111.0" layoutX="759.0" layoutY="200.0" onMouseEntered="#onDecreaseEntered"
