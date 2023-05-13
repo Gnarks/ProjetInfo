@@ -101,6 +101,10 @@
             <Image url="@Sprites/ButtonNext.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="CreateButton" fitWidth="300.0" layoutX="1200.0" layoutY="750.0" preserveRatio="true"
+                 onMouseEntered="#onCreateEntered" onMouseExited="#onCreateExited">
+         <Image url="@Sprites/CreateButton.png"/>
+      </ImageView>
       <Circle fx:id = "AlwaysDifferent" fill="#ff0000" layoutX="550.0" layoutY="730.0" radius="28.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" />
       <Circle fx:id = "FullRandom"  fill="#00ff00" layoutX="452.0" layoutY="812.0" radius="28.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0" />
    </children>

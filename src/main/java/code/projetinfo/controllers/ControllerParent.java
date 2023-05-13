@@ -1,6 +1,7 @@
 package code.projetinfo.controllers;
 
 import code.projetinfo.AppMenu;
+import code.projetinfo.ImageBlock;
 import code.projetinfo.Level;
 import code.projetinfo.LevelHandler;
 import javafx.animation.TranslateTransition;
@@ -22,6 +23,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
+import static org.junit.Assert.assertThrows;
 
 
 public class ControllerParent {
@@ -224,14 +228,21 @@ public class ControllerParent {
      *
      * @param pane
      * @param button
-     * @param fullRandomState
+     * @param blockChosen
      */
-    protected void selectBlock(Pane pane, Button button,boolean fullRandomState){
+    protected void selectBlock(Pane pane, Button button, ArrayList<Class<ImageBlock>> blockChosen) throws ClassNotFoundException {
+        Class blockChosed = Class.forName("code.projetinfo.normalBlocks." + button.getId());
+        blockChosen.add(blockChosed);
         Rectangle rectangle = new Rectangle(button.getLayoutX(),button.getLayoutY(),button.getWidth(),button.getHeight());
         rectangle.setOpacity(0.2);
         rectangle.setFill(Paint.valueOf("#00ff00"));
         pane.getChildren().add(rectangle);
-        rectangle.setOnMouseClicked(event -> {pane.getChildren().remove(rectangle);
+        System.out.println(blockChosed);
+        rectangle.setOnMouseClicked(event -> {
+            pane.getChildren().remove(rectangle);
+            blockChosen.remove(blockChosed);
+            System.out.println(blockChosen.toArray().length);
+
         });
 
     }

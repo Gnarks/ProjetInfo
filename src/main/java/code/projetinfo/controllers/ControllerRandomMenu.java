@@ -1,7 +1,15 @@
 package code.projetinfo.controllers;
 
+import code.projetinfo.AppMenu;
+import code.projetinfo.ImageBlock;
+import code.projetinfo.normalBlocks.*;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -9,7 +17,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -36,9 +47,18 @@ public class ControllerRandomMenu extends ControllerParent implements Initializa
     @FXML
     private Circle FullRandom;
 
+    @FXML
+    private ImageView CreateButton;
+
+    private ArrayList<Class<ImageBlock>> blockChosen = new ArrayList<>(19);
+
     private boolean alwaysDifferentState = false;
 
     private boolean fullRandomState = true;
+
+    private Class<ImageBlock>[] allBlocks = new Class[] {Amogous.class, Baby.class, BigBob.class, Bloby.class, BooBelle.class, Geoffroy.class,
+    GymBroo.class, King.class, LilDeath.class, Napsta.class, Nessy.class, Phantom.class, PlagueDoc.class, Redky.class, Scooboodoo.class,
+    Toowels.class, VicKing.class, Wolfy.class};
 
     @FXML
     protected void onBackEntered(){
@@ -48,6 +68,18 @@ public class ControllerRandomMenu extends ControllerParent implements Initializa
     @FXML
     protected void onBackExited(){
         imageChanger(ButtonBack,"Sprites/ButtonBackToMenu.png");
+    }
+
+    @FXML
+    protected void onCreateEntered(){
+        imageChanger(CreateButton,"Sprites/CreateButtonLight.png");
+
+
+    }
+
+    @FXML
+    protected void onCreateExited(){
+        imageChanger(CreateButton,"Sprites/CreateButton.png");
     }
 
     @FXML
@@ -94,7 +126,11 @@ public class ControllerRandomMenu extends ControllerParent implements Initializa
             if(pane.getChildren().get(i).getClass() == Button.class){
                 int finalI = i;
                 pane.getChildren().get(i).setOnMouseClicked(event->{
-                    selectBlock(pane,(Button)pane.getChildren().get(finalI),alwaysDifferentState);
+                    try {
+                        selectBlock(pane,(Button)pane.getChildren().get(finalI),blockChosen);
+                    } catch (ClassNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
                     this.fullRandomState = false;
                     FullRandom.setFill(Paint.valueOf("#ff0000"));
                 });}
@@ -131,8 +167,8 @@ public class ControllerRandomMenu extends ControllerParent implements Initializa
                 for (int i = 0; i < rectangles.toArray().length ; i++) {
 
                     pane.getChildren().remove(rectangles.get(i));
-
                 }
+                blockChosen = new ArrayList<>(19);
 
             }
             else if(FullRandom.getFill().equals(Paint.valueOf("#00ff00"))){
@@ -140,10 +176,6 @@ public class ControllerRandomMenu extends ControllerParent implements Initializa
                 fullRandomState = false;
             }
         });
-
-
-
-
 
 
         minimumIncrease.setOnMouseClicked(event ->{
@@ -266,6 +298,46 @@ public class ControllerRandomMenu extends ControllerParent implements Initializa
                     maximumDecrease.setOpacity(0);
                 }
             }
+        });
+
+        CreateButton.setOnMouseClicked(event -> {
+
+            Rectangle transi = new Rectangle(1600,900, Paint.valueOf("222222"));
+            transi.setLayoutY(900);
+            pane.getChildren().add(transi);
+            TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500),transi);
+            translateTransition.setToY(-900);
+            translateTransition.play();
+            translateTransition.setOnFinished(event1 -> {
+                FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource("RandomLevel.fxml"));
+                Parent root;
+                try {
+                    root = fxmlLoader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                ControllerRandomLevel rlgController = fxmlLoader.getController();
+                rlgController.setLeastToPlace(Integer.parseInt(minimum.getText()));
+                rlgController.setMaxToPlace(Integer.parseInt(maximum.getText()));
+                if(fullRandomState){
+                    rlgController.setImageBlockClasses(allBlocks);
+                }
+                else{
+                    Class<ImageBlock>[] blocks =(Class<ImageBlock>[]) blockChosen.toArray(new Class[blockChosen.size()]);
+                    rlgController.setImageBlockClasses(blocks);}
+                rlgController.setAlwaysDifferent(alwaysDifferentState);
+
+
+                Stage stage;
+                Scene scene;
+
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root, 1600, 900);
+
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.show();
+            });
         });
     }
 }

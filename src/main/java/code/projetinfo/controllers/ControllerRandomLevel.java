@@ -1,7 +1,6 @@
 package code.projetinfo.controllers;
 
-import code.projetinfo.Level;
-import code.projetinfo.LevelHandler;
+import code.projetinfo.*;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -11,9 +10,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
-
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -27,6 +23,29 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
     @FXML
     private ImageView ResetButton;
 
+    private Class<ImageBlock>[] imageBlockClasses;
+
+    private int leastToPlace;
+
+    private int maxToPlace;
+
+    boolean alwaysDifferent;
+
+    public void setImageBlockClasses(Class<ImageBlock>[] imageBlockClasses) {
+        this.imageBlockClasses = imageBlockClasses;
+    }
+
+    public void setLeastToPlace(int leastToPlace) {
+        this.leastToPlace = leastToPlace;
+    }
+
+    public void setMaxToPlace(int maxToPlace) {
+        this.maxToPlace = maxToPlace;
+    }
+
+    public void setAlwaysDifferent(boolean alwaysDifferent) {
+        this.alwaysDifferent = alwaysDifferent;
+    }
 
     @FXML
     protected void onBackEntered(){
@@ -48,13 +67,32 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
         imageChanger(ResetButton,"Sprites/ButtonReset.png");
     }
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Rectangle transi = new Rectangle(1600,900 , Paint.valueOf("222222"));
         pane.getChildren().add(transi);
 
-        /**
+
         Platform.runLater(() ->{
+
+            System.out.println(imageBlockClasses[0]);
+            System.out.println(leastToPlace);
+            System.out.println(maxToPlace);
+            System.out.println(alwaysDifferent);
+            LevelGenerator levelGenerator = new LevelGenerator(imageBlockClasses,leastToPlace,maxToPlace,alwaysDifferent);
+
+
+
+
+            Level level;
+
+            try {
+                level = levelGenerator.generate();
+            } catch (LevelGenerator.GenerateException e) {
+                throw new RuntimeException(e);
+            }
+
 
             LevelHandler levelHandler = new LevelHandler(level, pane);
             levelHandler.dispatchBlocks();
@@ -67,14 +105,9 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
             translateTransition.play();
             translateTransition.setOnFinished(event -> pane.getChildren().remove(transi));
 
-            ResetButton.setOnMouseClicked(event -> {
-                if(!levelHandler.getVictoryState()){
-                    levelHandler.reset();}
-                else{
-                    levelHandler.loadLevel(levelName,event);
-                }});
-            BackToMenuButton.setOnMouseClicked(event -> pauseMenu(pane,levelHandler,level,levelName,event));
+
+
+            BackToMenuButton.setOnMouseClicked(event1 -> loadScene("RLGMenu.fxml",event1));
         });
-             */
     }
 }

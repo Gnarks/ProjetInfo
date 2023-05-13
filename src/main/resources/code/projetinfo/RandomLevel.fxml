@@ -4,7 +4,7 @@
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<AnchorPane xmlns="http://javafx.com/javafx"
+<AnchorPane fx:id = "pane" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="code.projetinfo.controllers.ControllerRandomLevel"
             prefHeight="900.0" prefWidth="1600.0">
