@@ -5,6 +5,7 @@ import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
@@ -75,38 +76,43 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
 
 
         Platform.runLater(() ->{
-
-            System.out.println(imageBlockClasses[0]);
-            System.out.println(leastToPlace);
-            System.out.println(maxToPlace);
-            System.out.println(alwaysDifferent);
             LevelGenerator levelGenerator = new LevelGenerator(imageBlockClasses,leastToPlace,maxToPlace,alwaysDifferent);
-
-
-
-
-            Level level;
-
+            Level level = null;
             try {
                 level = levelGenerator.generate();
             } catch (LevelGenerator.GenerateException e) {
-                throw new RuntimeException(e);
+                Button error = new Button("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAh");
+                error.setLayoutX(800);
+                error.setLayoutY(450);
+                pane.getChildren().add(error);
+                error.setOnAction(event -> loadScene("RLGMenu.fxml",event));
             }
 
+            try {
+                assert level != null;
+                LevelHandler levelHandler = new LevelHandler(level, pane);
+                levelHandler.dispatchBlocks();
+                levelHandler.drawGrid();
+                levelHandler.drawImageBlocks();
 
-            LevelHandler levelHandler = new LevelHandler(level, pane);
-            levelHandler.dispatchBlocks();
-            levelHandler.drawGrid();
-            levelHandler.drawImageBlocks();
+                transi.toFront();
+                TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500),transi);
+                translateTransition.setToY(900);
+                translateTransition.play();
+                translateTransition.setOnFinished(event -> pane.getChildren().remove(transi));
 
-            transi.toFront();
-            TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500),transi);
-            translateTransition.setToY(900);
-            translateTransition.play();
-            translateTransition.setOnFinished(event -> pane.getChildren().remove(transi));
-
-
-
+                ResetButton.setOnMouseClicked(event -> {
+                    if (!levelHandler.getVictoryState()) {
+                        levelHandler.reset();
+                    }
+                });
+            } catch (Exception e) {
+                Button error = new Button("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAh");
+                error.setLayoutX(800);
+                error.setLayoutY(450);
+                pane.getChildren().add(error);
+                error.setOnAction(event -> loadScene("RLGMenu.fxml",event));
+            }
             BackToMenuButton.setOnMouseClicked(event1 -> loadScene("RLGMenu.fxml",event1));
         });
     }

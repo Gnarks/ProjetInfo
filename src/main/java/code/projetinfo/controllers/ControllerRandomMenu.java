@@ -56,7 +56,7 @@ public class ControllerRandomMenu extends ControllerParent implements Initializa
 
     private boolean fullRandomState = true;
 
-    private Class<ImageBlock>[] allBlocks = new Class[] {Amogous.class, Baby.class, BigBob.class, Bloby.class, BooBelle.class, Geoffroy.class,
+    private final Class<ImageBlock>[] allBlocks = new Class[] {Amogous.class, Baby.class, BigBob.class, Bloby.class, BooBelle.class, Geoffroy.class,
     GymBroo.class, King.class, LilDeath.class, Napsta.class, Nessy.class, Phantom.class, PlagueDoc.class, Redky.class, Scooboodoo.class,
     Toowels.class, VicKing.class, Wolfy.class};
 
@@ -319,11 +319,11 @@ public class ControllerRandomMenu extends ControllerParent implements Initializa
                 ControllerRandomLevel rlgController = fxmlLoader.getController();
                 rlgController.setLeastToPlace(Integer.parseInt(minimum.getText()));
                 rlgController.setMaxToPlace(Integer.parseInt(maximum.getText()));
-                if(fullRandomState){
+                if(fullRandomState || blockChosen.size() == 0){
                     rlgController.setImageBlockClasses(allBlocks);
                 }
                 else{
-                    Class<ImageBlock>[] blocks =(Class<ImageBlock>[]) blockChosen.toArray(new Class[blockChosen.size()]);
+                    Class<ImageBlock>[] blocks =(Class<ImageBlock>[]) blockChosen.toArray(new Class[0]);
                     rlgController.setImageBlockClasses(blocks);}
                 rlgController.setAlwaysDifferent(alwaysDifferentState);
 
