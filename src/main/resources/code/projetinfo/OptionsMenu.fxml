@@ -19,7 +19,7 @@
    <ImageView fitHeight="305.0" fitWidth="662.0" layoutX="448.0" layoutY="52.0">
       <Image url="@Sprites/BackGridLevel.png"/>
    </ImageView>
-   <ImageView fx:id="ButtonBack" fitHeight="138.0" fitWidth="166.0" onMouseEntered="#onBackEntered"
+   <ImageView fx:id="buttonBack" fitHeight="138.0" fitWidth="166.0" onMouseEntered="#onBackEntered"
               onMouseExited="#onBackExited">
       <Image url="@Sprites/ButtonBackToMenu.png"/>
    </ImageView>

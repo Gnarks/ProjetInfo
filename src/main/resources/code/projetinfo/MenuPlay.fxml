@@ -11,19 +11,19 @@
    <ImageView fitHeight="900.0" fitWidth="1600.0">
       <Image url="@Sprites/MenuFond.png"/>
    </ImageView>
-   <ImageView fx:id="RandomButton" fitHeight="146.0" fitWidth="477.0" layoutX="603.0" layoutY="377.0"
+   <ImageView fx:id="randomButton" fitHeight="146.0" fitWidth="477.0" layoutX="603.0" layoutY="377.0"
               onMouseEntered="#onRandomEntered" onMouseExited="#onRandomExited">
          <Image url="@Sprites/RandomButton.png"/>
    </ImageView>
-   <ImageView fx:id="ButtonBack" fitHeight="138.0" fitWidth="166.0" onMouseEntered="#onBackEntered"
+   <ImageView fx:id="buttonBack" fitHeight="138.0" fitWidth="166.0" onMouseEntered="#onBackEntered"
               onMouseExited="#onBackExited">
          <Image url="@Sprites/ButtonBackToMenu.png"/>
    </ImageView>
-   <ImageView fx:id="LevelsButton" fitHeight="146.0" fitWidth="461.0" layoutX="603.0" layoutY="231.0"
+   <ImageView fx:id="levelsButton" fitHeight="146.0" fitWidth="461.0" layoutX="603.0" layoutY="231.0"
               onMouseEntered="#onLevelsEntered" onMouseExited="#onLevelsExited">
          <Image url="@Sprites/LevelsButton.png"/>
    </ImageView>
-   <ImageView fx:id="ModsButton" fitHeight="146.0" fitWidth="477.0" layoutX="595.0" layoutY="523.0"
+   <ImageView fx:id="modsButton" fitHeight="146.0" fitWidth="477.0" layoutX="595.0" layoutY="523.0"
               onMouseEntered="#onModsEntered" onMouseExited="#onModsExited">
          <Image url="@Sprites/modsButton.png"/>
    </ImageView>

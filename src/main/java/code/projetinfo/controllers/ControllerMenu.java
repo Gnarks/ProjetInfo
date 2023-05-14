@@ -10,49 +10,49 @@ import java.util.ResourceBundle;
 
 
 public class ControllerMenu extends ControllerParent implements Initializable {
-    /**Controller of all the menu's buttons(assigned to MENUSTEST.fxml)*/
+    /**Controller of all the menu's buttons(assigned to MainMenu.fxml)*/
     @FXML
-    private ImageView PlayButtonImage;
+    private ImageView playButtonImage;
     @FXML
-    private ImageView ExitButtonImage;
+    private ImageView exitButtonImage;
     @FXML
-    private ImageView OptionsButtonImage;
+    private ImageView optionsButtonImage;
     @FXML
-    private ImageView CollectionButtonImage;
+    private ImageView collectionButtonImage;
 
     @FXML
     protected void onExitEntered(){
-        imageChanger(ExitButtonImage,"Sprites/EXITPRESSED.png");
-        ExitButtonImage.setOnMouseClicked(event -> Platform.exit());
+        imageChanger(exitButtonImage,"Sprites/EXITPRESSED.png");
+        exitButtonImage.setOnMouseClicked(event -> Platform.exit());
     }
     @FXML
     protected void onExitExited(){
-        imageChanger(ExitButtonImage,"Sprites/EXIT.png");
+        imageChanger(exitButtonImage,"Sprites/EXIT.png");
     }
     @FXML
     protected void onCollectionEntered() {
-        onButtonEntered(CollectionButtonImage,"Sprites/ButtonCollectionLight.png","Collection.fxml");
+        onButtonEntered(collectionButtonImage,"Sprites/ButtonCollectionLight.png","Collection.fxml");
     }
     @FXML
     protected void onCollectionExited(){
-        imageChanger(CollectionButtonImage,"Sprites/ButtonCollection.png");
+        imageChanger(collectionButtonImage,"Sprites/ButtonCollection.png");
     }
     @FXML
     protected void onPlayEntered(){
-        onButtonEntered(PlayButtonImage,"Sprites/ButtonPlayLight.png","MenuPlay.fxml");
+        onButtonEntered(playButtonImage,"Sprites/ButtonPlayLight.png","MenuPlay.fxml");
     }
     @FXML
     protected void onPlayExited(){
-        imageChanger(PlayButtonImage,"Sprites/Buttonplay.png");
+        imageChanger(playButtonImage,"Sprites/Buttonplay.png");
     }
     @FXML
     protected void onOptionsEntered() {
-        imageChanger(OptionsButtonImage, "Sprites/ButtonOptionsLight.png");
-        OptionsButtonImage.setOnMouseClicked(event ->loadScene("OptionsMenu.fxml",event));
+        imageChanger(optionsButtonImage, "Sprites/ButtonOptionsLight.png");
+        optionsButtonImage.setOnMouseClicked(event ->loadScene("OptionsMenu.fxml",event));
     }
     @FXML
     protected void onOptionsExited() {
-        imageChanger(OptionsButtonImage, "Sprites/ButtonOptions.png");
+        imageChanger(optionsButtonImage, "Sprites/ButtonOptions.png");
     }
 
 

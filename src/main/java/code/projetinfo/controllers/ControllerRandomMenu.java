@@ -29,7 +29,7 @@ public class ControllerRandomMenu extends ControllerParent implements Initializa
     @FXML
     private Pane pane;
     @FXML
-    private ImageView ButtonBack;
+    private ImageView buttonBack;
     @FXML
     private Label maximum;
     @FXML
@@ -43,12 +43,12 @@ public class ControllerRandomMenu extends ControllerParent implements Initializa
     @FXML
     private ImageView minimumDecrease;
     @FXML
-    private Circle AlwaysDifferent;
+    private Circle alwaysDifferent;
     @FXML
-    private Circle FullRandom;
+    private Circle fullRandom;
 
     @FXML
-    private ImageView CreateButton;
+    private ImageView createButton;
 
     private ArrayList<Class<ImageBlock>> blockChosen = new ArrayList<>(19);
 
@@ -56,30 +56,30 @@ public class ControllerRandomMenu extends ControllerParent implements Initializa
 
     private boolean fullRandomState = true;
 
-    private final Class<ImageBlock>[] allBlocks = new Class[] {Amogous.class, Baby.class, BigBob.class, Bloby.class, BooBelle.class, Geoffroy.class,
-    GymBroo.class, King.class, LilDeath.class, Napsta.class, Nessy.class, Phantom.class, PlagueDoc.class, Redky.class, Scooboodoo.class,
-    Toowels.class, VicKing.class, Wolfy.class};
+    private final Class<ImageBlock>[] allBlocks = new Class[]{Amogous.class, Baby.class, BigBob.class, Bloby.class, BooBelle.class, Geoffroy.class,
+            GymBroo.class, King.class, LilDeath.class, Napsta.class, Nessy.class, Phantom.class, PlagueDoc.class, Redky.class, Scooboodoo.class,
+            Toowels.class, VicKing.class, Wolfy.class};
 
     @FXML
     protected void onBackEntered(){
-        onButtonEntered(ButtonBack,"Sprites/ButtonBackToMenulight.png","MenuPlay.fxml");
+        onButtonEntered(buttonBack,"Sprites/ButtonBackToMenulight.png","MenuPlay.fxml");
     }
 
     @FXML
     protected void onBackExited(){
-        imageChanger(ButtonBack,"Sprites/ButtonBackToMenu.png");
+        imageChanger(buttonBack,"Sprites/ButtonBackToMenu.png");
     }
 
     @FXML
     protected void onCreateEntered(){
-        imageChanger(CreateButton,"Sprites/CreateButtonLight.png");
+        imageChanger(createButton,"Sprites/CreateButtonLight.png");
 
 
     }
 
     @FXML
     protected void onCreateExited(){
-        imageChanger(CreateButton,"Sprites/CreateButton.png");
+        imageChanger(createButton,"Sprites/CreateButton.png");
     }
 
     @FXML
@@ -132,29 +132,29 @@ public class ControllerRandomMenu extends ControllerParent implements Initializa
                         throw new RuntimeException(e);
                     }
                     this.fullRandomState = false;
-                    FullRandom.setFill(Paint.valueOf("#ff0000"));
+                    fullRandom.setFill(Paint.valueOf("#ff0000"));
                 });}
         }
 
-        AlwaysDifferent.setOnMouseClicked(event -> {
-            if(AlwaysDifferent.getFill().equals(Paint.valueOf("#ff0000"))){
-                AlwaysDifferent.setFill(Paint.valueOf("#00ff00"));
-                FullRandom.setFill(Paint.valueOf("#ff0000"));
+        alwaysDifferent.setOnMouseClicked(event -> {
+            if(alwaysDifferent.getFill().equals(Paint.valueOf("#ff0000"))){
+                alwaysDifferent.setFill(Paint.valueOf("#00ff00"));
+                fullRandom.setFill(Paint.valueOf("#ff0000"));
                 this.alwaysDifferentState = true;
                 this.fullRandomState = false;
 
             }
-            else if(AlwaysDifferent.getFill().equals(Paint.valueOf("#00ff00"))){
-                AlwaysDifferent.setFill(Paint.valueOf("#ff0000"));
+            else if(alwaysDifferent.getFill().equals(Paint.valueOf("#00ff00"))){
+                alwaysDifferent.setFill(Paint.valueOf("#ff0000"));
                 this.alwaysDifferentState = false;
             }
         });
 
 
-        FullRandom.setOnMouseClicked(event -> {
-            if(FullRandom.getFill().equals(Paint.valueOf("#ff0000"))){
-                FullRandom.setFill(Paint.valueOf("#00ff00"));
-                AlwaysDifferent.setFill(Paint.valueOf("#ff0000"));
+        fullRandom.setOnMouseClicked(event -> {
+            if(fullRandom.getFill().equals(Paint.valueOf("#ff0000"))){
+                fullRandom.setFill(Paint.valueOf("#00ff00"));
+                alwaysDifferent.setFill(Paint.valueOf("#ff0000"));
                 this.alwaysDifferentState = false;
                 this.fullRandomState = true;
                 ArrayList<Rectangle> rectangles = new ArrayList<>();
@@ -171,8 +171,8 @@ public class ControllerRandomMenu extends ControllerParent implements Initializa
                 blockChosen = new ArrayList<>(19);
 
             }
-            else if(FullRandom.getFill().equals(Paint.valueOf("#00ff00"))){
-                FullRandom.setFill(Paint.valueOf("#ff0000"));
+            else if(fullRandom.getFill().equals(Paint.valueOf("#00ff00"))){
+                fullRandom.setFill(Paint.valueOf("#ff0000"));
                 fullRandomState = false;
             }
         });
@@ -300,7 +300,7 @@ public class ControllerRandomMenu extends ControllerParent implements Initializa
             }
         });
 
-        CreateButton.setOnMouseClicked(event -> {
+        createButton.setOnMouseClicked(event -> {
 
             Rectangle transi = new Rectangle(1600,900, Paint.valueOf("222222"));
             transi.setLayoutY(900);

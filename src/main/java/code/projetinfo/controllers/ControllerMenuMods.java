@@ -9,78 +9,78 @@ public class ControllerMenuMods extends ControllerParent{
     private Pane pane;
 
     @FXML
-    private ImageView AskingSpeedrun;
+    private ImageView askingSpeedrun;
     @FXML
-    private ImageView AskingDancing;
+    private ImageView askingDancing;
     @FXML
-    private ImageView AskingMemory;
+    private ImageView askingMemory;
     @FXML
-    private ImageView ButtonBack;
+    private ImageView buttonBack;
     @FXML
-    private ImageView MemoryButton;
+    private ImageView memoryButton;
     @FXML
-    private ImageView DancingButton;
+    private ImageView dancingButton;
     @FXML
-    private ImageView SpeedrunButton;
+    private ImageView speedrunButton;
     @FXML
     protected void onAskingSpeedrunEntered(){
-        imageChanger(AskingSpeedrun,"Sprites/AskingButtonLight.png");
-        askingInformation(pane,AskingSpeedrun,"Complete as much level as possible in the defined time!");
+        imageChanger(askingSpeedrun,"Sprites/AskingButtonLight.png");
+        askingInformation(pane, askingSpeedrun,"Complete as much level as possible in the defined time!");
     }
 
     @FXML
     protected void onAskingDancingEntered(){
-        imageChanger(AskingDancing,"Sprites/AskingButtonLight.png");
-        askingInformation(pane,AskingDancing,"Try too complete the levels while the ghosts are moving on the music's rhythm ");
+        imageChanger(askingDancing,"Sprites/AskingButtonLight.png");
+        askingInformation(pane, askingDancing,"Try too complete the levels while the ghosts are moving on the music's rhythm ");
     }
     @FXML
     protected void onAskingMemoryEntered(){
-        imageChanger(AskingMemory,"Sprites/AskingButtonLight.png");
-        askingInformation(pane,AskingMemory,"The ghosts are shy and disappear after being placed, try to remember where they are");
+        imageChanger(askingMemory,"Sprites/AskingButtonLight.png");
+        askingInformation(pane, askingMemory,"The ghosts are shy and disappear after being placed, try to remember where they are");
     }
     @FXML
     protected void onAskingSpeedrunExited(){
-        imageChanger(AskingSpeedrun,"Sprites/AskingButton.png");
+        imageChanger(askingSpeedrun,"Sprites/AskingButton.png");
     }
     @FXML
     protected void onAskingDancingExited(){
-        imageChanger(AskingDancing,"Sprites/AskingButton.png");
+        imageChanger(askingDancing,"Sprites/AskingButton.png");
     }
     @FXML
     protected void onAskingMemoryExited(){
-        imageChanger(AskingMemory,"Sprites/AskingButton.png");
+        imageChanger(askingMemory,"Sprites/AskingButton.png");
     }
     @FXML
     protected void onBackEntered(){
-        onButtonEntered(ButtonBack,"Sprites/ButtonBackToMenulight.png","MenuPlay.fxml");
+        onButtonEntered(buttonBack,"Sprites/ButtonBackToMenulight.png","MenuPlay.fxml");
     }
     @FXML
     protected void onSpeedrunEntered(){
-        imageChanger(SpeedrunButton,"Sprites/SpeedrunButtonLight.png");
+        imageChanger(speedrunButton,"Sprites/SpeedrunButtonLight.png");
     }
     @FXML
     protected void onDancingEntered(){
-        imageChanger(DancingButton,"Sprites/DancingButtonLight.png");
+        imageChanger(dancingButton,"Sprites/DancingButtonLight.png");
     }
     @FXML
     protected void onMemoryEntered(){
-        imageChanger(MemoryButton,"Sprites/MemoryButtonLight.png");
+        imageChanger(memoryButton,"Sprites/MemoryButtonLight.png");
     }
     @FXML
     protected void onBackExited(){
-        imageChanger(ButtonBack,"Sprites/ButtonBackToMenu.png");
+        imageChanger(buttonBack,"Sprites/ButtonBackToMenu.png");
     }
     @FXML
     protected void onSpeedrunExited(){
-        imageChanger(SpeedrunButton,"Sprites/SpeedrunButton.png");
+        imageChanger(speedrunButton,"Sprites/SpeedrunButton.png");
     }
     @FXML
     protected void onDancingExited(){
-        imageChanger(DancingButton,"Sprites/DancingButton.png");
+        imageChanger(dancingButton,"Sprites/DancingButton.png");
     }
     @FXML
     protected void onMemoryExited(){
-        imageChanger(MemoryButton,"Sprites/MemoryButton.png");}
+        imageChanger(memoryButton,"Sprites/MemoryButton.png");}
 
 
 }

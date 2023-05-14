@@ -19,7 +19,7 @@ public class ControllerOptions extends ControllerParent implements Initializable
     private ImageView increaseSound;
 
     @FXML
-    private ImageView ButtonBack;
+    private ImageView buttonBack;
 
     @FXML
     private Label volume;
@@ -51,12 +51,12 @@ public class ControllerOptions extends ControllerParent implements Initializable
 
     @FXML
     protected void onBackEntered(){
-        imageChanger(ButtonBack, "Sprites/ButtonBackToMenulight.png");
-        ButtonBack.setOnMouseClicked(event -> loadScene("MainMenu.fxml",event));
+        imageChanger(buttonBack, "Sprites/ButtonBackToMenulight.png");
+        buttonBack.setOnMouseClicked(event -> loadScene("MainMenu.fxml",event));
     }
     @FXML
     protected void onBackExited(){
-        imageChanger(ButtonBack,"Sprites/ButtonBackToMenu.png");
+        imageChanger(buttonBack,"Sprites/ButtonBackToMenu.png");
     }
 
     @FXML

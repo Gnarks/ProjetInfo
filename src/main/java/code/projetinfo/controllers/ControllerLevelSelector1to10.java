@@ -13,28 +13,28 @@ public class ControllerLevelSelector1to10 extends ControllerParent implements In
     @FXML
     private Pane pane;
     @FXML
-    private ImageView ButtonNext;
+    private ImageView buttonNext;
     @FXML
-    private ImageView ButtonBack;
+    private ImageView buttonBack;
 
     @FXML
     public void onBackEntered(){
-        onButtonEntered(ButtonBack,"Sprites/ButtonBackToMenulight.png","MenuPlay.fxml");
+        onButtonEntered(buttonBack,"Sprites/ButtonBackToMenulight.png","MenuPlay.fxml");
     }
 
     @FXML
     public void onBackExited(){
-        imageChanger(ButtonBack,"Sprites/ButtonBackToMenu.png");
+        imageChanger(buttonBack,"Sprites/ButtonBackToMenu.png");
     }
 
     @FXML
     public void onNextEntered(){
-        onButtonEntered(ButtonNext,"Sprites/ButtonNextLight.png","LevelSelector11to20.fxml");
+        onButtonEntered(buttonNext,"Sprites/ButtonNextLight.png","LevelSelector11to20.fxml");
     }
 
     @FXML
     public void onNextExited(){
-        imageChanger(ButtonNext,"Sprites/ButtonNext.png");
+        imageChanger(buttonNext,"Sprites/ButtonNext.png");
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

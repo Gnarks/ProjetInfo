@@ -25,12 +25,12 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertThrows;
 
 
 public class ControllerParent {
     /**
-     *
+     * Change the sprite of an ImageView and set up an action
+     * that load another scene when we click on it
      *
      * @param button imageview which serves as a button
      * @param sprite lighter sprite to set on the button
@@ -42,8 +42,9 @@ public class ControllerParent {
     }
 
     /**
+     * Change the sprite of an ImageView
      *
-     * @param imageView set another image on an imageview
+     * @param imageView imageview we want to change the sprite
      * @param sprite sprite to set on the imageview
      */
     protected void imageChanger(ImageView imageView, String sprite){
@@ -51,6 +52,7 @@ public class ControllerParent {
     }
 
     /**
+     * In a level, load the pause menu via a chosen button
      *
      * @param pane scene's pane
      * @param levelHandler levelHandler of the level which is played
@@ -111,10 +113,11 @@ public class ControllerParent {
     }
 
     /**
+     * Make a button load a level via it's name
      *
-     * @param pane
-     * @param levelName
-     * @param button button
+     * @param pane pane of the Selector Scene
+     * @param levelName name of the level we want to load
+     * @param button button we want to assign the action
      */
     protected void LevelSelect(Pane pane, String levelName, Button button){
         button.setOnAction(event -> {
@@ -149,11 +152,12 @@ public class ControllerParent {
     }
 
     /**
+     * Method that load a scene via an event chosen
      *
-     * @param nextScene
-     * @param event
+     * @param nextScene scene we want to load
+     * @param event event chosen
      */
-    protected void loadScene(String nextScene, Event event){
+    public static void loadScene(String nextScene, Event event){
             FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource(nextScene));
             Parent root;
             try {
@@ -170,12 +174,13 @@ public class ControllerParent {
     }
 
     /**
+     * Create an ImageView with a position and a length chosen
      *
-     * @param image
-     * @param width
-     * @param layoutX
-     * @param layoutY
-     * @return
+     * @param image ImageView's sprite
+     * @param width ImageView's width
+     * @param layoutX ImageView's position on X
+     * @param layoutY ImageView's position on Y
+     * @return the ImageView with all its properties
      */
     protected ImageView createImageView(String image,double width,double layoutX,double layoutY){
         ImageView imageView = new ImageView(new Image(String.valueOf(AppMenu.class.getResource(image))));
@@ -187,10 +192,11 @@ public class ControllerParent {
     }
 
     /**
+     * Show a screen with information about an element via an ImageView's action
      *
-     * @param pane
-     * @param askingButton
-     * @param text
+     * @param pane pane of the Scene in which the ImageView is
+     * @param askingButton ImageView that will activate the event
+     * @param text information we want to show
      */
     protected void askingInformation(Pane pane,ImageView askingButton,String text){
         askingButton.setOnMouseClicked(event ->{
@@ -225,22 +231,23 @@ public class ControllerParent {
     }
 
     /**
+     * For the Random Menu, to choose the block we want to have in our level generated
      *
-     * @param pane
-     * @param button
-     * @param blockChosen
+     * @param pane pane of the Scene
+     * @param button Button of the block we want to add in the list
+     * @param blockChosen List of the blocks already chosen
      */
     protected void selectBlock(Pane pane, Button button, ArrayList<Class<ImageBlock>> blockChosen) throws ClassNotFoundException {
-        Class blockChosed = Class.forName("code.projetinfo.normalBlocks." + button.getId());
-        blockChosen.add(blockChosed);
+        Class<?> block = Class.forName("code.projetinfo.normalBlocks." + button.getId());
+        blockChosen.add((Class<ImageBlock>) block);
         Rectangle rectangle = new Rectangle(button.getLayoutX(),button.getLayoutY(),button.getWidth(),button.getHeight());
         rectangle.setOpacity(0.2);
         rectangle.setFill(Paint.valueOf("#00ff00"));
         pane.getChildren().add(rectangle);
-        System.out.println(blockChosed);
+        System.out.println(block);
         rectangle.setOnMouseClicked(event -> {
             pane.getChildren().remove(rectangle);
-            blockChosen.remove(blockChosed);
+            blockChosen.remove(block);
             System.out.println(blockChosen.toArray().length);
 
         });

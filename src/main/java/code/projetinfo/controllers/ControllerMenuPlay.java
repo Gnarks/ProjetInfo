@@ -6,48 +6,48 @@ import javafx.scene.image.ImageView;
 
 public class ControllerMenuPlay extends ControllerParent{
     @FXML
-    private ImageView LevelsButton;
+    private ImageView levelsButton;
     @FXML
-    private ImageView ModsButton;
+    private ImageView modsButton;
     @FXML
-    private ImageView RandomButton;
+    private ImageView randomButton;
 
     @FXML
-    private ImageView ButtonBack;
+    private ImageView buttonBack;
 
 
     @FXML
     public void onBackEntered(){
-        onButtonEntered(ButtonBack,"Sprites/ButtonBackToMenulight.png","MainMenu.fxml");
+        onButtonEntered(buttonBack,"Sprites/ButtonBackToMenulight.png","MainMenu.fxml");
     }
     @FXML
     public void onBackExited(){
-        imageChanger(ButtonBack,"Sprites/ButtonBackToMenu.png");
+        imageChanger(buttonBack,"Sprites/ButtonBackToMenu.png");
     }
     @FXML
     public void onLevelsEntered(){
-        onButtonEntered(LevelsButton,"Sprites/LevelsButtonLight.png","LevelSelector1to10.fxml");
+        onButtonEntered(levelsButton,"Sprites/LevelsButtonLight.png","LevelSelector1to10.fxml");
     }
     @FXML
     public void onLevelsExited(){
-        imageChanger(LevelsButton,"Sprites/LevelsButton.png");
+        imageChanger(levelsButton,"Sprites/LevelsButton.png");
     }
     @FXML
     public void onRandomEntered(){
-        onButtonEntered(RandomButton,"Sprites/RandomButtonLight.png","RLGMenu.fxml");
+        onButtonEntered(randomButton,"Sprites/RandomButtonLight.png","RLGMenu.fxml");
     }
     @FXML
     public void onRandomExited(){
-        imageChanger(RandomButton,"Sprites/RandomButton.png");
+        imageChanger(randomButton,"Sprites/RandomButton.png");
     }
 
     @FXML
     public void onModsEntered(){
-        onButtonEntered(ModsButton,"Sprites/modsButtonlight.png","MenuMods.fxml");
+        onButtonEntered(modsButton,"Sprites/modsButtonlight.png","MenuMods.fxml");
     }
     @FXML
     public void onModsExited(){
-        imageChanger(ModsButton,"Sprites/modsButton.png");
+        imageChanger(modsButton,"Sprites/modsButton.png");
     }
 
 }

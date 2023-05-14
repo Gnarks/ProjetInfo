@@ -1,5 +1,6 @@
 package code.projetinfo;
 
+import code.projetinfo.controllers.ControllerParent;
 import code.projetinfo.controllers.GameController;
 import javafx.animation.*;
 import javafx.event.Event;
@@ -127,7 +128,7 @@ public class LevelHandler {
                         level.place(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize, (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize);
                         if (level.getPlaced() == level.getBlocks().length){
                             setVictoryState(true);
-                            victoryAnimation();
+                            victoryCampaign();
                         }
                     }
                     else
@@ -147,7 +148,7 @@ public class LevelHandler {
         return this.victoryState;
     }
 
-    private void victoryAnimation(){
+    private ImageView victoryAnimation(){
         Rectangle rectangle = new Rectangle(((level.getGrid().getCol()+2)*tileSize),(level.getGrid().getRow()+2)*tileSize);
         rectangle.setOpacity(0);
         rectangle.setLayoutX(gridPos.getX()-tileSize);
@@ -169,27 +170,19 @@ public class LevelHandler {
         buttonNext.setLayoutY(730);
         buttonNext.setOnMouseEntered(event ->buttonNext.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonNextLight.png")))));
         buttonNext.setOnMouseExited(event ->buttonNext.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonNext.png")))));
+        return buttonNext;
+    }
+
+    private void victoryCampaign(){
+        ImageView buttonNext = victoryAnimation();
         buttonNext.setOnMouseClicked(event -> {
             String levelName = nextLevel(level.getName());
-            System.out.println(levelName);
             if (levelName == null){
-                    FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource("LevelSelector11to20.fxml"));
-                    Stage stage;
-                    Scene scene;
-                    stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-                    try {
-                        scene = new Scene(fxmlLoader.load(), 1600, 900);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    stage.setScene(scene);
-                    stage.setResizable(false);
-                    stage.show();}
+                ControllerParent.loadScene("LevelSelector11to20.fxml",event);}
 
             else{
                 loadLevel(levelName,event);
             }
-
         });
     }
 

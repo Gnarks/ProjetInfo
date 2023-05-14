@@ -3,22 +3,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900" prefWidth="1600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="code.projetinfo.controllers.GameController">
-   <children>
-      <ImageView fitHeight="900.0" fitWidth="1600.0" preserveRatio="true">
-         <image>
-            <Image url="@Sprites/BackLevel.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="BackToMenuButton" fitHeight="150.0" fitWidth="150.0" preserveRatio="true" onMouseEntered="#onBackEntered" onMouseExited="#onBackExited" scaleX="1.125" scaleY="1.125">
-         <image>
-            <Image url="@Sprites/ButtonBackToMenu.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="ResetButton" fitHeight="150.0" fitWidth="150.0" layoutX="700.0" layoutY="750.0" preserveRatio="true" onMouseEntered="#onResetEntered" onMouseExited="#onResetExited" scaleX="1.125" scaleY="1.125">
-         <image>
-            <Image url="@Sprites/ButtonReset.png" />
-         </image>
-      </ImageView>
-   </children>
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="900" prefWidth="1600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19"
+            fx:controller="code.projetinfo.controllers.GameController">
+   <ImageView fitHeight="900.0" fitWidth="1600.0" preserveRatio="true">
+      <Image url="@Sprites/BackLevel.png"/>
+   </ImageView>
+   <ImageView fx:id="backToMenuButton" fitHeight="150.0" fitWidth="150.0" preserveRatio="true"
+              onMouseEntered="#onBackEntered" onMouseExited="#onBackExited" scaleX="1.125" scaleY="1.125">
+      <Image url="@Sprites/ButtonBackToMenu.png"/>
+   </ImageView>
+   <ImageView fx:id="resetButton" fitHeight="150.0" fitWidth="150.0" layoutX="700.0" layoutY="750.0"
+              preserveRatio="true" onMouseEntered="#onResetEntered" onMouseExited="#onResetExited" scaleX="1.125"
+              scaleY="1.125">
+      <Image url="@Sprites/ButtonReset.png"/>
+   </ImageView>
 </AnchorPane>

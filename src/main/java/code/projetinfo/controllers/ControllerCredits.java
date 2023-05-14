@@ -6,25 +6,25 @@ import javafx.scene.image.ImageView;
 
 public class ControllerCredits extends ControllerParent {
     @FXML
-    private ImageView BackButton;
+    private ImageView backButton;
 
     @FXML
-    public Label LeoDescription;
+    public Label leoDescription;
 
     @FXML
-    public Label MaximeDescription;
+    public Label maximeDescription;
 
     @FXML
-    public Label WilliamDescription;
+    public Label williamDescription;
 
     @FXML
     protected void onBackToCollectionEntered(){
-        onButtonEntered(BackButton,"Sprites/ButtonBackLight.png","Collection.fxml");
+        onButtonEntered(backButton,"Sprites/ButtonBackLight.png","Collection.fxml");
     }
 
     @FXML
     protected void onBackToCollectionExited() {
-        imageChanger(BackButton,"Sprites/ButtonBack.png");
+        imageChanger(backButton,"Sprites/ButtonBack.png");
     }
 
 

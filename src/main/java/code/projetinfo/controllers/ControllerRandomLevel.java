@@ -19,10 +19,10 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
     private AnchorPane pane;
 
     @FXML
-    private ImageView BackToMenuButton;
+    private ImageView backToMenuButton;
 
     @FXML
-    private ImageView ResetButton;
+    private ImageView resetButton;
 
     private Class<ImageBlock>[] imageBlockClasses;
 
@@ -50,22 +50,22 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
 
     @FXML
     protected void onBackEntered(){
-        imageChanger(BackToMenuButton,"Sprites/ButtonBackToMenulight.png");
+        imageChanger(backToMenuButton,"Sprites/ButtonBackToMenulight.png");
     }
 
     @FXML
     protected void onBackExited(){
-        imageChanger(BackToMenuButton,"Sprites/ButtonBackToMenu.png");
+        imageChanger(backToMenuButton,"Sprites/ButtonBackToMenu.png");
     }
 
     @FXML
     protected void onResetEntered(){
-        imageChanger(ResetButton,"Sprites/ButtonResetLight.png");
+        imageChanger(resetButton,"Sprites/ButtonResetLight.png");
     }
 
     @FXML
     protected void onResetExited(){
-        imageChanger(ResetButton,"Sprites/ButtonReset.png");
+        imageChanger(resetButton,"Sprites/ButtonReset.png");
     }
 
 
@@ -101,7 +101,7 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
                 translateTransition.play();
                 translateTransition.setOnFinished(event -> pane.getChildren().remove(transi));
 
-                ResetButton.setOnMouseClicked(event -> {
+                resetButton.setOnMouseClicked(event -> {
                     if (!levelHandler.getVictoryState()) {
                         levelHandler.reset();
                     }
@@ -113,7 +113,7 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
                 pane.getChildren().add(error);
                 error.setOnAction(event -> loadScene("RLGMenu.fxml",event));
             }
-            BackToMenuButton.setOnMouseClicked(event1 -> loadScene("RLGMenu.fxml",event1));
+            backToMenuButton.setOnMouseClicked(event1 -> loadScene("RLGMenu.fxml",event1));
         });
     }
 }

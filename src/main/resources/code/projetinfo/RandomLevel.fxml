@@ -4,25 +4,20 @@
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<AnchorPane fx:id = "pane" xmlns="http://javafx.com/javafx"
+<AnchorPane fx:id="pane" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="code.projetinfo.controllers.ControllerRandomLevel"
             prefHeight="900.0" prefWidth="1600.0">
-    <children>
-        <ImageView fitHeight="900.0" fitWidth="1600.0" preserveRatio="true">
-            <image>
-                <Image url="@Sprites/BackLevel.png" />
-            </image>
-        </ImageView>
-        <ImageView fx:id="BackToMenuButton" fitHeight="150.0" fitWidth="150.0" preserveRatio="true" onMouseEntered="#onBackEntered" onMouseExited="#onBackExited" scaleX="1.125" scaleY="1.125">
-            <image>
-                <Image url="@Sprites/ButtonBackToMenu.png" />
-            </image>
-        </ImageView>
-        <ImageView fx:id="ResetButton" fitHeight="150.0" fitWidth="150.0" layoutX="700.0" layoutY="750.0" preserveRatio="true" onMouseEntered="#onResetEntered" onMouseExited="#onResetExited" scaleX="1.125" scaleY="1.125">
-            <image>
-                <Image url="@Sprites/ButtonReset.png" />
-            </image>
-        </ImageView>
-    </children>
+    <ImageView fitHeight="900.0" fitWidth="1600.0" preserveRatio="true">
+            <Image url="@Sprites/BackLevel.png"/>
+    </ImageView>
+    <ImageView fx:id="backToMenuButton" fitHeight="150.0" fitWidth="150.0" preserveRatio="true"
+               onMouseEntered="#onBackEntered" onMouseExited="#onBackExited" scaleX="1.125" scaleY="1.125">
+            <Image url="@Sprites/ButtonBackToMenu.png"/>
+    </ImageView>
+    <ImageView fx:id="resetButton" fitHeight="150.0" fitWidth="150.0" layoutX="700.0" layoutY="750.0"
+               preserveRatio="true" onMouseEntered="#onResetEntered" onMouseExited="#onResetExited" scaleX="1.125"
+               scaleY="1.125">
+            <Image url="@Sprites/ButtonReset.png"/>
+    </ImageView>
 </AnchorPane>

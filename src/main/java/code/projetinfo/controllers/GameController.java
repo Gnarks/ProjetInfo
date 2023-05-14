@@ -22,10 +22,10 @@ public class GameController extends ControllerParent implements Initializable {
     private AnchorPane pane;
 
     @FXML
-    private ImageView BackToMenuButton;
+    private ImageView backToMenuButton;
 
     @FXML
-    private ImageView ResetButton;
+    private ImageView resetButton;
 
     private String levelName;
 
@@ -35,22 +35,22 @@ public class GameController extends ControllerParent implements Initializable {
 
     @FXML
     protected void onBackEntered(){
-        imageChanger(BackToMenuButton,"Sprites/ButtonBackToMenulight.png");
+        imageChanger(backToMenuButton,"Sprites/ButtonBackToMenulight.png");
     }
 
     @FXML
     protected void onBackExited(){
-        imageChanger(BackToMenuButton,"Sprites/ButtonBackToMenu.png");
+        imageChanger(backToMenuButton,"Sprites/ButtonBackToMenu.png");
     }
 
     @FXML
     protected void onResetEntered(){
-        imageChanger(ResetButton,"Sprites/ButtonResetLight.png");
+        imageChanger(resetButton,"Sprites/ButtonResetLight.png");
     }
 
     @FXML
     protected void onResetExited(){
-        imageChanger(ResetButton,"Sprites/ButtonReset.png");
+        imageChanger(resetButton,"Sprites/ButtonReset.png");
     }
 
 
@@ -88,13 +88,13 @@ public class GameController extends ControllerParent implements Initializable {
             translateTransition.play();
             translateTransition.setOnFinished(event -> pane.getChildren().remove(transi));
 
-            ResetButton.setOnMouseClicked(event -> {
+            resetButton.setOnMouseClicked(event -> {
                 if(!levelHandler.getVictoryState()){
                 levelHandler.reset();}
                 else{
                     levelHandler.loadLevel(levelName,event);
             }});
-            BackToMenuButton.setOnMouseClicked(event -> pauseMenu(pane,levelHandler,level,levelName,event));
+            backToMenuButton.setOnMouseClicked(event -> pauseMenu(pane,levelHandler,level,levelName,event));
         });
     }
 }
