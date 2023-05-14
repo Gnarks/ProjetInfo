@@ -31,6 +31,8 @@ public class GameController extends ControllerParent implements Initializable {
 
     private String levelName;
 
+    private final int randomnessValue =0;
+
     public void setLevelName(String levelName){
         this.levelName = levelName;
     }
@@ -82,7 +84,7 @@ public class GameController extends ControllerParent implements Initializable {
             LevelHandler levelHandler = new LevelHandler(level, pane);
             levelHandler.dispatchBlocks();
             levelHandler.drawGrid();
-            levelHandler.drawImageBlocks();
+            levelHandler.drawImageBlocks(randomnessValue);
 
             transi.toFront();
             TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500),transi);

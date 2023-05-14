@@ -78,16 +78,16 @@ public class LevelHandler {
         }
     }
 
-    public void drawImageBlocks(){
+    public void drawImageBlocks(int randomnessValue){
         for (ImageBlock imageBlock:
                 level.getBlocks()) {
             pane.getChildren().add(imageBlock.getImageView());
             if (!imageBlock.getPlacedState())
                 imageBlock.setPosition(imageBlock.getSpawnPos());
-            makeDraggable(imageBlock);
+            makeDraggable(imageBlock,randomnessValue);
         }
     }
-    private void makeDraggable(ImageBlock imageBlock){
+    private void makeDraggable(ImageBlock imageBlock,int randomnessValue){
         ColorAdjust c = new ColorAdjust(1,1,0.2,0);
         DropShadow dropShadow = new DropShadow(50, Color.color(0.7,0.7,0.7));
         Blend blend = new Blend(BlendMode.ADD,c,dropShadow);
@@ -128,7 +128,12 @@ public class LevelHandler {
                         level.place(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize, (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize);
                         if (level.getPlaced() == level.getBlocks().length){
                             setVictoryState(true);
-                            victoryCampaign();
+                            if(randomnessValue == 0){
+                                victoryCampaign();
+                            }
+                            else{
+                                victoryRandom();
+                            }
                         }
                     }
                     else
@@ -148,33 +153,33 @@ public class LevelHandler {
         return this.victoryState;
     }
 
-    private ImageView victoryAnimation(){
+    private void victoryAnimation(){
         Rectangle rectangle = new Rectangle(((level.getGrid().getCol()+2)*tileSize),(level.getGrid().getRow()+2)*tileSize);
         rectangle.setOpacity(0);
         rectangle.setLayoutX(gridPos.getX()-tileSize);
         rectangle.setLayoutY(gridPos.getY()-tileSize);
         pane.getChildren().add(rectangle);
-        ImageView buttonNext = new ImageView(String.valueOf(AppMenu.class.getResource("Sprites/ButtonNext.png")));
-        pane.getChildren().add(buttonNext);
+
         addVictoryText("VICTORY",635,100);
-        addVictoryText("NEXT LEVEL",1135,650);
-        addVictoryText("RESTART",630,650);
         addVictoryText("BACK TO MENUS",160,25);
         ImageView blocky = addVictoryGhost("Sprites/Blocky.png",200,150);
         ImageView ghost1 = addVictoryGhost("Sprites/Magky.png",200,500);
         ImageView ghost2 = addVictoryGhost("Sprites/Clode.png",1175,200);
         ImageView ghost3 = addVictoryGhost("Sprites/Bluky.png",1100,470);
         ghostDancing(blocky,ghost1,ghost2,ghost3);
+    }
+
+    private void victoryCampaign(){
+        victoryAnimation();
+        addVictoryText("NEXT LEVEL",1135,650);
+        addVictoryText("RESTART",630,650);
+        ImageView buttonNext = new ImageView(String.valueOf(AppMenu.class.getResource("Sprites/ButtonNext.png")));
+        pane.getChildren().add(buttonNext);
         buttonNext.setFitHeight(150);
         buttonNext.setLayoutX(1200);
         buttonNext.setLayoutY(730);
         buttonNext.setOnMouseEntered(event ->buttonNext.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonNextLight.png")))));
         buttonNext.setOnMouseExited(event ->buttonNext.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonNext.png")))));
-        return buttonNext;
-    }
-
-    private void victoryCampaign(){
-        ImageView buttonNext = victoryAnimation();
         buttonNext.setOnMouseClicked(event -> {
             String levelName = nextLevel(level.getName());
             if (levelName == null){
@@ -184,6 +189,21 @@ public class LevelHandler {
                 loadLevel(levelName,event);
             }
         });
+    }
+
+    private void victoryRandom(){
+        victoryAnimation();
+        addVictoryText("NEXT LEVEL",1135,650);
+        addVictoryText("RE-ROLL",630,650);
+        ImageView buttonSave = new ImageView(String.valueOf(AppMenu.class.getResource("Sprites/ButtonNext.png")));
+        pane.getChildren().add(buttonSave);
+        buttonSave.setPreserveRatio(true);
+        buttonSave.setFitHeight(150);
+        buttonSave.setLayoutX(1200);
+        buttonSave.setLayoutY(730);
+        buttonSave.setOnMouseEntered(event ->buttonSave.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/SaveButtonLight.png")))));
+        buttonSave.setOnMouseExited(event ->buttonSave.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/SaveButton.png")))));
+
     }
 
     public ImageView addVictoryGhost(String sprite,int layoutX,int layoutY){

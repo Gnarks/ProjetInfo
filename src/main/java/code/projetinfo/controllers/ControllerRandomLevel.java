@@ -4,13 +4,20 @@ import code.projetinfo.*;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -32,7 +39,9 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
 
     private int maxToPlace;
 
-    boolean alwaysDifferent;
+    private boolean alwaysDifferent;
+
+    private final int randomnessValue = 1;
 
     public void setImageBlockClasses(Class<ImageBlock>[] imageBlockClasses) {
         this.imageBlockClasses = imageBlockClasses;
@@ -95,7 +104,7 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
                 LevelHandler levelHandler = new LevelHandler(level, pane);
                 levelHandler.dispatchBlocks();
                 levelHandler.drawGrid();
-                levelHandler.drawImageBlocks();
+                levelHandler.drawImageBlocks(randomnessValue);
 
                 transi.toFront();
                 TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500),transi);
@@ -106,6 +115,40 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
                 resetButton.setOnMouseClicked(event -> {
                     if (!levelHandler.getVictoryState()) {
                         levelHandler.reset();
+                    }
+                    else{
+                        Rectangle transition = new Rectangle(1600,900, Paint.valueOf("222222"));
+                        transition.setLayoutY(900);
+                        pane.getChildren().add(transition);
+                        TranslateTransition translateTransition1 = new TranslateTransition(Duration.millis(500),transition);
+                        translateTransition1.setToY(-900);
+                        translateTransition1.play();
+
+                        translateTransition1.setOnFinished(event1 -> {
+                            FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource("RandomLevel.fxml"));
+                            Parent root;
+                            try {
+                                root = fxmlLoader.load();
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                            ControllerRandomLevel rlgController = fxmlLoader.getController();
+                            rlgController.setLeastToPlace(leastToPlace);
+                            rlgController.setMaxToPlace(maxToPlace);
+                            rlgController.setImageBlockClasses(imageBlockClasses);
+                            rlgController.setAlwaysDifferent(alwaysDifferent);
+
+
+                            Stage stage;
+                            Scene scene;
+
+                            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                            scene = new Scene(root, 1600, 900);
+
+                            stage.setScene(scene);
+                            stage.setResizable(false);
+                            stage.show();
+                        });
                     }
                 });
             } catch (Exception e) {
