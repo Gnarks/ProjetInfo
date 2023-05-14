@@ -6,9 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-/** Starting App of the project.
- *
- */
+/** Starting App of the project.*/
 public class AppMenu extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {

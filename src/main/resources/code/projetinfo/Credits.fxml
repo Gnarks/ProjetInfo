@@ -5,13 +5,29 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
+<?import javafx.scene.text.Font?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.projetinfo.controllers.ControllerCredits">
    <ImageView fitHeight="900.0" fitWidth="1600.0">
       <Image url="@Sprites/Crédits.png"/>
    </ImageView>
-   <Label fx:id="leoDescription" layoutX="151.0" layoutY="569.0" prefHeight="207.0" prefWidth="353.0" />
-   <Label fx:id="maximeDescription" layoutX="622.0" layoutY="572.0" prefHeight="207.0" prefWidth="353.0" />
-   <Label fx:id="williamDescription" layoutX="1096.0" layoutY="573.0" prefHeight="207.0" prefWidth="353.0" />
+   <Label fx:id="leoDescription" layoutX="151.0" layoutY="569.0" prefHeight="207.0" prefWidth="353.0"  text="FullRandom:" textAlignment="CENTER"
+          textFill="#d0d0ff" underline="true" wrapText="true" >
+      <font>
+         <Font name="System Bold" size="27.0" />
+      </font>
+   </Label>
+   <Label fx:id="maximeDescription" layoutX="622.0" layoutY="572.0" prefHeight="207.0" prefWidth="353.0"  text="FullRandom:" textAlignment="CENTER"
+          textFill="#d0d0ff" underline="true" wrapText="true" >
+      <font>
+         <Font name="System Bold" size="27.0" />
+      </font>
+   </Label>
+   <Label fx:id="williamDescription" layoutX="1096.0" layoutY="573.0" prefHeight="207.0" prefWidth="353.0" textAlignment="CENTER"
+          textFill="#d0d0ff" underline="true" wrapText="true" >
+      <font>
+         <Font name="System Bold" size="27.0" />
+      </font>
+   </Label>
    <ImageView fx:id="backButton" fitHeight="108.33" fitWidth="150.0" layoutX="5.0" layoutY="400.0"
               onMouseEntered="#onBackToCollectionEntered" onMouseExited="#onBackToCollectionExited">
       <Image url="@Sprites/ButtonBack.png"/>

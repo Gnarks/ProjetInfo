@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Paint;
 
 public class ControllerCollection extends ControllerParent {
+    /**Controller of all the Collection's buttons(assigned to Collection.fxml)*/
 
     @FXML
     private ImageView ghostImage;
@@ -70,7 +71,7 @@ public class ControllerCollection extends ControllerParent {
     protected void setGhostName(String name,double posX){
         ghostName.setText(name);
         ghostName.setLayoutX(posX);
-        ghostName.setTextFill(Paint.valueOf("d0d0ff"));
+        ghostName.setTextFill(Paint.valueOf("#d0d0ff"));
         ghostDescription.setTextFill(Paint.valueOf("#d0d0ff"));
     }
 

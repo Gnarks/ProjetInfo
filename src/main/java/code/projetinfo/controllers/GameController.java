@@ -18,6 +18,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GameController extends ControllerParent implements Initializable {
+
+    /**Controller of all the in game buttons (for the classic level), the creation of the level and so on(assigned to Game.fxml)*/
     @FXML
     private AnchorPane pane;
 

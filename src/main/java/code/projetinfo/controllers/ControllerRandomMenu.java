@@ -26,6 +26,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ControllerRandomMenu extends ControllerParent implements Initializable {
+
+    /**Controller of all the level generator menu's buttons(assigned to RLGMenu.fxml)*/
     @FXML
     private Pane pane;
     @FXML

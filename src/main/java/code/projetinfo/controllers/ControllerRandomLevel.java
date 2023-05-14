@@ -15,6 +15,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControllerRandomLevel extends ControllerParent implements Initializable {
+
+    /**Controller of all the in game buttons (for the random generated ones), the creation of the level and so on(assigned to RandomLevel.fxml)*/
     @FXML
     private AnchorPane pane;
 

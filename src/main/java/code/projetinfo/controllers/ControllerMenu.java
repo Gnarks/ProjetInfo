@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 
 
 public class ControllerMenu extends ControllerParent implements Initializable {
-    /**Controller of all the menu's buttons(assigned to MainMenu.fxml)*/
+    /**Controller of all the main menu's buttons(assigned to MainMenu.fxml)*/
     @FXML
     private ImageView playButtonImage;
     @FXML

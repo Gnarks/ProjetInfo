@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControllerLevelSelector11to20 extends ControllerParent implements Initializable {
+    /**Controller of all the level selector, from 11 to 20(assigned to LevelSelector11to20.fxml)*/
     @FXML
     private Pane pane;
     @FXML

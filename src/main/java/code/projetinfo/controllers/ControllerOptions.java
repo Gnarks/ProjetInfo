@@ -12,6 +12,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControllerOptions extends ControllerParent implements Initializable {
+
+    /**Controller of all the options buttons(assigned to OptionsMenu.fxml)*/
     @FXML
     private ImageView decreaseSound;
 

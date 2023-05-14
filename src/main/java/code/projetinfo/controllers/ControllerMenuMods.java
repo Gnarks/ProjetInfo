@@ -5,6 +5,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 public class ControllerMenuMods extends ControllerParent{
 
+    /**Controller of all the mods menu's buttons(assigned to MenuMods.fxml)*/
+
     @FXML
     private Pane pane;
 

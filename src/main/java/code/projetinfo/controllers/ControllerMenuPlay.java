@@ -5,6 +5,8 @@ import javafx.scene.image.ImageView;
 
 
 public class ControllerMenuPlay extends ControllerParent{
+
+    /**Controller of all the play menu's buttons(assigned to MenuPlay.fxml)*/
     @FXML
     private ImageView levelsButton;
     @FXML
