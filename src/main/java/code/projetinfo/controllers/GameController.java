@@ -81,10 +81,10 @@ public class GameController extends ControllerParent implements Initializable {
                      InstantiationException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }
-            LevelHandler levelHandler = new LevelHandler(level, pane);
+            LevelHandler levelHandler = new LevelHandler(level, pane,false);
             levelHandler.dispatchBlocks();
             levelHandler.drawGrid();
-            levelHandler.drawImageBlocks(randomnessValue);
+            levelHandler.drawImageBlocks();
 
             transi.toFront();
             TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500),transi);

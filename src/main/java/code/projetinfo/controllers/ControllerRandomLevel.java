@@ -88,79 +88,71 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
 
         Platform.runLater(() ->{
             LevelGenerator levelGenerator = new LevelGenerator(imageBlockClasses,leastToPlace,maxToPlace,alwaysDifferent);
-            Level level = null;
+            Level level;
             try {
                 level = levelGenerator.generate();
+
             } catch (LevelGenerator.GenerateException e) {
                 Button error = new Button(e.getMessage());
-                error.setLayoutX(800);
+                error.setLayoutX(700);
                 error.setLayoutY(450);
                 pane.getChildren().add(error);
                 error.setOnAction(event -> loadScene("RLGMenu.fxml",event));
+                return;
             }
 
-            try {
-                assert level != null;
-                LevelHandler levelHandler = new LevelHandler(level, pane);
-                levelHandler.dispatchBlocks();
-                levelHandler.drawGrid();
-                levelHandler.drawImageBlocks(randomnessValue);
+            LevelHandler levelHandler = new LevelHandler(level, pane,true);
+            levelHandler.dispatchBlocks();
+            levelHandler.drawGrid();
+            levelHandler.drawImageBlocks();
 
-                transi.toFront();
-                TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500),transi);
-                translateTransition.setToY(900);
-                translateTransition.play();
-                translateTransition.setOnFinished(event -> pane.getChildren().remove(transi));
+            transi.toFront();
+            TranslateTransition translateTransition = new TranslateTransition(Duration.millis(500),transi);
+            translateTransition.setToY(900);
+            translateTransition.play();
+            translateTransition.setOnFinished(event -> pane.getChildren().remove(transi));
 
-                Level finalLevel = level;
-                resetButton.setOnMouseClicked(event -> {
-                    if (!levelHandler.getVictoryState()) {
-                        levelHandler.reset();
-                    }
-                    else{
-                        Rectangle transition = new Rectangle(1600,900, Paint.valueOf("222222"));
-                        transition.setLayoutY(900);
-                        pane.getChildren().add(transition);
-                        TranslateTransition translateTransition1 = new TranslateTransition(Duration.millis(500),transition);
-                        translateTransition1.setToY(-900);
-                        translateTransition1.play();
+            Level finalLevel = level;
+            resetButton.setOnMouseClicked(event -> {
+                if (!levelHandler.getVictoryState()) {
+                    levelHandler.reset();
+                }
+                else{
+                    Rectangle transition = new Rectangle(1600,900, Paint.valueOf("222222"));
+                    transition.setLayoutY(900);
+                    pane.getChildren().add(transition);
+                    TranslateTransition translateTransition1 = new TranslateTransition(Duration.millis(500),transition);
+                    translateTransition1.setToY(-900);
+                    translateTransition1.play();
 
-                        translateTransition1.setOnFinished(event1 -> {
-                            FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource("RandomLevel.fxml"));
-                            Parent root;
-                            try {
-                                root = fxmlLoader.load();
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
-                            }
-                            ControllerRandomLevel rlgController = fxmlLoader.getController();
-                            rlgController.setLeastToPlace(leastToPlace);
-                            rlgController.setMaxToPlace(maxToPlace);
-                            rlgController.setImageBlockClasses(imageBlockClasses);
-                            rlgController.setAlwaysDifferent(alwaysDifferent);
+                    translateTransition1.setOnFinished(event1 -> {
+                        FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource("RandomLevel.fxml"));
+                        Parent root;
+                        try {
+                            root = fxmlLoader.load();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                        ControllerRandomLevel rlgController = fxmlLoader.getController();
+                        rlgController.setLeastToPlace(leastToPlace);
+                        rlgController.setMaxToPlace(maxToPlace);
+                        rlgController.setImageBlockClasses(imageBlockClasses);
+                        rlgController.setAlwaysDifferent(alwaysDifferent);
 
 
-                            Stage stage;
-                            Scene scene;
+                        Stage stage;
+                        Scene scene;
 
-                            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                            scene = new Scene(root, 1600, 900);
+                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        scene = new Scene(root, 1600, 900);
 
-                            stage.setScene(scene);
-                            stage.setResizable(false);
-                            stage.show();
-                        });}
-                });
-
-                Level levelCopy = new Level("Copy", finalLevel.getGrid(), finalLevel.getBlocks());
-                backToMenuButton.setOnMouseClicked(event1 -> pauseMenuRandom(pane,levelHandler,levelCopy,event1));
-            } catch (Exception e) {
-                Button error = new Button(e.getMessage());
-                error.setLayoutX(800);
-                error.setLayoutY(450);
-                pane.getChildren().add(error);
-                error.setOnAction(event -> loadScene("RLGMenu.fxml",event));
-            }
+                        stage.setScene(scene);
+                        stage.setResizable(false);
+                        stage.show();
+                    });}
+            });
+            Level levelCopy = new Level("Copy", finalLevel.getGrid(), finalLevel.getBlocks());
+            backToMenuButton.setOnMouseClicked(event1 -> pauseMenuRandom(pane,levelHandler,levelCopy,event1));
         });
     }
 }

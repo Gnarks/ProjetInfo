@@ -145,7 +145,7 @@ public abstract class ImageBlock{
     * * @param newRotateState the wanted rotateState
     * @param generalUrl the url of the image without the rotateState and the ".png"
     */
-   protected void rotateGraphicallyTo(int newRotateState, String generalUrl){
+      protected void rotateGraphicallyTo(int newRotateState, String generalUrl){
 
       Position newMidTilePos = new Position(0,0);
       int initialX = (int) (midPos.getX()-25)/50;
@@ -181,7 +181,6 @@ public abstract class ImageBlock{
       imageView.setFitHeight(((rotateState - newRotateState+4)%2 == 0?height: getImageView().getFitWidth()));
       imageView.setFitWidth(((rotateState - newRotateState+4)%2 == 0? imageView.getFitWidth():height));
    }
-
    /** Rotates the block to the specified rotateState in Frontend AND Backend.
     * a single rotateState change corresponds to a 90-degree turn to the right.
     * @param newRotateState the wanted rotateState

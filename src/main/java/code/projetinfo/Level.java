@@ -30,9 +30,10 @@ public class Level {
     }
 
     /**
-     * Save all the data of a Level instance in the levels.json file.
-     * Call directly this method if the level you want to save already exist else call saveState() with no parameters.
-     * This method can save a new Level not already in the file and also modify one already in the file.
+     * Save all the data of a Level instance in the levels.json file with the name of the level.
+     * If the level is new, will save the grid (even the FULL).
+     * If the level isn't new, will save only the position of the blocks and not change the initial grid.
+     *
      * @throws IOException
      */
     public void saveState() throws IOException {
@@ -213,9 +214,6 @@ public class Level {
     public String getName(){
         return this.name;
     }
-
-
-    //This method is only usefull for unit tests
 
     /**
      * Equals method for Level class.

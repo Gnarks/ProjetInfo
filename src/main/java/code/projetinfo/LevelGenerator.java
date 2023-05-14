@@ -90,7 +90,7 @@ public class LevelGenerator {
             throw new GenerateException("not enough blocks selected to place only different blocks");
         }
 
-        if (imageBlockClasses.length == 1  && imageBlockClasses[0] == PlagueDoc.class){
+        if (imageBlockClasses.length == 1  && imageBlockClasses[0].equals(PlagueDoc.class)){
             throw new GenerateException("PlagueDoc can't create a random level by is own.");
         }
 
@@ -371,7 +371,7 @@ public class LevelGenerator {
 
             }
         }
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             Random rnd = new Random();
             int x = rnd.nextInt(preparedGrid.getCol());
             int y = rnd.nextInt(preparedGrid.getRow());
