@@ -160,6 +160,7 @@ public class LevelGenerator {
                     placeBlock(currentBlock,bestPossibleScorePlacement.position, bestPossibleScorePlacement.rotateState);
                 }
                 MSPos = getNewMSPos(MSPos);
+                currentBlock.rotateTo(0);
                 blocksUsed.add(currentBlock);
             }
         }
@@ -226,7 +227,7 @@ public class LevelGenerator {
                     if(x!= offset && y!= offset)
                         continue;
                     // checks if the case is in the grid then checks if the tile of the grid is EMPTY.
-                    if (y < grid.getCol() && y  < grid.getRow()
+                    if (y < grid.getCol() && x  < grid.getRow()
                             && grid.getState(x, y) == CaseState.EMPTY
                             && !(new Position(x,y).equals(oldMsPos))){
                         bestPositions.add(new Position( x, y));
@@ -235,6 +236,9 @@ public class LevelGenerator {
             }
             // re loop if after looking around the placedPosition no bestPositions where found.
             offset+=1;
+            if (offset >8){
+                return null;
+            }
         }
 
         Random rnd = new Random();
