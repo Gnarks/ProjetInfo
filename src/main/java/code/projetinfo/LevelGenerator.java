@@ -1,5 +1,7 @@
 package code.projetinfo;
 
+import code.projetinfo.normalBlocks.PlagueDoc;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -88,6 +90,10 @@ public class LevelGenerator {
             throw new GenerateException("not enough blocks selected to place only different blocks");
         }
 
+        if (imageBlockClasses.length == 1  && imageBlockClasses[0] == PlagueDoc.class){
+            throw new GenerateException("PlagueDoc can't create a random level by is own.");
+        }
+
         // the Most Significant Position is initialized at (0,0).
         Position MSPos = new Position(0,0);
         Random rnd = new Random();
@@ -103,14 +109,14 @@ public class LevelGenerator {
 
         //loop trying to place the maximum asked number of block.
         while (blocksUsed.size() < maxToPlace && tryingToPlace.size() >0){
-            int randomInt = rnd.nextInt(imageBlockClasses.length);
+            int randomInt = rnd.nextInt(tryingToPlace.size());
             //arrayList to store all the PossiblePlacements for a single block.
             ArrayList<PossiblePlacementData> possiblePlacements = new ArrayList<>();
 
             // chooses a random ImageBlock in the imageBlockClasses list.
             ImageBlock currentBlock;
             try {
-                currentBlock = (ImageBlock) imageBlockClasses[randomInt].getDeclaredConstructor(Position.class).newInstance(new Position(0,0));
+                currentBlock = (ImageBlock) tryingToPlace.get(randomInt).getDeclaredConstructor(Position.class).newInstance(new Position(0,0));
             } catch (InstantiationException | NoSuchMethodException | IllegalAccessException |
                      InvocationTargetException e) {
                 throw new RuntimeException(e);
@@ -118,7 +124,9 @@ public class LevelGenerator {
             //loop on all the rotateState to add them in the PossiblePlacements.
             for (int rotateState = 0; rotateState < 4; rotateState++) {
 
-                currentBlock.rotateTo(rotateState);
+                currentBlock.rotateCasesTo(rotateState);
+                currentBlock.setRotateState(rotateState);
+
 
                 //if the block doesn't have to be moved:
                 if (isPlacable(currentBlock,MSPos, rotateState) && currentBlock.getState(0,0) == CaseState.FULL){
@@ -134,6 +142,7 @@ public class LevelGenerator {
             if (possiblePlacements.size() == 0 || alwaysDifferent) {
                 tryingToPlace.remove(currentBlock.getClass());
             }
+            System.out.println(tryingToPlace.size());
             //if we can place the block.
             if (possiblePlacements.size() >0) {
                 // we want to place the moved Blocks in priority by making a list of them.
@@ -160,6 +169,8 @@ public class LevelGenerator {
                     placeBlock(currentBlock,bestPossibleScorePlacement.position, bestPossibleScorePlacement.rotateState);
                 }
                 MSPos = getNewMSPos(MSPos);
+                currentBlock.rotateCasesTo(0);
+                currentBlock.setRotateState(0);
                 currentBlock.rotateTo(0);
                 blocksUsed.add(currentBlock);
             }
@@ -180,7 +191,8 @@ public class LevelGenerator {
      * @param rotateState the rotateState of the ImageBlock
      */
     private void placeBlock(ImageBlock imageBlock, Position position, int rotateState){
-        imageBlock.rotateTo(rotateState);
+        imageBlock.rotateCasesTo(rotateState);
+        imageBlock.setRotateState(rotateState);
         for (int i = 0; i < imageBlock.getRows(); i++){
             for (int j = 0; j < imageBlock.getCols(); j++){
                 if (imageBlock.getState(j,i) == CaseState.FULL)
@@ -197,7 +209,8 @@ public class LevelGenerator {
      * @return if the ImageBlock is can be placed or not.
      */
     private boolean isPlacable(ImageBlock imageBlock,Position position, int rotateState) {
-        imageBlock.rotateTo(rotateState);
+        imageBlock.rotateCasesTo(rotateState);
+        imageBlock.setRotateState(rotateState);
         for (int i = 0; i < imageBlock.getRows(); i++) {
             for (int j = 0; j < imageBlock.getCols(); j++) {
                 if (position.getX() + j >= grid.getCol() || position.getY() + i >= grid.getRow() ||
