@@ -1,9 +1,14 @@
 package code.projetinfo.controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-public class ControllerMenuMods extends ControllerParent{
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ControllerMenuMods extends ControllerParent implements Initializable {
 
     /**Controller of all the mods menu's buttons(assigned to MenuMods.fxml)*/
 
@@ -85,4 +90,8 @@ public class ControllerMenuMods extends ControllerParent{
         imageChanger(memoryButton,"Sprites/MemoryButton.png");}
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        speedrunButton.setOnMouseClicked(event -> LevelSelect(pane,"randomLevel",speedrunButton));
+    }
 }

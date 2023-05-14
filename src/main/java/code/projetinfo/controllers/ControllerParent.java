@@ -119,8 +119,8 @@ public class ControllerParent {
      * @param levelName name of the level we want to load
      * @param button button we want to assign the action
      */
-    protected void LevelSelect(Pane pane, String levelName, Button button){
-        button.setOnAction(event -> {
+    protected void LevelSelect(Pane pane, String levelName, Node button){
+        button.setOnMouseClicked(event -> {
             Rectangle transi = new Rectangle(1600,900, Paint.valueOf("222222"));
             transi.setLayoutY(900);
             pane.getChildren().add(transi);

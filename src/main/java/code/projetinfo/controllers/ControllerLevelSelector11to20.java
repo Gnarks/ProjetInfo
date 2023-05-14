@@ -30,7 +30,7 @@ public class ControllerLevelSelector11to20 extends ControllerParent implements I
     public void initialize(URL location, ResourceBundle resources) {
         for (int i = 0; i < pane.getChildren().size(); i++) {
             if(pane.getChildren().get(i).getClass()==Button.class){
-                LevelSelect(pane,pane.getChildren().get(i).getId(),(Button) pane.getChildren().get(i));
+                LevelSelect(pane,pane.getChildren().get(i).getId(),pane.getChildren().get(i));
             }
         }
     }
