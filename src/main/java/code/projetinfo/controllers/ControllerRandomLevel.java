@@ -83,7 +83,7 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
             try {
                 level = levelGenerator.generate();
             } catch (LevelGenerator.GenerateException e) {
-                Button error = new Button("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAh");
+                Button error = new Button(e.getMessage());
                 error.setLayoutX(800);
                 error.setLayoutY(450);
                 pane.getChildren().add(error);
@@ -109,7 +109,7 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
                     }
                 });
             } catch (Exception e) {
-                Button error = new Button("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAh");
+                Button error = new Button(e.getMessage());
                 error.setLayoutX(800);
                 error.setLayoutY(450);
                 pane.getChildren().add(error);
