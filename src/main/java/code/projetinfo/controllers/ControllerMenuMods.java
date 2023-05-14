@@ -1,14 +1,10 @@
 package code.projetinfo.controllers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class ControllerMenuMods extends ControllerParent implements Initializable {
+public class ControllerMenuMods extends ControllerParent{
 
     /**Controller of all the mods menu's buttons(assigned to MenuMods.fxml)*/
 
@@ -64,14 +60,19 @@ public class ControllerMenuMods extends ControllerParent implements Initializabl
     @FXML
     protected void onSpeedrunEntered(){
         imageChanger(speedrunButton,"Sprites/SpeedrunButtonLight.png");
+        speedrunButton.setOnMouseClicked(event -> LevelSelect(pane,"RandomLevel1",speedrunButton));
     }
     @FXML
     protected void onDancingEntered(){
         imageChanger(dancingButton,"Sprites/DancingButtonLight.png");
+
+        dancingButton.setOnMouseClicked(event -> LevelSelect(pane,"RandomLevel2",dancingButton));
     }
     @FXML
     protected void onMemoryEntered(){
         imageChanger(memoryButton,"Sprites/MemoryButtonLight.png");
+
+        memoryButton.setOnMouseClicked(event -> LevelSelect(pane,"RandomLevel3",memoryButton));
     }
     @FXML
     protected void onBackExited(){
@@ -90,8 +91,4 @@ public class ControllerMenuMods extends ControllerParent implements Initializabl
         imageChanger(memoryButton,"Sprites/MemoryButton.png");}
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        speedrunButton.setOnMouseClicked(event -> LevelSelect(pane,"randomLevel",speedrunButton));
-    }
 }

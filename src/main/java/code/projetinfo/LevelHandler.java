@@ -191,7 +191,7 @@ public class LevelHandler {
         });
     }
 
-    private void victoryRandom(){
+    public void victoryRandom(){
         victoryAnimation();
         addVictoryText("SAVE",970,650);
         addVictoryText("RE-ROLL",630,650);
@@ -203,72 +203,10 @@ public class LevelHandler {
         buttonSave.setLayoutY(730);
         buttonSave.setOnMouseEntered(event ->buttonSave.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/SaveButtonLight.png")))));
         buttonSave.setOnMouseExited(event ->buttonSave.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/SaveButton.png")))));
-        buttonSave.setOnMouseClicked(event -> saveMenu());
 
     }
 
-    private void saveMenu(){
-        Rectangle rectangle = new Rectangle(1600,900, Paint.valueOf("#222222"));
-        ImageView fond = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/FondChoser.png"))));
-        fond.setPreserveRatio(true);
-        fond.setLayoutX(500);
-        fond.setLayoutY(150);
-        fond.setFitWidth(600);
 
-        Button randomSave1 = new Button("Random1");
-        randomSave1.setLayoutX(525);
-        randomSave1.setLayoutY(175);
-        randomSave1.setPrefWidth(550);
-        randomSave1.setPrefHeight(150);
-
-        Button randomSave2 = new Button("Random2");
-        randomSave2.setLayoutX(525);
-        randomSave2.setLayoutY(375);
-        randomSave2.setPrefWidth(550);
-        randomSave2.setPrefHeight(150);
-
-        Button randomSave3 = new Button("Random3");
-        randomSave3.setLayoutX(525);
-        randomSave3.setLayoutY(575);
-        randomSave3.setPrefWidth(550);
-        randomSave3.setPrefHeight(150);
-
-        randomSave1.setOnAction(event -> {
-            try {
-                level.saveState();
-            } catch (Exception e) {
-                System.out.println("PAH");
-            }
-            finally {
-                ControllerParent.loadScene("RLGMenu.fxml",event);
-            }
-        });
-
-        randomSave2.setOnAction(event -> {
-            try {
-                level.saveState();
-            } catch (Exception e) {
-                System.out.println("PAH");
-            }
-            finally {
-                ControllerParent.loadScene("RLGMenu.fxml",event);
-            }
-        });
-
-        randomSave3.setOnAction(event -> {
-            try {
-                level.saveState();
-            } catch (Exception e) {
-                System.out.println("PAH");
-            }
-            finally {
-                ControllerParent.loadScene("RLGMenu.fxml",event);
-            }
-        });
-        pane.getChildren().addAll(rectangle,fond,randomSave1,randomSave2,randomSave3);
-
-
-    }
 
     public ImageView addVictoryGhost(String sprite,int layoutX,int layoutY){
         ImageView ghost = new ImageView(String.valueOf(AppMenu.class.getResource(sprite)));

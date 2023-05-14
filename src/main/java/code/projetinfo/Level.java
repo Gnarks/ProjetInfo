@@ -12,7 +12,7 @@ public class Level {
     private ImageBlock[] blocks;
     private boolean isNew;
     private int placed = 0;
-    private final String name;
+    private String name;
     private final String pathname = System.getProperty("user.dir")+"<src<main<resources<code<projetinfo<levels.json";
     private final File f = new File(pathname.replaceAll("<", "\\"+System.getProperty("file.separator")));
     private final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
@@ -200,6 +200,10 @@ public class Level {
     public Cases getGrid() {return grid;}
     public void setPlaced(int n){
         this.placed = n;
+    }
+
+    public void setName(String levelName){
+        this.name = levelName;
     }
 
     public int getPlaced(){

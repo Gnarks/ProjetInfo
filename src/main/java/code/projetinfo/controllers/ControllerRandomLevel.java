@@ -112,6 +112,7 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
                 translateTransition.play();
                 translateTransition.setOnFinished(event -> pane.getChildren().remove(transi));
 
+                Level finalLevel = level;
                 resetButton.setOnMouseClicked(event -> {
                     if (!levelHandler.getVictoryState()) {
                         levelHandler.reset();
@@ -148,9 +149,11 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
                             stage.setScene(scene);
                             stage.setResizable(false);
                             stage.show();
-                        });
-                    }
+                        });}
                 });
+
+                Level levelCopy = new Level("Copy", finalLevel.getGrid(), finalLevel.getBlocks());
+                backToMenuButton.setOnMouseClicked(event1 -> pauseMenuRandom(pane,levelHandler,levelCopy,event1));
             } catch (Exception e) {
                 Button error = new Button(e.getMessage());
                 error.setLayoutX(800);
@@ -158,7 +161,6 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
                 pane.getChildren().add(error);
                 error.setOnAction(event -> loadScene("RLGMenu.fxml",event));
             }
-            backToMenuButton.setOnMouseClicked(event1 -> loadScene("RLGMenu.fxml",event1));
         });
     }
 }
