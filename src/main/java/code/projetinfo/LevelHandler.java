@@ -179,7 +179,6 @@ public class LevelHandler {
             String levelName = nextLevel(level.getName());
             if (levelName == null){
                 ControllerParent.loadScene("LevelSelector11to20.fxml",event);}
-
             else{
                 loadLevel(levelName,event);
             }
@@ -245,15 +244,15 @@ public class LevelHandler {
         int units =  Character.getNumericValue(levelName.charAt(6));
         System.out.println(units);
         units +=1;
-        int dizaine = Character.getNumericValue(levelName.charAt(5))*10;
-        System.out.println(dizaine);
+        int tens = Character.getNumericValue(levelName.charAt(5))*10;
+        System.out.println(tens);
 
         if(units == 10){
-            nextLevel += dizaine +10;
+            nextLevel += tens +10;
             System.out.println(nextLevel);
             return nextLevel;
         }
-        if(dizaine == 0)
+        if(tens == 0)
         {
             nextLevel += 0;
             nextLevel += units;
@@ -261,7 +260,7 @@ public class LevelHandler {
             return nextLevel;
         }
 
-        int num = dizaine + units;
+        int num = tens + units;
         if (num > 20){
             return null;
         }
