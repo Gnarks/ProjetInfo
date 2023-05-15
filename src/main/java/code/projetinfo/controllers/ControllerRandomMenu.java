@@ -161,7 +161,6 @@ public class ControllerRandomMenu extends ControllerParent implements Initializa
                 this.fullRandomState = true;
                 ArrayList<Rectangle> rectangles = new ArrayList<>();
                 for (int i = 0; i < pane.getChildren().size(); i++) {
-                    System.out.println(i);
                     if(pane.getChildren().get(i).getClass()== Rectangle.class){
                         rectangles.add((Rectangle) pane.getChildren().get(i));
                     }

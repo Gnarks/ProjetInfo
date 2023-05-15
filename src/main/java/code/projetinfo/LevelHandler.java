@@ -392,7 +392,6 @@ public class LevelHandler {
         transi.setLayoutY(900);
         pane.getChildren().add(transi);
 
-
         TranslateTransition transition = translateAnimation(transi, 500,0,-900);
         transition.play();
         transition.setOnFinished(event1 -> {
