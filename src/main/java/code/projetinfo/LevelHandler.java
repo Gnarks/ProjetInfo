@@ -145,11 +145,8 @@ public class LevelHandler {
         node.setOnMouseDragged(mouseEvent-> {
 
             if(node.getOpacity()<1){return;}
-            if (mouseEvent.getButton() == MouseButton.PRIMARY){
+            if (mouseEvent.getButton() == MouseButton.PRIMARY)
                 moveBlock(imageBlock,mouseEvent);
-                System.out.printf("%s,%s,\n",imageBlock.getLayoutX(),imageBlock.getLayoutY());
-
-            }
         });
 
         node.setOnMouseReleased(event -> {
@@ -569,7 +566,7 @@ public class LevelHandler {
     /** Moves the ImageBlock relative to the MouseEvent.
      *
      * @param imageBlock The ImageBlock to be moved
-     * @param mouseEvent
+     * @param mouseEvent the mouse event the ImageBlock has to follow.
      */
     private void moveBlock(ImageBlock imageBlock, MouseEvent mouseEvent){
         double posX = mouseEvent.getSceneX() - imageBlock.getMidX();

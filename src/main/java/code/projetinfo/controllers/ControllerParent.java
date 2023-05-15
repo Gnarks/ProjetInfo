@@ -25,6 +25,9 @@ import java.io.IOException;
 
 
 public class ControllerParent {
+
+
+
     /**
      * Change the sprite of an ImageView and set up an action
      * that load another scene when we click on it.
@@ -96,6 +99,12 @@ public class ControllerParent {
                 }
             }
     }
+
+    /**
+     *
+     * @param resume
+     * @param pane
+     */
     private void setAsResumeButton(ImageView resume, Pane pane){
         resume.setOnMouseEntered(resumeEvent -> imageChanger(resume,"Sprites/Button_Resume_Light.png"));
         resume.setOnMouseExited(resumeEvent -> imageChanger(resume,"Sprites/Button_Resume.png"));
@@ -146,7 +155,7 @@ public class ControllerParent {
         });
     }
 
-    static public void randomLevelsSaveMenu(Pane pane, Level levelSaved){
+    static  public void  randomLevelsSaveMenu(Pane pane, Level levelSaved){
         Rectangle rectangle = new Rectangle(1600,900, Paint.valueOf("#222222"));
         rectangle.setOpacity(0.3);
         ImageView backGround = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/BackGround_Choices.png"))));
