@@ -1,6 +1,7 @@
 package code.projetinfo;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -16,6 +17,10 @@ public class AppMenu extends Application {
         primaryStage.getIcons().add(new Image(String.valueOf(AppMenu.class.getResource("Sprites/Blocky.png"))));
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
+        primaryStage.setOnCloseRequest(event -> {
+            Platform.exit();
+            System.exit(0);
+        });
         primaryStage.show();
     }
 

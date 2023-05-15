@@ -289,13 +289,18 @@ public class LevelHandler {
     /** Makes all the ghosts dance.
      */
     public void ghostDancing(ImageView blocky,ImageView ghost1,ImageView ghost2,ImageView ghost3){
+        Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
                 ghost1.setScaleX(ghost1.getScaleX()*(-1));
+                System.out.println(1);
+                if(ghost1.getScene().getWindow()==null){
+                    timer.cancel();
+                }
             }
         };
-        Timer timer = new Timer();
+
         timer.schedule(task,0,250);
 
         RotateTransition rotateTransition = new RotateTransition(Duration.millis(1000),ghost2);
