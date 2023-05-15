@@ -149,47 +149,47 @@
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
         "rotateState" : 0,
-        "layoutX" : 0.0,
-        "layoutY" : 0.0,
+        "layoutX" : 450.0,
+        "layoutY" : 300.0,
         "isPlaced" : false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.BigBob",
-        "rotateState" : 0,
-        "layoutX" : 0.0,
-        "layoutY" : 0.0,
-        "isPlaced" : false
+        "rotateState" : 1,
+        "layoutX" : 800.0,
+        "layoutY" : 300.0,
+        "isPlaced" : true
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
         "rotateState" : 0,
-        "layoutX" : 0.0,
-        "layoutY" : 0.0,
+        "layoutX" : 450.0,
+        "layoutY" : 500.0,
         "isPlaced" : false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
         "rotateState" : 0,
-        "layoutX" : 0.0,
-        "layoutY" : 0.0,
+        "layoutX" : 1200.0,
+        "layoutY" : 300.0,
         "isPlaced" : false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
         "rotateState" : 0,
-        "layoutX" : 0.0,
-        "layoutY" : 0.0,
+        "layoutX" : 1000.0,
+        "layoutY" : 200.0,
         "isPlaced" : false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
         "rotateState" : 0,
-        "layoutX" : 0.0,
-        "layoutY" : 0.0,
+        "layoutX" : 1200.0,
+        "layoutY" : 500.0,
         "isPlaced" : false
       }
     },
-    "placed" : 0
+    "placed" : 1
   },
   "Level03" : {
     "grid" : [ [ "FULL", "FULL", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "SPECIAL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ] ],
@@ -1168,87 +1168,94 @@
     "placed" : 0
   },
   "RandomLevel1" : {
-    "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "SPECIAL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ] ],
+    "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL" ] ],
     "blockList" : {
       "0" : {
-        "type" : "class code.projetinfo.normalBlocks.King",
-        "rotateState" : 0,
-        "layoutX" : 400.0,
-        "layoutY" : 250.0,
-        "isPlaced" : false
+        "type" : "class code.projetinfo.normalBlocks.Bloby",
+        "rotateState" : 1,
+        "layoutX" : 850.0,
+        "layoutY" : 400.0,
+        "isPlaced" : true
       },
       "1" : {
-        "type" : "class code.projetinfo.normalBlocks.Baby",
-        "rotateState" : 0,
-        "layoutX" : 200.0,
-        "layoutY" : 150.0,
-        "isPlaced" : false
+        "type" : "class code.projetinfo.normalBlocks.Bloby",
+        "rotateState" : 1,
+        "layoutX" : 650.0,
+        "layoutY" : 200.0,
+        "isPlaced" : true
       },
       "2" : {
-        "type" : "class code.projetinfo.normalBlocks.Baby",
-        "rotateState" : 0,
-        "layoutX" : 400.0,
-        "layoutY" : 500.0,
-        "isPlaced" : false
+        "type" : "class code.projetinfo.normalBlocks.Bloby",
+        "rotateState" : 2,
+        "layoutX" : 700.0,
+        "layoutY" : 350.0,
+        "isPlaced" : true
       },
       "3" : {
-        "type" : "class code.projetinfo.normalBlocks.LilDeath",
-        "rotateState" : 0,
-        "layoutX" : 200.0,
-        "layoutY" : 250.0,
+        "type" : "class code.projetinfo.normalBlocks.Bloby",
+        "rotateState" : 1,
+        "layoutX" : 150.0,
+        "layoutY" : 350.0,
         "isPlaced" : false
       },
       "4" : {
-        "type" : "class code.projetinfo.normalBlocks.LilDeath",
-        "rotateState" : 0,
-        "layoutX" : 400.0,
-        "layoutY" : 600.0,
+        "type" : "class code.projetinfo.normalBlocks.Bloby",
+        "rotateState" : 1,
+        "layoutX" : 350.0,
+        "layoutY" : 700.0,
         "isPlaced" : false
       },
       "5" : {
-        "type" : "class code.projetinfo.normalBlocks.LilDeath",
-        "rotateState" : 0,
-        "layoutX" : 1250.0,
-        "layoutY" : 250.0,
+        "type" : "class code.projetinfo.normalBlocks.Bloby",
+        "rotateState" : 2,
+        "layoutX" : 150.0,
+        "layoutY" : 500.0,
         "isPlaced" : false
       },
       "6" : {
-        "type" : "class code.projetinfo.normalBlocks.LilDeath",
+        "type" : "class code.projetinfo.normalBlocks.Bloby",
         "rotateState" : 0,
-        "layoutX" : 1050.0,
-        "layoutY" : 150.0,
+        "layoutX" : 1300.0,
+        "layoutY" : 250.0,
         "isPlaced" : false
       },
       "7" : {
-        "type" : "class code.projetinfo.normalBlocks.Baby",
+        "type" : "class code.projetinfo.normalBlocks.Bloby",
         "rotateState" : 0,
-        "layoutX" : 1250.0,
-        "layoutY" : 450.0,
+        "layoutX" : 1100.0,
+        "layoutY" : 150.0,
         "isPlaced" : false
       },
       "8" : {
-        "type" : "class code.projetinfo.normalBlocks.Baby",
+        "type" : "class code.projetinfo.normalBlocks.Bloby",
         "rotateState" : 0,
+        "layoutX" : 1300.0,
+        "layoutY" : 450.0,
+        "isPlaced" : false
+      },
+      "9" : {
+        "type" : "class code.projetinfo.normalBlocks.Bloby",
+        "rotateState" : 2,
         "layoutX" : 1050.0,
         "layoutY" : 350.0,
         "isPlaced" : false
       },
-      "9" : {
-        "type" : "class code.projetinfo.normalBlocks.Baby",
+      "10" : {
+        "type" : "class code.projetinfo.normalBlocks.Bloby",
         "rotateState" : 0,
-        "layoutX" : 1250.0,
-        "layoutY" : 550.0,
+        "layoutX" : 1300.0,
+        "layoutY" : 650.0,
         "isPlaced" : false
       },
-      "10" : {
-        "type" : "class code.projetinfo.normalBlocks.Geoffroy",
-        "rotateState" : 0,
+      "11" : {
+        "type" : "class code.projetinfo.normalBlocks.Bloby",
+        "rotateState" : 1,
         "layoutX" : 1050.0,
-        "layoutY" : 450.0,
+        "layoutY" : 600.0,
         "isPlaced" : false
       }
     },
-    "placed" : 0
+    "placed" : 1
   },
   "RandomLevel2" : {
     "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "SPECIAL", "EMPTY", "EMPTY", "SPECIAL" ] ],
