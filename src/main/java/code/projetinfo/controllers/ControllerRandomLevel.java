@@ -41,7 +41,6 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
 
     private boolean alwaysDifferent;
 
-    private final int randomnessValue = 1;
 
     public void setImageBlockClasses(Class<ImageBlock>[] imageBlockClasses) {
         this.imageBlockClasses = imageBlockClasses;
@@ -152,7 +151,7 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
                     });}
             });
             Level levelCopy = new Level("Copy", finalLevel.getGrid(), finalLevel.getBlocks());
-            backToMenuButton.setOnMouseClicked(event1 -> pauseMenuRandom(pane,levelHandler,levelCopy,event1));
+            backToMenuButton.setOnMouseClicked(event1 -> pauseMenu(pane,levelHandler,levelCopy,"Random", event1));
         });
     }
 }

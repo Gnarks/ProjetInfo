@@ -77,29 +77,40 @@ public class ControllerParent {
                 leave.setOnMouseEntered(leaveEvent -> imageChanger(leave,"Sprites/LeaveButtonLight.png"));
                 leave.setOnMouseExited(leaveEvent -> imageChanger(leave,"Sprites/LeaveButton.png"));
                 leave.setOnMouseClicked(leaveEvent -> {
-                    if (levelName.charAt(0)=='R'){
+                    if(!levelHandler.isRandom()){
+                       if (levelName.charAt(0)=='R'){
                         loadScene("MenuMods.fxml",event);
                     }
-                    else if (levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')) {
+                        else if (levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')) {
                         loadScene("LevelSelector1to10.fxml",event);
-                    } else {
-                        loadScene("LevelSelector11to20.fxml",event);
                     }
+                        else {
+                        loadScene("LevelSelector11to20.fxml",event);
+                    }}
+                    else{
+                        loadScene("RLGMenu.fxml",event);}
                 });
 
                 save.setOnMouseEntered(saveEvent -> imageChanger(save,"Sprites/SaveButtonLight.png"));
                 save.setOnMouseExited(saveEvent -> imageChanger(save,"Sprites/SaveButton.png"));
                 save.setOnMouseClicked(saveEvent -> {
+                    if(!levelHandler.isRandom()){
                     try {
                         level.saveState();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-
-                    if (levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')) {
-                        loadScene("LevelSelector1to10.fxml",event);
-                    } else {
-                        loadScene("LevelSelector11to20.fxml",event);
+                        if (levelName.charAt(0)=='R'){
+                            loadScene("MenuMods.fxml",event);
+                        }
+                        else if (levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')) {
+                            loadScene("LevelSelector1to10.fxml",event);
+                        }
+                        else {
+                            loadScene("LevelSelector11to20.fxml",event);
+                    }}
+                    else{
+                        saveMenu(pane,level);
                     }
                 });
 
@@ -107,35 +118,19 @@ public class ControllerParent {
             }
 
             else{
-                if (levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')) {
-                    loadScene("LevelSelector1to10.fxml",event);
-                } else {
-                    loadScene("LevelSelector11to20.fxml",event);
-                }
+                if(!levelHandler.isRandom()){
+                    if (levelName.charAt(0)=='R'){
+                        loadScene("MenuMods.fxml",event);
+                    }
+                    else if (levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')) {
+                        loadScene("LevelSelector1to10.fxml",event);
+                    }
+                    else {
+                        loadScene("LevelSelector11to20.fxml",event);
+                    }}
+                else{
+                    loadScene("RLGMenu.fxml",event);}
             }
-    }
-
-    protected void pauseMenuRandom(Pane pane, LevelHandler levelHandler, Level level,Event event){
-            Rectangle rectangle = new Rectangle(1600, 900, Paint.valueOf("#000000"));
-            rectangle.setOpacity(0.3);
-            ImageView menuPause = createImageView("Sprites/FondChoser.png",600,500,150);
-            ImageView save = createImageView("Sprites/SaveButton.png",400,600,375);
-            ImageView leave = createImageView("Sprites/LeaveButton.png",400,600,525);
-            ImageView resume = createImageView("Sprites/ResumeButton.png", 400,600,225);
-
-            resume.setOnMouseEntered(resumeEvent -> imageChanger(resume,"Sprites/ResumeButtonLight.png"));
-            resume.setOnMouseExited(resumeEvent -> imageChanger(resume,"Sprites/ResumeButton.png"));
-            resume.setOnMouseClicked(resumeEvent -> pane.getChildren().remove(pane.getChildren().size()-5,pane.getChildren().size()));
-
-            leave.setOnMouseEntered(leaveEvent -> imageChanger(leave,"Sprites/LeaveButtonLight.png"));
-            leave.setOnMouseExited(leaveEvent -> imageChanger(leave,"Sprites/LeaveButton.png"));
-            leave.setOnMouseClicked(leaveEvent -> loadScene("RLGMenu.fxml",event));
-
-            save.setOnMouseEntered(saveEvent -> imageChanger(save,"Sprites/SaveButtonLight.png"));
-            save.setOnMouseExited(saveEvent -> imageChanger(save,"Sprites/SaveButton.png"));
-            save.setOnMouseClicked(saveEvent -> saveMenu(pane,level));
-
-            pane.getChildren().addAll(rectangle,menuPause,save,leave,resume);
     }
 
     public void saveMenu(Pane pane, Level levelSaved){

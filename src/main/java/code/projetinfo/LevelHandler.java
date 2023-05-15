@@ -76,6 +76,10 @@ public class LevelHandler {
         gridPos = new Position(gridPos.getX() - gridPos.getX()%tileSize, gridPos.getY() - gridPos.getY()%tileSize);
     }
 
+    public boolean isRandom() {
+        return isRandom;
+    }
+
     /** Draws the grid of the level.
      */
     public void drawGrid(){
@@ -432,7 +436,7 @@ public class LevelHandler {
     }
 
     /** Makes the ImageBlock rea-disappear in a certain duration (fade).
-     * Does the opposite of {@link #blockPop(ImageBlock, int)}.
+     * Does the opposite of {@link #blockDePop(ImageBlock, int)}.
      *
      * @param imageBlock The ImageBlock to make rea-disappear.
      * @param duration the duration of the fade.
@@ -500,13 +504,7 @@ public class LevelHandler {
      * @param imageBlock the block going to his spawnPos.
      */
     private void goToSpawnPosReset(ImageBlock imageBlock)
-    {
-        FadeTransition fT = blockDePop(imageBlock,100);
-        fT.setOnFinished(finishedEvent -> {
-            imageBlock.setPosition(imageBlock.getSpawnPos());
-            blockPop(imageBlock,100);
-        });
-    }
+    { imageBlock.setPosition(imageBlock.getSpawnPos()); }
 
     /**
      * set all the blocks in the level to their spawnPos with an animation.
@@ -533,7 +531,6 @@ public class LevelHandler {
             }
             this.level.setPlaced(0);
             TranslateTransition comeBacktT = translateAnimation(resetImage, 800,1600,0);
-            tT.play();
             comeBacktT.play();
             comeBacktT.setOnFinished(event -> pane.getChildren().remove(resetImage));
         });
