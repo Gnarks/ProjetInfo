@@ -45,9 +45,4 @@ public class Bob extends ImageBlock {
     public void rotate() {
         rotateTo((getRotateState()+1)%4);
     }
-
-    @Override
-    public ImageBlock clone() {
-        return new Bob(new Position(0,0));
-    }
 }

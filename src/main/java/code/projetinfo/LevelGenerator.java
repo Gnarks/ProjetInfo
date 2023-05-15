@@ -142,7 +142,6 @@ public class LevelGenerator {
             if (possiblePlacements.size() == 0 || alwaysDifferent) {
                 tryingToPlace.remove(currentBlock.getClass());
             }
-            System.out.println(tryingToPlace.size());
             //if we can place the block.
             if (possiblePlacements.size() >0) {
                 // we want to place the moved Blocks in priority by making a list of them.
