@@ -36,7 +36,7 @@ public class ControllerCredits extends ControllerParent implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         williamDescription.setText("Creator of this world's aesthetic.\nCause of death:\n Had to join his ghosts.");
-        maximeDescription.setText("Link between the universes.\nCause of death:\n Had suffocated with his hairs.");
+        maximeDescription.setText("Link between the universes.\nCause of death:\nTook himself for a shrimp and realized afterwards that he couldn't swim");
         leoDescription.setText("Creator of this world's physic.\nCause of death:\n Killed by a horde of goblins.");
     }
 }

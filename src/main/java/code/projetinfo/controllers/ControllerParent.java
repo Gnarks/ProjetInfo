@@ -164,7 +164,7 @@ public class ControllerParent {
             try {
                 levelSaved.saveState();
             } catch (Exception e) {
-                System.out.println("PAH");
+                System.out.println(e.getMessage());
             }
             finally {
                 ControllerParent.loadScene("RLGMenu.fxml",event);
@@ -177,7 +177,7 @@ public class ControllerParent {
             try {
                 levelSaved.saveState();
             } catch (Exception e) {
-                System.out.println("PAH");
+                System.out.println(e.getMessage());
             }
             finally {
                 ControllerParent.loadScene("RLGMenu.fxml",event);
@@ -190,7 +190,7 @@ public class ControllerParent {
             try {
                 levelSaved.saveState();
             } catch (Exception e) {
-                System.out.println("PAH");
+                System.out.println(e.getMessage());
             }
             finally {
                 ControllerParent.loadScene("RLGMenu.fxml",event);
@@ -333,12 +333,9 @@ public class ControllerParent {
         rectangle.setOpacity(0.2);
         rectangle.setFill(Paint.valueOf("#00ff00"));
         pane.getChildren().add(rectangle);
-        System.out.println(block);
         rectangle.setOnMouseClicked(event -> {
             pane.getChildren().remove(rectangle);
             blockChosen.remove(block);
-            System.out.println(blockChosen.toArray().length);
-
         });
 
     }
