@@ -179,7 +179,7 @@ public class LevelGenerator {
             throw new GenerateException("couldn't place the least amount of blocks.");
         }
 
-        return new Level("randomLevel",prepareGrid(grid),blocksUsed.toArray(new ImageBlock[0]));
+        return new Level("GeneratedLevel",prepareGrid(grid),blocksUsed.toArray(new ImageBlock[0]));
     }
 
 

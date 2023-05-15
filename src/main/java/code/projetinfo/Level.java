@@ -1,4 +1,5 @@
 package code.projetinfo;
+import code.projetinfo.normalBlocks.BigBob;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -10,12 +11,13 @@ import java.lang.reflect.InvocationTargetException;
 public class Level {
     private Cases grid;
     private ImageBlock[] blocks;
-    private boolean isNew;
     private int placed = 0;
     private String name;
     private final String pathName = System.getProperty("user.dir")+"<src<main<resources<code<projetinfo<levels.json";
     private final File f = new File(pathName.replaceAll("<", "\\"+System.getProperty("file.separator")));
     private final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+
+    private Cases initialGrid;
 
     /**
      * Constructor for Level.
@@ -24,10 +26,10 @@ public class Level {
      * @param blocs a list with all the usable blocks for the level
      */
     public Level(String name, Cases grid, ImageBlock[] blocs){
-        this.grid = grid;
+        this.grid = new Cases(grid.getCases().clone());
         this.blocks = blocs;
         this.name = name;
-        this.isNew = true;
+        this.initialGrid = new Cases(grid.getCases().clone());
     }
 
     /**
@@ -42,7 +44,6 @@ public class Level {
      */
     public Level(String name) throws IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         this.name = name;
-        this.isNew = false;
         loadState(name);
     }
 
@@ -58,15 +59,7 @@ public class Level {
         ObjectNode levels = (ObjectNode) jsonData;
 
         ObjectNode newNode = mapper.createObjectNode();
-        JsonNode gridNode;
-
-        if (isNew) {
-            gridNode = mapper.convertValue(this.grid.getCases(), JsonNode.class);
-        }else{
-            JsonNode nodeFinder = jsonData.path(name).path("grid");
-            CaseState[][] externCases = mapper.treeToValue(nodeFinder, CaseState[][].class);
-            gridNode = mapper.convertValue(externCases, JsonNode.class);
-        }
+        JsonNode gridNode = mapper.convertValue(this.initialGrid.getCases().clone(), JsonNode.class);
         newNode.set("grid", gridNode);
 
 
@@ -107,7 +100,9 @@ public class Level {
         //Handles the grid importing
         JsonNode nodeFinder = jsonData.path(name).path("grid");
         CaseState[][] externCases = mapper.treeToValue(nodeFinder, CaseState[][].class);
-        this.grid = new Cases(externCases);
+        this.grid = new Cases(externCases.clone());
+        this.initialGrid = new Cases(externCases.clone());
+
 
         nodeFinder = jsonData.path(name).path("blockList");
         ImageBlock[] jsonBlocks = new ImageBlock[nodeFinder.size()];
@@ -122,10 +117,10 @@ public class Level {
 
             //get the position of each saved blocks
             nodeFinder = jsonData.path(name).path("blockList").path(String.valueOf(i)).path("layoutX");
-            double midX = mapper.treeToValue(nodeFinder, double.class);
+            double layoutX = mapper.treeToValue(nodeFinder, double.class);
 
             nodeFinder = jsonData.path(name).path("blockList").path(String.valueOf(i)).path("layoutY");
-            double midY = mapper.treeToValue(nodeFinder, double.class);
+            double layoutY = mapper.treeToValue(nodeFinder, double.class);
 
             nodeFinder = jsonData.path(name).path("blockList").path(String.valueOf(i)).path("rotateState");
             int rotateState = mapper.treeToValue(nodeFinder, int.class);
@@ -134,9 +129,22 @@ public class Level {
             boolean placedState = mapper.treeToValue(nodeFinder, boolean.class);
 
             //Construct a Block with the imported block attributes and set if he is placed or not
-            jsonBlocks[i] = (ImageBlock) current.getDeclaredConstructor(Position.class).newInstance(new Position(midX, midY));
-            jsonBlocks[i].setPlaced(placedState);
+            jsonBlocks[i] = (ImageBlock) current.getDeclaredConstructor(Position.class).newInstance(new Position(layoutX, layoutY));
+
+            if (jsonBlocks[i].getClass() == BigBob.class){
+                System.out.println(jsonBlocks[i].getRotateState());
+                System.out.printf("%s,%s\n",jsonBlocks[i].getLayoutX(),jsonBlocks[i].getLayoutY());
+                System.out.println("init");
+                System.out.printf("%s,%s\n",jsonBlocks[i].getMidX(),jsonBlocks[i].getMidY());
+            }
             jsonBlocks[i].rotateTo(rotateState);
+            jsonBlocks[i].setRotateState(rotateState);
+            if (jsonBlocks[i].getClass() == BigBob.class){
+                System.out.println(jsonBlocks[i].getRotateState());
+                System.out.printf("%s,%s\n",jsonBlocks[i].getLayoutX(),jsonBlocks[i].getLayoutY());
+                System.out.printf("%s,%s\n",jsonBlocks[i].getMidX(),jsonBlocks[i].getMidY());
+            }
+            jsonBlocks[i].setPlaced(placedState);
         }
         this.blocks = jsonBlocks;
     }

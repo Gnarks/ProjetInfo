@@ -39,7 +39,17 @@ public class Cases {
      * @param cases the 2D array of CasesState to be cloned in Cases.
      */
     public Cases(CaseState[][] cases){
-        this.cases = cases.clone();
+        if (cases.length == 0){
+            this.cases = new CaseState[0][0];
+            return;
+        }
+        CaseState[][] newCases = new CaseState[cases.length][cases[0].length];
+        for (int i = 0; i < cases.length; i++) {
+            for (int j = 0; j < cases[i].length; j++) {
+                newCases[i][j] = cases[i][j];
+            }
+        }
+        this.cases = newCases;
     }
 
     /** Sets the case at the x and y position to
