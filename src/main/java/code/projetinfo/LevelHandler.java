@@ -563,6 +563,7 @@ public class LevelHandler {
         return colliding;
     }
 
+
     /** Moves the ImageBlock relative to the MouseEvent.
      *
      * @param imageBlock The ImageBlock to be moved
