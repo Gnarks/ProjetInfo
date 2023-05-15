@@ -60,19 +60,15 @@ public class ControllerMenuMods extends ControllerParent{
     @FXML
     protected void onSpeedrunEntered(){
         imageChanger(speedrunButton,"Sprites/SpeedrunButtonLight.png");
-        speedrunButton.setOnMouseClicked(event -> LevelSelect(pane,"RandomLevel1",speedrunButton));
     }
     @FXML
     protected void onDancingEntered(){
         imageChanger(dancingButton,"Sprites/DancingButtonLight.png");
-
-        dancingButton.setOnMouseClicked(event -> LevelSelect(pane,"RandomLevel2",dancingButton));
     }
     @FXML
     protected void onMemoryEntered(){
         imageChanger(memoryButton,"Sprites/MemoryButtonLight.png");
 
-        memoryButton.setOnMouseClicked(event -> LevelSelect(pane,"RandomLevel3",memoryButton));
     }
     @FXML
     protected void onBackExited(){

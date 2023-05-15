@@ -22,19 +22,19 @@ public class ControllerRandomLevelSelector extends ControllerParent{
     @FXML
     protected void onRandom1Entered(){
         imageChanger(random1Button,"Sprites/Random1ButtonLight.png");
-        random1Button.setOnMouseClicked(event -> LevelSelect(pane,"RandomLevel1",random1Button));
+        LevelSelect(pane,"RandomLevel1",random1Button);
     }
     @FXML
     protected void onRandom2Entered(){
         imageChanger(random2Button,"Sprites/Random2ButtonLight.png");
 
-        random2Button.setOnMouseClicked(event -> LevelSelect(pane,"RandomLevel2",random2Button));
+        LevelSelect(pane,"RandomLevel2",random2Button);
     }
     @FXML
     protected void onRandom3Entered(){
         imageChanger(random3Button,"Sprites/Random3ButtonLight.png");
 
-        random3Button.setOnMouseClicked(event -> LevelSelect(pane,"RandomLevel3",random3Button));
+        LevelSelect(pane,"RandomLevel3",random3Button);
     }
     @FXML
     protected void onBackExited(){
