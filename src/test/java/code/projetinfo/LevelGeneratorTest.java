@@ -15,7 +15,6 @@ public class LevelGeneratorTest {
 
         LevelGenerator levelGenerator = new LevelGenerator(new Class[]{Amogous.class},
                 1,1,false);
-
         try {
            levelGenerator.generate();
         }
@@ -23,4 +22,11 @@ public class LevelGeneratorTest {
             System.out.println(e.getMessage());
         }
     }
+    @Test
+    public void goodSize() throws LevelGenerator.GenerateException {
+        LevelGenerator generator = new LevelGenerator(new Class[]{Amogous.class}, 2,2,false);
+        Level test = generator.generate();
+        assertTrue((test.getGrid().getCol() == 2 && test.getGrid().getRow() == 3) || (test.getGrid().getCol() == 3 && test.getGrid().getRow() == 2));
+    }
+
 }
