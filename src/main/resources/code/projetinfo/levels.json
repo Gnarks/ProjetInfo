@@ -1,1389 +1,1389 @@
 {
   "test" : {
     "grid" : [ [ "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Redky",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "heart" : {
     "grid" : [ [ "SPECIAL", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "SPECIAL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "FULL", "FULL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "SPECIAL", "FULL", "FULL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL" ], [ "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL" ], [ "SPECIAL", "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL", "SPECIAL" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Geoffroy",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Redky",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Redky",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "7" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "8" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "Level01" : {
     "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "FULL", "FULL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.VicKing",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Redky",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "Level02" : {
     "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.BigBob",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "Level03" : {
     "grid" : [ [ "FULL", "FULL", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "SPECIAL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Redky",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.BigBob",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "Level04" : {
     "grid" : [ [ "SPECIAL", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "SPECIAL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "FULL", "FULL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "SPECIAL", "FULL", "FULL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL" ], [ "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL" ], [ "SPECIAL", "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL", "SPECIAL" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Geoffroy",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Redky",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Redky",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "7" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "8" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "Level05" : {
     "grid" : [ [ "FULL", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "FULL", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "FULL", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "FULL", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "FULL", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.BigBob",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "Level06" : {
     "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Redky",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Phantom",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "Level07" : {
     "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.VicKing",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Phantom",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Phantom",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "Level08" : {
     "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Phantom",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "7" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "8" : {
         "type" : "class code.projetinfo.normalBlocks.Wolfy",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "Level09" : {
     "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "FULL", "SPECIAL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "FULL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "FULL", "FULL" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Wolfy",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Phantom",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Phantom",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "Level10" : {
     "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Bloby",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Redky",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Phantom",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "Level11" : {
     "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "FULL", "EMPTY", "EMPTY", "EMPTY", "FULL" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Nessy",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Nessy",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Bloby",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "Level12" : {
     "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.LilDeath",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.LilDeath",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.BigBob",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "Level13" : {
     "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Nessy",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Bloby",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.LilDeath",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Toowels",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Napsta",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "Level14" : {
     "grid" : [ [ "SPECIAL", "EMPTY", "EMPTY", "EMPTY", "SPECIAL" ], [ "EMPTY", "EMPTY", "SPECIAL", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.GymBroo",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.GymBroo",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Toowels",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Bloby",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "Level15" : {
     "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Bloby",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Nessy",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.LilDeath",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.BigBob",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.GymBroo",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.LilDeath",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "7" : {
         "type" : "class code.projetinfo.normalBlocks.Toowels",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "Level16" : {
     "grid" : [ [ "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL", "FULL" ], [ "SPECIAL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "SPECIAL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL" ], [ "FULL", "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.GymBroo",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.PlagueDoc",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.PlagueDoc",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Geoffroy",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "Level17" : {
     "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Nessy",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.PlagueDoc",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Wolfy",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Phantom",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.Bloby",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "Level18" : {
     "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.VicKing",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Nessy",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.GymBroo",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.BigBob",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Geoffroy",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Toowels",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "Level19" : {
     "grid" : [ [ "SPECIAL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "FULL" ], [ "SPECIAL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "FULL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "FULL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL" ], [ "FULL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.King",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Bob",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.PlagueDoc",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.LilDeath",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Toowels",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Toowels",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "Level20" : {
     "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "SPECIAL", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "SPECIAL", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "SPECIAL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "SPECIAL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Toowels",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.BooBelle",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Bloby",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.Nessy",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "7" : {
         "type" : "class code.projetinfo.normalBlocks.Redky",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "8" : {
         "type" : "class code.projetinfo.normalBlocks.LilDeath",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "9" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       },
       "10" : {
         "type" : "class code.projetinfo.normalBlocks.PlagueDoc",
-        "rotatestate" : 0,
-        "LayoutX" : 0.0,
-        "LayoutY" : 0.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 0.0,
+        "layoutY": 0.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "RandomLevel1" : {
     "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "SPECIAL", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.King",
-        "rotatestate" : 0,
-        "LayoutX" : 400.0,
-        "LayoutY" : 250.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 400.0,
+        "layoutY": 250.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
-        "rotatestate" : 0,
-        "LayoutX" : 200.0,
-        "LayoutY" : 150.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 200.0,
+        "layoutY": 150.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
-        "rotatestate" : 0,
-        "LayoutX" : 400.0,
-        "LayoutY" : 500.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 400.0,
+        "layoutY": 500.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.LilDeath",
-        "rotatestate" : 0,
-        "LayoutX" : 200.0,
-        "LayoutY" : 250.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 200.0,
+        "layoutY": 250.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.LilDeath",
-        "rotatestate" : 0,
-        "LayoutX" : 400.0,
-        "LayoutY" : 600.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 400.0,
+        "layoutY": 600.0,
+        "isPlaced": false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.LilDeath",
-        "rotatestate" : 0,
-        "LayoutX" : 1250.0,
-        "LayoutY" : 250.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 1250.0,
+        "layoutY": 250.0,
+        "isPlaced": false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.LilDeath",
-        "rotatestate" : 0,
-        "LayoutX" : 1050.0,
-        "LayoutY" : 150.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 1050.0,
+        "layoutY": 150.0,
+        "isPlaced": false
       },
       "7" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
-        "rotatestate" : 0,
-        "LayoutX" : 1250.0,
-        "LayoutY" : 450.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 1250.0,
+        "layoutY": 450.0,
+        "isPlaced": false
       },
       "8" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
-        "rotatestate" : 0,
-        "LayoutX" : 1050.0,
-        "LayoutY" : 350.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 1050.0,
+        "layoutY": 350.0,
+        "isPlaced": false
       },
       "9" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
-        "rotatestate" : 0,
-        "LayoutX" : 1250.0,
-        "LayoutY" : 550.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 1250.0,
+        "layoutY": 550.0,
+        "isPlaced": false
       },
       "10" : {
         "type" : "class code.projetinfo.normalBlocks.Geoffroy",
-        "rotatestate" : 0,
-        "LayoutX" : 1050.0,
-        "LayoutY" : 450.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 1050.0,
+        "layoutY": 450.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "RandomLevel2" : {
     "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "SPECIAL", "EMPTY", "EMPTY", "SPECIAL" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotatestate" : 0,
-        "LayoutX" : 450.0,
-        "LayoutY" : 300.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 450.0,
+        "layoutY": 300.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Wolfy",
-        "rotatestate" : 0,
-        "LayoutX" : 250.0,
-        "LayoutY" : 200.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 250.0,
+        "layoutY": 200.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.Toowels",
-        "rotatestate" : 0,
-        "LayoutX" : 450.0,
-        "LayoutY" : 450.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 450.0,
+        "layoutY": 450.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotatestate" : 0,
-        "LayoutX" : 1250.0,
-        "LayoutY" : 300.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 1250.0,
+        "layoutY": 300.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.LilDeath",
-        "rotatestate" : 0,
-        "LayoutX" : 1050.0,
-        "LayoutY" : 200.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 1050.0,
+        "layoutY": 200.0,
+        "isPlaced": false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.LilDeath",
-        "rotatestate" : 0,
-        "LayoutX" : 1250.0,
-        "LayoutY" : 450.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 1250.0,
+        "layoutY": 450.0,
+        "isPlaced": false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotatestate" : 0,
-        "LayoutX" : 1050.0,
-        "LayoutY" : 400.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 1050.0,
+        "layoutY": 400.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
   },
   "RandomLevel3" : {
     "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL" ], [ "EMPTY", "EMPTY", "SPECIAL", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL" ], [ "SPECIAL", "EMPTY", "SPECIAL", "SPECIAL", "SPECIAL", "SPECIAL", "FULL" ], [ "SPECIAL", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL", "SPECIAL", "SPECIAL" ] ],
-    "blocklist" : {
+    "blockList": {
       "0" : {
         "type" : "class code.projetinfo.normalBlocks.Bloby",
-        "rotatestate" : 0,
-        "LayoutX" : 400.0,
-        "LayoutY" : 250.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 400.0,
+        "layoutY": 250.0,
+        "isPlaced": false
       },
       "1" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotatestate" : 0,
-        "LayoutX" : 200.0,
-        "LayoutY" : 150.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 200.0,
+        "layoutY": 150.0,
+        "isPlaced": false
       },
       "2" : {
         "type" : "class code.projetinfo.normalBlocks.PlagueDoc",
-        "rotatestate" : 0,
-        "LayoutX" : 400.0,
-        "LayoutY" : 450.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 400.0,
+        "layoutY": 450.0,
+        "isPlaced": false
       },
       "3" : {
         "type" : "class code.projetinfo.normalBlocks.PlagueDoc",
-        "rotatestate" : 0,
-        "LayoutX" : 200.0,
-        "LayoutY" : 300.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 200.0,
+        "layoutY": 300.0,
+        "isPlaced": false
       },
       "4" : {
         "type" : "class code.projetinfo.normalBlocks.Scooboodoo",
-        "rotatestate" : 0,
-        "LayoutX" : 400.0,
-        "LayoutY" : 600.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 400.0,
+        "layoutY": 600.0,
+        "isPlaced": false
       },
       "5" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
-        "rotatestate" : 0,
-        "LayoutX" : 1250.0,
-        "LayoutY" : 250.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 1250.0,
+        "layoutY": 250.0,
+        "isPlaced": false
       },
       "6" : {
         "type" : "class code.projetinfo.normalBlocks.VicKing",
-        "rotatestate" : 0,
-        "LayoutX" : 1050.0,
-        "LayoutY" : 150.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 1050.0,
+        "layoutY": 150.0,
+        "isPlaced": false
       },
       "7" : {
         "type" : "class code.projetinfo.normalBlocks.Toowels",
-        "rotatestate" : 0,
-        "LayoutX" : 1250.0,
-        "LayoutY" : 350.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 1250.0,
+        "layoutY": 350.0,
+        "isPlaced": false
       },
       "8" : {
         "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotatestate" : 0,
-        "LayoutX" : 1050.0,
-        "LayoutY" : 350.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 1050.0,
+        "layoutY": 350.0,
+        "isPlaced": false
       },
       "9" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
-        "rotatestate" : 0,
-        "LayoutX" : 1250.0,
-        "LayoutY" : 600.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 1250.0,
+        "layoutY": 600.0,
+        "isPlaced": false
       },
       "10" : {
         "type" : "class code.projetinfo.normalBlocks.Baby",
-        "rotatestate" : 0,
-        "LayoutX" : 1050.0,
-        "LayoutY" : 500.0,
-        "isplaced" : false
+        "rotateState": 0,
+        "layoutX": 1050.0,
+        "layoutY": 500.0,
+        "isPlaced": false
       }
     },
     "placed" : 0
