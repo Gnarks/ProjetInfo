@@ -201,7 +201,7 @@ public class LevelHandler {
         addVictoryText("BACK TO MENUS",160,25);
         ImageView blocky = addVictoryGhost("Sprites/Ghost_Blocky.png",200,150);
         ImageView ghost1 = addVictoryGhost("Sprites/Ghost_Magky.png",200,500);
-        ImageView ghost2 = addVictoryGhost("Sprites/Clode.png",1175,200);
+        ImageView ghost2 = addVictoryGhost("Sprites/Ghost_Clode.png",1175,200);
         ImageView ghost3 = addVictoryGhost("Sprites/Ghost_Bluky.png",1100,470);
         ghostDancing(blocky,ghost1,ghost2,ghost3);
     }

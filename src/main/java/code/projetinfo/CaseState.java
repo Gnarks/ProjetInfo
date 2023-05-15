@@ -1,7 +1,6 @@
 package code.projetinfo;
 
 /** Represents the state of a single case.
- *
  * possible state:
  * {@link #EMPTY},
  * {@link #FULL},
