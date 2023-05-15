@@ -13,8 +13,8 @@ public class Level {
     private boolean isNew;
     private int placed = 0;
     private String name;
-    private final String pathname = System.getProperty("user.dir")+"<src<main<resources<code<projetinfo<levels.json";
-    private final File f = new File(pathname.replaceAll("<", "\\"+System.getProperty("file.separator")));
+    private final String pathName = System.getProperty("user.dir")+"<src<main<resources<code<projetinfo<levels.json";
+    private final File f = new File(pathName.replaceAll("<", "\\"+System.getProperty("file.separator")));
     private final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
     public Level(String name, Cases grid, ImageBlock[] blocs){
         this.grid = grid;
@@ -47,27 +47,27 @@ public class Level {
             gridNode = mapper.convertValue(this.grid.getCases(), JsonNode.class);
         }else{
             JsonNode nodeFinder = jsonData.path(name).path("grid");
-            CaseState[][] testcases = mapper.treeToValue(nodeFinder, CaseState[][].class);
-            gridNode = mapper.convertValue(testcases, JsonNode.class);
+            CaseState[][] externCases = mapper.treeToValue(nodeFinder, CaseState[][].class);
+            gridNode = mapper.convertValue(externCases, JsonNode.class);
         }
         newNode.set("grid", gridNode);
 
 
-        ObjectNode blocklist = mapper.createObjectNode();
+        ObjectNode blockList = mapper.createObjectNode();
         for (int i = 0; i < this.blocks.length; ++i){
             ObjectNode block = mapper.createObjectNode();
             block.put("type", blocks[i].getClass().toString());
-            block.put("rotatestate", blocks[i].getRotateState());
+            block.put("rotateState", blocks[i].getRotateState());
 
-            block.put("LayoutX", this.blocks[i].getLayoutX());
-            block.put("LayoutY", this.blocks[i].getLayoutY());
+            block.put("layoutX", this.blocks[i].getLayoutX());
+            block.put("layoutY", this.blocks[i].getLayoutY());
 
-            block.put("isplaced", this.blocks[i].getPlacedState());
-            blocklist.set(String.valueOf(i), block);
+            block.put("isPlaced", this.blocks[i].getPlacedState());
+            blockList.set(String.valueOf(i), block);
         }
 
 
-        newNode.set("blocklist", blocklist);
+        newNode.set("blockList", blockList);
         newNode.put("placed", this.placed);
         levels.set(this.name, newNode);
         mapper.writeValue(f, levels);
@@ -89,36 +89,36 @@ public class Level {
 
         //Handles the grid importing
         JsonNode nodeFinder = jsonData.path(name).path("grid");
-        CaseState[][] testcases = mapper.treeToValue(nodeFinder, CaseState[][].class);
-        this.grid = new Cases(testcases);
+        CaseState[][] externCases = mapper.treeToValue(nodeFinder, CaseState[][].class);
+        this.grid = new Cases(externCases);
 
-        nodeFinder = jsonData.path(name).path("blocklist");
+        nodeFinder = jsonData.path(name).path("blockList");
         ImageBlock[] jsonBlocks = new ImageBlock[nodeFinder.size()];
 
         int count = nodeFinder.size();
         for (int i = 0; i < count; i++){
-            nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("type");
+            nodeFinder = jsonData.path(name).path("blockList").path(String.valueOf(i)).path("type");
             //remove the class prefix to prevent a bug
             String classString = mapper.treeToValue(nodeFinder, String.class);
             classString = classString.substring(6);
             Class<?> current = Class.forName(classString);
 
             //get the position of each saved blocks
-            nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("LayoutX");
+            nodeFinder = jsonData.path(name).path("blockList").path(String.valueOf(i)).path("layoutX");
             double midX = mapper.treeToValue(nodeFinder, double.class);
 
-            nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("LayoutY");
+            nodeFinder = jsonData.path(name).path("blockList").path(String.valueOf(i)).path("layoutY");
             double midY = mapper.treeToValue(nodeFinder, double.class);
 
-            nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("rotatestate");
+            nodeFinder = jsonData.path(name).path("blockList").path(String.valueOf(i)).path("rotateState");
             int rotateState = mapper.treeToValue(nodeFinder, int.class);
 
-            nodeFinder = jsonData.path(name).path("blocklist").path(String.valueOf(i)).path("isplaced");
-            boolean placedstate = mapper.treeToValue(nodeFinder, boolean.class);
+            nodeFinder = jsonData.path(name).path("blockList").path(String.valueOf(i)).path("isPlaced");
+            boolean placedState = mapper.treeToValue(nodeFinder, boolean.class);
 
             //Construct a Block with the imported block attributes and set if he is placed or not
             jsonBlocks[i] = (ImageBlock) current.getDeclaredConstructor(Position.class).newInstance(new Position(midX, midY));
-            jsonBlocks[i].setPlaced(placedstate);
+            jsonBlocks[i].setPlaced(placedState);
             jsonBlocks[i].rotateTo(rotateState);
         }
         this.blocks = jsonBlocks;
