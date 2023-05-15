@@ -96,7 +96,7 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
                 error.setLayoutX(700);
                 error.setLayoutY(450);
                 pane.getChildren().add(error);
-                error.setOnAction(event -> loadScene("RLGMenu.fxml",event));
+                error.setOnAction(event -> loadScene("RandomLevelGenerator.fxml",event));
                 return;
             }
 

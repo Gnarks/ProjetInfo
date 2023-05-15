@@ -214,17 +214,15 @@ public class LevelHandler {
 
         if (isRandom){
             victoryAnimation();
-            addVictoryText("SAVE",970,650);
             addVictoryText("RE-ROLL",630,650);
             ImageView buttonSave = new ImageView(String.valueOf(AppMenu.class.getResource("Sprites/SaveButton.png")));
             pane.getChildren().add(buttonSave);
             buttonSave.setPreserveRatio(true);
             buttonSave.setFitHeight(100);
-            buttonSave.setLayoutX(975);
+            buttonSave.setLayoutX(1035);
             buttonSave.setLayoutY(730);
             buttonSave.setOnMouseEntered(event ->buttonSave.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/SaveButtonLight.png")))));
             buttonSave.setOnMouseExited(event ->buttonSave.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/SaveButton.png")))));
-
         }
         else {
             victoryAnimation();

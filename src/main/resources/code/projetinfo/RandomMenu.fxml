@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<Pane xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="code.projetinfo.controllers.ControllerRandomMenu"
+      prefHeight="400.0" prefWidth="600.0">
+    <ImageView fitHeight="900.0" fitWidth="1600.0">
+        <Image url="@Sprites/MenuFond.png"/>
+    </ImageView>
+    <ImageView fx:id="buttonBack" fitHeight="138.0" fitWidth="166.0" onMouseEntered="#onBackEntered"
+               onMouseExited="#onBackExited">
+        <Image url="@Sprites/ButtonBackToMenu.png"/>
+    </ImageView>
+    <ImageView fx:id="randomLevelsSaved" fitHeight="146.0" fitWidth="461.0" layoutX="603.0" layoutY="460.0"
+               onMouseEntered="#onRLSEntered" onMouseExited="#onRLSExited">
+        <Image url="@Sprites/RandomLevelSaved.png"/>
+    </ImageView>
+    <ImageView fx:id="randomLevelGenerator" fitHeight="146.0" fitWidth="477.0" layoutX="595.0" layoutY="321.0"
+               onMouseEntered="#onRLGEntered" onMouseExited="#onRLGExited">
+        <Image url="@Sprites/RandomLevelGeneratorButton.png"/>
+    </ImageView>
+</Pane>
+

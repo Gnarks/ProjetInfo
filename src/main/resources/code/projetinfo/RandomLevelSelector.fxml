@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<Pane fx:id="pane" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="code.projetinfo.controllers.ControllerRandomLevelSelector"
+      prefHeight="400.0" prefWidth="600.0">
+
+    <ImageView fitHeight="900.0" fitWidth="1600.0">
+        <Image url="@Sprites/MenuFond.png"/>
+    </ImageView>
+    <ImageView fx:id="random2Button" fitHeight="146.0" fitWidth="477.0" layoutX="603.0" layoutY="377.0"
+               onMouseEntered="#onRandom2Entered" onMouseExited="#onRandom2Exited">
+        <Image url="@Sprites/Random2Button.png"/>
+    </ImageView>
+    <ImageView fx:id="buttonBack" fitHeight="138.0" fitWidth="166.0" onMouseEntered="#onBackEntered"
+               onMouseExited="#onBackExited">
+        <Image url="@Sprites/ButtonBackToMenu.png"/>
+    </ImageView>
+    <ImageView fx:id="random1Button" fitHeight="146.0" fitWidth="461.0" layoutX="603.0" layoutY="231.0"
+               onMouseEntered="#onRandom1Entered" onMouseExited="#onRandom1Exited">
+        <Image url="@Sprites/Random1Button.png"/>
+    </ImageView>
+    <ImageView fx:id="random3Button" fitHeight="146.0" fitWidth="477.0" layoutX="595.0" layoutY="523.0"
+               onMouseEntered="#onRandom3Entered" onMouseExited="#onRandom3Exited">
+        <Image url="@Sprites/Random3Button.png"/>
+    </ImageView>
+</Pane>
+
