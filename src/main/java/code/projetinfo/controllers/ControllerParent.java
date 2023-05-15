@@ -72,9 +72,12 @@ public class ControllerParent {
                 leave.setOnMouseEntered(leaveEvent -> imageChanger(leave,"Sprites/LeaveButtonLight.png"));
                 leave.setOnMouseExited(leaveEvent -> imageChanger(leave,"Sprites/LeaveButton.png"));
                 leave.setOnMouseClicked(leaveEvent -> {
-                    if(!levelHandler.isRandom()){
 
-                    if (level.getName().charAt(5) == '0' || (level.getName().charAt(5) == '1'
+                    if(!levelHandler.isRandom()){
+                        if(level.getName().charAt(0) == 'R'){
+                            loadScene("RandomLevelGenerator.fxml",event);
+                        }
+                    else if (level.getName().charAt(5) == '0' || (level.getName().charAt(5) == '1'
                             && level.getName().charAt(6) == '0')) {
                         loadScene("LevelSelector1to10.fxml",event);
                     } else {
