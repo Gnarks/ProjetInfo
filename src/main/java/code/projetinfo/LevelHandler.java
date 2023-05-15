@@ -214,7 +214,11 @@ public class LevelHandler {
             buttonSave.setOnMouseExited(event ->ControllerParent.imageChanger(buttonSave,"Sprites/Button_Save.png"));
 
             pane.getChildren().add(buttonSave);
-            buttonSave.setOnMouseClicked(clicked -> ControllerParent.randomLevelsSaveMenu(pane,level));
+
+            buttonSave.setOnMouseClicked(clicked -> {
+                ControllerParent.randomLevelsSaveMenu(pane, level);
+
+            });
 
 
         }
@@ -322,6 +326,11 @@ public class LevelHandler {
     public String nextLevel(String levelName){
         String nextLevel = "Level";
 
+        if (levelName.charAt(0)== 'R'){
+            int randomLevelNumber = Character.getNumericValue(levelName.charAt(levelName.length()-1));
+            randomLevelNumber = randomLevelNumber+1;
+            return (randomLevelNumber == 4?null:String.format("RandomLevel%s",randomLevelNumber));
+        }
         int levelNumber = Character.getNumericValue(levelName.charAt(5))*10 + Character.getNumericValue(levelName.charAt(6));
 
         if (levelNumber == 20){

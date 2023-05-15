@@ -1,6 +1,7 @@
 package code.projetinfo.controllers;
 
 import code.projetinfo.AppMenu;
+import code.projetinfo.ImageBlock;
 import code.projetinfo.Level;
 import code.projetinfo.LevelHandler;
 import javafx.animation.TranslateTransition;
@@ -117,6 +118,16 @@ public class ControllerParent {
         save.setOnMouseClicked(saveEvent -> {
             levelSaved.setName(nameToSave);
             try {
+                if (levelSaved.getBlocks().length == levelSaved.getPlaced())
+                {
+                    for (ImageBlock imageBlock: levelSaved.getBlocks()
+                    ) {
+                        if (imageBlock.getPlacedState()){
+                            imageBlock.setPlaced(false);
+                            imageBlock.setPosition(imageBlock.getSpawnPos());
+                        }
+                    }
+                }
                 levelSaved.saveState();
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -163,6 +174,7 @@ public class ControllerParent {
         backGround.setLayoutX(500);
         backGround.setLayoutY(150);
         backGround.setFitWidth(600);
+
 
         ImageView randomSave1 = createImageView("Sprites/Button_Random1.png",500,550,200);
         setAsSaveButton(randomSave1,"Sprites/Button_Random1.png","RandomLevel1",levelSaved);
