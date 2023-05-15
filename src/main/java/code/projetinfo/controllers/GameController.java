@@ -31,8 +31,6 @@ public class GameController extends ControllerParent implements Initializable {
 
     private String levelName;
 
-    private final int randomnessValue =0;
-
     public void setLevelName(String levelName){
         this.levelName = levelName;
     }
@@ -98,7 +96,7 @@ public class GameController extends ControllerParent implements Initializable {
                 else{
                     levelHandler.loadLevel(levelName,event);
             }});
-            backToMenuButton.setOnMouseClicked(event -> pauseMenu(pane,levelHandler,level,levelName,event));
+            backToMenuButton.setOnMouseClicked(event -> pauseMenu(pane,levelHandler,level,event));
         });
     }
 }

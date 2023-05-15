@@ -16,6 +16,13 @@ public class Level {
     private final String pathName = System.getProperty("user.dir")+"<src<main<resources<code<projetinfo<levels.json";
     private final File f = new File(pathName.replaceAll("<", "\\"+System.getProperty("file.separator")));
     private final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+
+    /**
+     * Constructor for Level.
+     * @param name The name of the level
+     * @param grid The inner matrix of the level
+     * @param blocs a list with all the usable blocks for the level
+     */
     public Level(String name, Cases grid, ImageBlock[] blocs){
         this.grid = grid;
         this.blocks = blocs;
@@ -23,6 +30,16 @@ public class Level {
         this.isNew = true;
     }
 
+    /**
+     * This constructor load the level "name" from the json file into the constructed instance.
+     * @param name The name of the level to load from the json file.
+     * @throws IOException
+     * @throws ClassNotFoundException
+     * @throws InvocationTargetException
+     * @throws NoSuchMethodException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     */
     public Level(String name) throws IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         this.name = name;
         this.isNew = false;
@@ -153,7 +170,7 @@ public class Level {
 
     /**
      * This method "place" a bloc in the grid matrix.
-     * We just put the matrix bloc in a bigger matrix grid.
+     * We just put the matrix of the bloc in a bigger matrix grid.
      * @param imageBlock
      * The matrix representing the bloc to place
      * @param x
@@ -190,27 +207,42 @@ public class Level {
         imageBlock.setPlaced(false);
     }
 
-    public void show(){
-        grid.show();
-    }
-
+    /**
+     * @return the list of the usable blocks in the level.
+     */
     public ImageBlock[] getBlocks() {
         return blocks;
     }
 
+    /**
+     * @return the matrix representing the level.
+     */
     public Cases getGrid() {return grid;}
+
+    /**
+     * @param n the number of placed blocks to be set.
+     */
     public void setPlaced(int n){
         this.placed = n;
     }
 
+    /**
+     * @param levelName the name of the level to be set.
+     */
     public void setName(String levelName){
         this.name = levelName;
     }
 
+    /**
+     * @return the number of blocks placed by user.
+     */
     public int getPlaced(){
         return placed;
     }
 
+    /**
+     * @return the name of the level.
+     */
     public String getName(){
         return this.name;
     }
