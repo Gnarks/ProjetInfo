@@ -71,8 +71,6 @@ public class ControllerRLG extends ControllerParent implements Initializable {
     @FXML
     protected void onCreateEntered(){
         imageChanger(createButton,"Sprites/Button_Create_Light.png");
-
-
     }
 
     @FXML
@@ -102,16 +100,12 @@ public class ControllerRLG extends ControllerParent implements Initializable {
     }
     @FXML
     protected void onMaxIncExited(){
-
         imageChanger(maximumIncrease,"Sprites/Button_Arrow_Right.png");
     }
-
-
     @FXML
     protected void onMaxDecEntered(){
         imageChanger(maximumDecrease,"Sprites/Button_Arrow_LeftLight.png");
     }
-
     @FXML
     protected void onMaxDecExited(){
         imageChanger(maximumDecrease,"Sprites/Button_Arrow_Left.png");
