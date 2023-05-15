@@ -22,37 +22,37 @@ public class ControllerMenu extends ControllerParent implements Initializable {
 
     @FXML
     protected void onExitEntered(){
-        imageChanger(exitButtonImage,"Sprites/EXITPRESSED.png");
+        imageChanger(exitButtonImage,"Sprites/Button_Exit_Light.png");
         exitButtonImage.setOnMouseClicked(event -> Platform.exit());
     }
     @FXML
     protected void onExitExited(){
-        imageChanger(exitButtonImage,"Sprites/EXIT.png");
+        imageChanger(exitButtonImage,"Sprites/Button_Exit.png");
     }
     @FXML
     protected void onCollectionEntered() {
-        onButtonEntered(collectionButtonImage,"Sprites/ButtonCollectionLight.png","Collection.fxml");
+        onButtonEntered(collectionButtonImage,"Sprites/Button_Collection_Light.png","Collection.fxml");
     }
     @FXML
     protected void onCollectionExited(){
-        imageChanger(collectionButtonImage,"Sprites/ButtonCollection.png");
+        imageChanger(collectionButtonImage,"Sprites/Button_Collection.png");
     }
     @FXML
     protected void onPlayEntered(){
-        onButtonEntered(playButtonImage,"Sprites/ButtonPlayLight.png","MenuPlay.fxml");
+        onButtonEntered(playButtonImage,"Sprites/Button_Play_Light.png","MenuPlay.fxml");
     }
     @FXML
     protected void onPlayExited(){
-        imageChanger(playButtonImage,"Sprites/Buttonplay.png");
+        imageChanger(playButtonImage,"Sprites/Button_Play.png");
     }
     @FXML
     protected void onOptionsEntered() {
-        imageChanger(optionsButtonImage, "Sprites/ButtonOptionsLight.png");
+        imageChanger(optionsButtonImage, "Sprites/Button_Options_Light.png");
         optionsButtonImage.setOnMouseClicked(event ->loadScene("OptionsMenu.fxml",event));
     }
     @FXML
     protected void onOptionsExited() {
-        imageChanger(optionsButtonImage, "Sprites/ButtonOptions.png");
+        imageChanger(optionsButtonImage, "Sprites/Button_Options.png");
     }
 
 

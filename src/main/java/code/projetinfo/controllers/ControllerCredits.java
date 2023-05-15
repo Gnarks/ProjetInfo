@@ -24,12 +24,12 @@ public class ControllerCredits extends ControllerParent implements Initializable
 
     @FXML
     protected void onBackToCollectionEntered(){
-        onButtonEntered(backButton,"Sprites/ButtonBackLight.png","Collection.fxml");
+        onButtonEntered(backButton,"Sprites/Button_Arrow_LeftLight.png","Collection.fxml");
     }
 
     @FXML
     protected void onBackToCollectionExited() {
-        imageChanger(backButton,"Sprites/ButtonBack.png");
+        imageChanger(backButton,"Sprites/Button_Arrow_Left.png");
     }
 
 

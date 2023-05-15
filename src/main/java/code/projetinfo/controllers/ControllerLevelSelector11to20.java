@@ -18,12 +18,12 @@ public class ControllerLevelSelector11to20 extends ControllerParent implements I
 
     @FXML
     public void onBackEntered(){
-        onButtonEntered(buttonBack,"Sprites/ButtonBackLight.png","LevelSelector1to10.fxml");
+        onButtonEntered(buttonBack,"Sprites/Button_Arrow_LeftLight.png","LevelSelector1to10.fxml");
     }
 
     @FXML
     public void onBackExited(){
-        imageChanger(buttonBack,"Sprites/ButtonBack.png");
+        imageChanger(buttonBack,"Sprites/Button_Arrow_Left.png");
     }
 
     @Override

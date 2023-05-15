@@ -60,17 +60,17 @@ public class ControllerParent {
             if(!levelHandler.getVictoryState()){
                 Rectangle rectangle = new Rectangle(1600, 900, Paint.valueOf("#000000"));
                 rectangle.setOpacity(0.3);
-                ImageView menuPause = createImageView("Sprites/FondChoser.png",600,500,150);
-                ImageView save = createImageView("Sprites/SaveAndQuitButton.png",400,600,375);
-                ImageView leave = createImageView("Sprites/LeaveButton.png",400,600,525);
-                ImageView resume = createImageView("Sprites/ResumeButton.png", 400,600,225);
+                ImageView menuPause = createImageView("Sprites/BackGround_Choices.png",600,500,150);
+                ImageView save = createImageView("Sprites/Button_SaveAndQuit.png",400,600,375);
+                ImageView leave = createImageView("Sprites/Button_Leave.png",400,600,525);
+                ImageView resume = createImageView("Sprites/Button_Resume.png", 400,600,225);
 
-                resume.setOnMouseEntered(resumeEvent -> imageChanger(resume,"Sprites/ResumeButtonLight.png"));
-                resume.setOnMouseExited(resumeEvent -> imageChanger(resume,"Sprites/ResumeButton.png"));
+                resume.setOnMouseEntered(resumeEvent -> imageChanger(resume,"Sprites/Button_Resume_Light.png"));
+                resume.setOnMouseExited(resumeEvent -> imageChanger(resume,"Sprites/Button_Resume.png"));
                 resume.setOnMouseClicked(resumeEvent -> pane.getChildren().remove(pane.getChildren().size()-5,pane.getChildren().size()));
 
-                leave.setOnMouseEntered(leaveEvent -> imageChanger(leave,"Sprites/LeaveButtonLight.png"));
-                leave.setOnMouseExited(leaveEvent -> imageChanger(leave,"Sprites/LeaveButton.png"));
+                leave.setOnMouseEntered(leaveEvent -> imageChanger(leave,"Sprites/Button_Leave_Light.png"));
+                leave.setOnMouseExited(leaveEvent -> imageChanger(leave,"Sprites/Button_Leave.png"));
                 leave.setOnMouseClicked(leaveEvent -> {
 
                     if(!levelHandler.isRandom()){
@@ -88,8 +88,8 @@ public class ControllerParent {
                     }
                 });
 
-                save.setOnMouseEntered(saveEvent -> imageChanger(save,"Sprites/SaveAndQuitButtonLight.png"));
-                save.setOnMouseExited(saveEvent -> imageChanger(save,"Sprites/SaveAndQuitButton.png"));
+                save.setOnMouseEntered(saveEvent -> imageChanger(save,"Sprites/Button_SaveAndQuit_Light.png"));
+                save.setOnMouseExited(saveEvent -> imageChanger(save,"Sprites/Button_SaveAndQuit.png"));
                 save.setOnMouseClicked(saveEvent -> {
                     if(!levelHandler.isRandom()){
                     try {
@@ -149,25 +149,25 @@ public class ControllerParent {
 
     public void saveMenu(Pane pane, Level levelSaved){
         Rectangle rectangle = new Rectangle(1600,900, Paint.valueOf("#222222"));
-        ImageView fond = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/FondChoser.png"))));
+        ImageView fond = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/BackGround_Choices.png"))));
         fond.setPreserveRatio(true);
         fond.setLayoutX(500);
         fond.setLayoutY(150);
         fond.setFitWidth(600);
 
-        ImageView randomSave1 = createImageView("Sprites/Random1Button.png",500,550,200);
-        saveButton(randomSave1,"Sprites/Random1ButtonLight.png","RandomLevel1",levelSaved);
-        randomSave1.setOnMouseExited(event -> imageChanger(randomSave1,"Sprites/Random1Button.png"));
+        ImageView randomSave1 = createImageView("Sprites/Button_Random1.png",500,550,200);
+        saveButton(randomSave1,"Sprites/Button_Random1_Light.png","RandomLevel1",levelSaved);
+        randomSave1.setOnMouseExited(event -> imageChanger(randomSave1,"Sprites/Button_Random1.png"));
 
 
-        ImageView randomSave2 = createImageView("Sprites/Random2Button.png",500,550,375);
-        saveButton(randomSave2,"Sprites/Random2ButtonLight.png","RandomLevel2",levelSaved);
-        randomSave2.setOnMouseExited(event -> imageChanger(randomSave2,"Sprites/Random2Button.png"));
+        ImageView randomSave2 = createImageView("Sprites/Button_Random2.png",500,550,375);
+        saveButton(randomSave2,"Sprites/Button_Random2_Light.png","RandomLevel2",levelSaved);
+        randomSave2.setOnMouseExited(event -> imageChanger(randomSave2,"Sprites/Button_Random2.png"));
 
 
-        ImageView randomSave3 = createImageView("Sprites/Random3Button.png",500,550,550);
-        saveButton(randomSave3,"Sprites/Random3ButtonLight.png","RandomLevel3",levelSaved);
-        randomSave3.setOnMouseExited(event -> imageChanger(randomSave3,"Sprites/Random3Button.png"));
+        ImageView randomSave3 = createImageView("Sprites/Button_Random3.png",500,550,550);
+        saveButton(randomSave3,"Sprites/Button_Random3_Light.png","RandomLevel3",levelSaved);
+        randomSave3.setOnMouseExited(event -> imageChanger(randomSave3,"Sprites/Button_Random3.png"));
 
         pane.getChildren().addAll(rectangle,fond,randomSave1,randomSave2,randomSave3);
 
@@ -264,18 +264,18 @@ public class ControllerParent {
         askingButton.setOnMouseClicked(event ->{
             Rectangle rectangle = new Rectangle(1600,900, Paint.valueOf("#000000"));
             rectangle.setOpacity(0.2);
-            ImageView fondInt = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/BackGridLevel.png"))));
+            ImageView fondInt = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/BackGround_Level.png"))));
             fondInt.setFitWidth(800);
             fondInt.setFitHeight(400);
             fondInt.setLayoutX(400);
             fondInt.setLayoutY(250);
-            ImageView backButton = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonBack.png"))));
+            ImageView backButton = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/Button_Arrow_Left.png"))));
             backButton.setPreserveRatio(true);
             backButton.setLayoutX(700);
             backButton.setLayoutY(600);
             backButton.setFitHeight(100);
-            backButton.setOnMouseEntered(event1 -> imageChanger(backButton,"Sprites/ButtonBackLight.png"));
-            backButton.setOnMouseExited(event1 -> imageChanger(backButton,"Sprites/ButtonBack.png"));
+            backButton.setOnMouseEntered(event1 -> imageChanger(backButton,"Sprites/Button_Arrow_LeftLight.png"));
+            backButton.setOnMouseExited(event1 -> imageChanger(backButton,"Sprites/Button_Arrow_Left.png"));
             backButton.setOnMouseClicked(event1 -> pane.getChildren().remove(pane.getChildren().size()-4,pane.getChildren().size()));
             Label label = new Label(text);
             Font font = new Font("System Bold Italic",50);

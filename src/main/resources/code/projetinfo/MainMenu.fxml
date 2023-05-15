@@ -9,22 +9,22 @@
             prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="code.projetinfo.controllers.ControllerMenu">
    <ImageView fitHeight="900.0" fitWidth="1600.0" preserveRatio="true">
-      <Image url="@Sprites/MainMenu.png"/>
+      <Image url="@Sprites/Scene_Main_Menu.png"/>
    </ImageView>
    <ImageView fx:id="playButtonImage" fitHeight="135.11" fitWidth="435.55" layoutX="600.25" layoutY="338.0"
               onMouseEntered="#onPlayEntered" onMouseExited="#onPlayExited" preserveRatio="true">
-      <Image url="@Sprites/Buttonplay.png"/>
+      <Image url="@Sprites/Button_Play.png"/>
    </ImageView>
    <ImageView fx:id="collectionButtonImage" fitHeight="135.11" fitWidth="423.11" layoutX="600.445" layoutY="465.0"
               onMouseEntered="#onCollectionEntered" onMouseExited="#onCollectionExited" preserveRatio="true">
-      <Image url="@Sprites/ButtonCollection.png"/>
+      <Image url="@Sprites/Button_Collection.png"/>
    </ImageView>
    <ImageView fx:id="optionsButtonImage" fitHeight="106.66" fitWidth="423.11" layoutX="600.445" layoutY="585.0"
               onMouseEntered="#onOptionsEntered" onMouseExited="#onOptionsExited" preserveRatio="true">
-      <Image url="@Sprites/ButtonOptions.png"/>
+      <Image url="@Sprites/Button_Options.png"/>
    </ImageView>
    <ImageView fx:id="exitButtonImage" fitHeight="117.33" fitWidth="355.55" layoutX="632.225" layoutY="753.0"
               onMouseEntered="#onExitEntered" onMouseExited="#onExitExited" preserveRatio="true">
-      <Image url="@Sprites/EXIT.png"/>
+      <Image url="@Sprites/Button_Exit.png"/>
    </ImageView>
 </AnchorPane>

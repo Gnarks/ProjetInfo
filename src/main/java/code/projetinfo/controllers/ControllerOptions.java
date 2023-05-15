@@ -26,7 +26,7 @@ public class ControllerOptions extends ControllerParent implements Initializable
     @FXML
     private Label volume;
 
-    private static final Media media = new Media(String.valueOf(AppMenu.class.getResource("Theme.mp3")));
+    private static final Media media = new Media(String.valueOf(AppMenu.class.getResource("Game_Theme.mp3")));
 
     private static MediaPlayer mediaPlayer;
 
@@ -41,34 +41,34 @@ public class ControllerOptions extends ControllerParent implements Initializable
     }
     @FXML
     protected void onDecreaseEntered(){
-        imageChanger(decreaseSound,"Sprites/ButtonBackLight.png");
+        imageChanger(decreaseSound,"Sprites/Button_Arrow_LeftLight.png");
 
     }
 
     @FXML
     protected void onIncreaseEntered(){
-        imageChanger(increaseSound,"Sprites/ButtonNextLight.png");
+        imageChanger(increaseSound,"Sprites/Button_Arrow_RightLight.png");
 
     }
 
     @FXML
     protected void onBackEntered(){
-        imageChanger(buttonBack, "Sprites/ButtonBackToMenulight.png");
+        imageChanger(buttonBack, "Sprites/Button_GoBack_Light.png");
         buttonBack.setOnMouseClicked(event -> loadScene("MainMenu.fxml",event));
     }
     @FXML
     protected void onBackExited(){
-        imageChanger(buttonBack,"Sprites/ButtonBackToMenu.png");
+        imageChanger(buttonBack,"Sprites/Button_GoBack.png");
     }
 
     @FXML
     protected void onDecreaseExited(){
-        imageChanger(decreaseSound,"Sprites/ButtonBack.png");
+        imageChanger(decreaseSound,"Sprites/Button_Arrow_Left.png");
     }
 
     @FXML
     protected void onIncreaseExited(){
-        imageChanger(increaseSound,"Sprites/ButtonNext.png");}
+        imageChanger(increaseSound,"Sprites/Button_Arrow_Right.png");}
 
 
     @Override

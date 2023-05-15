@@ -9,7 +9,7 @@
       prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="code.projetinfo.controllers.ControllerLevelSelector1to10">
    <ImageView fitHeight="900.0" fitWidth="1600.0">
-      <Image url="@Sprites/LevelSelection1to10.png"/>
+      <Image url="@Sprites/Scene_LevelsSelection_1-10.png"/>
    </ImageView>
    <Button fx:id="Level01" layoutX="476.0" layoutY="190.0" mnemonicParsing="false" prefHeight="154.0" prefWidth="189.0"
            opacity="0"/>
@@ -33,10 +33,10 @@
            opacity="0"/>
    <ImageView fx:id="buttonBack" fitHeight="138.0" fitWidth="166.0" onMouseEntered="#onBackEntered"
               onMouseExited="#onBackExited">
-      <Image url="@Sprites/ButtonBackToMenu.png"/>
+      <Image url="@Sprites/Button_GoBack.png"/>
    </ImageView>
    <ImageView fx:id="buttonNext" fitHeight="79.0" fitWidth="105.0" layoutX="1481.0" layoutY="411.0"
               onMouseEntered="#onNextEntered" onMouseExited="#onNextExited">
-      <Image url="@Sprites/ButtonNext.png"/>
+      <Image url="@Sprites/Button_Arrow_Right.png"/>
    </ImageView>
 </Pane>

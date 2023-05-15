@@ -11,35 +11,35 @@
       prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="code.projetinfo.controllers.ControllerOptions">
    <ImageView fitHeight="900.0" fitWidth="1600.0">
-      <Image url="@Sprites/BackLevel.png"/>
+      <Image url="@Sprites/BackGround_Scene.png"/>
    </ImageView>
    <ImageView fitHeight="347.0" fitWidth="662.0" layoutX="821.0" layoutY="465.0">
-      <Image url="@Sprites/BackGridLevel.png"/>
+      <Image url="@Sprites/BackGround_Level.png"/>
    </ImageView>
    <ImageView fitHeight="305.0" fitWidth="662.0" layoutX="448.0" layoutY="52.0">
-      <Image url="@Sprites/BackGridLevel.png"/>
+      <Image url="@Sprites/BackGround_Level.png"/>
    </ImageView>
    <ImageView fx:id="buttonBack" fitHeight="138.0" fitWidth="166.0" onMouseEntered="#onBackEntered"
               onMouseExited="#onBackExited">
-      <Image url="@Sprites/ButtonBackToMenu.png"/>
+      <Image url="@Sprites/Button_GoBack.png"/>
    </ImageView>
    <ImageView fitHeight="347.0" fitWidth="662.0" layoutX="117.0" layoutY="465.0">
-      <Image url="@Sprites/BackGridLevel.png"/>
+      <Image url="@Sprites/BackGround_Level.png"/>
    </ImageView>
    <ImageView layoutX="1102.0" layoutY="622.0">
       <Image url="@Sprites/Mouse_Right_Key_Dark.png"/>
    </ImageView>
    <ImageView fitHeight="172.0" fitWidth="172.0" layoutX="503.0" layoutY="587.0">
-      <Image url="@Sprites/BlockDragged.png"/>
+      <Image url="@Sprites/Exemple_BlockDragged.png"/>
    </ImageView>
    <ImageView fitHeight="172.0" fitWidth="172.0" layoutX="924.0" layoutY="586.0">
-      <Image url="@Sprites/BlockNotRotated.png"/>
+      <Image url="@Sprites/Exemple_BlockNotRotated.png"/>
    </ImageView>
    <ImageView fitHeight="172.0" fitWidth="172.0" layoutX="1207.0" layoutY="586.0">
-      <Image url="@Sprites/BlockRotated.png"/>
+      <Image url="@Sprites/Exemple_BlockRotated.png"/>
    </ImageView>
    <ImageView fitHeight="172.0" fitWidth="172.0" layoutX="220.0" layoutY="586.0">
-      <Image url="@Sprites/BlockUndragged.png"/>
+      <Image url="@Sprites/Exemple_BlockNotDragged.png"/>
    </ImageView>
    <ImageView fitHeight="110.0" fitWidth="111.0" layoutX="392.0" layoutY="622.0">
       <Image url="@Sprites/Mouse_Left_Key_Dark.png"/>
@@ -81,10 +81,10 @@
    </Label>
    <ImageView fx:id="decreaseSound" fitHeight="78.0" fitWidth="111.0" layoutX="759.0" layoutY="200.0" onMouseEntered="#onDecreaseEntered"
               onMouseExited="#onDecreaseExited">
-      <Image url="@Sprites/ButtonBack.png"/>
+      <Image url="@Sprites/Button_Arrow_Left.png"/>
    </ImageView>
    <ImageView fx:id="increaseSound" fitHeight="78.0" fitWidth="111.0" layoutX="953.0" layoutY="200.0" onMouseEntered="#onIncreaseEntered"
               onMouseExited="#onIncreaseExited">
-      <Image url="@Sprites/ButtonNext.png"/>
+      <Image url="@Sprites/Button_Arrow_Right.png"/>
    </ImageView>
 </Pane>

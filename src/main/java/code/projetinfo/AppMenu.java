@@ -14,7 +14,7 @@ public class AppMenu extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource("MainMenu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1600, 900);
         primaryStage.setTitle("Blocky Afterlife Party");
-        primaryStage.getIcons().add(new Image(String.valueOf(AppMenu.class.getResource("Sprites/Blocky.png"))));
+        primaryStage.getIcons().add(new Image(String.valueOf(AppMenu.class.getResource("Sprites/Ghost_Blocky.png"))));
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.setOnCloseRequest(event -> {

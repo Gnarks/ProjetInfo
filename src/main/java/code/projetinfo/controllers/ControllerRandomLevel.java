@@ -60,22 +60,22 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
 
     @FXML
     protected void onBackEntered(){
-        imageChanger(backToMenuButton,"Sprites/ButtonBackToMenulight.png");
+        imageChanger(backToMenuButton,"Sprites/Button_GoBack_Light.png");
     }
 
     @FXML
     protected void onBackExited(){
-        imageChanger(backToMenuButton,"Sprites/ButtonBackToMenu.png");
+        imageChanger(backToMenuButton,"Sprites/Button_GoBack.png");
     }
 
     @FXML
     protected void onResetEntered(){
-        imageChanger(resetButton,"Sprites/ButtonResetLight.png");
+        imageChanger(resetButton,"Sprites/Button_Reset_Light.png");
     }
 
     @FXML
     protected void onResetExited(){
-        imageChanger(resetButton,"Sprites/ButtonReset.png");
+        imageChanger(resetButton,"Sprites/Button_Reset.png");
     }
 
 

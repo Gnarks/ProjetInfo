@@ -7,15 +7,15 @@
             prefHeight="900" prefWidth="1600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19"
             fx:controller="code.projetinfo.controllers.GameController">
    <ImageView fitHeight="900.0" fitWidth="1600.0" preserveRatio="true">
-      <Image url="@Sprites/BackLevel.png"/>
+      <Image url="@Sprites/BackGround_Scene.png"/>
    </ImageView>
    <ImageView fx:id="backToMenuButton" fitHeight="150.0" fitWidth="150.0" preserveRatio="true"
               onMouseEntered="#onBackEntered" onMouseExited="#onBackExited" scaleX="1.125" scaleY="1.125">
-      <Image url="@Sprites/ButtonBackToMenu.png"/>
+      <Image url="@Sprites/Button_GoBack.png"/>
    </ImageView>
    <ImageView fx:id="resetButton" fitHeight="150.0" fitWidth="150.0" layoutX="700.0" layoutY="750.0"
               preserveRatio="true" onMouseEntered="#onResetEntered" onMouseExited="#onResetExited" scaleX="1.125"
               scaleY="1.125">
-      <Image url="@Sprites/ButtonReset.png"/>
+      <Image url="@Sprites/Button_Reset.png"/>
    </ImageView>
 </AnchorPane>

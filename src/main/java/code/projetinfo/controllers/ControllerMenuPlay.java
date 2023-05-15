@@ -20,36 +20,36 @@ public class ControllerMenuPlay extends ControllerParent{
 
     @FXML
     public void onBackEntered(){
-        onButtonEntered(buttonBack,"Sprites/ButtonBackToMenulight.png","MainMenu.fxml");
+        onButtonEntered(buttonBack,"Sprites/Button_GoBack_Light.png","MainMenu.fxml");
     }
     @FXML
     public void onBackExited(){
-        imageChanger(buttonBack,"Sprites/ButtonBackToMenu.png");
+        imageChanger(buttonBack,"Sprites/Button_GoBack.png");
     }
     @FXML
     public void onLevelsEntered(){
-        onButtonEntered(levelsButton,"Sprites/LevelsButtonLight.png","LevelSelector1to10.fxml");
+        onButtonEntered(levelsButton,"Sprites/Button_Levels_Light.png","LevelSelector1to10.fxml");
     }
     @FXML
     public void onLevelsExited(){
-        imageChanger(levelsButton,"Sprites/LevelsButton.png");
+        imageChanger(levelsButton,"Sprites/Button_Levels.png");
     }
     @FXML
     public void onRandomEntered(){
-        onButtonEntered(randomButton,"Sprites/RandomButtonLight.png","RandomMenu.fxml");
+        onButtonEntered(randomButton,"Sprites/Button_Random_Light.png","RandomMenu.fxml");
     }
     @FXML
     public void onRandomExited(){
-        imageChanger(randomButton,"Sprites/RandomButton.png");
+        imageChanger(randomButton,"Sprites/Button_Random.png");
     }
 
     @FXML
     public void onModsEntered(){
-        onButtonEntered(modsButton,"Sprites/modsButtonlight.png","MenuMods.fxml");
+        onButtonEntered(modsButton,"Sprites/Button_Mods_Light.png","MenuMods.fxml");
     }
     @FXML
     public void onModsExited(){
-        imageChanger(modsButton,"Sprites/modsButton.png");
+        imageChanger(modsButton,"Sprites/Button_Mods.png");
     }
 
 }

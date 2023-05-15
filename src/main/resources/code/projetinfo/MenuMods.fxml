@@ -9,27 +9,27 @@
       prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="code.projetinfo.controllers.ControllerMenuMods">
    <ImageView fitHeight="900.0" fitWidth="1600.0">
-      <Image url="@Sprites/ModsMenu.png"/>
+      <Image url="@Sprites/Scene_Mods_Menu.png"/>
    </ImageView>
    <ImageView fx:id = "askingSpeedrun" layoutX="1139.0" layoutY="180.0"  onMouseEntered="#onAskingSpeedrunEntered"  onMouseExited="#onAskingSpeedrunExited">
-      <Image url="@Sprites/AskingButton.png"/>
+      <Image url="@Sprites/Button_Asking.png"/>
    </ImageView>
    <ImageView fx:id ="buttonBack" fitHeight="138.0" fitWidth="166.0" onMouseEntered="#onBackEntered"  onMouseExited="#onBackExited">
-      <Image url="@Sprites/ButtonBackToMenu.png" />
+      <Image url="@Sprites/Button_GoBack.png" />
    </ImageView>
    <ImageView fx:id = "askingDancing" layoutX="1139.0" layoutY="385.0"  onMouseEntered="#onAskingDancingEntered"  onMouseExited="#onAskingDancingExited">
-      <Image url="@Sprites/AskingButton.png"/>
+      <Image url="@Sprites/Button_Asking.png"/>
    </ImageView>
    <ImageView fx:id = "askingMemory" layoutX="1139.0" layoutY="572.0"  onMouseEntered="#onAskingMemoryEntered"  onMouseExited="#onAskingMemoryExited">
-      <Image url="@Sprites/AskingButton.png"/>
+      <Image url="@Sprites/Button_Asking.png"/>
    </ImageView>
    <ImageView fx:id ="memoryButton" fitHeight="138.0" fitWidth="445.0" layoutX="608.0" layoutY="551.0"  onMouseEntered="#onMemoryEntered"  onMouseExited="#onMemoryExited">
-      <Image url="@Sprites/MemoryButton.png"/>
+      <Image url="@Sprites/Button_Memory.png"/>
    </ImageView>
    <ImageView fx:id ="dancingButton" fitHeight="138.0" fitWidth="445.0" layoutX="608.0" layoutY="382.0"  onMouseEntered="#onDancingEntered"  onMouseExited="#onDancingExited">
-      <Image url="@Sprites/DancingButton.png"/>
+      <Image url="@Sprites/Button_Dancing.png"/>
    </ImageView>
    <ImageView fx:id ="speedrunButton" fitHeight="138.0" fitWidth="445.0" layoutX="608.0" layoutY="215.0"  onMouseEntered="#onSpeedrunEntered"  onMouseExited="#onSpeedrunExited">
-      <Image url="@Sprites/SpeedrunButton.png"/>
+      <Image url="@Sprites/Button_Speedrun.png"/>
    </ImageView>
 </Pane>

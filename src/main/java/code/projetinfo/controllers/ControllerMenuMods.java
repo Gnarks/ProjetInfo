@@ -27,64 +27,64 @@ public class ControllerMenuMods extends ControllerParent{
     private ImageView speedrunButton;
     @FXML
     protected void onAskingSpeedrunEntered(){
-        imageChanger(askingSpeedrun,"Sprites/AskingButtonLight.png");
+        imageChanger(askingSpeedrun,"Sprites/Button_Asking_Light.png");
         askingInformation(pane, askingSpeedrun,"Complete as much level as possible in the defined time!");
     }
 
     @FXML
     protected void onAskingDancingEntered(){
-        imageChanger(askingDancing,"Sprites/AskingButtonLight.png");
+        imageChanger(askingDancing,"Sprites/Button_Asking_Light.png");
         askingInformation(pane, askingDancing,"Try too complete the levels while the ghosts are moving on the music's rhythm ");
     }
     @FXML
     protected void onAskingMemoryEntered(){
-        imageChanger(askingMemory,"Sprites/AskingButtonLight.png");
+        imageChanger(askingMemory,"Sprites/Button_Asking_Light.png");
         askingInformation(pane, askingMemory,"The ghosts are shy and disappear after being placed, try to remember where they are");
     }
     @FXML
     protected void onAskingSpeedrunExited(){
-        imageChanger(askingSpeedrun,"Sprites/AskingButton.png");
+        imageChanger(askingSpeedrun,"Sprites/Button_Asking.png");
     }
     @FXML
     protected void onAskingDancingExited(){
-        imageChanger(askingDancing,"Sprites/AskingButton.png");
+        imageChanger(askingDancing,"Sprites/Button_Asking.png");
     }
     @FXML
     protected void onAskingMemoryExited(){
-        imageChanger(askingMemory,"Sprites/AskingButton.png");
+        imageChanger(askingMemory,"Sprites/Button_Asking.png");
     }
     @FXML
     protected void onBackEntered(){
-        onButtonEntered(buttonBack,"Sprites/ButtonBackToMenulight.png","MenuPlay.fxml");
+        onButtonEntered(buttonBack,"Sprites/Button_GoBack_Light.png","MenuPlay.fxml");
     }
     @FXML
     protected void onSpeedrunEntered(){
-        imageChanger(speedrunButton,"Sprites/SpeedrunButtonLight.png");
+        imageChanger(speedrunButton,"Sprites/Button_Speedrun_Light.png");
     }
     @FXML
     protected void onDancingEntered(){
-        imageChanger(dancingButton,"Sprites/DancingButtonLight.png");
+        imageChanger(dancingButton,"Sprites/Button_Dancing_Light.png");
     }
     @FXML
     protected void onMemoryEntered(){
-        imageChanger(memoryButton,"Sprites/MemoryButtonLight.png");
+        imageChanger(memoryButton,"Sprites/Button_Memory_Light.png");
 
     }
     @FXML
     protected void onBackExited(){
-        imageChanger(buttonBack,"Sprites/ButtonBackToMenu.png");
+        imageChanger(buttonBack,"Sprites/Button_GoBack.png");
     }
     @FXML
     protected void onSpeedrunExited(){
-        imageChanger(speedrunButton,"Sprites/SpeedrunButton.png");
+        imageChanger(speedrunButton,"Sprites/Button_Speedrun.png");
     }
     @FXML
     protected void onDancingExited(){
-        imageChanger(dancingButton,"Sprites/DancingButton.png");
+        imageChanger(dancingButton,"Sprites/Button_Dancing.png");
     }
     @FXML
     protected void onMemoryExited(){
-        imageChanger(memoryButton,"Sprites/MemoryButton.png");}
+        imageChanger(memoryButton,"Sprites/Button_Memory.png");}
 
 
 }

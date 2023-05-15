@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.projetinfo.controllers.ControllerCollection">
    <ImageView fitHeight="900.0" fitWidth="1600.0">
-      <Image url="@Sprites/Collection.png"/>
+      <Image url="@Sprites/Scene_Collection.png"/>
    </ImageView>
    <Label fx:id="ghostDescription" alignment="CENTER" layoutX="641.0" layoutY="561.0" prefHeight="192.0" prefWidth="316.0" scaleX="1.125" scaleY="1.125" textAlignment="CENTER" wrapText="true">
       <font>
@@ -24,11 +24,11 @@
    <ImageView fx:id="ghostImage" fitHeight="338.0" fitWidth="337.0" layoutX="628.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true" scaleX="1.125" scaleY="1.125" />
    <ImageView fx:id="buttonBack" fitHeight="78.0" fitWidth="102.0" layoutX="20.0" layoutY="411.0"
               onMouseEntered="#onButtonBackEntered" onMouseExited="#onButtonBackExited" scaleX="1.125" scaleY="1.125">
-      <Image url="@Sprites/ButtonBack.png"/>
+      <Image url="@Sprites/Button_Arrow_Left.png"/>
    </ImageView>
    <ImageView fx:id="buttonNext" fitHeight="68.0" fitWidth="93.0" layoutX="1487.0" layoutY="421.0"
               onMouseEntered="#onButtonNextEntered" onMouseExited="#onButtonNextExited" scaleX="1.125" scaleY="1.125">
-      <Image url="@Sprites/ButtonNext.png"/>
+      <Image url="@Sprites/Button_Arrow_Right.png"/>
    </ImageView>
 
    <Button layoutX="76.0" layoutY="84.0" mnemonicParsing="false" onAction="#babyPressed" opacity="0.0" prefHeight="117.0" prefWidth="132.0" scaleX="1.125" scaleY="1.125" text="Button" />

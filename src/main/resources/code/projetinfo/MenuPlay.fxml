@@ -9,22 +9,22 @@
       prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="code.projetinfo.controllers.ControllerMenuPlay">
    <ImageView fitHeight="900.0" fitWidth="1600.0">
-      <Image url="@Sprites/MenuFond.png"/>
+      <Image url="@Sprites/Scene_Menus.png"/>
    </ImageView>
    <ImageView fx:id="randomButton" fitHeight="146.0" fitWidth="477.0" layoutX="603.0" layoutY="377.0"
               onMouseEntered="#onRandomEntered" onMouseExited="#onRandomExited">
-         <Image url="@Sprites/RandomButton.png"/>
+         <Image url="@Sprites/Button_Random.png"/>
    </ImageView>
    <ImageView fx:id="buttonBack" fitHeight="138.0" fitWidth="166.0" onMouseEntered="#onBackEntered"
               onMouseExited="#onBackExited">
-         <Image url="@Sprites/ButtonBackToMenu.png"/>
+         <Image url="@Sprites/Button_GoBack.png"/>
    </ImageView>
    <ImageView fx:id="levelsButton" fitHeight="146.0" fitWidth="461.0" layoutX="603.0" layoutY="231.0"
               onMouseEntered="#onLevelsEntered" onMouseExited="#onLevelsExited">
-         <Image url="@Sprites/LevelsButton.png"/>
+         <Image url="@Sprites/Button_Levels.png"/>
    </ImageView>
    <ImageView fx:id="modsButton" fitHeight="146.0" fitWidth="477.0" layoutX="595.0" layoutY="523.0"
               onMouseEntered="#onModsEntered" onMouseExited="#onModsExited">
-         <Image url="@Sprites/modsButton.png"/>
+         <Image url="@Sprites/Button_Mods.png"/>
    </ImageView>
 </Pane>

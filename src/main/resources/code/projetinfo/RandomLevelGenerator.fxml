@@ -13,7 +13,7 @@
       prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="code.projetinfo.controllers.ControllerRLG">
    <ImageView fitHeight="900.0" fitWidth="1600.0">
-      <Image url="@Sprites/LevelGeneratorBlocks.png"/>
+      <Image url="@Sprites/Scene_RLG.png"/>
    </ImageView>
    <Label layoutX="256.0" layoutY="29.0" prefHeight="135.0" prefWidth="1089.0" text="Random Level Generator"
           textAlignment="CENTER" textFill="WHITE" underline="true">
@@ -98,27 +98,21 @@
    </Label>
    <ImageView fx:id="minimumDecrease" fitHeight="63.0" fitWidth="86.0" layoutX="488.0" layoutY="623.0"
               onMouseEntered="#onMinDecEntered" onMouseExited="#onMinDecExited">
-      <image>
-         <Image url="@Sprites/ButtonBack.png"/>
-      </image>
+      <Image url="@Sprites/Button_Arrow_Left.png"/>
    </ImageView>
 
    <ImageView fx:id="buttonBack" fitHeight="138.0" fitWidth="166.0" onMouseEntered="#onBackEntered"
               onMouseExited="#onBackExited">
-      <Image url="@Sprites/ButtonBackToMenu.png"/>
+      <Image url="@Sprites/Button_GoBack.png"/>
    </ImageView>
 
    <ImageView fx:id="maximumDecrease" fitHeight="63.0" fitWidth="86.0" layoutX="905.0" layoutY="623.0"
               onMouseEntered="#onMaxDecEntered" onMouseExited="#onMaxDecExited">
-      <image>
-         <Image url="@Sprites/ButtonBack.png"/>
-      </image>
+      <Image url="@Sprites/Button_Arrow_Left.png"/>
    </ImageView>
    <ImageView fx:id="maximumIncrease" fitHeight="63.0" fitWidth="86.0" layoutX="1080.0" layoutY="623.0"
               onMouseEntered="#onMaxIncEntered" onMouseExited="#onMaxIncExited">
-      <image>
-         <Image url="@Sprites/ButtonNext.png"/>
-      </image>
+      <Image url="@Sprites/Button_Arrow_Right.png"/>
    </ImageView>
    <Label fx:id="minimum" layoutX="609.0" layoutY="611.0" prefHeight="75.0" prefWidth="86.0" text="5"
           textAlignment="CENTER" textFill="WHITE" underline="true">
@@ -128,13 +122,11 @@
    </Label>
    <ImageView fx:id="minimumIncrease" fitHeight="63.0" fitWidth="86.0" layoutX="660.0" layoutY="623.0"
               onMouseEntered="#onMinIncEntered" onMouseExited="#onMinIncExited">
-      <image>
-         <Image url="@Sprites/ButtonNext.png"/>
-      </image>
+      <Image url="@Sprites/Button_Arrow_Right.png"/>
    </ImageView>
    <ImageView fx:id="createButton" fitWidth="300.0" layoutX="1200.0" layoutY="750.0" preserveRatio="true"
               onMouseEntered="#onCreateEntered" onMouseExited="#onCreateExited">
-      <Image url="@Sprites/CreateButton.png"/>
+      <Image url="@Sprites/Button_Create.png"/>
    </ImageView>
    <Circle fx:id="alwaysDifferent" fill="#ff0000" layoutX="550.0" layoutY="730.0" radius="28.0" stroke="BLACK"
            strokeType="INSIDE" strokeWidth="5.0"/>

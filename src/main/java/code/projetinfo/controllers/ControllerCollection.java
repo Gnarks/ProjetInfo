@@ -26,11 +26,11 @@ public class ControllerCollection extends ControllerParent {
      */
     @FXML
     protected void onButtonBackEntered(){
-        onButtonEntered(buttonBack,"Sprites/ButtonBackLight.png","MainMenu.fxml");
+        onButtonEntered(buttonBack,"Sprites/Button_Arrow_LeftLight.png","MainMenu.fxml");
     }
     @FXML
     protected void onButtonBackExited(){
-        imageChanger(buttonBack,"Sprites/ButtonBack.png");
+        imageChanger(buttonBack,"Sprites/Button_Arrow_Left.png");
     }
 
     /**
@@ -38,11 +38,11 @@ public class ControllerCollection extends ControllerParent {
      */
     @FXML
     protected void onButtonNextEntered(){
-        onButtonEntered(buttonNext,"Sprites/ButtonNextLight.png","Credits.fxml");
+        onButtonEntered(buttonNext,"Sprites/Button_Arrow_RightLight.png","Credits.fxml");
     }
     @FXML
     protected void onButtonNextExited(){
-        buttonNext.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonNext.png"))));
+        buttonNext.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/Button_Arrow_Right.png"))));
     }
 
     /**

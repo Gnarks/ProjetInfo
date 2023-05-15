@@ -83,7 +83,7 @@ public class LevelHandler {
     /** Draws the grid of the level.
      */
     public void drawGrid(){
-        ImageView backGrid = new ImageView(String.valueOf(getClass().getResource("Sprites/BackGridLevel.png")));
+        ImageView backGrid = new ImageView(String.valueOf(getClass().getResource("Sprites/BackGround_Level.png")));
         backGrid.setLayoutX(gridPos.getX()-tileSize);
         backGrid.setLayoutY(gridPos.getY()-tileSize);
         backGrid.setFitWidth((level.getGrid().getCol()+2)*tileSize);
@@ -199,10 +199,10 @@ public class LevelHandler {
 
         addVictoryText("VICTORY",635,100);
         addVictoryText("BACK TO MENUS",160,25);
-        ImageView blocky = addVictoryGhost("Sprites/Blocky.png",200,150);
-        ImageView ghost1 = addVictoryGhost("Sprites/Magky.png",200,500);
+        ImageView blocky = addVictoryGhost("Sprites/Ghost_Blocky.png",200,150);
+        ImageView ghost1 = addVictoryGhost("Sprites/Ghost_Magky.png",200,500);
         ImageView ghost2 = addVictoryGhost("Sprites/Clode.png",1175,200);
-        ImageView ghost3 = addVictoryGhost("Sprites/Bluky.png",1100,470);
+        ImageView ghost3 = addVictoryGhost("Sprites/Ghost_Bluky.png",1100,470);
         ghostDancing(blocky,ghost1,ghost2,ghost3);
     }
 
@@ -215,26 +215,26 @@ public class LevelHandler {
         if (isRandom){
             victoryAnimation();
             addVictoryText("RE-ROLL",630,650);
-            ImageView buttonSave = new ImageView(String.valueOf(AppMenu.class.getResource("Sprites/SaveButton.png")));
+            ImageView buttonSave = new ImageView(String.valueOf(AppMenu.class.getResource("Sprites/Button_Save.png")));
             pane.getChildren().add(buttonSave);
             buttonSave.setPreserveRatio(true);
             buttonSave.setFitHeight(100);
             buttonSave.setLayoutX(1035);
             buttonSave.setLayoutY(730);
-            buttonSave.setOnMouseEntered(event ->buttonSave.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/SaveButtonLight.png")))));
-            buttonSave.setOnMouseExited(event ->buttonSave.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/SaveButton.png")))));
+            buttonSave.setOnMouseEntered(event ->buttonSave.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/Button_Save_Light.png")))));
+            buttonSave.setOnMouseExited(event ->buttonSave.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/Button_Save.png")))));
         }
         else {
             victoryAnimation();
             addVictoryText("NEXT LEVEL",1135,650);
             addVictoryText("RESTART",630,650);
-            ImageView buttonNext = new ImageView(String.valueOf(AppMenu.class.getResource("Sprites/ButtonNext.png")));
+            ImageView buttonNext = new ImageView(String.valueOf(AppMenu.class.getResource("Sprites/Button_Arrow_Right.png")));
             pane.getChildren().add(buttonNext);
             buttonNext.setFitHeight(150);
             buttonNext.setLayoutX(1200);
             buttonNext.setLayoutY(730);
-            buttonNext.setOnMouseEntered(event ->buttonNext.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonNextLight.png")))));
-            buttonNext.setOnMouseExited(event ->buttonNext.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonNext.png")))));
+            buttonNext.setOnMouseEntered(event ->buttonNext.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/Button_Arrow_RightLight.png")))));
+            buttonNext.setOnMouseExited(event ->buttonNext.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/Button_Arrow_Right.png")))));
             buttonNext.setOnMouseClicked(event -> {
                 String levelName = nextLevel(level.getName());
                 if (levelName == null){
@@ -294,7 +294,6 @@ public class LevelHandler {
             @Override
             public void run() {
                 ghost1.setScaleX(ghost1.getScaleX()*(-1));
-                System.out.println(1);
                 if(ghost1.getScene().getWindow()==null){
                     timer.cancel();
                 }
@@ -512,7 +511,7 @@ public class LevelHandler {
      * set all the blocks in the level to their spawnPos with an animation.
      */
     public void reset(){
-        ImageView resetImage = new ImageView(String.valueOf(AppMenu.class.getResource("Sprites/ResetGhost.png")));
+        ImageView resetImage = new ImageView(String.valueOf(AppMenu.class.getResource("Sprites/Ghost_Reset.png")));
 
         resetImage.setFitHeight(900);
         resetImage.setFitWidth(1600);

@@ -60,61 +60,61 @@ public class ControllerRLG extends ControllerParent implements Initializable {
 
     @FXML
     protected void onBackEntered(){
-        onButtonEntered(buttonBack,"Sprites/ButtonBackToMenulight.png","RandomMenu.fxml");
+        onButtonEntered(buttonBack,"Sprites/Button_GoBack_Light.png","RandomMenu.fxml");
     }
 
     @FXML
     protected void onBackExited(){
-        imageChanger(buttonBack,"Sprites/ButtonBackToMenu.png");
+        imageChanger(buttonBack,"Sprites/Button_GoBack.png");
     }
 
     @FXML
     protected void onCreateEntered(){
-        imageChanger(createButton,"Sprites/CreateButtonLight.png");
+        imageChanger(createButton,"Sprites/Button_Create_Light.png");
 
 
     }
 
     @FXML
     protected void onCreateExited(){
-        imageChanger(createButton,"Sprites/CreateButton.png");
+        imageChanger(createButton,"Sprites/Button_Create.png");
     }
 
     @FXML
     protected void onMinIncEntered(){
-        imageChanger(minimumIncrease,"Sprites/ButtonNextLight.png");
+        imageChanger(minimumIncrease,"Sprites/Button_Arrow_RightLight.png");
     }
 
     @FXML
-    protected void onMinIncExited(){ imageChanger(minimumIncrease,"Sprites/ButtonNext.png");
+    protected void onMinIncExited(){ imageChanger(minimumIncrease,"Sprites/Button_Arrow_Right.png");
     }
     @FXML
     protected void onMinDecEntered(){
-        imageChanger(minimumDecrease,"Sprites/ButtonBackLight.png");
+        imageChanger(minimumDecrease,"Sprites/Button_Arrow_LeftLight.png");
     }
     @FXML
     protected void onMinDecExited(){
-        imageChanger(minimumDecrease,"Sprites/ButtonBack.png");
+        imageChanger(minimumDecrease,"Sprites/Button_Arrow_Left.png");
     }
     @FXML
     protected void onMaxIncEntered(){
-        imageChanger(maximumIncrease,"Sprites/ButtonNextLight.png");
+        imageChanger(maximumIncrease,"Sprites/Button_Arrow_RightLight.png");
     }
     @FXML
     protected void onMaxIncExited(){
 
-        imageChanger(maximumIncrease,"Sprites/ButtonNext.png");
+        imageChanger(maximumIncrease,"Sprites/Button_Arrow_Right.png");
     }
 
 
     @FXML
     protected void onMaxDecEntered(){
-        imageChanger(maximumDecrease,"Sprites/ButtonBackLight.png");
+        imageChanger(maximumDecrease,"Sprites/Button_Arrow_LeftLight.png");
     }
 
     @FXML
     protected void onMaxDecExited(){
-        imageChanger(maximumDecrease,"Sprites/ButtonBack.png");
+        imageChanger(maximumDecrease,"Sprites/Button_Arrow_Left.png");
     }
 
     @Override
