@@ -61,7 +61,7 @@ public class ControllerParent {
                 Rectangle rectangle = new Rectangle(1600, 900, Paint.valueOf("#000000"));
                 rectangle.setOpacity(0.3);
                 ImageView menuPause = createImageView("Sprites/FondChoser.png",600,500,150);
-                ImageView save = createImageView("Sprites/SaveButton.png",400,600,375);
+                ImageView save = createImageView("Sprites/SaveAndQuitButton.png",400,600,375);
                 ImageView leave = createImageView("Sprites/LeaveButton.png",400,600,525);
                 ImageView resume = createImageView("Sprites/ResumeButton.png", 400,600,225);
 
@@ -73,10 +73,8 @@ public class ControllerParent {
                 leave.setOnMouseExited(leaveEvent -> imageChanger(leave,"Sprites/LeaveButton.png"));
                 leave.setOnMouseClicked(leaveEvent -> {
                     if(!levelHandler.isRandom()){
-                    if (level.getName().charAt(0)=='R'){
-                        loadScene("RandomLevelSelector.fxml",event);
-                    }
-                    else if (level.getName().charAt(5) == '0' || (level.getName().charAt(5) == '1'
+
+                    if (level.getName().charAt(5) == '0' || (level.getName().charAt(5) == '1'
                             && level.getName().charAt(6) == '0')) {
                         loadScene("LevelSelector1to10.fxml",event);
                     } else {
@@ -87,8 +85,8 @@ public class ControllerParent {
                     }
                 });
 
-                save.setOnMouseEntered(saveEvent -> imageChanger(save,"Sprites/SaveButtonLight.png"));
-                save.setOnMouseExited(saveEvent -> imageChanger(save,"Sprites/SaveButton.png"));
+                save.setOnMouseEntered(saveEvent -> imageChanger(save,"Sprites/SaveAndQuitButtonLight.png"));
+                save.setOnMouseExited(saveEvent -> imageChanger(save,"Sprites/SaveAndQuitButton.png"));
                 save.setOnMouseClicked(saveEvent -> {
                     if(!levelHandler.isRandom()){
                     try {
@@ -96,8 +94,11 @@ public class ControllerParent {
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
+                    if (level.getName().charAt(0)=='R'){
+                            loadScene("RandomLevelSelector.fxml",event);
+                    }
 
-                    if (level.getName().charAt(5) == '0' || (level.getName().charAt(5) == '1' &&
+                    else if (level.getName().charAt(5) == '0' || (level.getName().charAt(5) == '1' &&
                             level.getName().charAt(6) == '0')) {
                         loadScene("LevelSelector1to10.fxml",event);
                     } else {
@@ -112,7 +113,10 @@ public class ControllerParent {
             }
 
             else{
-                if (level.getName().charAt(5) == '0' || (level.getName().charAt(5) == '1'
+                if (level.getName().charAt(0) == 'R'){
+                    loadScene("RandomMenu.fxml",event);
+                }
+                else if (level.getName().charAt(5) == '0' || (level.getName().charAt(5) == '1'
                         && level.getName().charAt(6) == '0')) {
                     loadScene("LevelSelector1to10.fxml",event);
                 } else {
@@ -133,7 +137,7 @@ public class ControllerParent {
                     System.out.println(e.getMessage());
                 }
                 finally {
-                    ControllerParent.loadScene("RandomLevelGenerator.fxml",event1);
+                   loadScene("RandomLevelGenerator.fxml",event1);
                 }
             });
 
