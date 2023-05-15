@@ -100,7 +100,7 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
                 return;
             }
 
-            LevelHandler levelHandler = new LevelHandler(level, pane,true);
+            LevelHandler levelHandler = new LevelHandler(level, pane);
             levelHandler.dispatchBlocks();
             levelHandler.drawGrid();
             levelHandler.drawImageBlocks();
@@ -111,12 +111,12 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
             translateTransition.play();
             translateTransition.setOnFinished(event -> pane.getChildren().remove(transi));
 
-            Level finalLevel = level;
             resetButton.setOnMouseClicked(event -> {
                 if (!levelHandler.getVictoryState()) {
                     levelHandler.reset();
                 }
                 else{
+                    //re-roll
                     Rectangle transition = new Rectangle(1600,900, Paint.valueOf("222222"));
                     transition.setLayoutY(900);
                     pane.getChildren().add(transition);
@@ -150,8 +150,8 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
                         stage.show();
                     });}
             });
-            Level levelCopy = new Level("Copy", finalLevel.getGrid(), finalLevel.getBlocks());
-            backToMenuButton.setOnMouseClicked(event1 -> pauseMenu(pane,levelHandler,levelCopy, event1));
+
+            backToMenuButton.setOnMouseClicked(event1 -> pauseMenu(pane,levelHandler,level, event1));
         });
     }
 }

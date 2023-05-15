@@ -130,7 +130,6 @@ public class ControllerRLG extends ControllerParent implements Initializable {
                     try {
                         Button button = (Button)pane.getChildren().get(finalI);
                         Class<ImageBlock>block = (Class<ImageBlock>) Class.forName("code.projetinfo.normalBlocks." + button.getId());
-                        System.out.println(block);
                         blockChosen.add(block);
                         Rectangle rectangle = new Rectangle(button.getLayoutX(),button.getLayoutY(),button.getWidth(),button.getHeight());
                         rectangle.setOpacity(0.2);

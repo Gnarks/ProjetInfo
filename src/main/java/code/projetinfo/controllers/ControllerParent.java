@@ -44,7 +44,7 @@ public class ControllerParent {
      * @param imageView imageview we want to change the sprite
      * @param sprite sprite to set on the imageview
      */
-    public void imageChanger(ImageView imageView, String sprite){
+    static public void imageChanger(ImageView imageView, String sprite){
         imageView.setImage(new Image(String.valueOf(AppMenu.class.getResource(sprite))));
     }
 
@@ -61,56 +61,25 @@ public class ControllerParent {
                 Rectangle rectangle = new Rectangle(1600, 900, Paint.valueOf("#000000"));
                 rectangle.setOpacity(0.3);
                 ImageView menuPause = createImageView("Sprites/BackGround_Choices.png",600,500,150);
-                ImageView save = createImageView("Sprites/Button_SaveAndQuit.png",400,600,375);
-                ImageView leave = createImageView("Sprites/Button_Leave.png",400,600,525);
+
+
                 ImageView resume = createImageView("Sprites/Button_Resume.png", 400,600,225);
+                setAsResumeButton(resume,pane);
 
-                resume.setOnMouseEntered(resumeEvent -> imageChanger(resume,"Sprites/Button_Resume_Light.png"));
-                resume.setOnMouseExited(resumeEvent -> imageChanger(resume,"Sprites/Button_Resume.png"));
-                resume.setOnMouseClicked(resumeEvent -> pane.getChildren().remove(pane.getChildren().size()-5,pane.getChildren().size()));
+                ImageView save = createImageView("Sprites/Button_SaveAndQuit.png",400,600,375);
 
-                leave.setOnMouseEntered(leaveEvent -> imageChanger(leave,"Sprites/Button_Leave_Light.png"));
-                leave.setOnMouseExited(leaveEvent -> imageChanger(leave,"Sprites/Button_Leave.png"));
-                leave.setOnMouseClicked(leaveEvent -> {
+                if (level.getName().charAt(0) == 'G'){
+                    save.setOnMouseEntered(saveEvent -> imageChanger(save,"Sprites/Button_SaveAndQuit_Light.png"));
+                    save.setOnMouseExited(saveEvent -> imageChanger(save,"Sprites/Button_SaveAndQuit.png"));
+                    save.setOnMouseClicked(randomSaveMenu -> randomLevelsSaveMenu(pane,level));
+                }
+                else{
+                    setAsSaveButton(save,"Sprites/Button_SaveAndQuit.png", level.getName(), level);
+                }
 
-                    if(!levelHandler.isRandom()){
-                        if(level.getName().charAt(0) == 'R'){
-                            loadScene("RandomLevelGenerator.fxml",event);
-                        }
-                    else if (level.getName().charAt(5) == '0' || (level.getName().charAt(5) == '1'
-                            && level.getName().charAt(6) == '0')) {
-                        loadScene("LevelSelector1to10.fxml",event);
-                    } else {
-                        loadScene("LevelSelector11to20.fxml",event);
-                    }}
-                    else{
-                        loadScene("RandomLevelGenerator.fxml",event);
-                    }
-                });
 
-                save.setOnMouseEntered(saveEvent -> imageChanger(save,"Sprites/Button_SaveAndQuit_Light.png"));
-                save.setOnMouseExited(saveEvent -> imageChanger(save,"Sprites/Button_SaveAndQuit.png"));
-                save.setOnMouseClicked(saveEvent -> {
-                    if(!levelHandler.isRandom()){
-                    try {
-                        level.saveState();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    if (level.getName().charAt(0)=='R'){
-                            loadScene("RandomLevelSelector.fxml",event);
-                    }
-
-                    else if (level.getName().charAt(5) == '0' || (level.getName().charAt(5) == '1' &&
-                            level.getName().charAt(6) == '0')) {
-                        loadScene("LevelSelector1to10.fxml",event);
-                    } else {
-                        loadScene("LevelSelector11to20.fxml",event);
-                    }}
-                    else{
-                        saveMenu(pane,level);
-                    }
-                });
+                ImageView leave = createImageView("Sprites/Button_Leave.png",400,600,525);
+                setAsExitButton(leave,level);
 
                 pane.getChildren().addAll(rectangle,menuPause,save,leave,resume);
             }
@@ -127,51 +96,80 @@ public class ControllerParent {
                 }
             }
     }
+    private void setAsResumeButton(ImageView resume, Pane pane){
+        resume.setOnMouseEntered(resumeEvent -> imageChanger(resume,"Sprites/Button_Resume_Light.png"));
+        resume.setOnMouseExited(resumeEvent -> imageChanger(resume,"Sprites/Button_Resume.png"));
+        resume.setOnMouseClicked(resumeEvent -> pane.getChildren().remove(pane.getChildren().size()-5,pane.getChildren().size()));
+    }
 
-    private void saveButton(ImageView imageview,String sprite, String name,Level levelSaved){
-        imageview.setOnMouseEntered(event -> {
-            imageChanger(imageview,sprite);
-
-            imageview.setOnMouseClicked(event1 -> {
-                levelSaved.setName(name);
-                try {
-                    levelSaved.saveState();
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
+    static private void setAsSaveButton(ImageView save, String sprite, String nameToSave, Level levelSaved){
+        save.setOnMouseEntered(saveEvent -> imageChanger(save,sprite.substring(0,sprite.length() - 4) + "_Light.png"));
+        save.setOnMouseExited(saveEvent -> imageChanger(save,sprite));
+        save.setOnMouseClicked(saveEvent -> {
+            levelSaved.setName(nameToSave);
+            try {
+                levelSaved.saveState();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            finally {
+                if (nameToSave.charAt(0) == 'R'){
+                    loadScene("RandomMenu.fxml",saveEvent);
                 }
-                finally {
-                   loadScene("RandomLevelGenerator.fxml",event1);
+                else if (nameToSave.charAt(5) == '0' || (nameToSave.charAt(5) == '1'
+                        && nameToSave.charAt(6) == '0')) {
+                    loadScene("LevelSelector1to10.fxml",saveEvent);
+                } else {
+                    loadScene("LevelSelector11to20.fxml",saveEvent);
                 }
-            });
-
+            }
         });
     }
 
-    public void saveMenu(Pane pane, Level levelSaved){
+
+    private void setAsExitButton(ImageView imageView,Level level){
+        imageView.setOnMouseEntered(leaveEvent -> imageChanger(imageView,"Sprites/Button_Leave_Light.png"));
+        imageView.setOnMouseExited(leaveEvent -> imageChanger(imageView,"Sprites/Button_Leave.png"));
+        imageView.setOnMouseClicked(leaveEvent -> {
+            if (level.getName().charAt(0)=='G'){
+                loadScene("RandomLevelGenerator.fxml",leaveEvent);
+            }
+            else if (level.getName().charAt(0) == 'R'){
+                loadScene("RandomLevelSelector.fxml",leaveEvent);
+            }
+            else if (level.getName().charAt(5) == '0' || (level.getName().charAt(5) == '1'
+                    && level.getName().charAt(6) == '0')) {
+                loadScene("LevelSelector1to10.fxml",leaveEvent);
+            } else {
+                loadScene("LevelSelector11to20.fxml",leaveEvent);
+            }
+        });
+    }
+
+    static public void randomLevelsSaveMenu(Pane pane, Level levelSaved){
         Rectangle rectangle = new Rectangle(1600,900, Paint.valueOf("#222222"));
-        ImageView fond = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/BackGround_Choices.png"))));
-        fond.setPreserveRatio(true);
-        fond.setLayoutX(500);
-        fond.setLayoutY(150);
-        fond.setFitWidth(600);
+        rectangle.setOpacity(0.3);
+        ImageView backGround = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/BackGround_Choices.png"))));
+        backGround.setPreserveRatio(true);
+        backGround.setLayoutX(500);
+        backGround.setLayoutY(150);
+        backGround.setFitWidth(600);
 
         ImageView randomSave1 = createImageView("Sprites/Button_Random1.png",500,550,200);
-        saveButton(randomSave1,"Sprites/Button_Random1_Light.png","RandomLevel1",levelSaved);
+        setAsSaveButton(randomSave1,"Sprites/Button_Random1.png","RandomLevel1",levelSaved);
         randomSave1.setOnMouseExited(event -> imageChanger(randomSave1,"Sprites/Button_Random1.png"));
 
 
         ImageView randomSave2 = createImageView("Sprites/Button_Random2.png",500,550,375);
-        saveButton(randomSave2,"Sprites/Button_Random2_Light.png","RandomLevel2",levelSaved);
+        setAsSaveButton(randomSave2,"Sprites/Button_Random2.png","RandomLevel2",levelSaved);
         randomSave2.setOnMouseExited(event -> imageChanger(randomSave2,"Sprites/Button_Random2.png"));
 
 
         ImageView randomSave3 = createImageView("Sprites/Button_Random3.png",500,550,550);
-        saveButton(randomSave3,"Sprites/Button_Random3_Light.png","RandomLevel3",levelSaved);
+        setAsSaveButton(randomSave3,"Sprites/Button_Random3.png","RandomLevel3",levelSaved);
         randomSave3.setOnMouseExited(event -> imageChanger(randomSave3,"Sprites/Button_Random3.png"));
 
-        pane.getChildren().addAll(rectangle,fond,randomSave1,randomSave2,randomSave3);
-
-
+        pane.getChildren().addAll(rectangle,backGround,randomSave1,randomSave2,randomSave3);
     }
 
     /**
@@ -244,7 +242,7 @@ public class ControllerParent {
      * @param layoutY ImageView's position on Y
      * @return the ImageView with all its properties
      */
-    protected ImageView createImageView(String image,double width,double layoutX,double layoutY){
+    static public ImageView createImageView(String image,double width,double layoutX,double layoutY){
         ImageView imageView = new ImageView(new Image(String.valueOf(AppMenu.class.getResource(image))));
        imageView.setPreserveRatio(true);
        imageView.setFitWidth(width);
@@ -264,18 +262,18 @@ public class ControllerParent {
         askingButton.setOnMouseClicked(event ->{
             Rectangle rectangle = new Rectangle(1600,900, Paint.valueOf("#000000"));
             rectangle.setOpacity(0.2);
-            ImageView fondInt = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/BackGround_Level.png"))));
+            ImageView fondInt = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/BackGridLevel.png"))));
             fondInt.setFitWidth(800);
             fondInt.setFitHeight(400);
             fondInt.setLayoutX(400);
             fondInt.setLayoutY(250);
-            ImageView backButton = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/Button_Arrow_Left.png"))));
+            ImageView backButton = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonBack.png"))));
             backButton.setPreserveRatio(true);
             backButton.setLayoutX(700);
             backButton.setLayoutY(600);
             backButton.setFitHeight(100);
-            backButton.setOnMouseEntered(event1 -> imageChanger(backButton,"Sprites/Button_Arrow_LeftLight.png"));
-            backButton.setOnMouseExited(event1 -> imageChanger(backButton,"Sprites/Button_Arrow_Left.png"));
+            backButton.setOnMouseEntered(event1 -> imageChanger(backButton,"Sprites/ButtonBackLight.png"));
+            backButton.setOnMouseExited(event1 -> imageChanger(backButton,"Sprites/ButtonBack.png"));
             backButton.setOnMouseClicked(event1 -> pane.getChildren().remove(pane.getChildren().size()-4,pane.getChildren().size()));
             Label label = new Label(text);
             Font font = new Font("System Bold Italic",50);

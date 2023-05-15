@@ -1,6 +1,5 @@
 package code.projetinfo;
 
-import code.projetinfo.normalBlocks.Amogous;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 

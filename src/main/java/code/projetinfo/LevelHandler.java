@@ -56,8 +56,6 @@ public class LevelHandler {
      */
     private Position gridPos;
 
-    boolean isRandom;
-
     private boolean victoryState = false;
 
 
@@ -65,19 +63,14 @@ public class LevelHandler {
      *
      * @param level the instance of the level wanted to be played.
      * @param pane the pane to draw the level on.
-     * @param isRandom true if the level was generated randomly.
      */
-    public LevelHandler(Level level, AnchorPane pane,boolean isRandom){
+    public LevelHandler(Level level, AnchorPane pane){
         this.level = level;
         this.pane = pane;
-        this.isRandom = isRandom;
+
         this.gridPos = new Position(pane.getPrefWidth()/2 - (double) (level.getGrid().getRow()*tileSize)/2,
                 pane.getPrefHeight()/2- (double) (level.getGrid().getCol()*tileSize)/2);
         gridPos = new Position(gridPos.getX() - gridPos.getX()%tileSize, gridPos.getY() - gridPos.getY()%tileSize);
-    }
-
-    public boolean isRandom() {
-        return isRandom;
     }
 
     /** Draws the grid of the level.
@@ -152,8 +145,11 @@ public class LevelHandler {
         node.setOnMouseDragged(mouseEvent-> {
 
             if(node.getOpacity()<1){return;}
-            if (mouseEvent.getButton() == MouseButton.PRIMARY)
+            if (mouseEvent.getButton() == MouseButton.PRIMARY){
                 moveBlock(imageBlock,mouseEvent);
+                System.out.printf("%s,%s,\n",imageBlock.getLayoutX(),imageBlock.getLayoutY());
+
+            }
         });
 
         node.setOnMouseReleased(event -> {
@@ -212,17 +208,18 @@ public class LevelHandler {
      */
     private void victoryCampaign(){
 
-        if (isRandom){
+        // is random
+        if (level.getName().charAt(0) == 'G'){
             victoryAnimation();
             addVictoryText("RE-ROLL",630,650);
-            ImageView buttonSave = new ImageView(String.valueOf(AppMenu.class.getResource("Sprites/Button_Save.png")));
+            ImageView buttonSave = ControllerParent.createImageView("Sprites/Button_Save.png",400,1035,730);
+            buttonSave.setOnMouseEntered(event ->ControllerParent.imageChanger(buttonSave,"Sprites/Button_Save_Light.png"));
+            buttonSave.setOnMouseExited(event ->ControllerParent.imageChanger(buttonSave,"Sprites/Button_Save.png"));
+
             pane.getChildren().add(buttonSave);
-            buttonSave.setPreserveRatio(true);
-            buttonSave.setFitHeight(100);
-            buttonSave.setLayoutX(1035);
-            buttonSave.setLayoutY(730);
-            buttonSave.setOnMouseEntered(event ->buttonSave.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/Button_Save_Light.png")))));
-            buttonSave.setOnMouseExited(event ->buttonSave.setImage(new Image(String.valueOf(AppMenu.class.getResource("Sprites/Button_Save.png")))));
+            buttonSave.setOnMouseClicked(clicked -> ControllerParent.randomLevelsSaveMenu(pane,level));
+
+
         }
         else {
             victoryAnimation();
@@ -641,12 +638,11 @@ public class LevelHandler {
                     }
                     overPane = level.getBlocks()[i].getSpawnPos().getY() + tileSize + level.getBlocks()[i].getRows()*tileSize;
                 }
-
                 else {
-                        level.getBlocks()[i].setSpawnPos(spawnPos);
-                        spawnPos = new Position(level.getBlocks()[i - 1].getSpawnPos().getX(), tileSize + level.getBlocks()[i - 1].getSpawnPos().getY() + level.getBlocks()[i - 1].getRows() * tileSize);
-                    }
+                    level.getBlocks()[i].setSpawnPos(spawnPos);
+                    spawnPos = new Position(level.getBlocks()[i - 1].getSpawnPos().getX(), tileSize + level.getBlocks()[i - 1].getSpawnPos().getY() + level.getBlocks()[i - 1].getRows() * tileSize);
                 }
             }
         }
     }
+}
