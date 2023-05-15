@@ -34,7 +34,7 @@ public class ControllerOptions extends ControllerParent implements Initializable
 
         if (mediaPlayer == null){
             mediaPlayer = new MediaPlayer(media);
-            mediaPlayer.setVolume(0.5);
+            mediaPlayer.setVolume(0);
             mediaPlayer.play();
             mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         }

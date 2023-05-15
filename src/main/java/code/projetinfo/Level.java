@@ -69,6 +69,9 @@ public class Level {
             block.put("type", blocks[i].getClass().toString());
             block.put("rotateState", blocks[i].getRotateState());
 
+            if (blocks[i].getPlacedState())
+                blocks[i].rotateTo(0);
+
             block.put("layoutX", this.blocks[i].getLayoutX());
             block.put("layoutY", this.blocks[i].getLayoutY());
 
@@ -131,20 +134,11 @@ public class Level {
             //Construct a Block with the imported block attributes and set if he is placed or not
             jsonBlocks[i] = (ImageBlock) current.getDeclaredConstructor(Position.class).newInstance(new Position(layoutX, layoutY));
 
-            if (jsonBlocks[i].getClass() == BigBob.class){
-                System.out.println(jsonBlocks[i].getRotateState());
-                System.out.printf("%s,%s\n",jsonBlocks[i].getLayoutX(),jsonBlocks[i].getLayoutY());
-                System.out.println("init");
-                System.out.printf("%s,%s\n",jsonBlocks[i].getMidX(),jsonBlocks[i].getMidY());
-            }
-            jsonBlocks[i].rotateTo(rotateState);
-            jsonBlocks[i].setRotateState(rotateState);
-            if (jsonBlocks[i].getClass() == BigBob.class){
-                System.out.println(jsonBlocks[i].getRotateState());
-                System.out.printf("%s,%s\n",jsonBlocks[i].getLayoutX(),jsonBlocks[i].getLayoutY());
-                System.out.printf("%s,%s\n",jsonBlocks[i].getMidX(),jsonBlocks[i].getMidY());
-            }
             jsonBlocks[i].setPlaced(placedState);
+            if (jsonBlocks[i].getPlacedState()){
+                jsonBlocks[i].rotateTo(rotateState);
+                jsonBlocks[i].setRotateState(rotateState);
+            }
         }
         this.blocks = jsonBlocks;
     }
