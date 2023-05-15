@@ -94,7 +94,7 @@ public class GameController extends ControllerParent implements Initializable {
 
             resetButton.setOnMouseClicked(event -> {
                 if(!levelHandler.getVictoryState()){
-                levelHandler.reset();}
+                    levelHandler.reset();}
                 else{
                     levelHandler.loadLevel(levelName,event);
             }});

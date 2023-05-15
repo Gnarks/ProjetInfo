@@ -1,7 +1,10 @@
 package code.projetinfo;
 
+import code.projetinfo.normalBlocks.Amogous;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * Represents a block that owns an image.
@@ -232,5 +235,17 @@ public abstract class ImageBlock{
       return cases;
    }
 
-   public abstract ImageBlock clone();
+   @Override
+   public ImageBlock clone(){
+      ImageBlock cloned;
+      try {
+         cloned = getClass().getDeclaredConstructor(Position.class).newInstance(new Position(getLayoutX(),getLayoutY()));
+         cloned.rotateTo(rotateState);
+         cloned.setRotateState(rotateState);
+
+      } catch (InstantiationException | NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+         throw new RuntimeException(e);
+      }
+      return cloned;
+   }
 }

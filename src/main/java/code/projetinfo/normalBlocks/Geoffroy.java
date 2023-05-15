@@ -47,10 +47,4 @@ public class Geoffroy extends ImageBlock {
     public void rotate() {
         rotateTo((getRotateState()+1)%4);
     }
-
-    @Override
-    public ImageBlock clone() {
-        return new Geoffroy(new Position(0,0));
-    }
-
 }

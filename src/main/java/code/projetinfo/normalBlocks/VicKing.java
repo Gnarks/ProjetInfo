@@ -45,12 +45,6 @@ public class VicKing extends ImageBlock {
     public void rotate() {
         rotateTo((getRotateState()+1)%4);
     }
-
-
-    @Override
-    public ImageBlock clone() {
-        return new VicKing(new Position(0,0));
-    }
 }
 
 

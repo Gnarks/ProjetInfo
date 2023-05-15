@@ -308,7 +308,7 @@ public class LevelHandler {
         ghost3tT.play();
 
 
-        TranslateTransition blockytT = translateAnimation(ghost3, 1000,0,25);
+        TranslateTransition blockytT = translateAnimation(blocky, 1000,0,25);
         blockytT.setCycleCount(Animation.INDEFINITE);
         blockytT.setAutoReverse(true);
         blockytT.play();
@@ -327,7 +327,8 @@ public class LevelHandler {
         if (levelNumber == 20){
             return null;
         }
-        return nextLevel + levelNumber+1;
+
+        return String.format("%s%02d",nextLevel,(levelNumber+1));
     }
 
     /**
@@ -454,7 +455,7 @@ public class LevelHandler {
      * @return The TranslateTransition.
      */
     public TranslateTransition translateAnimation(Node node, int duration, double toX, double toY){
-        TranslateTransition translateTransition = new TranslateTransition(Duration.millis(300),node);
+        TranslateTransition translateTransition = new TranslateTransition(Duration.millis(duration),node);
         translateTransition.setToX(toX);
         translateTransition.setToY(toY);
         return translateTransition;
@@ -478,7 +479,7 @@ public class LevelHandler {
         imageBlock.getImageView().toFront();
         fT.setOnFinished(finishedEvent -> {
             TranslateTransition tT = translateAnimation(anim.getImageView(),300,
-                    anim.getSpawnPos().getX()-anim.getLayoutX(),imageBlock.getSpawnPos().getX()-imageBlock.getLayoutX());
+                    imageBlock.getSpawnPos().getX()-imageBlock.getLayoutX(),imageBlock.getSpawnPos().getY()-imageBlock.getLayoutY());
             tT.play();
             tT.setOnFinished(event ->{blockPop(imageBlock,200);
                 pane.getChildren().remove(anim.getImageView());});

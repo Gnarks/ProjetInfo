@@ -46,9 +46,4 @@ public class King extends ImageBlock {
     public void rotate() {
         rotateTo((getRotateState()+1)%4);
     }
-
-    @Override
-    public ImageBlock clone() {
-        return new King(new Position(0,0));
-    }
 }

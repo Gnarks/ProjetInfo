@@ -46,8 +46,4 @@ public class Baby extends ImageBlock {
         rotateTo((getRotateState()+1)%4);
     }
 
-    @Override
-    public ImageBlock clone() {
-        return new Baby(new Position(0,0));
-    }
 }
