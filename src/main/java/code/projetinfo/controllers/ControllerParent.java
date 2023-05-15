@@ -1,7 +1,6 @@
 package code.projetinfo.controllers;
 
 import code.projetinfo.AppMenu;
-import code.projetinfo.ImageBlock;
 import code.projetinfo.Level;
 import code.projetinfo.LevelHandler;
 import javafx.animation.TranslateTransition;
@@ -11,7 +10,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,7 +21,6 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 
 
@@ -75,20 +72,25 @@ public class ControllerParent {
                 leave.setOnMouseEntered(leaveEvent -> imageChanger(leave,"Sprites/LeaveButtonLight.png"));
                 leave.setOnMouseExited(leaveEvent -> imageChanger(leave,"Sprites/LeaveButton.png"));
                 leave.setOnMouseClicked(leaveEvent -> {
+                    if(!levelHandler.isRandom()){
                     if (level.getName().charAt(0)=='R'){
-                        loadScene("MenuMods.fxml",event);
+                        loadScene("RandomLevelSelector.fxml",event);
                     }
                     else if (level.getName().charAt(5) == '0' || (level.getName().charAt(5) == '1'
                             && level.getName().charAt(6) == '0')) {
                         loadScene("LevelSelector1to10.fxml",event);
                     } else {
                         loadScene("LevelSelector11to20.fxml",event);
+                    }}
+                    else{
+                        loadScene("RandomLevelGenerator.fxml",event);
                     }
                 });
 
                 save.setOnMouseEntered(saveEvent -> imageChanger(save,"Sprites/SaveButtonLight.png"));
                 save.setOnMouseExited(saveEvent -> imageChanger(save,"Sprites/SaveButton.png"));
                 save.setOnMouseClicked(saveEvent -> {
+                    if(!levelHandler.isRandom()){
                     try {
                         level.saveState();
                     } catch (IOException e) {
@@ -100,6 +102,9 @@ public class ControllerParent {
                         loadScene("LevelSelector1to10.fxml",event);
                     } else {
                         loadScene("LevelSelector11to20.fxml",event);
+                    }}
+                    else{
+                        saveMenu(pane,level);
                     }
                 });
 

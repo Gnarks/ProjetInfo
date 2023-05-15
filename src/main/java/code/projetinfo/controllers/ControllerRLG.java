@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
 
 public class ControllerRLG extends ControllerParent implements Initializable {
 
-    /**Controller of all the level generator menu's buttons(assigned to RandomLevelGenerator.fxml)*/
+    /**Controller of all the level generator menu's buttons(assigned to RLGMenu.fxml)*/
     @FXML
     private Pane pane;
     @FXML
@@ -57,10 +57,6 @@ public class ControllerRLG extends ControllerParent implements Initializable {
     private boolean alwaysDifferentState = false;
 
     private boolean fullRandomState = true;
-
-    private final Class<ImageBlock>[] allBlocks = new Class[]{Amogous.class, Baby.class, BigBob.class, Bloby.class, BooBelle.class, Geoffroy.class,
-            GymBroo.class, King.class, LilDeath.class, Napsta.class, Nessy.class, Phantom.class, PlagueDoc.class, Redky.class, Scooboodoo.class,
-            Toowels.class, VicKing.class, Wolfy.class};
 
     @FXML
     protected void onBackEntered(){
@@ -121,15 +117,29 @@ public class ControllerRLG extends ControllerParent implements Initializable {
         imageChanger(maximumDecrease,"Sprites/ButtonBack.png");
     }
 
-
     @Override
+    @SuppressWarnings("unchecked")
     public void initialize(URL location, ResourceBundle resources) {
+        final Class<ImageBlock>[] allBlocks = new Class[]{Amogous.class, Baby.class, BigBob.class, Bloby.class, BooBelle.class, Geoffroy.class,
+                GymBroo.class, King.class, LilDeath.class, Napsta.class, Nessy.class, Phantom.class, PlagueDoc.class, Redky.class, Scooboodoo.class,
+                Toowels.class, VicKing.class, Wolfy.class};
         for (int i = 0; i < pane.getChildren().size(); i++) {
             if(pane.getChildren().get(i).getClass() == Button.class){
                 int finalI = i;
                 pane.getChildren().get(i).setOnMouseClicked(event->{
                     try {
-                        selectBlock(pane,(Button)pane.getChildren().get(finalI),blockChosen);
+                        Button button = (Button)pane.getChildren().get(finalI);
+                        Class<ImageBlock>block = (Class<ImageBlock>) Class.forName("code.projetinfo.normalBlocks." + button.getId());
+                        System.out.println(block);
+                        blockChosen.add(block);
+                        Rectangle rectangle = new Rectangle(button.getLayoutX(),button.getLayoutY(),button.getWidth(),button.getHeight());
+                        rectangle.setOpacity(0.2);
+                        rectangle.setFill(Paint.valueOf("#00ff00"));
+                        pane.getChildren().add(rectangle);
+                        rectangle.setOnMouseClicked(removeEvent -> {
+                            pane.getChildren().remove(rectangle);
+                            blockChosen.remove(block);
+                        });
                     } catch (ClassNotFoundException e) {
                         throw new RuntimeException(e);
                     }
