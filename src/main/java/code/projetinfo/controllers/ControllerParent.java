@@ -30,11 +30,11 @@ import java.util.ArrayList;
 public class ControllerParent {
     /**
      * Change the sprite of an ImageView and set up an action
-     * that load another scene when we click on it
+     * that load another scene when we click on it.
      *
-     * @param button imageview which serves as a button
-     * @param sprite lighter sprite to set on the button
-     * @param nextScene scene to load after clicking on the button
+     * @param button imageview which serves as a button.
+     * @param sprite lighter sprite to set on the button.
+     * @param nextScene scene to load after clicking on the button.
      */
     protected void onButtonEntered(ImageView button, String sprite, String nextScene){
         button.setImage(new Image(String.valueOf(AppMenu.class.getResource(sprite))));
@@ -42,7 +42,7 @@ public class ControllerParent {
     }
 
     /**
-     * Change the sprite of an ImageView
+     * Change the sprite of an ImageView.
      *
      * @param imageView imageview we want to change the sprite
      * @param sprite sprite to set on the imageview
@@ -57,11 +57,9 @@ public class ControllerParent {
      * @param pane scene's pane
      * @param levelHandler levelHandler of the level which is played
      * @param level level which is played
-     * @param levelName levelName of the level
      * @param event mouseEvent when the player click on the pause button
      */
-    protected void pauseMenu(Pane pane, LevelHandler levelHandler, Level level,String levelName,Event event){
-
+    protected void pauseMenu(Pane pane, LevelHandler levelHandler, Level level,Event event){
             if(!levelHandler.getVictoryState()){
                 Rectangle rectangle = new Rectangle(1600, 900, Paint.valueOf("#000000"));
                 rectangle.setOpacity(0.3);
@@ -77,10 +75,11 @@ public class ControllerParent {
                 leave.setOnMouseEntered(leaveEvent -> imageChanger(leave,"Sprites/LeaveButtonLight.png"));
                 leave.setOnMouseExited(leaveEvent -> imageChanger(leave,"Sprites/LeaveButton.png"));
                 leave.setOnMouseClicked(leaveEvent -> {
-                    if (levelName.charAt(0)=='R'){
+                    if (level.getName().charAt(0)=='R'){
                         loadScene("MenuMods.fxml",event);
                     }
-                    else if (levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')) {
+                    else if (level.getName().charAt(5) == '0' || (level.getName().charAt(5) == '1'
+                            && level.getName().charAt(6) == '0')) {
                         loadScene("LevelSelector1to10.fxml",event);
                     } else {
                         loadScene("LevelSelector11to20.fxml",event);
@@ -96,18 +95,18 @@ public class ControllerParent {
                         throw new RuntimeException(e);
                     }
 
-                    if (levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')) {
+                    if (level.getName().charAt(5) == '0' || (level.getName().charAt(5) == '1' &&
+                            level.getName().charAt(6) == '0')) {
                         loadScene("LevelSelector1to10.fxml",event);
                     } else {
                         loadScene("LevelSelector11to20.fxml",event);
                     }
                 });
-
                 pane.getChildren().addAll(rectangle,menuPause,save,leave,resume);
             }
-
             else{
-                if (levelName.charAt(5) == '0' || (levelName.charAt(5) == '1' && levelName.charAt(6) == '0')) {
+                if (level.getName().charAt(5) == '0' || (level.getName().charAt(5) == '1'
+                        && level.getName().charAt(6) == '0')) {
                     loadScene("LevelSelector1to10.fxml",event);
                 } else {
                     loadScene("LevelSelector11to20.fxml",event);
@@ -323,26 +322,4 @@ public class ControllerParent {
             pane.getChildren().addAll(rectangle,fondInt,label,backButton);
         });
     }
-
-    /**
-     * For the Random Menu, to choose the block we want to have in our level generated
-     *
-     * @param pane pane of the Scene
-     * @param button Button of the block we want to add in the list
-     * @param blockChosen List of the blocks already chosen
-     */
-    protected void selectBlock(Pane pane, Button button, ArrayList<Class<ImageBlock>> blockChosen) throws ClassNotFoundException {
-        Class<?> block = Class.forName("code.projetinfo.normalBlocks." + button.getId());
-        blockChosen.add((Class<ImageBlock>) block);
-        Rectangle rectangle = new Rectangle(button.getLayoutX(),button.getLayoutY(),button.getWidth(),button.getHeight());
-        rectangle.setOpacity(0.2);
-        rectangle.setFill(Paint.valueOf("#00ff00"));
-        pane.getChildren().add(rectangle);
-        rectangle.setOnMouseClicked(event -> {
-            pane.getChildren().remove(rectangle);
-            blockChosen.remove(block);
-        });
-
-    }
-
 }

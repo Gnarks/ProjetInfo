@@ -12,8 +12,7 @@ public class LevelGeneratorTest {
 
     @Test
     public void TryGenerate() {
-
-        LevelGenerator levelGenerator = new LevelGenerator(new Class[]{Amogous.class},
+        LevelGenerator levelGenerator = new LevelGenerator(new Class[]{Baby.class},
                 1,1,false);
         try {
            levelGenerator.generate();

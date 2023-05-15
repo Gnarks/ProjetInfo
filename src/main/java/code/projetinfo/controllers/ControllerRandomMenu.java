@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
@@ -121,15 +122,26 @@ public class ControllerRandomMenu extends ControllerParent implements Initializa
         imageChanger(maximumDecrease,"Sprites/ButtonBack.png");
     }
 
-
     @Override
+    @SuppressWarnings("unchecked")
     public void initialize(URL location, ResourceBundle resources) {
         for (int i = 0; i < pane.getChildren().size(); i++) {
             if(pane.getChildren().get(i).getClass() == Button.class){
                 int finalI = i;
                 pane.getChildren().get(i).setOnMouseClicked(event->{
                     try {
-                        selectBlock(pane,(Button)pane.getChildren().get(finalI),blockChosen);
+                        Button button = (Button)pane.getChildren().get(finalI);
+                        Class<ImageBlock>block = (Class<ImageBlock>) Class.forName("code.projetinfo.normalBlocks." + button.getId());
+                        System.out.println(block);
+                        blockChosen.add(block);
+                        Rectangle rectangle = new Rectangle(button.getLayoutX(),button.getLayoutY(),button.getWidth(),button.getHeight());
+                        rectangle.setOpacity(0.2);
+                        rectangle.setFill(Paint.valueOf("#00ff00"));
+                        pane.getChildren().add(rectangle);
+                        rectangle.setOnMouseClicked(removeEvent -> {
+                            pane.getChildren().remove(rectangle);
+                            blockChosen.remove(block);
+                        });
                     } catch (ClassNotFoundException e) {
                         throw new RuntimeException(e);
                     }
