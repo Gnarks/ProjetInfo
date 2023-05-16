@@ -217,12 +217,7 @@ public class LevelHandler {
 
             pane.getChildren().add(buttonSave);
 
-            buttonSave.setOnMouseClicked(clicked -> {
-                ControllerParent.randomLevelsSaveMenu(pane, level);
-
-            });
-
-
+            buttonSave.setOnMouseClicked(clicked -> ControllerParent.randomLevelsSaveMenu(pane, level));
         }
         else {
             victoryAnimation();

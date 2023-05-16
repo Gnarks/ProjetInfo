@@ -91,13 +91,17 @@ public class ControllerParent {
             }
 
             else{
-                if (level.getName().charAt(0) == 'R'){
+                if (level.getName().charAt(0) == 'G'){
+                    loadScene("RandomLevelGenerator.fxml",event);
+                }
+                else if (level.getName().charAt(0) == 'R'){
                     loadScene("MenuRandom.fxml",event);
                 }
                 else if (level.getName().charAt(5) == '0' || (level.getName().charAt(5) == '1'
                         && level.getName().charAt(6) == '0')) {
                     loadScene("LevelSelector1to10.fxml",event);
-                } else {
+                }
+                else {
                     loadScene("LevelSelector11to20.fxml",event);
                 }
             }
@@ -211,7 +215,12 @@ public class ControllerParent {
         setAsSaveButton(randomSave3,"Sprites/Button_Random3.png","RandomLevel3",levelSaved);
         randomSave3.setOnMouseExited(event -> imageChanger(randomSave3,"Sprites/Button_Random3.png"));
 
-        pane.getChildren().addAll(rectangle,backGround,randomSave1,randomSave2,randomSave3);
+        ImageView leaveSave = createImageView("Sprites/Button_Arrow_Left.png",150,725,700);
+        leaveSave.setOnMouseEntered(event -> imageChanger(leaveSave,"Sprites/Button_Arrow_LeftLight.png"));
+        leaveSave.setOnMouseExited(event ->imageChanger(leaveSave,"Sprites/Button_Arrow_Left.png"));
+        leaveSave.setOnMouseClicked(event -> pane.getChildren().removeAll(leaveSave,rectangle,backGround,randomSave1,randomSave2,randomSave3));
+
+        pane.getChildren().addAll(rectangle,backGround,randomSave1,randomSave2,randomSave3,leaveSave);
     }
 
     /**
