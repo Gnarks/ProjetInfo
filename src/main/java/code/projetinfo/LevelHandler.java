@@ -145,11 +145,8 @@ public class LevelHandler {
         node.setOnMouseDragged(mouseEvent-> {
 
             if(node.getOpacity()<1){return;}
-            if (mouseEvent.getButton() == MouseButton.PRIMARY){
+            if (mouseEvent.getButton() == MouseButton.PRIMARY)
                 moveBlock(imageBlock,mouseEvent);
-                System.out.printf("%s,%s,\n",imageBlock.getLayoutX(),imageBlock.getLayoutY());
-
-            }
         });
 
         node.setOnMouseReleased(event -> {
@@ -217,7 +214,11 @@ public class LevelHandler {
             buttonSave.setOnMouseExited(event ->ControllerParent.imageChanger(buttonSave,"Sprites/Button_Save.png"));
 
             pane.getChildren().add(buttonSave);
-            buttonSave.setOnMouseClicked(clicked -> ControllerParent.randomLevelsSaveMenu(pane,level));
+
+            buttonSave.setOnMouseClicked(clicked -> {
+                ControllerParent.randomLevelsSaveMenu(pane, level);
+
+            });
 
 
         }
@@ -325,6 +326,11 @@ public class LevelHandler {
     public String nextLevel(String levelName){
         String nextLevel = "Level";
 
+        if (levelName.charAt(0)== 'R'){
+            int randomLevelNumber = Character.getNumericValue(levelName.charAt(levelName.length()-1));
+            randomLevelNumber = randomLevelNumber+1;
+            return (randomLevelNumber == 4?null:String.format("RandomLevel%s",randomLevelNumber));
+        }
         int levelNumber = Character.getNumericValue(levelName.charAt(5))*10 + Character.getNumericValue(levelName.charAt(6));
 
         if (levelNumber == 20){
@@ -566,10 +572,11 @@ public class LevelHandler {
         return colliding;
     }
 
+
     /** Moves the ImageBlock relative to the MouseEvent.
      *
      * @param imageBlock The ImageBlock to be moved
-     * @param mouseEvent
+     * @param mouseEvent the mouse event the ImageBlock has to follow.
      */
     private void moveBlock(ImageBlock imageBlock, MouseEvent mouseEvent){
         double posX = mouseEvent.getSceneX() - imageBlock.getMidX();

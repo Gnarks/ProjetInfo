@@ -1,6 +1,7 @@
 package code.projetinfo.controllers;
 
 import code.projetinfo.AppMenu;
+import code.projetinfo.ImageBlock;
 import code.projetinfo.Level;
 import code.projetinfo.LevelHandler;
 import javafx.animation.TranslateTransition;
@@ -25,6 +26,9 @@ import java.io.IOException;
 
 
 public class ControllerParent {
+
+
+
     /**
      * Change the sprite of an ImageView and set up an action
      * that load another scene when we click on it.
@@ -96,6 +100,12 @@ public class ControllerParent {
                 }
             }
     }
+
+    /**
+     *
+     * @param resume
+     * @param pane
+     */
     private void setAsResumeButton(ImageView resume, Pane pane){
         resume.setOnMouseEntered(resumeEvent -> imageChanger(resume,"Sprites/Button_Resume_Light.png"));
         resume.setOnMouseExited(resumeEvent -> imageChanger(resume,"Sprites/Button_Resume.png"));
@@ -108,6 +118,16 @@ public class ControllerParent {
         save.setOnMouseClicked(saveEvent -> {
             levelSaved.setName(nameToSave);
             try {
+                if (levelSaved.getBlocks().length == levelSaved.getPlaced())
+                {
+                    for (ImageBlock imageBlock: levelSaved.getBlocks()
+                    ) {
+                        if (imageBlock.getPlacedState()){
+                            imageBlock.setPlaced(false);
+                            imageBlock.setPosition(imageBlock.getSpawnPos());
+                        }
+                    }
+                }
                 levelSaved.saveState();
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -146,7 +166,7 @@ public class ControllerParent {
         });
     }
 
-    static public void randomLevelsSaveMenu(Pane pane, Level levelSaved){
+    static  public void  randomLevelsSaveMenu(Pane pane, Level levelSaved){
         Rectangle rectangle = new Rectangle(1600,900, Paint.valueOf("#222222"));
         rectangle.setOpacity(0.3);
         ImageView backGround = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/BackGround_Choices.png"))));
@@ -154,6 +174,7 @@ public class ControllerParent {
         backGround.setLayoutX(500);
         backGround.setLayoutY(150);
         backGround.setFitWidth(600);
+
 
         ImageView randomSave1 = createImageView("Sprites/Button_Random1.png",500,550,200);
         setAsSaveButton(randomSave1,"Sprites/Button_Random1.png","RandomLevel1",levelSaved);
