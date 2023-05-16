@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<Pane fx:id = "pane" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="code.projetinfo.controllers.ControllerCreatedLevelSelector"
+      prefHeight="400.0" prefWidth="600.0">
+    <ImageView fitHeight="900.0" fitWidth="1600.0">
+        <Image url="@Sprites/Scene_Menus.png"/>
+    </ImageView>
+    <ImageView fx:id="created2Button" fitHeight="146.0" fitWidth="477.0" layoutX="603.0" layoutY="377.0"
+               onMouseEntered="#onCreated2Entered" onMouseExited="#onCreated2Exited">
+        <Image url="@Sprites/Button_Created2.png"/>
+    </ImageView>
+    <ImageView fx:id="buttonBack" fitHeight="138.0" fitWidth="166.0" onMouseEntered="#onBackEntered"
+               onMouseExited="#onBackExited">
+        <Image url="@Sprites/Button_GoBack.png"/>
+    </ImageView>
+    <ImageView fx:id="created1Button" fitHeight="146.0" fitWidth="461.0" layoutX="603.0" layoutY="231.0"
+               onMouseEntered="#onCreated1Entered" onMouseExited="#onCreated1Exited">
+        <Image url="@Sprites/Button_Created1.png"/>
+    </ImageView>
+    <ImageView fx:id="created3Button" fitHeight="146.0" fitWidth="477.0" layoutX="595.0" layoutY="523.0"
+               onMouseEntered="#onCreated3Entered" onMouseExited="#onCreated3Exited">
+        <Image url="@Sprites/Button_Created3.png"/>
+    </ImageView>
+</Pane>

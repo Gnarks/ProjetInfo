@@ -45,11 +45,11 @@ public class ControllerMenuPlay extends ControllerParent{
 
     @FXML
     public void onModsEntered(){
-        onButtonEntered(modsButton,"Sprites/Button_Mods_Light.png","MenuMods.fxml");
+        onButtonEntered(modsButton,"Sprites/Button_Create_Light.png","MenuCreate.fxml");
     }
     @FXML
     public void onModsExited(){
-        imageChanger(modsButton,"Sprites/Button_Mods.png");
+        imageChanger(modsButton,"Sprites/Button_Create.png");
     }
 
 }

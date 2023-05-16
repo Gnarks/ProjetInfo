@@ -25,6 +25,6 @@
    </ImageView>
    <ImageView fx:id="modsButton" fitHeight="146.0" fitWidth="477.0" layoutX="595.0" layoutY="523.0"
               onMouseEntered="#onModsEntered" onMouseExited="#onModsExited">
-         <Image url="@Sprites/Button_Mods.png"/>
+         <Image url="@Sprites/Button_Create.png"/>
    </ImageView>
 </Pane>
