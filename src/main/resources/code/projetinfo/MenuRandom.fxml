@@ -15,11 +15,11 @@
                onMouseExited="#onBackExited">
         <Image url="@Sprites/Button_GoBack.png"/>
     </ImageView>
-    <ImageView fx:id="randomLevelsSaved" fitHeight="146.0" fitWidth="461.0" layoutX="603.0" layoutY="460.0"
+    <ImageView fx:id="randomLevelsSaved" fitHeight="146.0" fitWidth="461.0" layoutX="603.0" layoutY="490.0"
                onMouseEntered="#onRLSEntered" onMouseExited="#onRLSExited">
         <Image url="@Sprites/Button_RLS.png"/>
     </ImageView>
-    <ImageView fx:id="randomLevelGenerator" fitHeight="146.0" fitWidth="477.0" layoutX="595.0" layoutY="321.0"
+    <ImageView fx:id="randomLevelGenerator" fitHeight="146.0" fitWidth="477.0" layoutX="595.0" layoutY="291.0"
                onMouseEntered="#onRLGEntered" onMouseExited="#onRLGExited">
         <Image url="@Sprites/Button_RLG.png"/>
     </ImageView>

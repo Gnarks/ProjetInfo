@@ -90,7 +90,7 @@ public class ControllerParent {
 
             else{
                 if (level.getName().charAt(0) == 'R'){
-                    loadScene("RandomMenu.fxml",event);
+                    loadScene("MenuRandom.fxml",event);
                 }
                 else if (level.getName().charAt(5) == '0' || (level.getName().charAt(5) == '1'
                         && level.getName().charAt(6) == '0')) {
@@ -134,7 +134,7 @@ public class ControllerParent {
             }
             finally {
                 if (nameToSave.charAt(0) == 'R'){
-                    loadScene("RandomMenu.fxml",saveEvent);
+                    loadScene("MenuRandom.fxml",saveEvent);
                 }
                 else if (nameToSave.charAt(5) == '0' || (nameToSave.charAt(5) == '1'
                         && nameToSave.charAt(6) == '0')) {

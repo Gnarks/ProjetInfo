@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 
 public class ControllerOptions extends ControllerParent implements Initializable {
 
-    /**Controller of all the options buttons(assigned to OptionsMenu.fxml)*/
+    /**Controller of all the options buttons(assigned to MenuOptions.fxml)*/
     @FXML
     private ImageView decreaseSound;
 

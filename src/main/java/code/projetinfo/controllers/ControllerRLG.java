@@ -60,7 +60,7 @@ public class ControllerRLG extends ControllerParent implements Initializable {
 
     @FXML
     protected void onBackEntered(){
-        onButtonEntered(buttonBack,"Sprites/Button_GoBack_Light.png","RandomMenu.fxml");
+        onButtonEntered(buttonBack,"Sprites/Button_GoBack_Light.png","MenuRandom.fxml");
     }
 
     @FXML

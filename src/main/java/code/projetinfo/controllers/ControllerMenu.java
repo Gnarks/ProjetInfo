@@ -48,7 +48,7 @@ public class ControllerMenu extends ControllerParent implements Initializable {
     @FXML
     protected void onOptionsEntered() {
         imageChanger(optionsButtonImage, "Sprites/Button_Options_Light.png");
-        optionsButtonImage.setOnMouseClicked(event ->loadScene("OptionsMenu.fxml",event));
+        optionsButtonImage.setOnMouseClicked(event ->loadScene("MenuOptions.fxml",event));
     }
     @FXML
     protected void onOptionsExited() {
