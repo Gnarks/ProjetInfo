@@ -1,11 +1,11 @@
 package code.projetinfo;
 
 /**
- * Class used to represent a 2D array of CaseState.
+ * Class used to represent a 2-dimensional array of CaseState.
  * @see CaseState
  */
 public class Cases {
-    private CaseState[][] cases;
+    private final CaseState[][] cases;
 
     /** Default Constructor of the Cases class.
      *  Fils the Cases with CaseState.EMPTY.
@@ -45,9 +45,7 @@ public class Cases {
         }
         CaseState[][] newCases = new CaseState[cases.length][cases[0].length];
         for (int i = 0; i < cases.length; i++) {
-            for (int j = 0; j < cases[i].length; j++) {
-                newCases[i][j] = cases[i][j];
-            }
+            System.arraycopy(cases[i], 0, newCases[i], 0, cases[i].length);
         }
         this.cases = newCases;
     }
@@ -55,8 +53,8 @@ public class Cases {
     /** Sets the case at the x and y position to
      * the specified CaseState.
      *
-     * @param x Row index.
-     * @param y Column index.
+     * @param x row index.
+     * @param y column index.
      * @param s CaseState to set.
      */
     public void set(int x, int y, CaseState s) {
@@ -66,9 +64,9 @@ public class Cases {
     /** Returns the CasesState at the (x,y) position
      *  in the 2D array.
      *
-     * @param x Column index.
-     * @param y Row index.
-     * @return The CaseState of the selected Cell.
+     * @param x column index.
+     * @param y row index.
+     * @return the CaseState of the selected Cell.
      */
     public CaseState getState(int x, int y){
         return this.cases[y][x];
@@ -102,8 +100,8 @@ public class Cases {
     /** Compare the actual Cases with the externalCases.
      *
      * @param externalCases the other Cases to be compared with.
-     * @return <code>true</code> if the two Cases have equals CaseState 2D array.;
-     *                  <code>false</code> otherwise.
+     * @return <code>true</code> if the two Cases have equals CaseState 2D array.
+     * <code>false</code> otherwise.
      */
     public boolean equals(CaseState[][] externalCases){
         if (externalCases.length == 0 && cases.length == 0)

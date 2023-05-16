@@ -24,7 +24,9 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 
-
+/**
+ * The general Controller.
+ */
 public class ControllerParent {
 
 
@@ -101,10 +103,10 @@ public class ControllerParent {
             }
     }
 
-    /**
+    /** Sets the specified button as a resume button.
      *
-     * @param resume
-     * @param pane
+     * @param resume The ImageView of the resume button.
+     * @param pane The pane to clear the buttons when resume is clicked.
      */
     private void setAsResumeButton(ImageView resume, Pane pane){
         resume.setOnMouseEntered(resumeEvent -> imageChanger(resume,"Sprites/Button_Resume_Light.png"));
@@ -112,6 +114,14 @@ public class ControllerParent {
         resume.setOnMouseClicked(resumeEvent -> pane.getChildren().remove(pane.getChildren().size()-5,pane.getChildren().size()));
     }
 
+
+    /** Sets the specified button as a save button.
+     *
+     * @param save The ImageView of the save button.
+     * @param sprite The url to the basic Sprite of the button.
+     * @param nameToSave Name to save in the json file.
+     * @param levelSaved The level to save when clicked.
+     */
     static private void setAsSaveButton(ImageView save, String sprite, String nameToSave, Level levelSaved){
         save.setOnMouseEntered(saveEvent -> imageChanger(save,sprite.substring(0,sprite.length() - 4) + "_Light.png"));
         save.setOnMouseExited(saveEvent -> imageChanger(save,sprite));
@@ -147,6 +157,11 @@ public class ControllerParent {
     }
 
 
+    /** Sets the specified button as the exit button.
+     *
+     * @param imageView The ImageView of the exit button.
+     * @param level The current level being played.
+     */
     private void setAsExitButton(ImageView imageView,Level level){
         imageView.setOnMouseEntered(leaveEvent -> imageChanger(imageView,"Sprites/Button_Leave_Light.png"));
         imageView.setOnMouseExited(leaveEvent -> imageChanger(imageView,"Sprites/Button_Leave.png"));
@@ -166,6 +181,12 @@ public class ControllerParent {
         });
     }
 
+    /** Draws the menu to save random level that had just been generated.
+     *  Permits to select between 3 save slots.
+     *
+     * @param pane The pane to draw the saveMenu on.
+     * @param levelSaved The level ro be saved in the save slots from 1 to 3.
+     */
     static  public void  randomLevelsSaveMenu(Pane pane, Level levelSaved){
         Rectangle rectangle = new Rectangle(1600,900, Paint.valueOf("#222222"));
         rectangle.setOpacity(0.3);

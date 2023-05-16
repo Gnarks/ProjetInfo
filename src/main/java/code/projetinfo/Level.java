@@ -1,5 +1,4 @@
 package code.projetinfo;
-import code.projetinfo.normalBlocks.BigBob;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -8,22 +7,47 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
+/**
+ * Class representing a level to be played.
+ */
 public class Level {
+    /**
+     * The updated Cases representing the grid of the Level.
+     */
     private Cases grid;
+    /**
+     * The array of blocks to be placed in the level.
+     */
     private ImageBlock[] blocks;
+    /**
+     * The counter of placed blocks on the grid.
+     */
     private int placed = 0;
+    /**
+     * The name of the level, used to save the level in the json file.
+     */
     private String name;
+    /**
+     * The absolute path to the directory of the project.
+     */
     private final String pathName = System.getProperty("user.dir")+"<src<main<resources<code<projetinfo<levels.json";
+    /**
+     * The File class representing the levels.json file.
+     */
     private final File f = new File(pathName.replaceAll("<", "\\"+System.getProperty("file.separator")));
+
     private final ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 
+    /**
+     * The initial grid to be saved and retrieved in the save and load methods.
+     */
     private Cases initialGrid;
 
-    /**
-     * Constructor for Level.
-     * @param name The name of the level
-     * @param grid The inner matrix of the level
-     * @param blocs a list with all the usable blocks for the level
+    /** Default Constructor for Level.
+     *
+     * @param name the name of the level.
+     * @param grid the Cases representing the grid of the level.
+     * @param blocs a list with all the blocks to be placed to finish the level.
      */
     public Level(String name, Cases grid, ImageBlock[] blocs){
         this.grid = new Cases(grid.getCases().clone());
@@ -32,9 +56,9 @@ public class Level {
         this.initialGrid = new Cases(grid.getCases().clone());
     }
 
-    /**
-     * This constructor load the level "name" from the json file into the constructed instance.
-     * @param name The name of the level to load from the json file.
+    /**This constructor load the level with the specified name from the json file.
+     *
+     *  @param name The name of the level to load from the json file.
      * @throws IOException
      * @throws ClassNotFoundException
      * @throws InvocationTargetException
@@ -48,10 +72,8 @@ public class Level {
     }
 
     /**
-     * Save all the data of a Level instance in the levels.json file with the name of the level.
-     * If the level is new, will save the grid (even the FULL).
-     * If the level isn't new, will save only the position of the blocks and not change the initial grid.
-     *
+     * Saves all the data of a level in the levels.json file with the name of the level.
+     * *
      * @throws IOException
      */
     public void saveState() throws IOException {
@@ -81,14 +103,14 @@ public class Level {
 
 
         newNode.set("blockList", blockList);
-        newNode.put("placed", this.placed);
         levels.set(this.name, newNode);
         mapper.writeValue(f, levels);
     }
 
-    /**
-     * Replace all the data of the calling Level instance by the data stored in the name field of levels.json
-     * @param name The name of the level to load from levels.json
+    /** Replace all the data of the level by the data stored in the saved level
+     * with the specified name.
+     *
+     * @param name The name of the level to load from the levels.json file.
      * @throws IOException
      * @throws NoSuchMethodException
      * @throws ClassNotFoundException
@@ -142,19 +164,14 @@ public class Level {
         }
         this.blocks = jsonBlocks;
     }
-    /**
-     * This method check the grid to see if the block can be placed at the desired
-     * coordinates.
-     * @param imageBlock
-     * The block to place
-     * @param x
-     * Horizontal coordinate of the top left of the block.
-     * @param y
-     * Vertical coordinate of the top left of the block.
-     * @return
-     * Return if the block can be placed or not.
+    /** Checks if the specified ImageBlock can be placed at the (x,y) position
+     * in the grid.
+     * @param imageBlock the ImageBlock to check with.
+     * @param x the column index of the grid.
+     * @param y the row index of the grid.
+     * @return if the ImageBlock can be placed or not.
      */
-    public boolean isPlacable(ImageBlock imageBlock, int x, int y) {
+    public boolean isPlaceable(ImageBlock imageBlock, int x, int y) {
         if (x < 0 || y < 0) {
             return false;
         }
@@ -170,15 +187,11 @@ public class Level {
     }
 
 
-    /**
-     * This method "place" a bloc in the grid matrix.
-     * We just put the matrix of the bloc in a bigger matrix grid.
-     * @param imageBlock
-     * The matrix representing the bloc to place
-     * @param x
-     * The horizontal coordinate of the placement point of the bloc.
-     * @param y
-     * The vertical coordinate of the placement point of the bloc.
+    /** Places the specified ImageBlock at the (x,y) Position in the grid.
+     *
+     * @param imageBlock the ImageBlock to be placed.
+     * @param x the column index of the grid.
+     * @param y the row index of the grid.
      */
     public void place(ImageBlock imageBlock, int x, int y){
         for (int i = 0; i < imageBlock.getRows(); i++){
@@ -191,12 +204,11 @@ public class Level {
         imageBlock.setPlaced(true);
     }
 
-    /**
-     * Remove a block from a selected cell in the inner matrix.
-     * It basically just runs through the bloc matrix and set the matching index to Empty.
-     * @param imageBlock The block to remove.
-     * @param x coordinate of the upper left corner of the block to remove
-     * @param y coordinate of the upper left corner of the block to remove
+    /** Removes the specified ImageBlock of the grid.
+     *
+     * @param imageBlock the ImageBlock to remove.
+     * @param x Position of the left corner of the block to remove.
+     * @param y Position of the upper corner of the block to remove.
      */
     public void remove(ImageBlock imageBlock,int x,int y){
         for (int i = 0; i < imageBlock.getRows(); i++){
@@ -209,40 +221,46 @@ public class Level {
         imageBlock.setPlaced(false);
     }
 
-    /**
-     * @return the list of the usable blocks in the level.
+    /**Returns the array of ImageBlocks to be placed in the level.
+     *
+     * @return the array of ImageBlocks to be placed in the level.
      */
     public ImageBlock[] getBlocks() {
         return blocks;
     }
 
-    /**
-     * @return the matrix representing the level.
+    /** Returns the Cases representing the current grid.
+     *
+     * @return the Cases representing the current grid.
      */
     public Cases getGrid() {return grid;}
 
-    /**
+    /** Sets the number of placed blocks to the specified value.
+     *
      * @param n the number of placed blocks to be set.
      */
     public void setPlaced(int n){
         this.placed = n;
     }
 
-    /**
+    /**Sets the level's name to the specified name.
+     *
      * @param levelName the name of the level to be set.
      */
     public void setName(String levelName){
         this.name = levelName;
     }
 
-    /**
-     * @return the number of blocks placed by user.
+    /**Returns the number of blocks placed on the level.
+     *
+     * @return the number of blocks placed on the level.
      */
     public int getPlaced(){
         return placed;
     }
 
-    /**
+    /**Returns the current name.
+     *
      * @return the name of the level.
      */
     public String getName(){
@@ -252,7 +270,7 @@ public class Level {
     /**
      * Equals method for Level class.
      * @param externalLevel The level instance to compare with the calling instance of Level.
-     * @return If all the data of this and externalLevel are equal.
+     * @return If all the data of this and externalLevel are equal or not.
      */
     public boolean equals(Level externalLevel){
         if (!name.equals(externalLevel.getName())){

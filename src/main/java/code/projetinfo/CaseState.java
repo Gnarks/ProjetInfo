@@ -21,6 +21,4 @@ public enum CaseState {
      * on which nothing can be placed.
      */
     SPECIAL
-
-
 }

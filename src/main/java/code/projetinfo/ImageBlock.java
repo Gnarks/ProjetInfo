@@ -7,8 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 
 /**
  * Represents a block that owns an image.
- * It handles the position of the bloc on the screen and in the internal
- * grid.
+ * It handles the position of the bloc on the screen and is placedState.
  */
 public abstract class ImageBlock{
    /**
@@ -22,7 +21,7 @@ public abstract class ImageBlock{
    private Cases cases;
    /**
     * The coordinates of the middle of the middle case of the block.
-    * (depends on the size of the cases of the grid)
+    * (depends on the ImageBlock represented)
     */
    private Position midPos;
    /**
@@ -33,9 +32,9 @@ public abstract class ImageBlock{
     * The ImageView used to draw the Block on the screen.
     */
    private final ImageView imageView;
+
    /**
-    * The width of the block.
-    * (depends on the size of the cases of the grid)
+    * Boolean representing if the block is placed on the grid or not.
     */
    private boolean isPlaced;
 
@@ -60,7 +59,6 @@ public abstract class ImageBlock{
    }
    /**
     * Rotates the Cases of the ImageBlock to the specified RotateState.
-    *
     */
    protected void rotateCasesTo(int newRotateState){
       Cases newcases = new Cases(this.cases.getRow(), this.cases.getCol(), CaseState.EMPTY);
@@ -80,72 +78,87 @@ public abstract class ImageBlock{
          newcases = new Cases(cases.getRow(), cases.getCol(), CaseState.EMPTY);
       }
    }
-   /**
-    * @return the spawnPosition of the ImageBlock.
+   /** Returns the spawnPos.
+    *
+    * @return the spawnPosition.
     */
    public Position getSpawnPos(){
       return spawnPos.clone();
    }
 
+   /** Sets the spawnPos of the ImageBlock by the specified Position.
+    *
+    * @param newSpawnPos the new spawnPos to be set.
+    */
    public void setSpawnPos(Position newSpawnPos){
       this.spawnPos = newSpawnPos;
    }
 
-   /**
+   /** Returns the X coordinates of the middle case.
+    *
     * @return the midPosition X of the block.
     */
    public double getMidX() {return midPos.getX();}
 
-   /**
+   /** Returns the Y coordinates of the middle case.
+    *
     * @return the midPosition Y of the block.
     */
    public double getMidY() {return midPos.getY();}
-   /**
+
+   /**Returns the actual rotateState.
+    *
     * @return the actual rotate state.
     */
    public int getRotateState() {
       return rotateState;
    }
-   /**
-    * set the rotateState modulo 4.
-    * @param rotateState the rotate state.
+   /** Sets the rotateState modulo 4.
+    *
+    * @param rotateState the rotate state to bee set.
     */
    protected void setRotateState(int rotateState) {
       this.rotateState = rotateState%4;
    }
 
-   /**
-    * @return the number of rows of the block.
+   /** Returns the number of rows.
+    *
+    * @return the number of rows.
     */
    public int getRows(){
       return this.cases.getRow();
    }
-   /**
-    * @return the number of columns of the block.
+   /** Returns the number of columns.
+    *
+    * @return the number of columns.
     */
    public int getCols(){
       return this.cases.getCol();
    }
-   /**
-    * @param x column number
-    * @param y row number
-    * @return the CaseState of the (x,y) tile of the block
+
+   /** Returns the CaseState of the (x,y) Position in the
+    * 2D array representing the ImageBlock.
+    *
+    * @param x column number.
+    * @param y row number.
+    * @return the CaseState of the (x,y) tile of the block.
     */
    public CaseState getState(int x, int y){
       return cases.getState(x, y);
    }
-   /**
+   /**Returns the instance of the imageView of the block.
+    *
     * @return the imageView of the block.
     */
-   public ImageView getImageView() {//todo changer ce getter et établir de setter pour les layoutX et Y
+   public ImageView getImageView() {
       return imageView;
    }
 
    /** function called to make the block rotate to the specified rotateState graphically.
     * it depends on the normalBlock that calls the function.
-    * has to be called after the rotateCasesTo method.
-    * * @param newRotateState the wanted rotateState
-    * @param generalUrl the url of the image without the rotateState and the ".png"
+    *
+    * @param newRotateState the wanted rotateState.
+    * @param generalUrl the url of the image without the rotateState and the ".png".
     */
       protected void rotateGraphicallyTo(int newRotateState, String generalUrl){
 
@@ -183,11 +196,12 @@ public abstract class ImageBlock{
       imageView.setFitHeight(((rotateState - newRotateState+4)%2 == 0?height: getImageView().getFitWidth()));
       imageView.setFitWidth(((rotateState - newRotateState+4)%2 == 0? imageView.getFitWidth():height));
    }
+
    /** Rotates the block to the specified rotateState in Frontend AND Backend.
     * a single rotateState change corresponds to a 90-degree turn to the right.
-    * @param newRotateState the wanted rotateState
+    *
+    * @param newRotateState the wanted rotateState to be rotated to.
     */
-
    public abstract void rotateTo(int newRotateState);
 
    /**
@@ -196,10 +210,18 @@ public abstract class ImageBlock{
     */
    public abstract void rotate();
 
+   /** Sets the placedState.
+    *
+    * @param state the placedState to be set.
+    */
    public void setPlaced(boolean state){
       this.isPlaced = state;
    }
 
+   /** Returns the placedState.
+    *
+    * @return the actual placedState.
+    */
    public boolean getPlacedState(){
       return this.isPlaced;
    }
@@ -213,7 +235,7 @@ public abstract class ImageBlock{
       imageView.setLayoutY(layoutPosition.getY());
    }
 
-   /**
+   /** Returns the X coordinate of the ImageView of the current ImageBlock.
     *
     * @return The X coordinate on the scene.
     */
@@ -221,7 +243,7 @@ public abstract class ImageBlock{
       return imageView.getLayoutX();
    }
 
-   /**
+   /** Returns the Y coordinate of the ImageView of the current ImageBlock.
     *
      * @return The Y coordinate on the scene.
     */
@@ -229,9 +251,18 @@ public abstract class ImageBlock{
       return imageView.getLayoutY();
    }
 
+   /** Returns the Cases representing the ImageBlock.
+    *
+    * @return the cases representing the imageBlock.
+    */
    public Cases getGrid(){
       return cases;
    }
+
+   /** Returns a clone of the actual ImageBlock.
+    *
+    * @return a clone of the actual ImageBlock.
+    */
 
    @Override
    public ImageBlock clone(){

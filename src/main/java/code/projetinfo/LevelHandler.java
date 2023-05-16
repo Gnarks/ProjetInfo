@@ -111,6 +111,8 @@ public class LevelHandler {
             pane.getChildren().add(imageBlock.getImageView());
             if (!imageBlock.getPlacedState())
                 imageBlock.setPosition(imageBlock.getSpawnPos());
+            else
+                level.place(imageBlock,(int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize, (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize);
             makeDraggable(imageBlock);
         }
     }
@@ -156,7 +158,7 @@ public class LevelHandler {
 
             if (event.getButton() == MouseButton.PRIMARY) {
                 if (inGridBounds(new Position(event.getSceneX(), event.getSceneY()))) {
-                    if (level.isPlacable(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize, (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize)){
+                    if (level.isPlaceable(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize, (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize)){
                         level.place(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize, (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize);
                         if (level.getPlaced() == level.getBlocks().length){
                             setVictoryState(true);
@@ -373,7 +375,7 @@ public class LevelHandler {
                 posX = (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize;
                 posY = (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize;
                 blockPop(imageBlock,100);
-                if (!level.isPlacable(imageBlock, posX, posY)) {
+                if (!level.isPlaceable(imageBlock, posX, posY)) {
                     imageBlock.rotateTo(initialRotateState);
                     vibration(imageBlock);
                 }
