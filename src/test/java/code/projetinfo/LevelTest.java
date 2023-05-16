@@ -46,17 +46,17 @@ public class LevelTest {
 
     @Test
     public void isPlacable() {
-        assertTrue("Error in isPlacable() in (0,0)", testlevel.isPlacable(testlevel.getBlocks()[0], 0, 0));
-        assertTrue("Error in isPlacable() in (1,0)", testlevel.isPlacable(testlevel.getBlocks()[0], 1, 0));
-        assertFalse("Error in isPlacable() in (2,0)", testlevel.isPlacable(testlevel.getBlocks()[0], 2, 0));
+        assertTrue("Error in isPlacable() in (0,0)", testlevel.isPlaceable(testlevel.getBlocks()[0], 0, 0));
+        assertTrue("Error in isPlacable() in (1,0)", testlevel.isPlaceable(testlevel.getBlocks()[0], 1, 0));
+        assertFalse("Error in isPlacable() in (2,0)", testlevel.isPlaceable(testlevel.getBlocks()[0], 2, 0));
 
-        assertTrue("Error in isPlacable() in (0,1)", testlevel.isPlacable(testlevel.getBlocks()[0], 0, 1));
-        assertTrue("Error in isPlacable() in (1,1)", testlevel.isPlacable(testlevel.getBlocks()[0], 1, 1));
-        assertFalse("Error in isPlacable() in (2,1)", testlevel.isPlacable(testlevel.getBlocks()[0], 2, 1));
+        assertTrue("Error in isPlacable() in (0,1)", testlevel.isPlaceable(testlevel.getBlocks()[0], 0, 1));
+        assertTrue("Error in isPlacable() in (1,1)", testlevel.isPlaceable(testlevel.getBlocks()[0], 1, 1));
+        assertFalse("Error in isPlacable() in (2,1)", testlevel.isPlaceable(testlevel.getBlocks()[0], 2, 1));
 
-        assertFalse("Error in isPlacable() in (0,2)", testlevel.isPlacable(testlevel.getBlocks()[0], 0, 2));
-        assertFalse("Error in isPlacable() in (1,2)", testlevel.isPlacable(testlevel.getBlocks()[0], 1, 2));
-        assertFalse("Error in isPlacable() in (2,2)", testlevel.isPlacable(testlevel.getBlocks()[0], 2, 2));
+        assertFalse("Error in isPlacable() in (0,2)", testlevel.isPlaceable(testlevel.getBlocks()[0], 0, 2));
+        assertFalse("Error in isPlacable() in (1,2)", testlevel.isPlaceable(testlevel.getBlocks()[0], 1, 2));
+        assertFalse("Error in isPlacable() in (2,2)", testlevel.isPlaceable(testlevel.getBlocks()[0], 2, 2));
     }
 
     @Test

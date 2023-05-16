@@ -1,7 +1,6 @@
 package code.projetinfo;
 
 /** Represents the state of a single case.
- *
  * possible state:
  * {@link #EMPTY},
  * {@link #FULL},
@@ -22,6 +21,4 @@ public enum CaseState {
      * on which nothing can be placed.
      */
     SPECIAL
-
-
 }
