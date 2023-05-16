@@ -26,18 +26,67 @@ public class ControllerOptions extends ControllerParent implements Initializable
     @FXML
     private Label volume;
 
-    private static final Media media = new Media(String.valueOf(AppMenu.class.getResource("Game_Theme.mp3")));
+    public static double volumeValue = 0.5;
 
-    private static MediaPlayer mediaPlayer;
+    private static final Media mediaMenu = new Media(String.valueOf(AppMenu.class.getResource("Theme_Menu.mp3")));
 
-    public static void setMusic(){
+    private static final Media mediaLevel = new Media(String.valueOf(AppMenu.class.getResource("Theme_Level.mp3")));
 
-        if (mediaPlayer == null){
-            mediaPlayer = new MediaPlayer(media);
-            mediaPlayer.setVolume(0);
-            mediaPlayer.play();
-            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+    private static final Media mediaVictory = new Media(String.valueOf(AppMenu.class.getResource("Theme_Victory.mp3")));
+
+    public static MediaPlayer mediaPlayerMenu;
+
+    public static MediaPlayer mediaPlayerLevel;
+
+    public static MediaPlayer mediaPlayerVictory;
+
+    public static void setMediaPlayerMenu(){
+        if(mediaPlayerVictory != null){
+            mediaPlayerVictory.stop();
+            mediaPlayerVictory = null;}
+
+        if(mediaPlayerLevel!= null){
+            mediaPlayerLevel.stop();
+            mediaPlayerLevel = null;
         }
+        if (mediaPlayerMenu == null){
+            mediaPlayerMenu = new MediaPlayer(mediaMenu);
+            mediaPlayerMenu.setVolume(volumeValue);
+            mediaPlayerMenu.play();
+            mediaPlayerMenu.setCycleCount(MediaPlayer.INDEFINITE);
+        }
+    }
+
+    public static void setMediaPlayerLevel(){
+        if(mediaPlayerVictory != null){
+            mediaPlayerVictory.stop();
+            mediaPlayerVictory = null;}
+
+        if(mediaPlayerMenu != null){
+        mediaPlayerMenu.stop();
+        mediaPlayerMenu = null;}
+
+        if (mediaPlayerLevel == null){
+        mediaPlayerLevel = new MediaPlayer(mediaLevel);
+        mediaPlayerLevel.setVolume(volumeValue);
+        mediaPlayerLevel.play();
+        mediaPlayerLevel.setCycleCount(MediaPlayer.INDEFINITE);}
+    }
+
+    public static void setMediaPlayerVictory(){
+        if(mediaPlayerLevel!= null){
+            mediaPlayerLevel.stop();
+            mediaPlayerLevel = null;
+        }
+
+        if(mediaPlayerVictory == null){
+            mediaPlayerVictory = new MediaPlayer(mediaVictory);
+            mediaPlayerVictory.setVolume(volumeValue);
+            mediaPlayerVictory.play();
+            mediaPlayerVictory.setCycleCount(MediaPlayer.INDEFINITE);
+
+        }
+
     }
     @FXML
     protected void onDecreaseEntered(){
@@ -73,17 +122,17 @@ public class ControllerOptions extends ControllerParent implements Initializable
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if(mediaPlayer.getVolume()==0){
+        if(mediaPlayerMenu.getVolume()==0){
             volume.setText("0");
             decreaseSound.setOpacity(0);
         }
 
-        if(mediaPlayer.getVolume()==1){
+        if(mediaPlayerMenu.getVolume()==1){
             volume.setText("10");
             increaseSound.setOpacity(0);
         }
 
-        volume.setText(String.valueOf((int)(mediaPlayer.getVolume()*10)));
+        volume.setText(String.valueOf((int)(mediaPlayerMenu.getVolume()*10)));
 
         increaseSound.setOnMouseClicked(event ->{
             if(Integer.parseInt(volume.getText())==9){
@@ -94,7 +143,8 @@ public class ControllerOptions extends ControllerParent implements Initializable
             }
             if(Integer.parseInt(volume.getText())<10){
                 volume.setText(String.valueOf(Integer.parseInt(volume.getText())+1));
-                mediaPlayer.setVolume(Math.round((mediaPlayer.getVolume()+0.1)*10) / 10.0);
+                volumeValue =Math.round((volumeValue+0.1)*10) / 10.0;
+                mediaPlayerMenu.setVolume(volumeValue);
             }
         });
 
@@ -107,7 +157,9 @@ public class ControllerOptions extends ControllerParent implements Initializable
             }
             if(Integer.parseInt(volume.getText())>0){
                 volume.setText(String.valueOf(Integer.parseInt(volume.getText())-1));
-                mediaPlayer.setVolume(Math.round((mediaPlayer.getVolume()-0.1)*10) / 10.0);
+
+                volumeValue =Math.round((volumeValue-0.1)*10) / 10.0;
+                mediaPlayerMenu.setVolume(volumeValue);
             }
         });
 

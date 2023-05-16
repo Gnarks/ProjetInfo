@@ -58,6 +58,6 @@ public class ControllerMenu extends ControllerParent implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ControllerOptions.setMusic();
+        ControllerOptions.setMediaPlayerMenu();
     }
 }

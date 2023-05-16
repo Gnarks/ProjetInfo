@@ -81,6 +81,7 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ControllerOptions.setMediaPlayerLevel();
         Rectangle transi = new Rectangle(1600,900 , Paint.valueOf("222222"));
         pane.getChildren().add(transi);
 

@@ -147,6 +147,7 @@ public class ControllerParent {
                 throw new RuntimeException(e);
             }
             finally {
+                ControllerOptions.setMediaPlayerMenu();
                 if (nameToSave.charAt(0) == 'R'){
                     loadScene("MenuRandom.fxml",saveEvent);
                 }
@@ -170,6 +171,7 @@ public class ControllerParent {
         imageView.setOnMouseEntered(leaveEvent -> imageChanger(imageView,"Sprites/Button_Leave_Light.png"));
         imageView.setOnMouseExited(leaveEvent -> imageChanger(imageView,"Sprites/Button_Leave.png"));
         imageView.setOnMouseClicked(leaveEvent -> {
+            ControllerOptions.setMediaPlayerMenu();
             if (level.getName().charAt(0)=='G'){
                 loadScene("RandomLevelGenerator.fxml",leaveEvent);
             }

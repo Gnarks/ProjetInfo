@@ -1,5 +1,6 @@
 package code.projetinfo;
 
+import code.projetinfo.controllers.ControllerOptions;
 import code.projetinfo.controllers.ControllerParent;
 import code.projetinfo.controllers.GameController;
 import javafx.animation.*;
@@ -19,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
@@ -206,7 +208,7 @@ public class LevelHandler {
      * If the level wasn't random generated links the next level.
      */
     private void victoryCampaign(){
-
+        ControllerOptions.setMediaPlayerVictory();
         // is random
         if (level.getName().charAt(0) == 'G'){
             victoryAnimation();
@@ -233,6 +235,7 @@ public class LevelHandler {
             buttonNext.setOnMouseClicked(event -> {
                 String levelName = nextLevel(level.getName());
                 if (levelName == null){
+                    ControllerOptions.setMediaPlayerMenu();
                     ControllerParent.loadScene("Credits.fxml",event);}
                 else{
                     loadLevel(levelName,event);
@@ -347,7 +350,13 @@ public class LevelHandler {
         rotateTransition.setAutoReverse(true);
         rotateTransition.setByAngle(5);
         rotateTransition.play();
-        rotateTransition.setOnFinished(event -> imageBlock.getImageView().setOpacity(1));
+        rotateTransition.setOnFinished(event -> {
+            imageBlock.getImageView().setOpacity(1);
+            AudioClip sound = new AudioClip(String.valueOf(AppMenu.class.getResource("Theme_MissSound.mp3")));
+            sound.setVolume(ControllerOptions.volumeValue);
+            sound.setCycleCount(1);
+            sound.play();
+        });
     }
 
 
@@ -483,6 +492,11 @@ public class LevelHandler {
         anim.getImageView().setOpacity(0.75);
         imageBlock.getImageView().toFront();
         fT.setOnFinished(finishedEvent -> {
+            AudioClip sound = new AudioClip(String.valueOf(AppMenu.class.getResource("Theme_MissSound.mp3")));
+            sound.setCycleCount(1);
+            sound.setVolume(ControllerOptions.volumeValue);
+            sound.play();
+
             TranslateTransition tT = translateAnimation(anim.getImageView(),300,
                     imageBlock.getSpawnPos().getX()-imageBlock.getLayoutX(),imageBlock.getSpawnPos().getY()-imageBlock.getLayoutY());
             tT.play();
