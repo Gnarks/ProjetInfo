@@ -88,5 +88,51 @@ public class LevelCreator {
         levelHandler.makeDraggable(blockChosen);
 
     }
+
+    public void prepareToSave(){
+        Position rightPos = new Position(7,7);
+        int leftX = 0;
+        int rightX = 0;
+        int upY = 0;
+        int bottomY = 0;
+        //up, down, left, right
+        boolean[] posOk = {false, false, false, false};
+
+        Cases grid = level.getGrid();
+        for (int i = 0; i < 8; i++){
+            for (int j = 0; j < 8; j++){
+                if (grid.getState(i, j)==CaseState.FULL && !posOk[2]){
+                    leftX = i;
+                    posOk[2] = true;
+                }
+                if (grid.getState(7-i, j)==CaseState.FULL && !posOk[3]){
+                    rightX = i;
+                    posOk[3] = true;
+                }
+            }
+        }
+
+        for (int i = 0; i < 8; i++){
+            for (int j = 0; j < 8; j++){
+                if (grid.getState(j, i)==CaseState.FULL && !posOk[0]){
+                    upY = i;
+                    posOk[0] = true;
+                }
+                if (grid.getState(7-j, i)==CaseState.FULL && !posOk[1]){
+                    bottomY = i;
+                    posOk[1] = true;
+                }
+            }
+        }
+        //+2 car on prend la distance entre les deux avec rightX et leftX compris pareil pour bottom et up
+        Cases result = new Cases(rightX-leftX+2, bottomY-upY+2);
+        for (int i = 0; i < bottomY-upY+2; i++){
+            for (int j = 0; j < rightX-leftX+2; j++){
+                result.set(j, i, grid.getState(leftX+j, upY+i));
+            }
+        }
+        levelCase = result;
+        result.show();
+    }
 }
 
