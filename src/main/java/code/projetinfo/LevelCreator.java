@@ -1,6 +1,5 @@
 package code.projetinfo;
 
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -110,8 +109,7 @@ public class LevelCreator{
     public void reset(){
         resetGrid();
         for (ImageBlock imageBlock:
-                level.getBlocks()
-             ) {
+                level.getBlocks()) {
             if(imageBlock != null){
                 if(imageBlock.getPlacedState()){
             level.remove(imageBlock,(int) ((imageBlock.getLayoutX()-levelHandler.getGridPos().getX())/tileSize),
@@ -151,7 +149,7 @@ public class LevelCreator{
                     posOk[2] = true;
                 }
                 if (grid.getState(7-i, j)==CaseState.FULL && !posOk[3]){
-                    rightX = i;
+                    rightX = 7-i;
                     posOk[3] = true;
                 }
             }
@@ -163,16 +161,16 @@ public class LevelCreator{
                     upY = i;
                     posOk[0] = true;
                 }
-                if (grid.getState(7-j, i)==CaseState.FULL && !posOk[1]){
-                    bottomY = i;
+                if (grid.getState(j, 7-i)==CaseState.FULL && !posOk[1]){
+                    bottomY = 7-i;
                     posOk[1] = true;
                 }
             }
         }
-        //+2 car on prend la distance entre les deux avec rightX et leftX compris pareil pour bottom et up
-        Cases result = new Cases(rightX-leftX+2, bottomY-upY+2);
-        for (int i = 0; i < bottomY-upY+2; i++){
-            for (int j = 0; j < rightX-leftX+2; j++){
+
+        Cases result = new Cases(Math.abs(rightX-leftX)+1, Math.abs(upY-bottomY)+1);
+        for (int i = 0; i < result.getRow(); i++){
+            for (int j = 0; j < result.getCol(); j++){
                 if (grid.getState(leftX+j, upY+i) == CaseState.EMPTY){
                     result.set(j,i,CaseState.SPECIAL);
                 }else {
