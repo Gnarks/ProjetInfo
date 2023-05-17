@@ -9,19 +9,19 @@ import javafx.scene.shape.Rectangle;
 
 import java.lang.reflect.InvocationTargetException;
 
-public class LevelCreator {
+public class LevelCreator{
 
     private final AnchorPane pane;
 
-    private LevelHandler levelHandler;
+    private final LevelHandler levelHandler;
 
-    private Level level;
-
-    private ImageBlock[] imageBlocks = new ImageBlock[]{};
+    private final Level level;
 
     private final double tileSize=50;
 
     private Cases levelCase;
+
+    private int blocksCounter = 0;
 
 
 
@@ -29,17 +29,9 @@ public class LevelCreator {
     public LevelCreator(AnchorPane pane, int creatorGridSize){
         this.pane = pane;
         this.levelCase = new Cases(creatorGridSize,creatorGridSize,CaseState.EMPTY);
-        this.level = new Level("Created",levelCase,imageBlocks);
+        ImageBlock[] imageBlocks = new ImageBlock[13];
+        this.level = new Level("Created",levelCase, imageBlocks);
         this.levelHandler = new LevelHandler(level,pane);
-    }
-
-
-    public Cases getLevelCase() {
-        return levelCase;
-    }
-
-    public LevelHandler getLevelHandler() {
-        return levelHandler;
     }
 
     public void drawGrid(){
@@ -57,36 +49,87 @@ public class LevelCreator {
                 rectangle.setFill(Paint.valueOf("#6666fc"));
                 rectangle.setStroke(Paint.valueOf("#000000"));
                 pane.getChildren().add(rectangle);
-                rectangle.setOnMouseClicked(event -> {
-                    levelModificator(event,rectangle);
-                    levelCase.show();
-
-                });
+                rectangle.setOnMouseClicked(event -> levelModificator(event,rectangle));
             }
         }
     }
 
     private void levelModificator(MouseEvent event, Rectangle rectangle){
+        Position rectanglePlacement =new Position( (int) ((event.getSceneX() - levelHandler.getGridPos().getX())/tileSize),(int) ((event.getSceneY() - levelHandler.getGridPos().getY())/tileSize));
+
+
         if(rectangle.getFill().equals(Paint.valueOf("#000000"))){
             rectangle.setFill(Paint.valueOf("#6666fc"));
             rectangle.setStroke(Paint.valueOf("#000000"));
-            levelCase.set((int) ((event.getSceneX() - levelHandler.getGridPos().getX())/tileSize),(int) ((event.getSceneY() - levelHandler.getGridPos().getY())/tileSize),CaseState.EMPTY);
+            levelHandler.getLevel().getGrid().set((int)rectanglePlacement.getX(),(int)rectanglePlacement.getY(),CaseState.EMPTY);
         }
 
         else if(rectangle.getFill().equals(Paint.valueOf("#6666fc"))){
+            if(levelHandler.getLevel().getGrid().getState((int)rectanglePlacement.getX(),(int)rectanglePlacement.getY()) == CaseState.FULL){return;}
             rectangle.setFill(Paint.valueOf("#000000"));
             rectangle.setStroke(Paint.valueOf("#ffffff"));
-            levelCase.set((int) ((event.getSceneX() - levelHandler.getGridPos().getX())/tileSize),(int) ((event.getSceneY() - levelHandler.getGridPos().getY())/tileSize),CaseState.FULL);
+            levelHandler.getLevel().getGrid().set((int)rectanglePlacement.getX(),(int)rectanglePlacement.getY(),CaseState.FULL);
         }
+
+        level.getGrid().show();
+
+
     }
 
     public void addBlock(Node button) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        if(level.getBlocks()[11] == null){
         Class<?> blockClass = Class.forName("code.projetinfo.normalBlocks." + button.getId());
-        ImageBlock blockChosen = (ImageBlock) blockClass.getDeclaredConstructor(Position.class).newInstance(new Position(0,0));
+        ImageBlock blockChosen = (ImageBlock) blockClass.getDeclaredConstructor(Position.class).newInstance(new Position(200,200));
         pane.getChildren().add(blockChosen.getImageView());
-        blockChosen.setPosition(new Position(200,200));
+        blockChosen.setSpawnPos(new Position(200,200));
+            level.getBlocks()[getIndex(level.getBlocks())] = blockChosen;
         levelHandler.makeDraggable(blockChosen);
+        this.blocksCounter++;
 
+        for (ImageBlock imageBlock : level.getBlocks()) {
+            if (imageBlock != null) {
+                System.out.println(imageBlock.getClass());
+                System.out.println(imageBlock.getPlacedState());
+            }
+        }}
+    }
+
+    public void resetGrid(){
+       for (int i = 20; i < pane.getChildren().size(); i++) {
+            if (pane.getChildren().get(i).getClass() == Rectangle.class) {
+                Rectangle rect = (Rectangle) pane.getChildren().get(i);
+                rect.setFill(Paint.valueOf("#6666fc"));
+                rect.setStroke(Paint.valueOf("#000000"));
+            }
+       }
+       level.setGrid(new Cases(8, 8,CaseState.EMPTY));
+    }
+
+    public void reset(){
+        resetGrid();
+        for (ImageBlock imageBlock:
+                level.getBlocks()
+             ) {
+            if(imageBlock != null){
+                if(imageBlock.getPlacedState()){
+            level.remove(imageBlock,(int) ((imageBlock.getLayoutX()-levelHandler.getGridPos().getX())/tileSize),
+                    (int) ((imageBlock.getLayoutY()- levelHandler.getGridPos().getY())/tileSize));}}
+        }
+
+        level.setBlocks(new ImageBlock[13]);
+        if(blocksCounter>0){
+        pane.getChildren().remove(pane.getChildren().size()-blocksCounter,pane.getChildren().size());}
+        blocksCounter=0;
+
+    }
+
+    public int getIndex(Object[] objects){
+        for (int i = 0; i < objects.length; i++) {
+            if(objects[i] == null){
+                return i;
+            }
+        }
+        return -1;
     }
 
     public void prepareToSave(){

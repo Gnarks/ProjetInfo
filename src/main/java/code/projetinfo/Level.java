@@ -267,6 +267,14 @@ public class Level {
         return this.name;
     }
 
+    public void setBlocks(ImageBlock[] blocks) {
+        this.blocks = blocks;
+    }
+
+    public void setGrid(Cases grid) {
+        this.grid = grid;
+    }
+
     /**
      * Equals method for Level class.
      * @param externalLevel The level instance to compare with the calling instance of Level.

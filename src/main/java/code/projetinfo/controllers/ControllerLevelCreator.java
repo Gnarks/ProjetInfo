@@ -54,7 +54,7 @@ public class ControllerLevelCreator extends ControllerParent implements Initiali
 
         LevelCreator levelCreator = new LevelCreator(pane,8);
         for (int i = 0; i < pane.getChildren().size(); i++) {
-            if(pane.getChildren().get(i).getClass() == Button.class);
+            if(pane.getChildren().get(i).getClass() == Button.class)
             {
                 int finalI = i;
                 pane.getChildren().get(i).setOnMouseClicked(event -> {
@@ -64,11 +64,14 @@ public class ControllerLevelCreator extends ControllerParent implements Initiali
                              InstantiationException | IllegalAccessException e) {
                         throw new RuntimeException(e);
                     }
-                });}
+                });
+            }
         }
-
-
-
         levelCreator.drawGrid();
+
+
+
+
+        resetButton.setOnMouseClicked(event -> levelCreator.prepareToSave());
     }
 }

@@ -79,6 +79,10 @@ public class LevelHandler {
         return gridPos;
     }
 
+    public Level getLevel() {
+        return level;
+    }
+
     /** Draws the grid of the level.
      */
     public void drawGrid(){
@@ -177,12 +181,17 @@ public class LevelHandler {
                 else if (collideBetweenBlocks(imageBlock))
                     goToSpawnPos(imageBlock);
             }
+
+            level.getGrid().show();
+
+            System.out.println(imageBlock.getPlacedState());
         });
     }
 
     public void setVictoryState(boolean victoryState) {
         this.victoryState = victoryState;
     }
+
 
     public boolean getVictoryState(){
         return this.victoryState;
@@ -579,10 +588,11 @@ public class LevelHandler {
 
         for (ImageBlock inGameBlock:
                 level.getBlocks()) {
+            if(inGameBlock != null){
             if(inGameBlock!=imageBlock &&node.getBoundsInParent().intersects(inGameBlock.getImageView().getBoundsInParent())
                     && !inGameBlock.getPlacedState()){
                 colliding.add(inGameBlock);
-            }
+            }}
         }
         return colliding;
     }
