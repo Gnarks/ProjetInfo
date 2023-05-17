@@ -4,7 +4,6 @@ import code.projetinfo.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import java.lang.reflect.InvocationTargetException;
@@ -30,22 +29,19 @@ public class ControllerLevelCreator extends ControllerParent implements Initiali
 
     @FXML
     protected void onBackExited(){
-
-        Image imageDark = new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonBackToMenu.png")));
-        backButton.setImage(imageDark);
+        imageChanger(backButton,"Sprites/Button_GoBack.png");
     }
 
     @FXML
     protected void onResetEntered(){
-        Image imageLight = new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonResetLight.png")));
-        resetButton.setImage(imageLight);
+        imageChanger(resetButton,"Sprites/Button_Reset_Light.png");
 
     }
 
     @FXML
     protected void onResetExited(){
-        Image imageDark = new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonReset.png")));
-        resetButton.setImage(imageDark);
+
+        imageChanger(resetButton,"Sprites/Button_Reset.png");
     }
 
 
@@ -68,9 +64,6 @@ public class ControllerLevelCreator extends ControllerParent implements Initiali
             }
         }
         levelCreator.drawGrid();
-
-
-
 
         resetButton.setOnMouseClicked(event -> levelCreator.prepareToSave());
     }
