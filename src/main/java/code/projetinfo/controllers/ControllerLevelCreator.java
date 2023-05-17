@@ -48,7 +48,7 @@ public class ControllerLevelCreator extends ControllerParent implements Initiali
     @Override 
     public void initialize(URL location, ResourceBundle resources) {
 
-        LevelCreator levelCreator = new LevelCreator(pane,8);
+        LevelCreator levelCreator = new LevelCreator(pane);
         for (int i = 0; i < pane.getChildren().size(); i++) {
             if(pane.getChildren().get(i).getClass() == Button.class)
             {
@@ -65,6 +65,6 @@ public class ControllerLevelCreator extends ControllerParent implements Initiali
         }
         levelCreator.drawGrid();
 
-        resetButton.setOnMouseClicked(event -> levelCreator.prepareToSave());
+        resetButton.setOnMouseClicked(event -> levelCreator.reset());
     }
 }
