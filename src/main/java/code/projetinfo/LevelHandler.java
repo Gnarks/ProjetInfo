@@ -109,7 +109,6 @@ public class LevelHandler {
 
     /** Draws all the ImageBlocks of the level and make them draggable
      *  by applying the {@link #makeDraggable(ImageBlock)} method.
-     *
      */
     public void drawImageBlocks(){
         for (ImageBlock imageBlock:
@@ -180,10 +179,18 @@ public class LevelHandler {
         });
     }
 
+    /**Sets if the level is finished or not.
+     *
+     * @param victoryState if the level is finished or not.
+     */
     public void setVictoryState(boolean victoryState) {
         this.victoryState = victoryState;
     }
 
+    /**Returns if the level is finished or not.
+     *
+     * @return if the level is finished or not.
+     */
     public boolean getVictoryState(){
         return this.victoryState;
     }
@@ -322,7 +329,7 @@ public class LevelHandler {
         blockytT.play();
     }
 
-    /**
+    /** Returns the next level name if there is one, null otherwise.
      *
      * @param levelName The actual levelName.
      * @return The Next levelName.
@@ -365,7 +372,7 @@ public class LevelHandler {
 
 
     /** Rotates the imageBlock if it can.
-     * if it can't, {@link #vibration(ImageBlock)}.
+     * if it can't, vibrates the block by applying the {@link #vibration(ImageBlock)} method on the ImageBlock.
      * @param imageBlock the imageBlock trying to rotate.
      */
 
