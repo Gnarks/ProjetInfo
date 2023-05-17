@@ -17,7 +17,7 @@ public class ControllerCreatedLevelSelector extends ControllerParent{
     private ImageView created3Button;
     @FXML
     protected void onBackEntered(){
-        onButtonEntered(buttonBack,"Sprites/Button_GoBack_Light.png","MenuPlay.fxml");
+        onButtonEntered(buttonBack,"Sprites/Button_GoBack_Light.png","MenuCreate.fxml");
     }
     @FXML
     protected void onCreated1Entered(){

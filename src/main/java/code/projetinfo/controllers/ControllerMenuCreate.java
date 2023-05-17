@@ -2,14 +2,11 @@ package code.projetinfo.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 
 public class ControllerMenuCreate extends ControllerParent{
 
     /**Controller of all the mods menu's buttons(assigned to MenuCreate.fxml)*/
 
-    @FXML
-    private Pane pane;
     @FXML
     private ImageView buttonBack;
     @FXML
@@ -22,7 +19,7 @@ public class ControllerMenuCreate extends ControllerParent{
     }
     @FXML
     protected void onCreateEntered(){
-        imageChanger(create,"Sprites/Button_Create_Light.png");
+        onButtonEntered(create,"Sprites/Button_Create_Light.png","LevelCreator.fxml");
     }
     @FXML
     protected void onLCEntered(){

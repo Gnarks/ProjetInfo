@@ -75,6 +75,10 @@ public class LevelHandler {
         gridPos = new Position(gridPos.getX() - gridPos.getX()%tileSize, gridPos.getY() - gridPos.getY()%tileSize);
     }
 
+    public Position getGridPos() {
+        return gridPos;
+    }
+
     /** Draws the grid of the level.
      */
     public void drawGrid(){
@@ -123,7 +127,7 @@ public class LevelHandler {
      *
      * @param imageBlock The ImageBlock to make draggable.
      */
-    private void makeDraggable(ImageBlock imageBlock){
+    public void makeDraggable(ImageBlock imageBlock){
         ColorAdjust c = new ColorAdjust(1,1,0.2,0);
         DropShadow dropShadow = new DropShadow(50, Color.color(0.7,0.7,0.7));
         Blend blend = new Blend(BlendMode.ADD,c,dropShadow);
