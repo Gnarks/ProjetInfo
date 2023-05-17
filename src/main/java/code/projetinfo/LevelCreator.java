@@ -128,7 +128,11 @@ public class LevelCreator {
         Cases result = new Cases(rightX-leftX+2, bottomY-upY+2);
         for (int i = 0; i < bottomY-upY+2; i++){
             for (int j = 0; j < rightX-leftX+2; j++){
-                result.set(j, i, grid.getState(leftX+j, upY+i));
+                if (grid.getState(leftX+j, upY+i) == CaseState.EMPTY){
+                    result.set(j,i,CaseState.SPECIAL);
+                }else {
+                    result.set(j, i, CaseState.FULL);
+                }
             }
         }
         levelCase = result;
