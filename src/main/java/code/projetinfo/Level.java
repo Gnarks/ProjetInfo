@@ -267,10 +267,20 @@ public class Level {
         return this.name;
     }
 
+    /**
+     * Sets the list of placed blocks a specified list.
+     *
+     * @param blocks the list of blocks to be set
+     */
     public void setBlocks(ImageBlock[] blocks) {
         this.blocks = blocks;
     }
 
+    /**
+     * Sets a new grid to the level.
+     *
+     * @param grid the grid to be set
+     */
     public void setGrid(Cases grid) {
         this.grid = grid;
     }

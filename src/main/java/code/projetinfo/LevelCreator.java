@@ -10,30 +10,60 @@ import javafx.scene.shape.Rectangle;
 
 import java.lang.reflect.InvocationTargetException;
 
+/**
+ * Class used to create levels manually
+ */
 public class LevelCreator{
 
+    /**
+     * The pane to draw elements on
+     */
     private final AnchorPane pane;
+    /**
+     * The levelHandler which supervises all the block and the level
+     */
 
     private final LevelHandler levelHandler;
 
+    /**
+     * The level which is the base of the creation
+     */
     private final Level level;
 
+    /**
+     * the size of the cases
+     */
     private final double tileSize=50;
-
+    /**
+     * The size of the levels sides
+     */
     private final int creatorGridSize = 8;
-
+    /**
+     * The maximum of blocks accepted in the level
+     */
     private final int maximumBlocks = 12;
-
+    /**
+     * A counter for the current blocks in the level
+     */
     public static int blocksCounter = 0;
-
+    /**
+     * A counter for the current blocks in the level but not in the grid
+     */
     public static int inventoryBlock = 0;
 
+    /**
+     * the number of columns erased during the preparation of the level
+     */
     public int columnErased = 0;
-
+    /**
+     * the number of rows erased during the preparation of the level
+     */
     public int rowErased = 0;
 
-
-
+    /**
+     * The constructor of the LevelCreator
+     * @param pane the pane to draw the level on
+     */
     public LevelCreator(AnchorPane pane){
         this.pane = pane;
         Cases levelCase = new Cases(creatorGridSize,creatorGridSize,CaseState.EMPTY);
@@ -42,10 +72,18 @@ public class LevelCreator{
         this.levelHandler = new LevelHandler(level,pane);
     }
 
+    /**
+     * Returns the current level
+     * @return the current level
+     */
     public Level getLevel() {
         return level;
     }
 
+    /**
+     * Draw a grid over a specified size {@link #creatorGridSize}
+     * where which case can be change {@link #levelModifier(MouseEvent, Rectangle)}
+     */
     public void drawGrid(){
         ImageView backGrid = new ImageView(String.valueOf(getClass().getResource("Sprites/BackGround_Level.png")));
         backGrid.setLayoutX(levelHandler.getGridPos().getX()-tileSize);
@@ -65,11 +103,14 @@ public class LevelCreator{
         }
     }
 
-    public void setPositionBlock(ImageBlock imageBlock){
-        imageBlock.setPosition(new Position(50+200*inventoryBlock,200+Math.pow(-1,inventoryBlock)*50));
 
-    }
-
+    /**
+     * Change the grid in 2 ways:
+     * if the case is blue; it became black and the CaseState of the case become FULL
+     * if the case is black; it became blue and the CaseState of the case become EMPTY
+     * @param event the click event associated to the rectangle
+     * @param rectangle the rectangle we want to change
+     */
     private void levelModifier(MouseEvent event, Rectangle rectangle){
         Position rectanglePlacement =new Position( (int) ((event.getSceneX()-levelHandler.getGridPos().getX())/tileSize),
                 (int) ((event.getSceneY() - levelHandler.getGridPos().getY())/tileSize));
@@ -88,11 +129,27 @@ public class LevelCreator{
         }
     }
 
+    /**
+     * TODO finish setPosition
+     */
+    public void setPositionBlock(ImageBlock imageBlock){
+        imageBlock.setPosition(new Position(50+200*inventoryBlock,200+Math.pow(-1,inventoryBlock)*50));
 
+    }
+
+    /**
+     * Add a block on the level if we click on the specified button
+     * @param button button to add a block
+     * @throws ClassNotFoundException .
+     * @throws NoSuchMethodException .
+     * @throws InvocationTargetException .
+     * @throws InstantiationException .
+     * @throws IllegalAccessException .
+     */
     public void addBlock(Node button) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
 
-        if(inventoryBlock < 3 && blocksCounter == inventoryBlock + level.getPlaced()){
-        if(nullNumber() > 1){
+        if(inventoryBlock < 3 && blocksCounter == inventoryBlock + level.getPlaced() && nullNumber() > 1){
+
         Class<?> blockClass = Class.forName("code.projetinfo.normalBlocks." + button.getId());
         ImageBlock blockChosen = (ImageBlock) blockClass.getDeclaredConstructor(Position.class).newInstance(new Position(200,200));
         pane.getChildren().add(blockChosen.getImageView());
@@ -102,10 +159,15 @@ public class LevelCreator{
 
         levelHandler.makeDraggable(blockChosen);
 
-        blocksCounter++;}
-        inventoryBlock++;}
+        blocksCounter++;
+        inventoryBlock++;
+        }
     }
 
+    /**
+     * Calculates the number of object equals to null in the level's list of blocks
+     * @return the number of null elements
+     */
     public int nullNumber(){
         int nullNumber = 0;
         for (int i = 0; i < level.getBlocks().length; i++) {
@@ -116,6 +178,9 @@ public class LevelCreator{
         return nullNumber;
     }
 
+    /**
+     * Reset the grid graphically  of the level
+     */
     public void resetGrid(){
        for (int i = 20; i < pane.getChildren().size(); i++) {
             if (pane.getChildren().get(i).getClass() == Rectangle.class) {
@@ -128,27 +193,20 @@ public class LevelCreator{
        level.setGrid(new Cases(creatorGridSize, creatorGridSize,CaseState.EMPTY));
     }
 
-    public void resetAll(){
-        resetGrid();
-        for (ImageBlock imageBlock:
-                level.getBlocks()) {
-            if(imageBlock != null){
-                if(imageBlock.getPlacedState()){
-            level.remove(imageBlock,(int) ((imageBlock.getLayoutX()-levelHandler.getGridPos().getX())/tileSize),
-                    (int) ((imageBlock.getLayoutY()- levelHandler.getGridPos().getY())/tileSize));}}
-        }
-
+    /**
+     * Remove all the level's blocks and reset the grid
+     */
+    public void resetBlocks(){
         level.setBlocks(new ImageBlock[maximumBlocks+1]);
         if(blocksCounter>0){
         pane.getChildren().remove(pane.getChildren().size()-blocksCounter-1,pane.getChildren().size()-1);}
         blocksCounter=0;
         inventoryBlock=0;
-
     }
 
-
-
-
+    /**
+     * Reset graphically all the level
+     */
     public void reset(){
         ImageView resetImage = new ImageView(String.valueOf(AppMenu.class.getResource("Sprites/Ghost_Reset.png")));
 
@@ -160,7 +218,8 @@ public class LevelCreator{
         TranslateTransition tT = levelHandler.translateAnimation(resetImage, 800,-1600,0);
         tT.play();
         tT.setOnFinished(finishedEvent ->{
-            resetAll();
+            resetGrid();
+            resetBlocks();
             this.level.setPlaced(0);
             TranslateTransition comeBacktT = levelHandler.translateAnimation(resetImage, 800,1600,0);
             comeBacktT.play();
@@ -169,7 +228,13 @@ public class LevelCreator{
     }
 
 
-
+    /**
+     * Find an ImageBlock's index in an ImageBlock list
+     * @param imageBlock the ImageBlock we want to search
+     * @param imageBlocks the list we want to inspect
+     * @return the index if the ImageBlock is in the list
+     *         0 in any other case
+     */
     public static int findIndexBlock(ImageBlock imageBlock, ImageBlock[] imageBlocks){
         for (int i = 0; i < imageBlocks.length; i++) {
             if(imageBlock == imageBlocks[i]){
@@ -179,6 +244,12 @@ public class LevelCreator{
         return 0;
     }
 
+    /**
+     * Find the index of the first object equals to null in a list
+     * @param objects the list we want to inspect
+     * @return the index of the first "null" in the list
+     *         0 if there is not "null" in the list
+     */
     public int getFirstIndexNull(Object[] objects){
         for (int i = 0; i < objects.length; i++) {
             if(objects[i] == null){
@@ -188,6 +259,19 @@ public class LevelCreator{
         return 0;
     }
 
+    /**
+     * Verifies the conditions to save the level
+     * @return if the level can be saved or not
+     */
+    public boolean canSave(){
+        return blocksCounter == level.getPlaced()&& blocksCounter>1;
+    }
+
+    /**
+     * Sets the level's grid to a specific way to prepare the level's saving.
+     * Removes all the extern empty lines of the level
+     * Sets all the EMPTY cases left to SPECIAL
+     */
     public void prepareToSave(){
         int leftX = 0;
         int rightX = 0;
@@ -222,7 +306,6 @@ public class LevelCreator{
                 }
             }
         }
-
         Cases result = new Cases(Math.abs(rightX-leftX)+1, Math.abs(upY-bottomY)+1);
         for (int i = 0; i < result.getRow(); i++){
             for (int j = 0; j < result.getCol(); j++){
@@ -236,10 +319,11 @@ public class LevelCreator{
         level.setGrid(result);
     }
 
-    public boolean canSave(){
-        return blocksCounter == level.getPlaced()&& blocksCounter>1;
-    }
 
+    /**
+     * Removes all the blocks of the grid and then get the grid to save
+     * @return the final grid to save
+     */
     public Cases gridToSave(){
 
         prepareToSave();
@@ -251,9 +335,13 @@ public class LevelCreator{
                     level.remove(imageBlock,(int) ((imageBlock.getLayoutX()-levelHandler.getGridPos().getX()- this.columnErased*50)/tileSize),
                             (int) ((imageBlock.getLayoutY()- levelHandler.getGridPos().getY()-this.rowErased*50)/tileSize));}}
         }
-        return new Cases(level.getGrid().getCases());
+        return level.getGrid();
     }
 
+    /**
+     * Prepares a list of the block that can be interpreted in a true level playable
+     * @return a list that contains exactly the blocks of the level
+     */
     public ImageBlock[] prepareBlockList(){
         ImageBlock[] prepared = new ImageBlock[blocksCounter];
 
