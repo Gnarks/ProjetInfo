@@ -1226,86 +1226,72 @@
     }
   },
   "CreatedLevel1" : {
-    "grid" : [ [ "FULL", "FULL", "FULL" ], [ "FULL", "EMPTY", "EMPTY" ], [ "FULL", "EMPTY", "EMPTY" ] ],
+    "grid" : [ [ "EMPTY", "SPECIAL", "SPECIAL", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY" ] ],
     "blockList" : {
       "0" : {
-        "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotateState" : 0,
-        "layoutX" : 650.0,
-        "layoutY" : 300.0,
-        "isPlaced" : false
-      },
-      "1" : {
-        "type" : "class code.projetinfo.normalBlocks.Baby",
+        "type" : "class code.projetinfo.normalBlocks.Bloby",
         "rotateState" : 0,
         "layoutX" : 700.0,
-        "layoutY" : 300.0,
+        "layoutY" : 350.0,
+        "isPlaced" : true
+      },
+      "1" : {
+        "type" : "class code.projetinfo.normalBlocks.Nessy",
+        "rotateState" : 0,
+        "layoutX" : 1200.0,
+        "layoutY" : 350.0,
         "isPlaced" : false
       }
     }
   },
   "CreatedLevel2" : {
-    "grid" : [ [ "EMPTY", "EMPTY", "EMPTY", "FULL" ], [ "EMPTY", "EMPTY", "EMPTY", "FULL" ], [ "EMPTY", "EMPTY", "EMPTY", "FULL" ], [ "FULL", "FULL", "FULL", "FULL" ] ],
+    "grid" : [ [ "SPECIAL", "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL", "SPECIAL" ], [ "SPECIAL", "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL", "SPECIAL" ], [ "SPECIAL", "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL", "SPECIAL" ], [ "SPECIAL", "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL", "SPECIAL" ], [ "SPECIAL", "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL", "SPECIAL" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "EMPTY" ] ],
     "blockList" : {
       "0" : {
-        "type" : "class code.projetinfo.normalBlocks.Napsta",
+        "type" : "class code.projetinfo.normalBlocks.VicKing",
         "rotateState" : 0,
-        "layoutX" : 800.0,
-        "layoutY" : 350.0,
-        "isPlaced" : false
-      },
-      "1" : {
-        "type" : "class code.projetinfo.normalBlocks.Napsta",
-        "rotateState" : 0,
-        "layoutX" : 750.0,
-        "layoutY" : 350.0,
-        "isPlaced" : false
-      },
-      "2" : {
-        "type" : "class code.projetinfo.normalBlocks.Napsta",
-        "rotateState" : 0,
-        "layoutX" : 700.0,
-        "layoutY" : 350.0,
-        "isPlaced" : false
-      }
-    }
-  },
-  "CreatedLevel3" : {
-    "grid" : [ [ "SPECIAL", "SPECIAL", "SPECIAL", "EMPTY", "EMPTY", "SPECIAL", "SPECIAL", "SPECIAL" ], [ "EMPTY", "EMPTY", "FULL", "EMPTY", "EMPTY", "FULL", "EMPTY", "EMPTY" ], [ "EMPTY", "SPECIAL", "FULL", "EMPTY", "EMPTY", "FULL", "SPECIAL", "EMPTY" ], [ "EMPTY", "SPECIAL", "FULL", "EMPTY", "EMPTY", "FULL", "SPECIAL", "EMPTY" ], [ "SPECIAL", "SPECIAL", "FULL", "FULL", "FULL", "FULL", "SPECIAL", "EMPTY" ], [ "SPECIAL", "SPECIAL", "EMPTY", "SPECIAL", "SPECIAL", "EMPTY", "SPECIAL", "SPECIAL" ], [ "SPECIAL", "SPECIAL", "EMPTY", "SPECIAL", "SPECIAL", "EMPTY", "SPECIAL", "SPECIAL" ], [ "SPECIAL", "SPECIAL", "EMPTY", "SPECIAL", "SPECIAL", "EMPTY", "SPECIAL", "SPECIAL" ] ],
-    "blockList" : {
-      "0" : {
-        "type" : "class code.projetinfo.normalBlocks.Napsta",
-        "rotateState" : 0,
-        "layoutX" : 850.0,
+        "layoutX" : 600.0,
         "layoutY" : 500.0,
         "isPlaced" : false
       },
       "1" : {
-        "type" : "class code.projetinfo.normalBlocks.Napsta",
-        "rotateState" : 0,
-        "layoutX" : 700.0,
-        "layoutY" : 500.0,
-        "isPlaced" : false
-      },
-      "2" : {
-        "type" : "class code.projetinfo.normalBlocks.King",
+        "type" : "class code.projetinfo.normalBlocks.Geoffroy",
         "rotateState" : 0,
         "layoutX" : 750.0,
         "layoutY" : 250.0,
         "isPlaced" : false
       },
-      "3" : {
-        "type" : "class code.projetinfo.normalBlocks.LilDeath",
-        "rotateState" : 2,
-        "layoutX" : 600.0,
-        "layoutY" : 300.0,
+      "2" : {
+        "type" : "class code.projetinfo.normalBlocks.VicKing",
+        "rotateState" : 0,
+        "layoutX" : 850.0,
+        "layoutY" : 500.0,
+        "isPlaced" : false
+      }
+    }
+  },
+  "CreatedLevel3" : {
+    "grid" : [ [ "SPECIAL", "EMPTY", "SPECIAL", "SPECIAL" ], [ "EMPTY", "EMPTY", "EMPTY", "FULL" ], [ "EMPTY", "EMPTY", "EMPTY", "FULL" ], [ "EMPTY", "EMPTY", "EMPTY", "FULL" ], [ "FULL", "FULL", "FULL", "FULL" ] ],
+    "blockList" : {
+      "0" : {
+        "type" : "class code.projetinfo.normalBlocks.Napsta",
+        "rotateState" : 0,
+        "layoutX" : 700.0,
+        "layoutY" : 400.0,
         "isPlaced" : false
       },
-      "4" : {
-        "type" : "class code.projetinfo.normalBlocks.Toowels",
-        "rotateState" : 2,
-        "layoutX" : 900.0,
-        "layoutY" : 300.0,
+      "1" : {
+        "type" : "class code.projetinfo.normalBlocks.Nessy",
+        "rotateState" : 0,
+        "layoutX" : 750.0,
+        "layoutY" : 400.0,
+        "isPlaced" : false
+      },
+      "2" : {
+        "type" : "class code.projetinfo.normalBlocks.Bob",
+        "rotateState" : 0,
+        "layoutX" : 750.0,
+        "layoutY" : 350.0,
         "isPlaced" : false
       }
     }

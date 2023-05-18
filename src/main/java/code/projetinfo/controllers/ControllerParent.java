@@ -258,12 +258,8 @@ public class ControllerParent {
         setAsSaveButton(createSave3,"Sprites/Button_Created3.png","CreatedLevel3",levelSaved);
         createSave3.setOnMouseExited(event -> imageChanger(createSave3,"Sprites/Button_Created3.png"));
 
-        ImageView leaveSave = createImageView("Sprites/Button_Arrow_Left.png",150,725,700);
-        leaveSave.setOnMouseEntered(event -> imageChanger(leaveSave,"Sprites/Button_Arrow_LeftLight.png"));
-        leaveSave.setOnMouseExited(event ->imageChanger(leaveSave,"Sprites/Button_Arrow_Left.png"));
-        leaveSave.setOnMouseClicked(event -> pane.getChildren().removeAll(leaveSave,rectangle,backGround,createSave1,createSave2,createSave3));
 
-        pane.getChildren().addAll(rectangle,backGround,createSave1,createSave2,createSave3,leaveSave);
+        pane.getChildren().addAll(rectangle,backGround,createSave1,createSave2,createSave3);
     }
     /**
      * Make a button load a level via it's name

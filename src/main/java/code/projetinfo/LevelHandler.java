@@ -168,8 +168,7 @@ public class LevelHandler {
 
             if (event.getButton() == MouseButton.PRIMARY) {
                 if(level.getName().equals("Created")&&event.getSceneY()>600 && event.getSceneX()<500){
-                    trashDepository(imageBlock,LevelCreator.findBlock(imageBlock,level.getBlocks()));
-                    LevelCreator.blocksCounter--;
+                    graveyardDepository(imageBlock,LevelCreator.findIndexBlock(imageBlock,level.getBlocks()));
                     return;
                 }
 
@@ -191,9 +190,6 @@ public class LevelHandler {
                     goToSpawnPos(imageBlock);
             }}
 
-            level.getGrid().show();
-
-            System.out.println(imageBlock.getPlacedState());
         });
     }
 
@@ -340,10 +336,6 @@ public class LevelHandler {
         blockytT.play();
     }
 
-    public void trashDepository(ImageBlock imageBlock,int blockIndex){
-            pane.getChildren().remove(imageBlock.getImageView());
-            level.getBlocks()[blockIndex] = null;
-    }
 
     /**
      *
@@ -352,16 +344,16 @@ public class LevelHandler {
      */
     public String nextLevel(String levelName){
         String nextLevel = "Level";
+
+        int number = Character.getNumericValue(levelName.charAt(levelName.length()-1));
         if (levelName.charAt(0)== 'C'){
-            int createLevelNumber = Character.getNumericValue(levelName.charAt(levelName.length()-1));
-            createLevelNumber = createLevelNumber+1;
-            return (createLevelNumber == 4?null:String.format("CreatedLevel%s",createLevelNumber));
+            number = number+1;
+            return (number == 4?null:String.format("CreatedLevel%s",number));
         }
 
         if (levelName.charAt(0)== 'R'){
-            int randomLevelNumber = Character.getNumericValue(levelName.charAt(levelName.length()-1));
-            randomLevelNumber = randomLevelNumber+1;
-            return (randomLevelNumber == 4?null:String.format("RandomLevel%s",randomLevelNumber));
+            number = number+1;
+            return (number == 4?null:String.format("RandomLevel%s",number));
         }
         int levelNumber = Character.getNumericValue(levelName.charAt(5))*10 + Character.getNumericValue(levelName.charAt(6));
 
@@ -507,6 +499,12 @@ public class LevelHandler {
         return translateTransition;
     }
 
+    public void graveyardDepository(ImageBlock imageBlock,int blockIndex){
+        pane.getChildren().remove(imageBlock.getImageView());
+        level.getBlocks()[blockIndex] = null;
+        LevelCreator.blocksCounter--;
+    }
+
     /** Makes the blocks go to his spawn Position.
      *
      * @param imageBlock The block going to his spawnPos.
@@ -544,8 +542,11 @@ public class LevelHandler {
 
         });
         if(level.getName().equals("Created")){
-            trashDepository(imageBlock,LevelCreator.findBlock(imageBlock,level.getBlocks()));}
+            graveyardDepository(imageBlock,LevelCreator.findIndexBlock(imageBlock,level.getBlocks()));
+        }
     }
+
+
 
 
     /** Makes the block go to his spawnPos.
