@@ -164,7 +164,13 @@ public class LevelCreator{
 
         Cases grid = level.getGrid();
         for (int i = 0; i < 8; i++){
+            if (posOk[0] && posOk[1] && posOk[2] && posOk[3]){
+                break;
+            }
             for (int j = 0; j < 8; j++){
+                if (posOk[0] && posOk[1] && posOk[2] && posOk[3]){
+                    break;
+                }
                 if (grid.getState(i, j)==CaseState.FULL && !posOk[2]){
                     leftX = i;
                     posOk[2] = true;
@@ -173,11 +179,6 @@ public class LevelCreator{
                     rightX = 7-i;
                     posOk[3] = true;
                 }
-            }
-        }
-
-        for (int i = 0; i < 8; i++){
-            for (int j = 0; j < 8; j++){
                 if (grid.getState(j, i)==CaseState.FULL && !posOk[0]){
                     upY = i;
                     posOk[0] = true;
