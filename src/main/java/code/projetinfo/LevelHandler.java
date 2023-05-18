@@ -146,7 +146,7 @@ public class LevelHandler {
             }
             else if(event.getButton() == MouseButton.PRIMARY){
 
-                if(imageBlock.getPlacedState()){
+                if(imageBlock.getPlacedState()&&level.getName().equals("Created")){
                     LevelCreator.inventoryBlock++;}
                 node.toFront();
                 node.setEffect(blend);
@@ -335,10 +335,10 @@ public class LevelHandler {
         ghost3tT.play();
 
 
-        TranslateTransition blockytT = translateAnimation(blocky, 1000,0,25);
-        blockytT.setCycleCount(Animation.INDEFINITE);
-        blockytT.setAutoReverse(true);
-        blockytT.play();
+        TranslateTransition blockyTT = translateAnimation(blocky, 1000,0,25);
+        blockyTT.setCycleCount(Animation.INDEFINITE);
+        blockyTT.setAutoReverse(true);
+        blockyTT.play();
     }
 
 
@@ -504,6 +504,11 @@ public class LevelHandler {
         return translateTransition;
     }
 
+    /**
+     * In the LevelCreator, makes the ImageBlock chosen disappeared
+     * @param imageBlock the imageBlock we want to disappear
+     * @param blockIndex the index of the imageBlock
+     */
     public void graveyardDepository(ImageBlock imageBlock,int blockIndex){
         pane.getChildren().remove(imageBlock.getImageView());
         level.getBlocks()[blockIndex] = null;
