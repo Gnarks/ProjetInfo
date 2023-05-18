@@ -91,6 +91,7 @@ public class ControllerParent {
             }
 
             else{
+                ControllerOptions.setMediaPlayerMenu();
                 if (level.getName().charAt(0) == 'G'){
                     loadScene("RandomLevelGenerator.fxml",event);
                 }
