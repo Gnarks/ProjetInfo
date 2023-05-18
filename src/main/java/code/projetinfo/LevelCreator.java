@@ -200,7 +200,7 @@ public class LevelCreator{
             }
         }
         level.setGrid(result);
-        result.show();
+        level.getGrid().show();
     }
 
     public boolean canSave(){

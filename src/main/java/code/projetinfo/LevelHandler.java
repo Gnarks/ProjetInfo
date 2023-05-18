@@ -352,6 +352,11 @@ public class LevelHandler {
      */
     public String nextLevel(String levelName){
         String nextLevel = "Level";
+        if (levelName.charAt(0)== 'C'){
+            int createLevelNumber = Character.getNumericValue(levelName.charAt(levelName.length()-1));
+            createLevelNumber = createLevelNumber+1;
+            return (createLevelNumber == 4?null:String.format("CreatedLevel%s",createLevelNumber));
+        }
 
         if (levelName.charAt(0)== 'R'){
             int randomLevelNumber = Character.getNumericValue(levelName.charAt(levelName.length()-1));

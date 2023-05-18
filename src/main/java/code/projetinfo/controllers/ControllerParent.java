@@ -1,9 +1,6 @@
 package code.projetinfo.controllers;
 
-import code.projetinfo.AppMenu;
-import code.projetinfo.ImageBlock;
-import code.projetinfo.Level;
-import code.projetinfo.LevelHandler;
+import code.projetinfo.*;
 import javafx.animation.TranslateTransition;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
@@ -93,6 +90,11 @@ public class ControllerParent {
             else{
                 if (level.getName().charAt(0) == 'G'){
                     loadScene("RandomLevelGenerator.fxml",event);
+
+                }
+
+                else if (level.getName().charAt(0) == 'C'){
+                    loadScene("CreatedLevelSelector.fxml",event);
                 }
                 else if (level.getName().charAt(0) == 'R'){
                     loadScene("MenuRandom.fxml",event);
@@ -127,6 +129,7 @@ public class ControllerParent {
      * @param levelSaved The level to save when clicked.
      */
     static private void setAsSaveButton(ImageView save, String sprite, String nameToSave, Level levelSaved){
+        LevelCreator.blocksCounter = 0;
         save.setOnMouseEntered(saveEvent -> imageChanger(save,sprite.substring(0,sprite.length() - 4) + "_Light.png"));
         save.setOnMouseExited(saveEvent -> imageChanger(save,sprite));
         save.setOnMouseClicked(saveEvent -> {
@@ -151,6 +154,9 @@ public class ControllerParent {
                 if (nameToSave.charAt(0) == 'R'){
                     loadScene("MenuRandom.fxml",saveEvent);
                 }
+                else if (nameToSave.charAt(0) == 'C'){
+                    loadScene("CreatedLevelSelector.fxml",saveEvent);
+                }
                 else if (nameToSave.charAt(5) == '0' || (nameToSave.charAt(5) == '1'
                         && nameToSave.charAt(6) == '0')) {
                     loadScene("LevelSelector1to10.fxml",saveEvent);
@@ -174,6 +180,9 @@ public class ControllerParent {
             ControllerOptions.setMediaPlayerMenu();
             if (level.getName().charAt(0)=='G'){
                 loadScene("RandomLevelGenerator.fxml",leaveEvent);
+            }
+            else if (level.getName().charAt(0) == 'C'){
+                loadScene("CreatedLevelSelector.fxml",leaveEvent);
             }
             else if (level.getName().charAt(0) == 'R'){
                 loadScene("RandomLevelSelector.fxml",leaveEvent);
