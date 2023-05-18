@@ -5,6 +5,8 @@ import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
@@ -12,6 +14,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -74,6 +77,17 @@ public class GameController extends ControllerParent implements Initializable {
 
 
         Platform.runLater(() ->{
+            Label label  = new Label(levelName);
+            label.setUnderline(true);
+            label.setTextFill(Paint.valueOf("#ffffff"));
+            label.setLayoutX(740);
+            label.setLayoutY(30);
+            label.setAlignment(Pos.TOP_CENTER);
+            Font font = new Font("System Bold Italic",30);
+            label.setFont(font);
+            pane.getChildren().add(label);
+
+
             Level level;
             try {
                 level = new Level(levelName);
