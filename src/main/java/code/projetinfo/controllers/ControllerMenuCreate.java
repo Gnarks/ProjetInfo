@@ -1,5 +1,6 @@
 package code.projetinfo.controllers;
 
+import code.projetinfo.LevelCreator;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 
@@ -23,6 +24,8 @@ public class ControllerMenuCreate extends ControllerParent{
     }
     @FXML
     protected void onLCEntered(){
+        LevelCreator.inventoryBlock = 0;
+        LevelCreator.blocksCounter = 0;
         onButtonEntered(levelsCreated,"Sprites/Button_LevelCreated_Light.png","CreatedLevelSelector.fxml");
     }
     @FXML
