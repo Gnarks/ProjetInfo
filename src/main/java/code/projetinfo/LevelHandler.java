@@ -167,6 +167,12 @@ public class LevelHandler {
             if(node.getOpacity()<1){return;}
 
             if (event.getButton() == MouseButton.PRIMARY) {
+                if(level.getName().equals("Created")&&event.getSceneY()>600 && event.getSceneX()<500){
+                    trashDepository(imageBlock,LevelCreator.findBlock(imageBlock,level.getBlocks()));
+                    LevelCreator.blocksCounter--;
+                    return;
+                }
+
                 if (inGridBounds(new Position(event.getSceneX(), event.getSceneY()))) {
                     if (level.isPlaceable(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize, (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize)){
                         level.place(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize, (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize);
@@ -175,12 +181,15 @@ public class LevelHandler {
                             victoryCampaign();
                         }
                     }
-                    else
+                    else{
                         goToSpawnPos(imageBlock);
+
+                    }
+
                 }
-                else if (collideBetweenBlocks(imageBlock))
+                else if (collideBetweenBlocks(imageBlock)){
                     goToSpawnPos(imageBlock);
-            }
+            }}
 
             level.getGrid().show();
 
@@ -329,6 +338,11 @@ public class LevelHandler {
         blockytT.setCycleCount(Animation.INDEFINITE);
         blockytT.setAutoReverse(true);
         blockytT.play();
+    }
+
+    public void trashDepository(ImageBlock imageBlock,int blockIndex){
+            pane.getChildren().remove(imageBlock.getImageView());
+            level.getBlocks()[blockIndex] = null;
     }
 
     /**
@@ -524,6 +538,8 @@ public class LevelHandler {
             }
 
         });
+        if(level.getName().equals("Created")){
+            trashDepository(imageBlock,LevelCreator.findBlock(imageBlock,level.getBlocks()));}
     }
 
 

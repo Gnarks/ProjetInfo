@@ -24,7 +24,7 @@ public class LevelCreator{
     private final int maximumBlocks = 12;
 
 
-    private int blocksCounter = 0;
+    public static int blocksCounter = 0;
 
 
 
@@ -35,6 +35,15 @@ public class LevelCreator{
         ImageBlock[] imageBlocks = new ImageBlock[maximumBlocks+1];
         this.level = new Level("Created",levelCase, imageBlocks);
         this.levelHandler = new LevelHandler(level,pane);
+    }
+
+
+    public LevelHandler getLevelHandler() {
+        return levelHandler;
+    }
+
+    public Level getLevel() {
+        return level;
     }
 
     public void drawGrid(){
@@ -76,16 +85,19 @@ public class LevelCreator{
         level.getGrid().show();
     }
 
+
+
     public void addBlock(Node button) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         if(level.getBlocks()[11] == null){
         Class<?> blockClass = Class.forName("code.projetinfo.normalBlocks." + button.getId());
-        ImageBlock blockChosen = (ImageBlock) blockClass.getDeclaredConstructor(Position.class).newInstance(new Position(0,0));
+        ImageBlock blockChosen = (ImageBlock) blockClass.getDeclaredConstructor(Position.class).newInstance(new Position(200,200));
         pane.getChildren().add(blockChosen.getImageView());
-        blockChosen.setSpawnPos(new Position(200,200));
+        blockChosen.setSpawnPos(new Position(200,700));
         level.getBlocks()[getIndex(level.getBlocks())] = blockChosen;
 
         levelHandler.makeDraggable(blockChosen);
-        this.blocksCounter++;
+
+        blocksCounter++;
 
         for (ImageBlock imageBlock : level.getBlocks()) {
             if (imageBlock != null) {
@@ -121,6 +133,15 @@ public class LevelCreator{
         pane.getChildren().remove(pane.getChildren().size()-blocksCounter,pane.getChildren().size());}
         blocksCounter=0;
 
+    }
+
+    public static int findBlock(ImageBlock imageBlock,ImageBlock[] imageBlocks){
+        for (int i = 0; i < imageBlocks.length; i++) {
+            if(imageBlock == imageBlocks[i]){
+                return i;
+            }
+        }
+        return 0;
     }
 
     public int getIndex(Object[] objects){
@@ -180,6 +201,36 @@ public class LevelCreator{
         }
         level.setGrid(result);
         result.show();
+    }
+
+    public boolean canSave(){
+        System.out.println(level.getPlaced());
+        System.out.println(blocksCounter);
+        return blocksCounter == level.getPlaced()&& blocksCounter>1;
+    }
+
+    public Cases gridToSave(){
+        prepareToSave();
+        for (ImageBlock imageBlock:
+                level.getBlocks()) {
+            if(imageBlock != null){
+                if(imageBlock.getPlacedState()){
+                    level.remove(imageBlock,(int) ((imageBlock.getLayoutX()-levelHandler.getGridPos().getX())/tileSize),
+                            (int) ((imageBlock.getLayoutY()- levelHandler.getGridPos().getY())/tileSize));}}
+        }
+        level.getGrid().show();
+        return new Cases(level.getGrid().getCases());
+    }
+
+    public ImageBlock[] prepareBlockList(){
+        ImageBlock[] prepared = new ImageBlock[blocksCounter];
+        for (int i = 0; i < level.getBlocks().length; i++) {
+            if(level.getBlocks()[i]!= null){
+                prepared[i] = level.getBlocks()[i];
+                System.out.println(prepared[i]);
+            }
+        }
+        return prepared;
     }
 }
 

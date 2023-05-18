@@ -225,6 +225,37 @@ public class ControllerParent {
         pane.getChildren().addAll(rectangle,backGround,randomSave1,randomSave2,randomSave3,leaveSave);
     }
 
+    static  public void  CreatedLevelsSaveMenu(Pane pane, Level levelSaved){
+        Rectangle rectangle = new Rectangle(1600,900, Paint.valueOf("#222222"));
+        rectangle.setOpacity(0.3);
+        ImageView backGround = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/BackGround_Choices.png"))));
+        backGround.setPreserveRatio(true);
+        backGround.setLayoutX(500);
+        backGround.setLayoutY(150);
+        backGround.setFitWidth(600);
+
+
+        ImageView createSave1 = createImageView("Sprites/Button_Created1.png",500,550,200);
+        setAsSaveButton(createSave1,"Sprites/Button_Created1.png","CreatedLevel1",levelSaved);
+        createSave1.setOnMouseExited(event -> imageChanger(createSave1,"Sprites/Button_Created1.png"));
+
+
+        ImageView createSave2 = createImageView("Sprites/Button_Created2.png",500,550,375);
+        setAsSaveButton(createSave2,"Sprites/Button_Created2.png","CreatedLevel2",levelSaved);
+        createSave2.setOnMouseExited(event -> imageChanger(createSave2,"Sprites/Button_Created2.png"));
+
+
+        ImageView createSave3 = createImageView("Sprites/Button_Created3.png",500,550,550);
+        setAsSaveButton(createSave3,"Sprites/Button_Created3.png","CreatedLevel3",levelSaved);
+        createSave3.setOnMouseExited(event -> imageChanger(createSave3,"Sprites/Button_Created3.png"));
+
+        ImageView leaveSave = createImageView("Sprites/Button_Arrow_Left.png",150,725,700);
+        leaveSave.setOnMouseEntered(event -> imageChanger(leaveSave,"Sprites/Button_Arrow_LeftLight.png"));
+        leaveSave.setOnMouseExited(event ->imageChanger(leaveSave,"Sprites/Button_Arrow_Left.png"));
+        leaveSave.setOnMouseClicked(event -> pane.getChildren().removeAll(leaveSave,rectangle,backGround,createSave1,createSave2,createSave3));
+
+        pane.getChildren().addAll(rectangle,backGround,createSave1,createSave2,createSave3,leaveSave);
+    }
     /**
      * Make a button load a level via it's name
      *
