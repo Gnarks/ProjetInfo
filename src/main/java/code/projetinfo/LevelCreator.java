@@ -201,7 +201,6 @@ public class LevelCreator{
             }
         }
         level.setGrid(result);
-        level.getGrid().show();
     }
 
     public boolean canSave(){
