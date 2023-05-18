@@ -15,7 +15,7 @@ public class ControllerRandomMenu extends ControllerParent {
 
     @FXML
     public void onBackEntered(){
-        onButtonEntered(buttonBack,"Sprites/Button_GoBack_Light.png","MainMenu.fxml");
+        onButtonEntered(buttonBack,"Sprites/Button_GoBack_Light.png","MenuPlay.fxml");
     }
     @FXML
     public void onBackExited(){
