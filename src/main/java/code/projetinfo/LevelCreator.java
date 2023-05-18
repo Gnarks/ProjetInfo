@@ -24,15 +24,13 @@ public class LevelCreator{
 
     private final int maximumBlocks = 12;
 
-
     public static int blocksCounter = 0;
+
+    public static int inventoryBlock = 0;
 
     public int columnErased = 0;
 
     public int rowErased = 0;
-
-
-
 
 
 
@@ -54,22 +52,27 @@ public class LevelCreator{
         backGrid.setLayoutY(levelHandler.getGridPos().getY()-tileSize);
         backGrid.setFitWidth(10*tileSize);
         backGrid.setFitHeight(10*tileSize);
-
-
         pane.getChildren().add(backGrid);
+
         for (int i = 0; i <creatorGridSize; i++) {
             for (int j = 0; j < creatorGridSize; j++) {
                 Rectangle rectangle = new Rectangle(i*tileSize+levelHandler.getGridPos().getX(),j*tileSize+levelHandler.getGridPos().getY(),tileSize,tileSize);
                 rectangle.setFill(Paint.valueOf("#6666fc"));
                 rectangle.setStroke(Paint.valueOf("#000000"));
                 pane.getChildren().add(rectangle);
-                rectangle.setOnMouseClicked(event -> levelModificator(event,rectangle));
+                rectangle.setOnMouseClicked(event -> levelModifier(event,rectangle));
             }
         }
     }
 
-    private void levelModificator(MouseEvent event, Rectangle rectangle){
-        Position rectanglePlacement =new Position( (int) ((event.getSceneX() - levelHandler.getGridPos().getX())/tileSize),(int) ((event.getSceneY() - levelHandler.getGridPos().getY())/tileSize));
+    public void setPositionBlock(ImageBlock imageBlock){
+        imageBlock.setPosition(new Position(50+200*inventoryBlock,200+Math.pow(-1,inventoryBlock)*50));
+
+    }
+
+    private void levelModifier(MouseEvent event, Rectangle rectangle){
+        Position rectanglePlacement =new Position( (int) ((event.getSceneX()-levelHandler.getGridPos().getX())/tileSize),
+                (int) ((event.getSceneY() - levelHandler.getGridPos().getY())/tileSize));
 
         if(rectangle.getFill().equals(Paint.valueOf("#000000"))){
             rectangle.setFill(Paint.valueOf("#6666fc"));
@@ -87,16 +90,30 @@ public class LevelCreator{
 
 
     public void addBlock(Node button) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        if(level.getBlocks()[11] == null){
+
+        if(inventoryBlock < 3 && blocksCounter == inventoryBlock + level.getPlaced()){
+        if(nullNumber() > 1){
         Class<?> blockClass = Class.forName("code.projetinfo.normalBlocks." + button.getId());
         ImageBlock blockChosen = (ImageBlock) blockClass.getDeclaredConstructor(Position.class).newInstance(new Position(200,200));
         pane.getChildren().add(blockChosen.getImageView());
         blockChosen.setSpawnPos(new Position(200,700));
+        setPositionBlock(blockChosen);
         level.getBlocks()[getFirstIndexNull(level.getBlocks())] = blockChosen;
 
         levelHandler.makeDraggable(blockChosen);
 
         blocksCounter++;}
+        inventoryBlock++;}
+    }
+
+    public int nullNumber(){
+        int nullNumber = 0;
+        for (int i = 0; i < level.getBlocks().length; i++) {
+            if(level.getBlocks()[i] == null){
+                nullNumber++;
+            }
+        }
+        return nullNumber;
     }
 
     public void resetGrid(){
@@ -125,6 +142,7 @@ public class LevelCreator{
         if(blocksCounter>0){
         pane.getChildren().remove(pane.getChildren().size()-blocksCounter-1,pane.getChildren().size()-1);}
         blocksCounter=0;
+        inventoryBlock=0;
 
     }
 

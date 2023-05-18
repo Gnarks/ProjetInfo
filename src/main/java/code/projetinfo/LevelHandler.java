@@ -145,6 +145,9 @@ public class LevelHandler {
                 tryRotate(imageBlock);
             }
             else if(event.getButton() == MouseButton.PRIMARY){
+
+                if(imageBlock.getPlacedState()){
+                    LevelCreator.inventoryBlock++;}
                 node.toFront();
                 node.setEffect(blend);
                 if(imageBlock.getPlacedState()){
@@ -167,6 +170,7 @@ public class LevelHandler {
             if(node.getOpacity()<1){return;}
 
             if (event.getButton() == MouseButton.PRIMARY) {
+
                 if(level.getName().equals("Created")&&event.getSceneY()>600 && event.getSceneX()<500){
                     graveyardDepository(imageBlock,LevelCreator.findIndexBlock(imageBlock,level.getBlocks()));
                     return;
@@ -175,6 +179,8 @@ public class LevelHandler {
                 if (inGridBounds(new Position(event.getSceneX(), event.getSceneY()))) {
                     if (level.isPlaceable(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize, (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize)){
                         level.place(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize, (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize);
+                        LevelCreator.inventoryBlock--;
+
                         if (level.getPlaced() == level.getBlocks().length){
                             setVictoryState(true);
                             victoryCampaign();
@@ -182,7 +188,6 @@ public class LevelHandler {
                     }
                     else{
                         goToSpawnPos(imageBlock);
-
                     }
 
                 }
@@ -503,6 +508,7 @@ public class LevelHandler {
         pane.getChildren().remove(imageBlock.getImageView());
         level.getBlocks()[blockIndex] = null;
         LevelCreator.blocksCounter--;
+        LevelCreator.inventoryBlock--;
     }
 
     /** Makes the blocks go to his spawn Position.

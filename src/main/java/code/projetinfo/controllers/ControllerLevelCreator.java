@@ -31,7 +31,13 @@ public class ControllerLevelCreator extends ControllerParent implements Initiali
 
     @FXML
     protected void onBackEntered(){
-        onButtonEntered(backButton,"Sprites/Button_GoBack_Light.png","MenuCreate.fxml");
+        imageChanger(backButton,"Sprites/Button_GoBack_Light.png");
+        backButton.setOnMouseClicked(event -> {
+            loadScene("MenuCreate.fxml",event);
+            LevelCreator.inventoryBlock =0;
+            LevelCreator.blocksCounter=0;
+
+        });
     }
 
     @FXML
@@ -72,7 +78,7 @@ public class ControllerLevelCreator extends ControllerParent implements Initiali
         label.setUnderline(true);
 
         Rectangle graveyard = new Rectangle(500,300, Paint.valueOf("#555555"));
-        graveyard.setStroke(Paint.valueOf("#ffffff"));
+        graveyard.setStroke(Paint.valueOf("#000000"));
         graveyard.setStrokeWidth(10);
         graveyard.setLayoutY(600);
         graveyard.setLayoutX(0);
