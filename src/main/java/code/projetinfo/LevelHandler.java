@@ -70,8 +70,8 @@ public class LevelHandler {
         this.level = level;
         this.pane = pane;
 
-        this.gridPos = new Position(pane.getPrefWidth()/2 - (double) (level.getGrid().getRow()*tileSize)/2,
-                pane.getPrefHeight()/2- (double) (level.getGrid().getCol()*tileSize)/2);
+        this.gridPos = new Position(pane.getPrefWidth()/2 - (double) (level.getGrid().getCol()*tileSize)/2,
+                pane.getPrefHeight()/2- (double) (level.getGrid().getRow()*tileSize)/2);
         gridPos = new Position(gridPos.getX() - gridPos.getX()%tileSize, gridPos.getY() - gridPos.getY()%tileSize);
     }
 

@@ -200,7 +200,6 @@ public class LevelCreator{
             }
         }
         level.setGrid(result);
-        level.getGrid().show();
     }
 
     public boolean canSave(){
@@ -210,15 +209,26 @@ public class LevelCreator{
     }
 
     public Cases gridToSave(){
+        Cases clone = new Cases(level.getGrid().getCases());
+
         prepareToSave();
+        int columnsErased = (int)(levelHandler.getGridPos().getX()) - (int) ((pane.getPrefWidth()/2 - (clone.getCol()*tileSize)/2));
+
+
+
+        int rowsErased = (int)(levelHandler.getGridPos().getY()) - (int) ((pane.getPrefHeight()/2 - (clone.getRow()*tileSize)/2));
+        System.out.println(columnsErased);
+        System.out.println(rowsErased);
+        clone.show();
+        level.getGrid().show();
+
         for (ImageBlock imageBlock:
                 level.getBlocks()) {
             if(imageBlock != null){
                 if(imageBlock.getPlacedState()){
-                    level.remove(imageBlock,(int) ((imageBlock.getLayoutX()-levelHandler.getGridPos().getX())/tileSize),
-                            (int) ((imageBlock.getLayoutY()- levelHandler.getGridPos().getY())/tileSize));}}
+                    level.remove(imageBlock,(int) ((imageBlock.getLayoutX()-levelHandler.getGridPos().getX()- columnsErased)/tileSize),
+                            (int) ((imageBlock.getLayoutY()- levelHandler.getGridPos().getY()-rowsErased)/tileSize));}}
         }
-        level.getGrid().show();
         return new Cases(level.getGrid().getCases());
     }
 
@@ -227,7 +237,6 @@ public class LevelCreator{
         for (int i = 0; i < level.getBlocks().length; i++) {
             if(level.getBlocks()[i]!= null){
                 prepared[i] = level.getBlocks()[i];
-                System.out.println(prepared[i]);
             }
         }
         return prepared;
