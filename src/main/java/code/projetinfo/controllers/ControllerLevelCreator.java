@@ -157,10 +157,7 @@ public class ControllerLevelCreator extends ControllerParent implements Initiali
 
                 }
                 else{
-                    labelWarning.setText("""
-                            It's seems that you can't save now. To save you have to:\s
-                            -Put all the blocks in the scene in the grid
-                            -Put minimum 2 blocks in the grid\s""");
+                    labelWarning.setText("It's seems that you can't save now. To save you have to\n-Put all the blocks in the scene in the grid\n-Put minimum 2 blocks in the grid");
                     pane.getChildren().add(leaveSave);
                 }
         });

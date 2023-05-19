@@ -168,9 +168,13 @@ public class LevelCreator{
 
         blocksCounter++;
         inventoryCounter++;
+        } else if (blocksCounter == 12) {
+            ControllerParent.warningMessage(pane, "12 blocks is the maximum on the scene authorized");
+
         }
-        else{
-            ControllerParent.warningMessage(pane,"You can't add more blocks.\n" +
+
+        else {
+            ControllerParent.warningMessage(pane, "You can't add more blocks.\n" +
                     "Put some blocks in the grid to empty your inventory and than retry");
         }
     }
