@@ -294,6 +294,9 @@ public class LevelCreator{
 
         Cases grid = level.getGrid();
         for (int i = 0; i < creatorGridSize; i++){
+            if (posOk[0] && posOk[1] && posOk[2] && posOk[3]){
+                break;
+            }
             for (int j = 0; j < creatorGridSize; j++){
                 if (posOk[0] && posOk[1] && posOk[2] && posOk[3]){
                     break;
