@@ -171,9 +171,14 @@ public class LevelHandler {
 
             if (event.getButton() == MouseButton.PRIMARY) {
 
-                if(level.getName().equals("Created")&&event.getSceneY()>600 && event.getSceneX()<500){
+                if(level.getName().equals("Created")){
+                    if(event.getSceneY()>600 && event.getSceneX()<500){
                     graveyardDepository(imageBlock,LevelCreator.findIndexBlock(imageBlock,level.getBlocks()));
-                    return;
+                    return;}
+                    if(event.getSceneX()> gridPos.getX() + 9*tileSize){
+                        goToSpawnPos(imageBlock);
+                        return;
+                    }
                 }
 
                 if (inGridBounds(new Position(event.getSceneX(), event.getSceneY()))) {
