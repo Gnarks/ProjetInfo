@@ -28,11 +28,11 @@ public class ControllerOptions extends ControllerParent implements Initializable
 
     public static double volumeValue = 0.5;
 
-    private static final Media mediaMenu = new Media(String.valueOf(AppMenu.class.getResource("Theme_Menu.mp3")));
+    private static final Media mediaMenu = new Media(String.valueOf(AppMenu.class.getResource("sounds/Theme_Menu.mp3")));
 
-    private static final Media mediaLevel = new Media(String.valueOf(AppMenu.class.getResource("Theme_Level.mp3")));
+    private static final Media mediaLevel = new Media(String.valueOf(AppMenu.class.getResource("sounds/Theme_Level.mp3")));
 
-    private static final Media mediaVictory = new Media(String.valueOf(AppMenu.class.getResource("Theme_Victory.mp3")));
+    private static final Media mediaVictory = new Media(String.valueOf(AppMenu.class.getResource("sounds/Theme_Victory.mp3")));
 
     public static MediaPlayer mediaPlayerMenu;
 
