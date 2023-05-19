@@ -554,7 +554,7 @@ public class LevelHandler {
         anim.getImageView().setOpacity(0.75);
         imageBlock.getImageView().toFront();
         fT.setOnFinished(finishedEvent -> {
-            AudioClip sound = new AudioClip(String.valueOf(AppMenu.class.getResource("Theme_MissSound.mp3")));
+            AudioClip sound = new AudioClip(String.valueOf(AppMenu.class.getResource("Sound/Theme_MissSound.mp3")));
             sound.setCycleCount(1);
             sound.setVolume(ControllerOptions.volumeValue);
             sound.play();
