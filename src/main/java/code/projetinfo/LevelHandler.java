@@ -388,7 +388,7 @@ public class LevelHandler {
     }
 
     /**
-     * Makes the ImageBlock vibrate.
+     * Makes the ImageBlock vibrate and makes a sound.
      * @param imageBlock The ImageBlock to vibrate.
      */
     public void vibration(ImageBlock imageBlock){
@@ -399,7 +399,7 @@ public class LevelHandler {
         rotateTransition.play();
         rotateTransition.setOnFinished(event -> {
             imageBlock.getImageView().setOpacity(1);
-            AudioClip sound = new AudioClip(String.valueOf(AppMenu.class.getResource("Sound/Theme_MissSound.mp3")));
+            AudioClip sound = new AudioClip(String.valueOf(AppMenu.class.getResource("sounds/Theme_MissSound.mp3")));
             sound.setVolume(ControllerOptions.volumeValue);
             sound.setCycleCount(1);
             sound.play();
@@ -537,7 +537,7 @@ public class LevelHandler {
             LevelCreator.inventoryList[index] = null;}
     }
 
-    /** Makes the blocks go to his spawn Position.
+    /** Makes the blocks go to his spawn Position and makes a sound.
      *
      * @param imageBlock The block going to his spawnPos.
      */
@@ -554,7 +554,7 @@ public class LevelHandler {
         anim.getImageView().setOpacity(0.75);
         imageBlock.getImageView().toFront();
         fT.setOnFinished(finishedEvent -> {
-            AudioClip sound = new AudioClip(String.valueOf(AppMenu.class.getResource("Sound/Theme_MissSound.mp3")));
+            AudioClip sound = new AudioClip(String.valueOf(AppMenu.class.getResource("sounds/Theme_MissSound.mp3")));
             sound.setCycleCount(1);
             sound.setVolume(ControllerOptions.volumeValue);
             sound.play();
