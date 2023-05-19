@@ -19,10 +19,6 @@
    <ImageView fitHeight="305.0" fitWidth="662.0" layoutX="448.0" layoutY="52.0">
       <Image url="@Sprites/BackGround_Level.png"/>
    </ImageView>
-   <ImageView fx:id="buttonBack" fitHeight="138.0" fitWidth="166.0" onMouseEntered="#onBackEntered"
-              onMouseExited="#onBackExited">
-      <Image url="@Sprites/Button_GoBack.png"/>
-   </ImageView>
    <ImageView fitHeight="347.0" fitWidth="662.0" layoutX="117.0" layoutY="465.0">
       <Image url="@Sprites/BackGround_Level.png"/>
    </ImageView>
@@ -44,26 +40,26 @@
    <ImageView fitHeight="110.0" fitWidth="111.0" layoutX="392.0" layoutY="622.0">
       <Image url="@Sprites/Mouse_Left_Key_Dark.png"/>
    </ImageView>
-   <Label layoutX="619.0" layoutY="366.0" prefHeight="99.0" prefWidth="362.0" text="CONTROLS" textFill="#ffffff"
-          underline="true">
+   <Label layoutY="366.0" prefHeight="100.0" prefWidth="1600.0" text="CONTROLS" textFill="#ffffff"
+          underline="true" alignment="CENTER">
       <font>
          <Font name="System Bold Italic" size="67.0"/>
       </font>
    </Label>
-   <Label layoutX="243.0" layoutY="487.0" prefHeight="99.0" prefWidth="410.0" text="Drag &amp; Drop"
+   <Label layoutX="343.0" layoutY="487.0" prefHeight="99.0" prefWidth="410.0" text="Drag &amp; Drop"
           underline="true">
       <font>
          <Font name="System Bold Italic" size="35.0"/>
       </font>
    </Label>
-   <Label layoutX="1010.0" layoutY="487.0" prefHeight="99.0" prefWidth="285.0" text="Rotation"
+   <Label layoutX="1080.0" layoutY="487.0" prefHeight="99.0" prefWidth="285.0" text="Rotation"
           underline="true">
       <font>
          <Font name="System Bold Italic" size="37.0"/>
       </font>
    </Label>
-   <Label layoutX="559.0" layoutY="62.0" prefHeight="99.0" prefWidth="483.0" text="Sound Settings"
-          underline="true">
+   <Label  layoutY="62.0" prefHeight="99.0" prefWidth="1600.0" text="Sound Settings"
+          underline="true" alignment="CENTER">
       <font>
          <Font name="System Bold Italic" size="35.0"/>
       </font>
@@ -86,5 +82,9 @@
    <ImageView fx:id="increaseSound" fitHeight="78.0" fitWidth="111.0" layoutX="953.0" layoutY="200.0" onMouseEntered="#onIncreaseEntered"
               onMouseExited="#onIncreaseExited">
       <Image url="@Sprites/Button_Arrow_Right.png"/>
+   </ImageView>
+   <ImageView fx:id="buttonBack" fitHeight="138.0" fitWidth="166.0" onMouseEntered="#onBackEntered"
+              onMouseExited="#onBackExited">
+      <Image url="@Sprites/Button_GoBack.png"/>
    </ImageView>
 </Pane>

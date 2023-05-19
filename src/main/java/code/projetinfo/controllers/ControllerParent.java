@@ -1,9 +1,6 @@
 package code.projetinfo.controllers;
 
-import code.projetinfo.AppMenu;
-import code.projetinfo.ImageBlock;
-import code.projetinfo.Level;
-import code.projetinfo.LevelHandler;
+import code.projetinfo.*;
 import javafx.animation.TranslateTransition;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
@@ -95,6 +92,9 @@ public class ControllerParent {
                 if (level.getName().charAt(0) == 'G'){
                     loadScene("RandomLevelGenerator.fxml",event);
                 }
+                else if (level.getName().charAt(0) == 'C'){
+                    loadScene("CreatedLevelSelector.fxml",event);
+                }
                 else if (level.getName().charAt(0) == 'R'){
                     loadScene("MenuRandom.fxml",event);
                 }
@@ -128,6 +128,7 @@ public class ControllerParent {
      * @param levelSaved The level to save when clicked.
      */
     static private void setAsSaveButton(ImageView save, String sprite, String nameToSave, Level levelSaved){
+        LevelCreator.blocksCounter = 0;
         save.setOnMouseEntered(saveEvent -> imageChanger(save,sprite.substring(0,sprite.length() - 4) + "_Light.png"));
         save.setOnMouseExited(saveEvent -> imageChanger(save,sprite));
         save.setOnMouseClicked(saveEvent -> {
@@ -152,6 +153,9 @@ public class ControllerParent {
                 if (nameToSave.charAt(0) == 'R'){
                     loadScene("MenuRandom.fxml",saveEvent);
                 }
+                else if (nameToSave.charAt(0) == 'C'){
+                    loadScene("CreatedLevelSelector.fxml",saveEvent);
+                }
                 else if (nameToSave.charAt(5) == '0' || (nameToSave.charAt(5) == '1'
                         && nameToSave.charAt(6) == '0')) {
                     loadScene("LevelSelector1to10.fxml",saveEvent);
@@ -175,6 +179,9 @@ public class ControllerParent {
             ControllerOptions.setMediaPlayerMenu();
             if (level.getName().charAt(0)=='G'){
                 loadScene("RandomLevelGenerator.fxml",leaveEvent);
+            }
+            else if (level.getName().charAt(0) == 'C'){
+                loadScene("CreatedLevelSelector.fxml",leaveEvent);
             }
             else if (level.getName().charAt(0) == 'R'){
                 loadScene("RandomLevelSelector.fxml",leaveEvent);
@@ -226,6 +233,33 @@ public class ControllerParent {
         pane.getChildren().addAll(rectangle,backGround,randomSave1,randomSave2,randomSave3,leaveSave);
     }
 
+    static  public void  CreatedLevelsSaveMenu(Pane pane, Level levelSaved){
+        Rectangle rectangle = new Rectangle(1600,900, Paint.valueOf("#222222"));
+        rectangle.setOpacity(0.3);
+        ImageView backGround = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/BackGround_Choices.png"))));
+        backGround.setPreserveRatio(true);
+        backGround.setLayoutX(500);
+        backGround.setLayoutY(150);
+        backGround.setFitWidth(600);
+
+
+        ImageView createSave1 = createImageView("Sprites/Button_Created1.png",500,550,200);
+        setAsSaveButton(createSave1,"Sprites/Button_Created1.png","CreatedLevel1",levelSaved);
+        createSave1.setOnMouseExited(event -> imageChanger(createSave1,"Sprites/Button_Created1.png"));
+
+
+        ImageView createSave2 = createImageView("Sprites/Button_Created2.png",500,550,375);
+        setAsSaveButton(createSave2,"Sprites/Button_Created2.png","CreatedLevel2",levelSaved);
+        createSave2.setOnMouseExited(event -> imageChanger(createSave2,"Sprites/Button_Created2.png"));
+
+
+        ImageView createSave3 = createImageView("Sprites/Button_Created3.png",500,550,550);
+        setAsSaveButton(createSave3,"Sprites/Button_Created3.png","CreatedLevel3",levelSaved);
+        createSave3.setOnMouseExited(event -> imageChanger(createSave3,"Sprites/Button_Created3.png"));
+
+
+        pane.getChildren().addAll(rectangle,backGround,createSave1,createSave2,createSave3);
+    }
     /**
      * Make a button load a level via it's name
      *
@@ -305,42 +339,35 @@ public class ControllerParent {
        return imageView;
     }
 
-    /**
-     * Show a screen with information about an element via an ImageView's action
-     *
-     * @param pane pane of the Scene in which the ImageView is
-     * @param askingButton ImageView that will activate the event
-     * @param text information we want to show
-     */
-    protected void askingInformation(Pane pane,ImageView askingButton,String text){
-        askingButton.setOnMouseClicked(event ->{
-            Rectangle rectangle = new Rectangle(1600,900, Paint.valueOf("#000000"));
-            rectangle.setOpacity(0.2);
-            ImageView fondInt = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/BackGridLevel.png"))));
-            fondInt.setFitWidth(800);
-            fondInt.setFitHeight(400);
-            fondInt.setLayoutX(400);
-            fondInt.setLayoutY(250);
-            ImageView backButton = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonBack.png"))));
-            backButton.setPreserveRatio(true);
-            backButton.setLayoutX(700);
-            backButton.setLayoutY(600);
-            backButton.setFitHeight(100);
-            backButton.setOnMouseEntered(event1 -> imageChanger(backButton,"Sprites/ButtonBackLight.png"));
-            backButton.setOnMouseExited(event1 -> imageChanger(backButton,"Sprites/ButtonBack.png"));
-            backButton.setOnMouseClicked(event1 -> pane.getChildren().remove(pane.getChildren().size()-4,pane.getChildren().size()));
-            Label label = new Label(text);
-            Font font = new Font("System Bold Italic",50);
-            label.setFont(font);
-            label.setTextFill(Paint.valueOf("#000000"));
-            label.setUnderline(true);
-            label.setAlignment(Pos.CENTER);
-            label.setWrapText(true);
-            label.setPrefWidth(700);
-            label.setPrefHeight(350);
-            label.setLayoutX(450);
-            label.setLayoutY(250);
-            pane.getChildren().addAll(rectangle,fondInt,label,backButton);
-        });
+    public static ImageView warningMessage(Pane pane, String message){
+        Rectangle rectangle1 = new Rectangle(1600,900, Paint.valueOf("#222222"));
+        rectangle1.setOpacity(0.3);
+        ImageView backGround = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/BackGround_Choices.png"))));
+        backGround.setPreserveRatio(true);
+        backGround.setLayoutX(500);
+        backGround.setLayoutY(150);
+        backGround.setFitWidth(600);
+
+        ImageView leave = ControllerParent.createImageView("Sprites/Button_Arrow_Left.png",150,725,700);
+        leave.setOnMouseEntered(event -> ControllerParent.imageChanger(leave,"Sprites/Button_Arrow_LeftLight.png"));
+        leave.setOnMouseExited(event -> ControllerParent.imageChanger(leave,"Sprites/Button_Arrow_Left.png"));
+
+        Label warningMessage = new Label(message);
+        warningMessage.setAlignment(Pos.CENTER);
+        warningMessage.setTextFill(Paint.valueOf("#ffffff"));
+        Font fontWarning = new Font("System Bold Italic",40);
+        warningMessage.setFont(fontWarning);
+        warningMessage.setLayoutY(150);
+        warningMessage.setLayoutX(550);
+        warningMessage.setPrefWidth(500);
+        warningMessage.setPrefHeight(500);
+        warningMessage.setWrapText(true);
+
+        leave.setOnMouseClicked(event -> pane.getChildren().removeAll(warningMessage,leave,rectangle1,backGround));
+
+        pane.getChildren().addAll(rectangle1,backGround,warningMessage,leave);
+
+        return leave;
+
     }
 }

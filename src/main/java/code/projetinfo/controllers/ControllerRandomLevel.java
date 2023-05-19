@@ -9,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
@@ -93,11 +92,8 @@ public class ControllerRandomLevel extends ControllerParent implements Initializ
                 level = levelGenerator.generate();
 
             } catch (LevelGenerator.GenerateException e) {
-                Button error = new Button(e.getMessage());
-                error.setLayoutX(700);
-                error.setLayoutY(450);
-                pane.getChildren().add(error);
-                error.setOnAction(event -> loadScene("RandomLevelGenerator.fxml",event));
+                ImageView errorMessage = warningMessage(pane, e.getMessage());
+                errorMessage.setOnMouseClicked(event -> loadScene("RandomLevelGenerator.fxml",event));
                 return;
             }
 

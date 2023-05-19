@@ -87,7 +87,7 @@ public class LevelGenerator {
     public Level generate() throws GenerateException {
 
         if (leastToPlace > imageBlockClasses.length && alwaysDifferent){
-            throw new GenerateException("not enough blocks selected to place only different blocks");
+            throw new GenerateException("Not enough blocks selected to place only different blocks");
         }
 
         if (imageBlockClasses.length == 1  && imageBlockClasses[0].equals(PlagueDoc.class)){
@@ -176,7 +176,7 @@ public class LevelGenerator {
         }
 
         if (blocksUsed.size() < leastToPlace){
-            throw new GenerateException("couldn't place the least amount of blocks.");
+            throw new GenerateException("Can't place the least amount of blocks.");
         }
 
         return new Level("GeneratedLevel",prepareGrid(grid),blocksUsed.toArray(new ImageBlock[0]));

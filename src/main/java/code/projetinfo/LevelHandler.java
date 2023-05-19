@@ -70,13 +70,17 @@ public class LevelHandler {
         this.level = level;
         this.pane = pane;
 
-        this.gridPos = new Position(pane.getPrefWidth()/2 - (double) (level.getGrid().getRow()*tileSize)/2,
-                pane.getPrefHeight()/2- (double) (level.getGrid().getCol()*tileSize)/2);
+        this.gridPos = new Position(pane.getPrefWidth()/2 - (double) (level.getGrid().getCol()*tileSize)/2,
+                pane.getPrefHeight()/2- (double) (level.getGrid().getRow()*tileSize)/2);
         gridPos = new Position(gridPos.getX() - gridPos.getX()%tileSize, gridPos.getY() - gridPos.getY()%tileSize);
     }
 
     public Position getGridPos() {
         return gridPos;
+    }
+
+    public Level getLevel() {
+        return level;
     }
 
     /** Draws the grid of the level.
@@ -140,6 +144,9 @@ public class LevelHandler {
                 tryRotate(imageBlock);
             }
             else if(event.getButton() == MouseButton.PRIMARY){
+
+                if(imageBlock.getPlacedState()&&level.getName().equals("Created")){
+                    LevelCreator.inventoryCounter++;}
                 node.toFront();
                 node.setEffect(blend);
                 if(imageBlock.getPlacedState()){
@@ -162,20 +169,43 @@ public class LevelHandler {
             if(node.getOpacity()<1){return;}
 
             if (event.getButton() == MouseButton.PRIMARY) {
+
+                if(level.getName().equals("Created")){
+                    if(event.getSceneY()>600 && event.getSceneX()<500){
+                    graveyardDepository(imageBlock,LevelCreator.findIndexBlock(imageBlock,level.getBlocks()));
+                    return;}
+                    if(event.getSceneX()> gridPos.getX() + 9*tileSize){
+                        goToSpawnPos(imageBlock);
+                        return;
+                    }
+                }
+
                 if (inGridBounds(new Position(event.getSceneX(), event.getSceneY()))) {
                     if (level.isPlaceable(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize, (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize)){
                         level.place(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize, (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize);
+
+                        if(level.getName().equals("Created")){
+                            LevelCreator.inventoryCounter--;
+                            int index = LevelCreator.findIndexBlock(imageBlock,LevelCreator.inventoryList);
+                            if(index != -1){
+                                LevelCreator.inventoryList[index] = null;
+                            }
+                        }
+
                         if (level.getPlaced() == level.getBlocks().length){
                             setVictoryState(true);
                             victoryCampaign();
                         }
                     }
-                    else
+                    else{
                         goToSpawnPos(imageBlock);
+                    }
+
                 }
-                else if (collideBetweenBlocks(imageBlock))
+                else if (collideBetweenBlocks(imageBlock)){
                     goToSpawnPos(imageBlock);
-            }
+            }}
+
         });
     }
 
@@ -323,11 +353,12 @@ public class LevelHandler {
         ghost3tT.play();
 
 
-        TranslateTransition blockytT = translateAnimation(blocky, 1000,0,25);
-        blockytT.setCycleCount(Animation.INDEFINITE);
-        blockytT.setAutoReverse(true);
-        blockytT.play();
+        TranslateTransition blockyTT = translateAnimation(blocky, 1000,0,25);
+        blockyTT.setCycleCount(Animation.INDEFINITE);
+        blockyTT.setAutoReverse(true);
+        blockyTT.play();
     }
+
 
     /** Returns the next level name if there is one, null otherwise.
      *
@@ -337,10 +368,15 @@ public class LevelHandler {
     public String nextLevel(String levelName){
         String nextLevel = "Level";
 
+        int number = Character.getNumericValue(levelName.charAt(levelName.length()-1));
+        if (levelName.charAt(0)== 'C'){
+            number = number+1;
+            return (number == 4?null:String.format("CreatedLevel%s",number));
+        }
+
         if (levelName.charAt(0)== 'R'){
-            int randomLevelNumber = Character.getNumericValue(levelName.charAt(levelName.length()-1));
-            randomLevelNumber = randomLevelNumber+1;
-            return (randomLevelNumber == 4?null:String.format("RandomLevel%s",randomLevelNumber));
+            number = number+1;
+            return (number == 4?null:String.format("RandomLevel%s",number));
         }
         int levelNumber = Character.getNumericValue(levelName.charAt(5))*10 + Character.getNumericValue(levelName.charAt(6));
 
@@ -486,6 +522,21 @@ public class LevelHandler {
         return translateTransition;
     }
 
+    /**
+     * In the LevelCreator, makes the ImageBlock chosen disappeared
+     * @param imageBlock the imageBlock we want to disappear
+     * @param blockIndex the index of the imageBlock
+     */
+    public void graveyardDepository(ImageBlock imageBlock,int blockIndex){
+        pane.getChildren().remove(imageBlock.getImageView());
+        level.getBlocks()[blockIndex] = null;
+        LevelCreator.blocksCounter--;
+        LevelCreator.inventoryCounter--;
+        int index = LevelCreator.findIndexBlock(imageBlock,LevelCreator.inventoryList);
+        if(index != -1){
+            LevelCreator.inventoryList[index] = null;}
+    }
+
     /** Makes the blocks go to his spawn Position.
      *
      * @param imageBlock The block going to his spawnPos.
@@ -522,6 +573,9 @@ public class LevelHandler {
             }
 
         });
+        if(level.getName().equals("Created")){
+            graveyardDepository(imageBlock,LevelCreator.findIndexBlock(imageBlock,level.getBlocks()));
+        }
     }
 
 
@@ -586,10 +640,11 @@ public class LevelHandler {
 
         for (ImageBlock inGameBlock:
                 level.getBlocks()) {
+            if(inGameBlock != null){
             if(inGameBlock!=imageBlock &&node.getBoundsInParent().intersects(inGameBlock.getImageView().getBoundsInParent())
                     && !inGameBlock.getPlacedState()){
                 colliding.add(inGameBlock);
-            }
+            }}
         }
         return colliding;
     }
