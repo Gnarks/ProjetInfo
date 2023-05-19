@@ -147,7 +147,7 @@ public class LevelHandler {
             else if(event.getButton() == MouseButton.PRIMARY){
 
                 if(imageBlock.getPlacedState()&&level.getName().equals("Created")){
-                    LevelCreator.inventoryBlock++;}
+                    LevelCreator.inventoryCounter++;}
                 node.toFront();
                 node.setEffect(blend);
                 if(imageBlock.getPlacedState()){
@@ -179,7 +179,14 @@ public class LevelHandler {
                 if (inGridBounds(new Position(event.getSceneX(), event.getSceneY()))) {
                     if (level.isPlaceable(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize, (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize)){
                         level.place(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize, (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize);
-                        LevelCreator.inventoryBlock--;
+
+                        if(level.getName().equals("Created")){
+                            LevelCreator.inventoryCounter--;
+                            int index = LevelCreator.findIndexBlock(imageBlock,LevelCreator.inventoryList);
+                            if(index != -1){
+                                LevelCreator.inventoryList[index] = null;
+                            }
+                        }
 
                         if (level.getPlaced() == level.getBlocks().length){
                             setVictoryState(true);
@@ -513,7 +520,10 @@ public class LevelHandler {
         pane.getChildren().remove(imageBlock.getImageView());
         level.getBlocks()[blockIndex] = null;
         LevelCreator.blocksCounter--;
-        LevelCreator.inventoryBlock--;
+        LevelCreator.inventoryCounter--;
+        int index = LevelCreator.findIndexBlock(imageBlock,LevelCreator.inventoryList);
+        if(index != -1){
+            LevelCreator.inventoryList[index] = null;}
     }
 
     /** Makes the blocks go to his spawn Position.

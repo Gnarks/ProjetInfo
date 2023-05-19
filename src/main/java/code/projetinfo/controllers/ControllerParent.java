@@ -339,42 +339,35 @@ public class ControllerParent {
        return imageView;
     }
 
-    /**
-     * Show a screen with information about an element via an ImageView's action
-     *
-     * @param pane pane of the Scene in which the ImageView is
-     * @param askingButton ImageView that will activate the event
-     * @param text information we want to show
-     */
-    protected void askingInformation(Pane pane,ImageView askingButton,String text){
-        askingButton.setOnMouseClicked(event ->{
-            Rectangle rectangle = new Rectangle(1600,900, Paint.valueOf("#000000"));
-            rectangle.setOpacity(0.2);
-            ImageView fondInt = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/BackGridLevel.png"))));
-            fondInt.setFitWidth(800);
-            fondInt.setFitHeight(400);
-            fondInt.setLayoutX(400);
-            fondInt.setLayoutY(250);
-            ImageView backButton = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/ButtonBack.png"))));
-            backButton.setPreserveRatio(true);
-            backButton.setLayoutX(700);
-            backButton.setLayoutY(600);
-            backButton.setFitHeight(100);
-            backButton.setOnMouseEntered(event1 -> imageChanger(backButton,"Sprites/ButtonBackLight.png"));
-            backButton.setOnMouseExited(event1 -> imageChanger(backButton,"Sprites/ButtonBack.png"));
-            backButton.setOnMouseClicked(event1 -> pane.getChildren().remove(pane.getChildren().size()-4,pane.getChildren().size()));
-            Label label = new Label(text);
-            Font font = new Font("System Bold Italic",50);
-            label.setFont(font);
-            label.setTextFill(Paint.valueOf("#000000"));
-            label.setUnderline(true);
-            label.setAlignment(Pos.CENTER);
-            label.setWrapText(true);
-            label.setPrefWidth(700);
-            label.setPrefHeight(350);
-            label.setLayoutX(450);
-            label.setLayoutY(250);
-            pane.getChildren().addAll(rectangle,fondInt,label,backButton);
-        });
+    public static ImageView warningMessage(Pane pane, String message){
+        Rectangle rectangle1 = new Rectangle(1600,900, Paint.valueOf("#222222"));
+        rectangle1.setOpacity(0.3);
+        ImageView backGround = new ImageView(new Image(String.valueOf(AppMenu.class.getResource("Sprites/BackGround_Choices.png"))));
+        backGround.setPreserveRatio(true);
+        backGround.setLayoutX(500);
+        backGround.setLayoutY(150);
+        backGround.setFitWidth(600);
+
+        ImageView leave = ControllerParent.createImageView("Sprites/Button_Arrow_Left.png",150,725,700);
+        leave.setOnMouseEntered(event -> ControllerParent.imageChanger(leave,"Sprites/Button_Arrow_LeftLight.png"));
+        leave.setOnMouseExited(event -> ControllerParent.imageChanger(leave,"Sprites/Button_Arrow_Left.png"));
+
+        Label warningMessage = new Label(message);
+        warningMessage.setAlignment(Pos.CENTER);
+        warningMessage.setTextFill(Paint.valueOf("#ffffff"));
+        Font fontWarning = new Font("System Bold Italic",40);
+        warningMessage.setFont(fontWarning);
+        warningMessage.setLayoutY(150);
+        warningMessage.setLayoutX(550);
+        warningMessage.setPrefWidth(500);
+        warningMessage.setPrefHeight(500);
+        warningMessage.setWrapText(true);
+
+        leave.setOnMouseClicked(event -> pane.getChildren().removeAll(warningMessage,leave,rectangle1,backGround));
+
+        pane.getChildren().addAll(rectangle1,backGround,warningMessage,leave);
+
+        return leave;
+
     }
 }

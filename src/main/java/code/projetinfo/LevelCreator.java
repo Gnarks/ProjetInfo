@@ -1,5 +1,6 @@
 package code.projetinfo;
 
+import code.projetinfo.controllers.ControllerParent;
 import javafx.animation.TranslateTransition;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
@@ -7,7 +8,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
-
 import java.lang.reflect.InvocationTargetException;
 
 /**
@@ -49,7 +49,11 @@ public class LevelCreator{
     /**
      * A counter for the current blocks in the level but not in the grid
      */
-    public static int inventoryBlock = 0;
+    public static int inventoryCounter = 0;
+    /**
+     * The list of the block in the inventory
+     */
+    public static ImageBlock[] inventoryList = new ImageBlock[3];
 
     /**
      * the number of columns erased during the preparation of the level
@@ -105,7 +109,7 @@ public class LevelCreator{
 
 
     /**
-     * Change the grid in 2 ways:
+     * Changes the grid in 2 ways:
      * if the case is blue; it became black and the CaseState of the case become FULL
      * if the case is black; it became blue and the CaseState of the case become EMPTY
      * @param event the click event associated to the rectangle
@@ -130,10 +134,13 @@ public class LevelCreator{
     }
 
     /**
-     * TODO finish setPosition
+     * Sets the ImageBlock's position in function of his place in the inventoryList
+     * @param imageBlock the ImageBlock to place
      */
     public void setPositionBlock(ImageBlock imageBlock){
-        imageBlock.setPosition(new Position(50+200*inventoryBlock,200+Math.pow(-1,inventoryBlock)*50));
+        int indexLocated = getFirstIndexNull(inventoryList);
+        inventoryList[indexLocated] = imageBlock;
+        imageBlock.setPosition(new Position(25+175*indexLocated,225+Math.pow(-1,indexLocated)*50));
 
     }
 
@@ -148,10 +155,10 @@ public class LevelCreator{
      */
     public void addBlock(Node button) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
 
-        if(inventoryBlock < 3 && blocksCounter == inventoryBlock + level.getPlaced() && nullNumber() > 1){
+        if(inventoryCounter < 3 && blocksCounter == inventoryCounter + level.getPlaced() && nullNumber() > 1){
 
         Class<?> blockClass = Class.forName("code.projetinfo.normalBlocks." + button.getId());
-        ImageBlock blockChosen = (ImageBlock) blockClass.getDeclaredConstructor(Position.class).newInstance(new Position(200,200));
+        ImageBlock blockChosen = (ImageBlock) blockClass.getDeclaredConstructor(Position.class).newInstance(new Position(0,0));
         pane.getChildren().add(blockChosen.getImageView());
         blockChosen.setSpawnPos(new Position(200,700));
         setPositionBlock(blockChosen);
@@ -160,7 +167,11 @@ public class LevelCreator{
         levelHandler.makeDraggable(blockChosen);
 
         blocksCounter++;
-        inventoryBlock++;
+        inventoryCounter++;
+        }
+        else{
+            ControllerParent.warningMessage(pane,"You can't add more blocks.\n" +
+                    "Put some blocks in the grid to empty your inventory and than retry");
         }
     }
 
@@ -201,7 +212,8 @@ public class LevelCreator{
         if(blocksCounter>0){
         pane.getChildren().remove(pane.getChildren().size()-blocksCounter-1,pane.getChildren().size()-1);}
         blocksCounter=0;
-        inventoryBlock=0;
+        inventoryCounter =0;
+        inventoryList = new ImageBlock[3];
     }
 
     /**
@@ -233,7 +245,7 @@ public class LevelCreator{
      * @param imageBlock the ImageBlock we want to search
      * @param imageBlocks the list we want to inspect
      * @return the index if the ImageBlock is in the list
-     *         0 in any other case
+     *         -1 the imageBlock is not in the list
      */
     public static int findIndexBlock(ImageBlock imageBlock, ImageBlock[] imageBlocks){
         for (int i = 0; i < imageBlocks.length; i++) {
@@ -241,14 +253,14 @@ public class LevelCreator{
                 return i;
             }
         }
-        return 0;
+        return -1;
     }
 
     /**
      * Find the index of the first object equals to null in a list
      * @param objects the list we want to inspect
      * @return the index of the first "null" in the list
-     *         0 if there is not "null" in the list
+     *         -1 if there is not "null" in the list
      */
     public int getFirstIndexNull(Object[] objects){
         for (int i = 0; i < objects.length; i++) {
@@ -256,7 +268,7 @@ public class LevelCreator{
                 return i;
             }
         }
-        return 0;
+        return -1;
     }
 
     /**
@@ -340,7 +352,7 @@ public class LevelCreator{
 
     /**
      * Prepares a list of the block that can be interpreted in a true level playable
-     * @return a list that contains exactly the blocks of the level
+     * @return an array that contains exactly the blocks of the level
      */
     public ImageBlock[] prepareBlockList(){
         ImageBlock[] prepared = new ImageBlock[blocksCounter];

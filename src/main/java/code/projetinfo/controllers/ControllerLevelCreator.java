@@ -34,7 +34,7 @@ public class ControllerLevelCreator extends ControllerParent implements Initiali
         imageChanger(backButton,"Sprites/Button_GoBack_Light.png");
         backButton.setOnMouseClicked(event -> {
             loadScene("MenuCreate.fxml",event);
-            LevelCreator.inventoryBlock =0;
+            LevelCreator.inventoryCounter =0;
             LevelCreator.blocksCounter=0;
 
         });
