@@ -154,7 +154,7 @@ public class ControllerParent {
                     loadScene("MenuRandom.fxml",saveEvent);
                 }
                 else if (nameToSave.charAt(0) == 'C'){
-                    loadScene("CreatedLevelSelector.fxml",saveEvent);
+                    loadScene("MenuCreate.fxml",saveEvent);
                 }
                 else if (nameToSave.charAt(5) == '0' || (nameToSave.charAt(5) == '1'
                         && nameToSave.charAt(6) == '0')) {
@@ -269,6 +269,9 @@ public class ControllerParent {
      */
     protected void LevelSelect(Pane pane, String levelName, Node button){
         button.setOnMouseClicked(event -> {
+            Rectangle blocker = new Rectangle(1600,900);
+            blocker.setOpacity(0);
+            pane.getChildren().add(blocker);
             Rectangle transi = new Rectangle(1600,900, Paint.valueOf("222222"));
             transi.setLayoutY(900);
             pane.getChildren().add(transi);
@@ -298,10 +301,8 @@ public class ControllerParent {
             });
         });
     }
-
     /**
      * Method that load a scene via an event chosen
-     *
      * @param nextScene scene we want to load
      * @param event event chosen
      */

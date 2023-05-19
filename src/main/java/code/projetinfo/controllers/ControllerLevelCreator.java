@@ -36,6 +36,7 @@ public class ControllerLevelCreator extends ControllerParent implements Initiali
             loadScene("MenuCreate.fxml",event);
             LevelCreator.inventoryCounter =0;
             LevelCreator.blocksCounter=0;
+            LevelCreator.inventoryList = new ImageBlock[3];
 
         });
     }

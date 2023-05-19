@@ -1315,48 +1315,20 @@
     }
   },
   "CreatedLevel2" : {
-    "grid" : [ [ "SPECIAL", "SPECIAL", "FULL", "FULL", "FULL", "SPECIAL", "SPECIAL" ], [ "SPECIAL", "FULL", "EMPTY", "EMPTY", "EMPTY", "FULL", "SPECIAL" ], [ "FULL", "EMPTY", "EMPTY", "FULL", "EMPTY", "EMPTY", "FULL" ], [ "FULL", "FULL", "FULL", "EMPTY", "FULL", "FULL", "FULL" ], [ "FULL", "EMPTY", "EMPTY", "FULL", "EMPTY", "EMPTY", "FULL" ], [ "SPECIAL", "FULL", "EMPTY", "EMPTY", "EMPTY", "FULL", "SPECIAL" ], [ "SPECIAL", "SPECIAL", "FULL", "FULL", "FULL", "SPECIAL", "SPECIAL" ] ],
+    "grid" : [ [ "SPECIAL", "EMPTY", "EMPTY", "SPECIAL", "EMPTY", "EMPTY" ], [ "SPECIAL", "EMPTY", "EMPTY", "SPECIAL", "EMPTY", "EMPTY" ], [ "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY" ] ],
     "blockList" : {
       "0" : {
-        "type" : "class code.projetinfo.normalBlocks.PlagueDoc",
+        "type" : "class code.projetinfo.normalBlocks.Phantom",
         "rotateState" : 0,
-        "layoutX" : 650.0,
-        "layoutY" : 300.0,
+        "layoutX" : 600.0,
+        "layoutY" : 350.0,
         "isPlaced" : false
       },
       "1" : {
-        "type" : "class code.projetinfo.normalBlocks.Amogous",
-        "rotateState" : 0,
-        "layoutX" : 800.0,
-        "layoutY" : 300.0,
-        "isPlaced" : false
-      },
-      "2" : {
-        "type" : "class code.projetinfo.normalBlocks.GymBroo",
-        "rotateState" : 2,
-        "layoutX" : 700.0,
-        "layoutY" : 450.0,
-        "isPlaced" : false
-      },
-      "3" : {
-        "type" : "class code.projetinfo.normalBlocks.Baby",
-        "rotateState" : 0,
-        "layoutX" : 850.0,
-        "layoutY" : 450.0,
-        "isPlaced" : false
-      },
-      "4" : {
-        "type" : "class code.projetinfo.normalBlocks.Baby",
+        "type" : "class code.projetinfo.normalBlocks.Phantom",
         "rotateState" : 0,
         "layoutX" : 750.0,
-        "layoutY" : 400.0,
-        "isPlaced" : false
-      },
-      "5" : {
-        "type" : "class code.projetinfo.normalBlocks.Baby",
-        "rotateState" : 0,
-        "layoutX" : 650.0,
-        "layoutY" : 450.0,
+        "layoutY" : 350.0,
         "isPlaced" : false
       }
     }
