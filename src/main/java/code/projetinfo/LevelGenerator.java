@@ -172,6 +172,10 @@ public class LevelGenerator {
                 currentBlock.setRotateState(0);
                 currentBlock.rotateTo(0);
                 blocksUsed.add(currentBlock);
+                // if there is no more position to place any block, stops the loop
+                if( MSPos == null){
+                    break;
+                }
             }
         }
 
