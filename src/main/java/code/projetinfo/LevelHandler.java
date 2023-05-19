@@ -399,7 +399,7 @@ public class LevelHandler {
         rotateTransition.play();
         rotateTransition.setOnFinished(event -> {
             imageBlock.getImageView().setOpacity(1);
-            AudioClip sound = new AudioClip(String.valueOf(AppMenu.class.getResource("Theme_MissSound.mp3")));
+            AudioClip sound = new AudioClip(String.valueOf(AppMenu.class.getResource("Sound/Theme_MissSound.mp3")));
             sound.setVolume(ControllerOptions.volumeValue);
             sound.setCycleCount(1);
             sound.play();
