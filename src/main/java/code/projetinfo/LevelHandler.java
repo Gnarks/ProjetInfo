@@ -170,7 +170,8 @@ public class LevelHandler {
 
             if (event.getButton() == MouseButton.PRIMARY) {
                 node.setEffect(null);
-                if (!level.isPlaceable(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize, (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize)){
+                if (inGridBounds(new Position(event.getSceneX(), event.getSceneY())) &&
+                        !level.isPlaceable(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize, (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize)){
                     goToSpawnPos(imageBlock);
                     return;
                 }

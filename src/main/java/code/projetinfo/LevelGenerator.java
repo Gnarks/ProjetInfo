@@ -134,7 +134,7 @@ public class LevelGenerator {
                     double score = calculateScore(currentBlock,new Position(0,0));
                     possiblePlacements.add(new PossiblePlacementData(MSPos, rotateState, score));
                 }
-                else {
+                else if (currentBlock.getState(0,0) != CaseState.FULL){
                     possiblePlacements.addAll(getMovedPossiblePlacements(currentBlock,MSPos,rotateState));
                 }
             }
@@ -142,11 +142,6 @@ public class LevelGenerator {
             // or if the user only want different blocks.
             if (possiblePlacements.size() == 0 || alwaysDifferent) {
                 tryingToPlace.remove(currentBlock.getClass());
-                System.out.println("had to remove one \n");
-                for (Class<?> toPlace:tryingToPlace
-                ) {
-                    System.out.println(toPlace);
-                }
             }
             //if we can place the block.
             if (possiblePlacements.size() >0) {
@@ -182,12 +177,6 @@ public class LevelGenerator {
                 // if there is no more position to place any block, stops the loop
                 if( MSPos == null){
                     break;
-                }
-
-                System.out.println("\n");
-                for (Class<?> toPlace:tryingToPlace
-                     ) {
-                    System.out.println(toPlace);
                 }
             }
         }
