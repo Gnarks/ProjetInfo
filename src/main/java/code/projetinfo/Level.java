@@ -50,10 +50,10 @@ public class Level {
      * @param blocs a list with all the blocks to be placed to finish the level.
      */
     public Level(String name, Cases grid, ImageBlock[] blocs){
-        this.grid = new Cases(grid.getCases().clone());
+        this.grid = new Cases(grid.getCases());
         this.blocks = blocs;
         this.name = name;
-        this.initialGrid = new Cases(grid.getCases().clone());
+        this.initialGrid = new Cases(grid.getCases());
     }
 
     /**This constructor load the level with the specified name from the json file.
@@ -81,7 +81,7 @@ public class Level {
         ObjectNode levels = (ObjectNode) jsonData;
 
         ObjectNode newNode = mapper.createObjectNode();
-        JsonNode gridNode = mapper.convertValue(this.initialGrid.getCases().clone(), JsonNode.class);
+        JsonNode gridNode = mapper.convertValue(this.initialGrid.getCases(), JsonNode.class);
         newNode.set("grid", gridNode);
 
 

@@ -94,7 +94,7 @@ public class Cases {
      * @return the 2D array of CasesState.
      */
     public CaseState[][] getCases(){
-        return cases;
+        return cases.clone();
     }
 
     /** Compare the actual Cases with the externalCases.
