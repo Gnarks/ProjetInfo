@@ -171,11 +171,13 @@ public class LevelGenerator {
                 if (movedBlocksPlacements.size() >0){
                     randomInt = rnd.nextInt(movedBlocksPlacements.size());
                     tryingToPlace.addAll(couldntPlace);
+                    couldntPlace.clear();
                     placeBlock(currentBlock,movedBlocksPlacements.get(randomInt).position,
                             movedBlocksPlacements.get(randomInt).rotateState);
                 }
                 else {
                     tryingToPlace.addAll(couldntPlace);
+                    couldntPlace.clear();
                     placeBlock(currentBlock,bestPossibleScorePlacement.position, bestPossibleScorePlacement.rotateState);
                 }
                 MSPos = getNewMSPos(MSPos);
