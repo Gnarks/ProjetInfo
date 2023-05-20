@@ -159,16 +159,23 @@ public class LevelHandler {
         node.setOnMouseDragged(mouseEvent-> {
 
             if(node.getOpacity()<1){return;}
-            if (mouseEvent.getButton() == MouseButton.PRIMARY)
+            if (mouseEvent.getButton() == MouseButton.PRIMARY){
+                if (imageBlock.getPlacedState())
+                    level.remove(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize
+                            , (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize);
                 moveBlock(imageBlock,mouseEvent);
+            }
         });
 
         node.setOnMouseReleased(event -> {
-            node.setEffect(null);
-
-            if(node.getOpacity()<1){return;}
 
             if (event.getButton() == MouseButton.PRIMARY) {
+                node.setEffect(null);
+                if (!level.isPlaceable(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize, (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize)){
+                    goToSpawnPos(imageBlock);
+                    return;
+                }
+                if(node.getOpacity()<1){return;}
 
                 if(level.getName().equals("Created")){
                     if(event.getSceneY()>600 && event.getSceneX()<500){

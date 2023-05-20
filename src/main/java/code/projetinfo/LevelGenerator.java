@@ -130,6 +130,7 @@ public class LevelGenerator {
 
                 //if the block doesn't have to be moved:
                 if (isPlacable(currentBlock,MSPos, rotateState) && currentBlock.getState(0,0) == CaseState.FULL){
+
                     double score = calculateScore(currentBlock,new Position(0,0));
                     possiblePlacements.add(new PossiblePlacementData(MSPos, rotateState, score));
                 }
