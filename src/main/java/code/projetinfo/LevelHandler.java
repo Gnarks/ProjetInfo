@@ -157,7 +157,6 @@ public class LevelHandler {
             }
         });
         node.setOnMouseDragged(mouseEvent-> {
-
             if(node.getOpacity()<1){return;}
             if (mouseEvent.getButton() == MouseButton.PRIMARY){
                 if (imageBlock.getPlacedState())
