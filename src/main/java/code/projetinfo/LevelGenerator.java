@@ -143,11 +143,7 @@ public class LevelGenerator {
                 }
             }
             //remove the block from the tryingToPlace list if the program couldn't find any possiblePlacement
-            // or if the user only want different blocks.
-            if (alwaysDifferent) {
-                tryingToPlace.remove(currentBlock.getClass());
-            }
-            else if (possiblePlacements.size() == 0){
+            if (possiblePlacements.size() == 0){
                 tryingToPlace.remove(currentBlock.getClass());
                 couldntPlace.add(currentBlock.getClass());
             }
@@ -179,6 +175,9 @@ public class LevelGenerator {
                     tryingToPlace.addAll(couldntPlace);
                     couldntPlace.clear();
                     placeBlock(currentBlock,bestPossibleScorePlacement.position, bestPossibleScorePlacement.rotateState);
+                }
+                if (alwaysDifferent) {
+                    tryingToPlace.remove(currentBlock.getClass());
                 }
                 MSPos = getNewMSPos(MSPos);
                 currentBlock.rotateCasesTo(0);
