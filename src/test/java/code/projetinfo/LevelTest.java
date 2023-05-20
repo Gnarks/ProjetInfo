@@ -33,7 +33,7 @@ public class LevelTest {
         Cases secGrid = new Cases(3,3, CaseState.EMPTY);
         assertTrue("Error in compareGrid() test 1", testlevel.getGrid().equals(secGrid.getCases()));
 
-        secGrid.set(1,1,CaseState.FULL);
+        secGrid.setState(1,1,CaseState.FULL);
         assertFalse("Error in compareGrid() test 2", testlevel.getGrid().equals(secGrid.getCases()));
     }
 

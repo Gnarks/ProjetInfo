@@ -122,14 +122,14 @@ public class LevelCreator{
         if(rectangle.getFill().equals(Paint.valueOf("#000000"))){
             rectangle.setFill(Paint.valueOf("#6666fc"));
             rectangle.setStroke(Paint.valueOf("#000000"));
-            levelHandler.getLevel().getGrid().set((int)rectanglePlacement.getX(),(int)rectanglePlacement.getY(),CaseState.EMPTY);
+            levelHandler.getLevel().getGrid().setState((int)rectanglePlacement.getX(),(int)rectanglePlacement.getY(),CaseState.EMPTY);
         }
 
         else if(rectangle.getFill().equals(Paint.valueOf("#6666fc"))){
             if(levelHandler.getLevel().getGrid().getState((int)rectanglePlacement.getX(),(int)rectanglePlacement.getY()) == CaseState.FULL){return;}
             rectangle.setFill(Paint.valueOf("#000000"));
             rectangle.setStroke(Paint.valueOf("#ffffff"));
-            levelHandler.getLevel().getGrid().set((int)rectanglePlacement.getX(),(int)rectanglePlacement.getY(),CaseState.FULL);
+            levelHandler.getLevel().getGrid().setState((int)rectanglePlacement.getX(),(int)rectanglePlacement.getY(),CaseState.FULL);
         }
     }
 
@@ -329,9 +329,9 @@ public class LevelCreator{
         for (int i = 0; i < result.getRow(); i++){
             for (int j = 0; j < result.getCol(); j++){
                 if (grid.getState(leftX+j, upY+i) == CaseState.EMPTY){
-                    result.set(j,i,CaseState.SPECIAL);
+                    result.setState(j,i,CaseState.SPECIAL);
                 }else {
-                    result.set(j, i, CaseState.FULL);
+                    result.setState(j, i, CaseState.FULL);
                 }
             }
         }

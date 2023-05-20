@@ -71,7 +71,7 @@ public abstract class ImageBlock{
 
          for (int i = 0; i < cases.getCol(); i++){
             for (int j = 0; j < cases.getRow(); j++){
-               newcases.set(j, i, cases.getState(i, cases.getRow()-j-1));
+               newcases.setState(j, i, cases.getState(i, cases.getRow()-j-1));
             }
          }
          this.cases = newcases;

@@ -199,7 +199,7 @@ public class LevelGenerator {
         for (int i = 0; i < imageBlock.getRows(); i++){
             for (int j = 0; j < imageBlock.getCols(); j++){
                 if (imageBlock.getState(j,i) == CaseState.FULL)
-                    grid.set((int)position.getX()+j, (int)position.getY()+i, imageBlock.getState(j, i));
+                    grid.setState((int)position.getX()+j, (int)position.getY()+i, imageBlock.getState(j, i));
             }
         }
     }
@@ -366,10 +366,10 @@ public class LevelGenerator {
             for (int j = 0; j < rowsBorder+1; j++) {
                 switch (grid.getState(i, j)) {
                     case EMPTY:
-                        preparedGrid.set(i, j, CaseState.SPECIAL);
+                        preparedGrid.setState(i, j, CaseState.SPECIAL);
                         break;
                     case FULL:
-                        preparedGrid.set(i, j, CaseState.EMPTY);
+                        preparedGrid.setState(i, j, CaseState.EMPTY);
                 }
 
             }
@@ -379,7 +379,7 @@ public class LevelGenerator {
             int x = rnd.nextInt(preparedGrid.getCol());
             int y = rnd.nextInt(preparedGrid.getRow());
             if (preparedGrid.getState(x,y) == CaseState.SPECIAL)
-                preparedGrid.set(x,y,CaseState.FULL);
+                preparedGrid.setState(x,y,CaseState.FULL);
         }
         return preparedGrid;
     }

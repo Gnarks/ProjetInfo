@@ -197,7 +197,7 @@ public class Level {
         for (int i = 0; i < imageBlock.getRows(); i++){
             for (int j = 0; j < imageBlock.getCols(); j++){
                 if (imageBlock.getState(j,i) == CaseState.FULL)
-                    grid.set(x+j, y+i, imageBlock.getState(j, i));
+                    grid.setState(x+j, y+i, imageBlock.getState(j, i));
             }
         }
         this.placed++;
@@ -214,7 +214,7 @@ public class Level {
         for (int i = 0; i < imageBlock.getRows(); i++){
             for (int j = 0; j < imageBlock.getCols(); j++){
                 if (imageBlock.getState(j,i) == CaseState.FULL)
-                    grid.set(x+j, y+i, CaseState.EMPTY);
+                    grid.setState(x+j, y+i, CaseState.EMPTY);
             }
         }
         this.placed--;

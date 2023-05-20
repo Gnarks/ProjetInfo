@@ -8,7 +8,7 @@ public class CasesTest {
     @Test
     public void set() {
         Cases c = new Cases(3,3, CaseState.EMPTY);
-        c.set(1,1, CaseState.FULL);
+        c.setState(1,1, CaseState.FULL);
 
         CaseState[][] expected = new CaseState[][] {{CaseState.EMPTY, CaseState.EMPTY, CaseState.EMPTY}, {CaseState.EMPTY, CaseState.FULL, CaseState.EMPTY}, {CaseState.EMPTY,CaseState.EMPTY,CaseState.EMPTY}};
         assertTrue("Error in set test", c.equals(expected));
@@ -17,7 +17,7 @@ public class CasesTest {
     @Test
     public void remove() {
         Cases c = new Cases(3,3, CaseState.FULL);
-        c.set(1,1, CaseState.EMPTY);
+        c.setState(1,1, CaseState.EMPTY);
 
         CaseState[][] expected = new CaseState[][] {{CaseState.FULL, CaseState.FULL, CaseState.FULL}, {CaseState.FULL, CaseState.EMPTY, CaseState.FULL}, {CaseState.FULL,CaseState.FULL,CaseState.FULL}};
         assertTrue("Error in remove test", c.equals(expected));
@@ -30,7 +30,7 @@ public class CasesTest {
 
         assertTrue("Error in Cases.equals test 1", c.equals(expected));
 
-        c.set(1,1,CaseState.FULL);
+        c.setState(1,1,CaseState.FULL);
         assertFalse("Error in Cases.equals test 2", c.equals(expected));
     }
 }

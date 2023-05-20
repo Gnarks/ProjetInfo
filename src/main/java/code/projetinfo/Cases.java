@@ -57,7 +57,7 @@ public class Cases {
      * @param y column index.
      * @param s CaseState to set.
      */
-    public void set(int x, int y, CaseState s) {
+    public void setState(int x, int y, CaseState s) {
         this.cases[y][x] = s;
     }
 
