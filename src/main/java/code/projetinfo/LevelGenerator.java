@@ -107,6 +107,10 @@ public class LevelGenerator {
         // the array of block used in the generation of the level.
         ArrayList<ImageBlock> blocksUsed = new ArrayList<>();
 
+        // the array of block to be re-added to tryingToPlace if one block has been placed
+        ArrayList<Class<?>> couldntPlace = new ArrayList<>();
+
+
         //loop trying to place the maximum asked number of block.
         while (blocksUsed.size() < maxToPlace && tryingToPlace.size() >0){
             int randomInt = rnd.nextInt(tryingToPlace.size());
@@ -140,8 +144,12 @@ public class LevelGenerator {
             }
             //remove the block from the tryingToPlace list if the program couldn't find any possiblePlacement
             // or if the user only want different blocks.
-            if (possiblePlacements.size() == 0 || alwaysDifferent) {
+            if (alwaysDifferent) {
                 tryingToPlace.remove(currentBlock.getClass());
+            }
+            else if (possiblePlacements.size() == 0){
+                tryingToPlace.remove(currentBlock.getClass());
+                couldntPlace.add(currentBlock.getClass());
             }
             //if we can place the block.
             if (possiblePlacements.size() >0) {
@@ -162,11 +170,12 @@ public class LevelGenerator {
 
                 if (movedBlocksPlacements.size() >0){
                     randomInt = rnd.nextInt(movedBlocksPlacements.size());
+                    tryingToPlace.addAll(couldntPlace);
                     placeBlock(currentBlock,movedBlocksPlacements.get(randomInt).position,
                             movedBlocksPlacements.get(randomInt).rotateState);
                 }
                 else {
-                    tryingToPlace = new ArrayList<>(Arrays.asList(imageBlockClasses));
+                    tryingToPlace.addAll(couldntPlace);
                     placeBlock(currentBlock,bestPossibleScorePlacement.position, bestPossibleScorePlacement.rotateState);
                 }
                 MSPos = getNewMSPos(MSPos);
