@@ -461,9 +461,20 @@ public class LevelHandler {
         transi.setLayoutY(900);
         pane.getChildren().add(transi);
 
+
         TranslateTransition transition = translateAnimation(transi, 500,0,-900);
         transition.play();
+
         transition.setOnFinished(event1 -> {
+            if(victoryState){
+                resetLevel();
+                try {
+                    level.saveState();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
             FXMLLoader fxmlLoader = new FXMLLoader(AppMenu.class.getResource("Game.fxml"));
             Parent root;
             try {
@@ -591,10 +602,26 @@ public class LevelHandler {
      * @param imageBlock the block going to his spawnPos.
      */
     private void goToSpawnPosReset(ImageBlock imageBlock)
-    { imageBlock.setPosition(imageBlock.getSpawnPos()); }
+    { imageBlock.setPosition(imageBlock.getSpawnPos());}
 
     /**
-     * set all the blocks in the level to their spawnPos with an animation.
+     * Resets the level without animation.
+     */
+    private void resetLevel(){
+        for (ImageBlock imageBlock :
+                level.getBlocks()) {
+            if(imageBlock.getPlacedState())
+                level.remove(imageBlock,(int) (imageBlock.getLayoutX()-gridPos.getX())/tileSize,
+                        (int) (imageBlock.getLayoutY()- gridPos.getY())/tileSize);
+            imageBlock.rotateTo(0);
+            goToSpawnPosReset(imageBlock);
+            imageBlock.setPlaced(false);
+        }
+        this.level.setPlaced(0);
+    }
+
+    /**
+     * Sets all the blocks in the level to their spawnPos with an animation.
      */
     public void reset(){
         ImageView resetImage = new ImageView(String.valueOf(AppMenu.class.getResource("Sprites/Ghost_Reset.png")));
@@ -607,16 +634,7 @@ public class LevelHandler {
         TranslateTransition tT = translateAnimation(resetImage, 800,-1600,0);
         tT.play();
         tT.setOnFinished(finishedEvent ->{
-            for (ImageBlock imageBlock :
-                    level.getBlocks()) {
-                if(imageBlock.getPlacedState())
-                    level.remove(imageBlock,(int) (imageBlock.getLayoutX()-gridPos.getX())/tileSize,
-                            (int) (imageBlock.getLayoutY()- gridPos.getY())/tileSize);
-                imageBlock.rotateTo(0);
-                goToSpawnPosReset(imageBlock);
-                imageBlock.setPlaced(false);
-            }
-            this.level.setPlaced(0);
+            resetLevel();
             TranslateTransition comeBacktT = translateAnimation(resetImage, 800,1600,0);
             comeBacktT.play();
             comeBacktT.setOnFinished(event -> pane.getChildren().remove(resetImage));
