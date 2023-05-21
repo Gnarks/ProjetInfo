@@ -170,12 +170,14 @@ public class LevelHandler {
 
             if (event.getButton() == MouseButton.PRIMARY) {
                 node.setEffect(null);
-                if (inGridBounds(new Position(event.getSceneX(), event.getSceneY())) &&
-                        !level.isPlaceable(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize, (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize)){
+
+                if(node.getOpacity()<1){
+                    if (imageBlock.getPlacedState())
+                        level.remove(imageBlock, (int) (imageBlock.getLayoutX() - gridPos.getX()) / tileSize,
+                                (int) (imageBlock.getLayoutY() - gridPos.getY()) / tileSize);
                     goToSpawnPos(imageBlock);
                     return;
                 }
-                if(node.getOpacity()<1){return;}
 
                 if(level.getName().equals("Created")){
                     if(event.getSceneY()>600 && event.getSceneX()<500){

@@ -148,7 +148,7 @@ public class LevelGenerator {
                 couldntPlace.add(currentBlock.getClass());
             }
             //if we can place the block.
-            if (possiblePlacements.size() >0) {
+            else{
                 // we want to place the moved Blocks in priority by making a list of them.
                 ArrayList<PossiblePlacementData> movedBlocksPlacements = new ArrayList<>();
 
